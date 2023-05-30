@@ -2,7 +2,7 @@
 
 @section('content')
 <style>
-    div.header {
+    .header {
         background-color: #00B0F0;
         color: white;
         display: flex;
@@ -12,144 +12,107 @@
         padding: 5px;
     }
 
-    div.inputBox {
-        width: 320px;
-        height: 100px;
-        padding: 5px 0px 0px 5px;
-    }
-
-    div.inputBoxMI {
-        width: 83px;
-        height: 100px;
-        padding: 5px 0px 0px 5px;
-    }
-
-    div.inputBox2 {
-        width: 347px;
-        height: 100pxpx;
-        padding: 0px 0px 0px 10px;
-    }
-
-    div.inputBox3 {
-        width: 99%;
-        height: 100px;
-        padding: 10px 0px 0px 10px;
-    }
-
-    #format {
-        background-color: #f2f2f2;
-        border-radius: 5px;
-        width: 248px;
-        height: 38px;
-
-    }
-
     #requiredStyle {
         color: #F72C00
     }
 
-    #divider {
-        width: 10px;
+    .form-label {
+        padding-top: 10px;
     }
 
-    div.inputBox4 {
-        width: 258px;
-        height: 100px;
-        padding: 10px 0px 0px 10px;
+    .border {
+        width: 99%;
+        border: 5px;
+        padding: 10px;
+        border-radius: 5px;
+        margin-left: 5px;
+        display: flex;
     }
 
-    .inputBox5 {
-        width: 400px;
-        padding-left: 10px;
-        display: block;
+    .forCheckbox {
+        display: flex;
+        justify-content: center;
     }
 
-    .first {
-        height: 100px;
-        width: 100px;
-    }
-
-    .second {
-        height: 100px;
-        width: 100px;
-        background-color: #f2f2f2;
+    .divider {
+        padding-left: 100px;
     }
 </style>
-
 
 <form action="/leaveform/" method="post">
     @CSRF
     @method('POST')
+
     <div class="card">
 
+        <!-- header -->
         <div class="header">
             <h3> Leave Form </h3>
         </div>
 
-        <!--First row of the leave form-->
+        <!-- first row -->
         <div class="row">
-            <div class="inputBox">
+            <div class="form-group col-3">
                 <label for="requested_by" class="form-label">Office</label>
                 <span id="requiredStyle"> *</span>
-                <input type="text" class="form-control" id="office" name="office">
+                <input type="text" class="form-control" placeholder="Ex: CMIO" id="office" name="office">
             </div>
 
-            <div class="inputBox">
+            <div class="form-group col-4">
                 <label for="requested_by" class="form-label">Last Name</label>
                 <span id="requiredStyle"> *</span>
-                <input type="text" class="form-control" id="last_name" name="last_name">
+                <input type="text" class="form-control" placeholder="Ex: Dela Cruz" id="last_name" name="last_name">
             </div>
 
-            <div class="inputBox">
+            <div class="form-group col-4">
                 <label for="requested_by" class="form-label">First Name</label>
                 <span id="requiredStyle"> *</span>
-                <input type="text" class="form-control" id="first_name" name="first_name">
+                <input type="text" class="form-control" placeholder="Ex: Juan" id="first_name" name="first_name">
             </div>
 
-            <div class="inputBoxMI">
+            <div class="form-group col-1">
                 <label for="requested_by" class="form-label">M.I.</label>
                 <span id="requiredStyle"> *</span>
-                <input type="text" class="form-control" id="middle_initial" name="middle_initial">
+                <input type="text" class="form-control" placeholder="Ex: M" id="middle_initial" name="middle_initial">
             </div>
         </div>
 
-        <!--First second of the leave form-->
+        <!-- second row -->
         <div class="row">
-            <div class="inputBox2">
+            <div class="form-group col-4">
                 <label for="requested_by" class="form-label">Employee Number</label>
                 <span id="requiredStyle"> *</span>
-                <input type="text" class="form-control" id="employee_number" name="employee_number">
+                <input type="text" class="form-control" placeholder="Ex: 1001" id="employee_number" name="employee_number">
             </div>
 
-            <div class="inputBox2">
+            <div class="form-group col-4">
                 <label for="requested_by" class="form-label">Position</label>
                 <span id="requiredStyle"> *</span>
-                <input type="text" class="form-control" id="postion" name="position">
+                <input type="text" class="form-control" placeholder="Ex: Employee" id="position" name="position">
             </div>
 
-            <div class="inputBox2">
+            <div class="form-group col-4">
                 <label for="requested_by" class="form-label">Salary</label>
                 <span id="requiredStyle"> *</span>
-                <input type="text" class="form-control" id="salary" name="salary">
+                <input type="text" class="form-control" placeholder="Ex: ₱10,000" id="salary" name="salary">
             </div>
         </div>
 
-        <!--third of the leave form-->
+        <!-- third row -->
         <div class="row">
-            <div class="inputBox3">
+            <div class="form-group col-12">
                 <label for="requested_by" class="form-label">E-mail</label>
                 <span id="requiredStyle"> *</span>
-                <input type="text" class="form-control" id="email" name="email">
+                <input type="text" class="form-control" placeholder="Ex: juandelacruz@gmail.com" id="email" name="email">
             </div>
         </div>
 
-        <!--fourth of the leave form-->
+        <!-- fourth row -->
         <div class="row">
-
-            <div class="inputBox4">
+            <div class="form-group col-3">
                 <label for="requested_by" class="form-label">Type of Leave</label>
                 <span id="requiredStyle"> *</span>
-                <select name="format" id="format">
+                <select class="form-control" name="type_of_leave" id="type_of_leave">
                     <option selected disabled>Choose your type of leave</option>
                     <option value="vacation_leave">Vacation Leave (Sec. 51, Rule XVI, Omnibus Rules Implementation E.O No. 292)</option>
                     <option value="mandatory_forced_leave">Mandatory/Forced Leave (Sec. 25, Rule XVI, Omnibus Rules Implementation E.O No. 292)</option>
@@ -168,57 +131,83 @@
                 </select>
             </div>
 
-            <div class="inputBox4">
+            <div class="form-group col-3">
                 <label for="requested_by" class="form-label">Date</label>
                 <span id="requiredStyle"> *</span>
                 <input type="date" class="form-control" id="date" name="date">
             </div>
 
-            <div class="inputBox4">
-                <label for="requested_by" class="form-label">No. of Working Days</label>
+            <div class="form-group col-3">
+                <label for="requested_by" class="form-label">No. Of Working Days</label>
                 <span id="requiredStyle"> *</span>
-                <input type="text" class="form-control" id="no_working_days" name="no_working_days">
+                <input type="text" class="form-control" placeholder="Ex: (1) One day" id="no_working_days" name="no_working_days">
             </div>
 
-            <div class="inputBox4">
+            <div class="form-group col-3">
                 <label for="requested_by" class="form-label">Inclusive Dates</label>
                 <span id="requiredStyle"> *</span>
-                <input type="text" class="form-control" id="inclusive_dates" name="inclusive_dates">
+                <input type="text" class="form-control" placeholder="Ex: April 26,2023" id="inclusive_dates" name="inclusive_dates">
             </div>
         </div>
 
-        <!--fifth of the leave formlagay mo to sa isang container-->
-
+        <!-- fifth row (pop-up) -->
         <div class="row">
-            <div class="number"
-        </div>
+            <label for="requested_by" class="form-label">Pop-up</label>
+            <div class="border">
 
-        <!--sixth of the leave formlagay mo to sa isang container-->
+                <div class="form-group col-6">
+                    <input type="checkbox" id="checkbox1" name="checkbox1">
+                    <label for="requested_by" class="form-label">Within the Philippines</label>
+                    <input type="text" placeholder="Specify" class="form-control" id="pop_up" name="pop_up">
+                </div>
 
-        <!--
-         <div class="row">
-            <div class="inputBox6">
-                <label for="requested_by" class="form-label">Comutation</label>
-                <span id="requiredStyle"> *</span>
-                <div class="column">
-                    <input type="checkbox" id="commutation" name="commutation">
-                    <label>Requested</label>
-
-                    <div class="column">
-                        <input type="checkbox" id="commutation" name="commutation">
-                        <label>Not requested</label>
-                    </div>
+                <div class="form-group col-6">
+                    <input type="checkbox" id="checkbox2" name="checkbox2">
+                    <label for="requested_by" class="form-label">Within Abroad</label>
+                    <input type="text" placeholder="Specify" class="form-control" id="pop_up" name="pop_up">
                 </div>
             </div>
         </div>
--->
+        <br>
+        <!-- Sixth row-->
+        <div class="row">
+            <div class="border">
 
+                <div class="form-group col-6">
+                    <label for="requested_by" class="form-label">Commutation</label>
+                    <span id="requiredStyle"> *</span>
+
+                    <div class="forCheckbox">
+                        <input type="checkbox" id="checkbox3" name="checkbox3">
+                        <label for="requested_by" class="form-label"> Requested</label>
+
+                        <div class="divider">
+                            <input type="checkbox" id="checkbox4" name="checkbox4">
+                            <label for="requested_by" class="form-label">Not Requested</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group col-6">
+                    <label for="requested_by" class="form-label">Approver</label>
+                    <span id="requiredStyle"> *</span>
+                    <input type="text" class="form-control" placeholder="Ex: Approver" id="email" name="email">
+                </div>
+            </div>
+        </div>
+
+        <br>
+
+        <!--button-->
         <div class="w-100">
             <div class="float-right">
                 <button type="submit" class="btn btn-primary">Submit</button>
             </div>
         </div>
 
+
     </div>
+
 </form>
+
 @endsection
