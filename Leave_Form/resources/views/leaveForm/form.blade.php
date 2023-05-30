@@ -39,9 +39,9 @@
     }
 </style>
 
-<form action="/leaveform/" method="post">
+<form action="/leaveform" method="POST">
     @CSRF
-    @method('POST')
+    @method('GET')
 
     <div class="card">
 
@@ -109,7 +109,7 @@
 
         <!-- fourth row -->
         <div class="row">
-            <div class="form-group col-3">
+        <div class="form-group col-3">
                 <label for="requested_by" class="form-label">Type of Leave</label>
                 <span id="requiredStyle"> *</span>
                 <select class="form-control" name="type_of_leave" id="type_of_leave">
@@ -130,6 +130,7 @@
                     <option value="other">Others</option>
                 </select>
             </div>
+
 
             <div class="form-group col-3">
                 <label for="requested_by" class="form-label">Date</label>
