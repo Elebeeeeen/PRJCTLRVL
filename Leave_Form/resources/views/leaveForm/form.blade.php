@@ -43,7 +43,6 @@
 
 <form action="/leaveform" id="submitForm" method="POST">
     @CSRF
-    @method('GET')
 
     <div class="card">
 
@@ -144,7 +143,7 @@
             <div class="form-group col-3">
                 <label for="requested_by" class="form-label">No. Of Working Days</label>
                 <span id="requiredStyle"> *</span>
-                <input type="text" class="form-control" placeholder="Ex: (1) One day" id="no_working_days" name="no_working_days">
+                <input type="text" class="form-control" placeholder="Ex: (1) One day" id="no_working_days" name="num_working_days">
             </div>
 
             <div class="form-group col-3">
@@ -174,11 +173,11 @@
                     <span id="requiredStyle"> *</span>
 
                     <div class="forCheckbox">
-                        <input type="radio" id="radio11" name="radio_group">
+                        <input type="radio" id="radio11" name="commutation" value="Requested">
                         <label for="requested_by" class="form-label"> Requested</label>
 
                         <div class="divider">
-                            <input type="checkbox" id="radio12" name="radio_group">
+                            <input type="radio" id="radio12" name="commutation" value="Not Requested">
                             <label for="requested_by" class="form-label">Not Requested</label>
                         </div>
                     </div>
@@ -187,7 +186,7 @@
                 <div class="form-group col-6">
                     <label for="requested_by" class="form-label">Approver</label>
                     <span id="requiredStyle"> *</span>
-                    <input type="text" class="form-control" placeholder="Ex: Approver" id="email" name="email">
+                    <input type="text" class="form-control" placeholder="Ex: Approver" id="approver" name="approver">
                 </div>
             </div>
         </div>
@@ -215,8 +214,8 @@
                 document.getElementById('same1')?.remove();
                 document.getElementById('same2')?.remove();
                 document.getElementById('same3')?.remove();
-                $('.leaveOption').append('<div class="form-group col-6" id="same1"> <input type="radio" id="radio1" name="radio-group"> <label for="requested_by" class="form-label">Within the Philippines</label> <input type="text" placeholder="Specify" class="form-control" id="pop_up" name="pop_up"></div>');
-                $('.leaveOption').append('<div class="form-group col-6" id="same2"> <input type="radio" id="radio2" name="radio-group"> <label for="requested_by" class="form-label">Within Abroad</label> <input type="text" placeholder="Specify" class="form-control" id="pop_up" name="pop_up"></div>');
+                $('.leaveOption').append('<div class="form-group col-6" id="same1"> <input type="radio" id="radio1" name="details" value="Within the Philippines"> <label for="requested_by" class="form-label">Within the Philippines</label> <input type="text" placeholder="Specify" class="form-control" id="specification" name="specification"></div>');
+                $('.leaveOption').append('<div class="form-group col-6" id="same2"> <input type="radio" id="radio2" name="details" value="Within Abroad"> <label for="requested_by" class="form-label">Within Abroad</label> <input type="text" placeholder="Specify" class="form-control" id="specification" name="specification"></div>');
                 $('.select2').select2({});
                 break;
 
@@ -225,9 +224,9 @@
                 document.getElementById('same1')?.remove();
                 document.getElementById('same2')?.remove();
                 document.getElementById('same3')?.remove();
-                $('.leaveOption').append('<div class="form-group col-4" id="same1"> <input type="radio" id="radio3" name="radio-group"> <label for="requested_by" class="form-label">In Hospital</label> <input type="text" placeholder="Illness (Specify)" class="form-control" id="pop_up" name="pop_up"></div>');
-                $('.leaveOption').append('<div class="form-group col-4" id="same2"> <input type="radio" id="radio4" name="radio-group"> <label for="requested_by" class="form-label">Out Patient</label> <input type="text" placeholder="Illness (Specify)" class="form-control" id="pop_up" name="pop_up"></div>');
-                $('.leaveOption').append('<div class="form-group col-4" id="same3"> <input type="radio" id="radio5" name="radio-group"> <label for="requested_by" class="form-label">In case Leave Benefits for Women</label> <input type="text" placeholder="Illness (Specify)" class="form-control" id="pop_up" name="pop_up"></div>');
+                $('.leaveOption').append('<div class="form-group col-4" id="same1"> <input type="radio" id="radio3" name="details" value="In Hospital"> <label for="requested_by" class="form-label">In Hospital</label> <input type="text" placeholder="Illness (Specify)" class="form-control" id="specification" name="specification"></div>');
+                $('.leaveOption').append('<div class="form-group col-4" id="same2"> <input type="radio" id="radio4" name="details" value="Out Patient"> <label for="requested_by" class="form-label">Out Patient</label> <input type="text" placeholder="Illness (Specify)" class="form-control" id="specification" name="specification"></div>');
+                $('.leaveOption').append('<div class="form-group col-4" id="same3"> <input type="radio" id="radio5" name="details" value="In case Leave Benefits for Women"> <label for="requested_by" class="form-label">In case Leave Benefits for Women</label> <input type="text" placeholder="Illness (Specify)" class="form-control" id="specification" name="specification"></div>');
                 $('.select2').select2({});
                 break;
 
@@ -235,8 +234,8 @@
                 document.getElementById('same1')?.remove();
                 document.getElementById('same2')?.remove();
                 document.getElementById('same3')?.remove();
-                $('.leaveOption').append('<div class="form-group col-4" id="same1"> <input type="radio" id="radio6" name="radio-group"> <label for="requested_by" class="form-label">Completion of Masters Degree </label></div>');
-                $('.leaveOption').append('<div class="form-group col-4" id="same2"> <input type="radio" id="radio7" name="radio-group"> <label for="requested_by" class="form-label">BAR/Board Examination Review</label></div>');
+                $('.leaveOption').append('<div class="form-group col-4" id="same1"> <input type="radio" id="radio6" name="details"> <label for="requested_by" class="form-label">Completion of Masters Degree </label></div>');
+                $('.leaveOption').append('<div class="form-group col-4" id="same2"> <input type="radio" id="radio7" name="details"> <label for="requested_by" class="form-label">BAR/Board Examination Review</label></div>');
                 $('.select2').select2({});
                 break;
 
@@ -244,8 +243,8 @@
                 document.getElementById('same1')?.remove();
                 document.getElementById('same2')?.remove();
                 document.getElementById('same3')?.remove();
-                $('.leaveOption').append('<div class="form-group col-4" id="same1"> <input type="radio" id="radio8" name="radio-group"> <label for="requested_by" class="form-label">Monetization of Leave Credits </label></div>');
-                $('.leaveOption').append('<div class="form-group col-4" id="same2"> <input type="radio" id="radio9" name="radio-group"> <label for="requested_by" class="form-label">Terminal Leave</label></div>');
+                $('.leaveOption').append('<div class="form-group col-4" id="same1"> <input type="radio" id="radio8" name="details"> <label for="requested_by" class="form-label">Monetization of Leave Credits </label></div>');
+                $('.leaveOption').append('<div class="form-group col-4" id="same2"> <input type="radio" id="radio9" name="details"> <label for="requested_by" class="form-label">Terminal Leave</label></div>');
                 $('.select2').select2({});
                 break;
         }
@@ -272,7 +271,7 @@
         }).then((result) => {
             if (result.isConfirmed) {
                 $.ajax({
-                    url: "/listofleaveapp/",
+                    url: "/leaveform",
                     method: "POST",
                     processData: false,
                     contentType: false,
