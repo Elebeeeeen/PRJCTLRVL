@@ -5,7 +5,7 @@
             <div class="register-logo">
                 <a href="{{ url('/home') }}"><b>{{ config('app.name') }}</b></a>
             </div>
-            
+
 
             <div class="card">
                 <div class="card-body register-card-body">
@@ -146,4 +146,5 @@
         </div>
         <!-- /.register-box -->
     </body>
+
 </x-laravel-ui-adminlte::adminlte-layout>

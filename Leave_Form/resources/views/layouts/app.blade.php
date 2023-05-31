@@ -12,7 +12,7 @@
 
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <script src="{{ mix('js/app.js') }}"></script>
+    <!-- <script src="{{ mix('js/app.js') }}"></script> -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
 
     <link href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" rel="stylesheet" />
@@ -57,14 +57,14 @@
                 <li class="nav-item dropdown user-menu">
                     <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
                         <img src="https://assets.infyom.com/logo/blue_logo_150x150.png" class="user-image img-circle elevation-2" alt="User Image">
-                        <span class="d-none d-md-inline">{{ Auth::user()->name }}</span>
+                        <span class="d-none d-md-inline">{{ Auth::user()->first_name }}</span>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
                         <!-- User image -->
                         <li class="user-header bg-primary">
                             <img src="https://assets.infyom.com/logo/blue_logo_150x150.png" class="img-circle elevation-2" alt="User Image">
                             <p>
-                                {{ Auth::user()->name }}
+                                {{ Auth::user()->first_name }}
                                 <small>Member since {{ Auth::user()->created_at->format('M. Y') }}</small>
                             </p>
                         </li>
@@ -101,7 +101,7 @@
         </footer>
     </div>
 
-    <script src="{{ mix('js/app.js') }}"></script>
+    <!-- <script src="{{ mix('js/app.js') }}"></script> -->
 
     @stack('third_party_scripts')
 

@@ -22,6 +22,7 @@
 
     .border {
         width: 99%;
+        height: 100px;
         border: 5px;
         padding: 10px;
         border-radius: 5px;
@@ -39,7 +40,7 @@
     }
 </style>
 
-<form action="/leaveform" method="POST">
+<form action="/leaveform" id="submitForm" method="POST">
     @CSRF
     @method('GET')
 
@@ -56,6 +57,7 @@
                 <label for="requested_by" class="form-label">Office</label>
                 <span id="requiredStyle"> *</span>
                 <input type="text" class="form-control" placeholder="Ex: CMIO" id="office" name="office">
+
             </div>
 
             <div class="form-group col-4">
@@ -109,11 +111,11 @@
 
         <!-- fourth row -->
         <div class="row">
-        <div class="form-group col-3">
+            <div class="form-group col-3">
                 <label for="requested_by" class="form-label">Type of Leave</label>
                 <span id="requiredStyle"> *</span>
-                <select class="form-control" name="type_of_leave" id="type_of_leave">
-                    <option selected disabled>Choose your type of leave</option>
+                <select class="select2 form-control" name="type_of_leave" id="type_of_leave">
+                    <option disabled selected value> -- select an option -- </option>
                     <option value="vacation_leave">Vacation Leave (Sec. 51, Rule XVI, Omnibus Rules Implementation E.O No. 292)</option>
                     <option value="mandatory_forced_leave">Mandatory/Forced Leave (Sec. 25, Rule XVI, Omnibus Rules Implementation E.O No. 292)</option>
                     <option value="sick_leave">Sick Leave (Sec. 43, Rule XVI, Omnibus Rules Implementation E.O No. 292)</option>
@@ -153,24 +155,14 @@
 
         <!-- fifth row (pop-up) -->
         <div class="row">
-            <label for="requested_by" class="form-label">Pop-up</label>
-            <div class="border">
-
-                <div class="form-group col-6">
-                    <input type="checkbox" id="checkbox1" name="checkbox1">
-                    <label for="requested_by" class="form-label">Within the Philippines</label>
-                    <input type="text" placeholder="Specify" class="form-control" id="pop_up" name="pop_up">
-                </div>
-
-                <div class="form-group col-6">
-                    <input type="checkbox" id="checkbox2" name="checkbox2">
-                    <label for="requested_by" class="form-label">Within Abroad</label>
-                    <input type="text" placeholder="Specify" class="form-control" id="pop_up" name="pop_up">
-                </div>
+            <div class="form-group col-3">
+                <label for="requested_by" class="form-label titleBox">Additional Info</label>
             </div>
+            <div class="border leaveOption"></div>
         </div>
         <br>
-        <!-- Sixth row-->
+
+        <!-- Sixth row
         <div class="row">
             <div class="border">
 
@@ -197,18 +189,92 @@
             </div>
         </div>
 
-        <br>
+        <br> -->
 
-        <!--button-->
+        <!--button
         <div class="w-100">
             <div class="float-right">
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" id="submitApp" class="btn btn-primary">Submit</button>
             </div>
-        </div>
+        </div> -->
 
 
     </div>
 
 </form>
 
+
+<script>
+    $('#type_of_leave').change(function() {
+        var leave = $('#type_of_leave').val();
+        switch (leave) {
+            case "vacation_leave":
+                document.getElementById('existing')?.remove();
+                $('.leaveOption').append('<div class="form-group col-6"> <input type="checkbox" id="checkbox1" name="checkbox1"> <label for="requested_by" class="form-label">Within the Philippines</label> <input type="text" placeholder="Specify" class="form-control" id="pop_up" name="pop_up"></div>');
+                $('.leaveOption').append('<div class="form-group col-6"> <input type="checkbox" id="checkbox2" name="checkbox2"> <label for="requested_by" class="form-label">Within Abroad</label> <input type="text" placeholder="Specify" class="form-control" id="pop_up" name="pop_up"></div>');
+                $('.select2').select2({});
+                break;
+        }
+    });
+
+    //select2
+    $(document).ready(function() {
+        $('.select2').select2();
+    });
+
+
+    //sweet alert for submit
+    let errorMessages = '';
+    $("#submitForm").on("submit", function(e) {
+        e.preventDefault();
+        let formData = new FormData($('#submitForm')[0]);
+        Swal.fire({
+            title: "Are you sure?",
+            text: 'You want to submit this application?',
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonText: "Confirm",
+            cancelButtonText: "Cancel"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                $.ajax({
+                    url: "/listofleaveapp/",
+                    method: "POST",
+                    processData: false,
+                    contentType: false,
+                    cache: false,
+                    data: formData,
+                    success: function(response) {
+                        if (response.success) {
+                            Swal.fire({
+                                title: 'Success!',
+                                text: 'You can now view and print your leave form. Wait to notify in your email to be approved.',
+                                icon: 'success',
+                                confirmButtonText: 'Okay'
+                            }).then((result) => {
+                                if (result.isConfirmed) {
+                                    window.location.href = "/listofleaveapp/";
+                                }
+                            })
+                        } else {
+                            for (let i = 0; i < response.errors.length; i++) {
+                                errorMessages += "-" + response.errors[i] + "\n";
+                            }
+                            Swal.fire({
+                                html: '<pre>' + errorMessages + '</pre>',
+                                customClass: {
+                                    popup: 'format-pre'
+                                },
+                                title: 'Error!',
+                                icon: 'error',
+                                confirmButtonText: 'Okay'
+                            })
+                            errorMessages = "";
+                        }
+                    }
+                });
+            }
+        });
+    });
+</script>
 @endsection
