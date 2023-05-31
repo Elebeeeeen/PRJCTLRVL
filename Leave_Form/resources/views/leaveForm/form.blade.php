@@ -165,7 +165,7 @@
         </div>
         <br>
 
-        <!-- Sixth row
+        <!-- Sixth row-->
         <div class="row">
             <div class="border">
 
@@ -174,11 +174,11 @@
                     <span id="requiredStyle"> *</span>
 
                     <div class="forCheckbox">
-                        <input type="checkbox" id="checkbox3" name="checkbox3">
+                        <input type="radio" id="radio11" name="radio_group">
                         <label for="requested_by" class="form-label"> Requested</label>
 
                         <div class="divider">
-                            <input type="checkbox" id="checkbox4" name="checkbox4">
+                            <input type="checkbox" id="radio12" name="radio_group">
                             <label for="requested_by" class="form-label">Not Requested</label>
                         </div>
                     </div>
@@ -192,14 +192,14 @@
             </div>
         </div>
 
-        <br> -->
+        <br>
 
-        <!--button
+        <!--button-->
         <div class="w-100">
             <div class="float-right">
                 <button type="submit" id="submitApp" class="btn btn-primary">Submit</button>
             </div>
-        </div> -->
+        </div>
 
 
     </div>
@@ -212,9 +212,40 @@
         var leave = $('#type_of_leave').val();
         switch (leave) {
             case "vacation_leave":
-                document.getElementById('existing')?.remove();
-                $('.leaveOption').append('<div class="form-group col-6"> <input type="checkbox" id="checkbox1" name="checkbox1"> <label for="requested_by" class="form-label">Within the Philippines</label> <input type="text" placeholder="Specify" class="form-control" id="pop_up" name="pop_up"></div>');
-                $('.leaveOption').append('<div class="form-group col-6"> <input type="checkbox" id="checkbox2" name="checkbox2"> <label for="requested_by" class="form-label">Within Abroad</label> <input type="text" placeholder="Specify" class="form-control" id="pop_up" name="pop_up"></div>');
+                document.getElementById('same1')?.remove();
+                document.getElementById('same2')?.remove();
+                document.getElementById('same3')?.remove();
+                $('.leaveOption').append('<div class="form-group col-6" id="same1"> <input type="radio" id="radio1" name="radio-group"> <label for="requested_by" class="form-label">Within the Philippines</label> <input type="text" placeholder="Specify" class="form-control" id="pop_up" name="pop_up"></div>');
+                $('.leaveOption').append('<div class="form-group col-6" id="same2"> <input type="radio" id="radio2" name="radio-group"> <label for="requested_by" class="form-label">Within Abroad</label> <input type="text" placeholder="Specify" class="form-control" id="pop_up" name="pop_up"></div>');
+                $('.select2').select2({});
+                break;
+
+
+            case "sick_leave":
+                document.getElementById('same1')?.remove();
+                document.getElementById('same2')?.remove();
+                document.getElementById('same3')?.remove();
+                $('.leaveOption').append('<div class="form-group col-4" id="same1"> <input type="radio" id="radio3" name="radio-group"> <label for="requested_by" class="form-label">In Hospital</label> <input type="text" placeholder="Illness (Specify)" class="form-control" id="pop_up" name="pop_up"></div>');
+                $('.leaveOption').append('<div class="form-group col-4" id="same2"> <input type="radio" id="radio4" name="radio-group"> <label for="requested_by" class="form-label">Out Patient</label> <input type="text" placeholder="Illness (Specify)" class="form-control" id="pop_up" name="pop_up"></div>');
+                $('.leaveOption').append('<div class="form-group col-4" id="same3"> <input type="radio" id="radio5" name="radio-group"> <label for="requested_by" class="form-label">In case Leave Benefits for Women</label> <input type="text" placeholder="Illness (Specify)" class="form-control" id="pop_up" name="pop_up"></div>');
+                $('.select2').select2({});
+                break;
+
+            case "study_leave":
+                document.getElementById('same1')?.remove();
+                document.getElementById('same2')?.remove();
+                document.getElementById('same3')?.remove();
+                $('.leaveOption').append('<div class="form-group col-4" id="same1"> <input type="radio" id="radio6" name="radio-group"> <label for="requested_by" class="form-label">Completion of Masters Degree </label></div>');
+                $('.leaveOption').append('<div class="form-group col-4" id="same2"> <input type="radio" id="radio7" name="radio-group"> <label for="requested_by" class="form-label">BAR/Board Examination Review</label></div>');
+                $('.select2').select2({});
+                break;
+
+            case "other":
+                document.getElementById('same1')?.remove();
+                document.getElementById('same2')?.remove();
+                document.getElementById('same3')?.remove();
+                $('.leaveOption').append('<div class="form-group col-4" id="same1"> <input type="radio" id="radio8" name="radio-group"> <label for="requested_by" class="form-label">Monetization of Leave Credits </label></div>');
+                $('.leaveOption').append('<div class="form-group col-4" id="same2"> <input type="radio" id="radio9" name="radio-group"> <label for="requested_by" class="form-label">Terminal Leave</label></div>');
                 $('.select2').select2({});
                 break;
         }
