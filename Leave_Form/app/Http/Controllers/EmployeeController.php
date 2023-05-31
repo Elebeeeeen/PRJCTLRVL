@@ -48,6 +48,7 @@ class EmployeeController extends Controller
             'date.required' => 'Please indicate your Date',
             'no_working_days.required' => 'Please indicate your no_working_days',
             'inclusive_dates.required' => 'Please indicate your inclusive_dates',
+            'specification.required' => 'Please indicate your specification',
             'approver.required' => 'Please indicate your approver',
             'commutation.required' => 'Please indicate your commutation',
             
@@ -70,8 +71,10 @@ class EmployeeController extends Controller
             $leave_form->email = $request->email;
             $leave_form->type_of_leave = $request->type_of_leave;
             $leave_form->date = $request->date;
-            $leave_form->no_working_days = $request->no_working_days;
+            $leave_form->no_working_days = $request->num_working_days;
             $leave_form->inclusive_dates = $request->inclusive_dates;
+            $leave_form->details = $request->details;
+            $leave_form->specification = $request->specification;
             $leave_form->approver = $request->approver;
             $leave_form->commutation = $request->commutation;
             $leave_form->save();
