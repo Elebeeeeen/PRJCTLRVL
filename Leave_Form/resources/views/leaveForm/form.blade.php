@@ -38,6 +38,7 @@
     .divider {
         padding-left: 100px;
     }
+
 </style>
 
 <form action="/leaveform" id="submitForm" method="POST">
@@ -152,6 +153,8 @@
                 <input type="text" class="form-control" placeholder="Ex: April 26,2023" id="inclusive_dates" name="inclusive_dates">
             </div>
         </div>
+
+        
 
         <!-- fifth row (pop-up) -->
         <div class="row">

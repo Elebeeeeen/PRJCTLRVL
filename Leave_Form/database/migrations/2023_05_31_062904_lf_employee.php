@@ -13,7 +13,7 @@ return new class extends Migration
     {
         // database for employees leave form
 
-        Schema::create('lf_employees', function (Blueprint $table) {
+        Schema::create('lf_employee', function (Blueprint $table) {
             $table->id();
             $table->string('office');
             $table->string('last_name');
@@ -25,14 +25,14 @@ return new class extends Migration
             $table->string('email');
             $table->string('type_of_leave');
             $table->date('date');
-            $table->integer('no_working_days');
+            $table->integer('num_working_days');
             $table->string('inclusive_dates');
-            $table->string('approver');
+            $table->string('details');
+            $table->string('specification');
             $table->string('commutation');
-            $table->string('remaining_leave');
+            $table->string('approver');
             $table->timestamps();
         });
-        
     }
 
     /**
