@@ -18,7 +18,6 @@ Route::get('/', function () {
 });
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/leaveform', [App\Http\Controllers\EmployeeController::class, 'create'])->name('leaveform');
-Route::resource('/listofleaveapp', App\Http\Controllers\EmployeeController::class);
+Route::resource('/leaveform', App\Http\Controllers\EmployeeController::class);
 
 Auth::routes();
