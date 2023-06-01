@@ -38,7 +38,6 @@
     .divider {
         padding-left: 100px;
     }
-
 </style>
 
 <form action="/leaveform" id="submitForm" method="POST">
@@ -143,7 +142,7 @@
             <div class="form-group col-3">
                 <label for="requested_by" class="form-label">No. Of Working Days</label>
                 <span id="requiredStyle"> *</span>
-                <input type="text" class="form-control" placeholder="Ex: (1) One day" id="no_working_days" name="num_working_days">
+                <input type="text" class="form-control" placeholder="Ex: (1) One day" id="num_working_days" name="num_working_days">
             </div>
 
             <div class="form-group col-3">
@@ -153,7 +152,7 @@
             </div>
         </div>
 
-        
+
 
         <!-- fifth row (pop-up) -->
         <div class="row">
@@ -219,6 +218,11 @@
                 $('.select2').select2({});
                 break;
 
+            case "mandatory_forced_leave":
+                document.getElementById('same1')?.remove();
+                document.getElementById('same2')?.remove();
+                document.getElementById('same3')?.remove();
+                break;
 
             case "sick_leave":
                 document.getElementById('same1')?.remove();
@@ -230,6 +234,30 @@
                 $('.select2').select2({});
                 break;
 
+            case "maternity_leave":
+                document.getElementById('same1')?.remove();
+                document.getElementById('same2')?.remove();
+                document.getElementById('same3')?.remove();
+                break;
+
+            case "paternity_leave":
+                document.getElementById('same1')?.remove();
+                document.getElementById('same2')?.remove();
+                document.getElementById('same3')?.remove();
+                break;
+
+            case "special_privilage_leave":
+                document.getElementById('same1')?.remove();
+                document.getElementById('same2')?.remove();
+                document.getElementById('same3')?.remove();
+                break;
+
+            case "solo_parent_leave":
+                document.getElementById('same1')?.remove();
+                document.getElementById('same2')?.remove();
+                document.getElementById('same3')?.remove();
+                break;
+
             case "study_leave":
                 document.getElementById('same1')?.remove();
                 document.getElementById('same2')?.remove();
@@ -237,6 +265,36 @@
                 $('.leaveOption').append('<div class="form-group col-4" id="same1"> <input type="radio" id="radio6" name="details"> <label for="requested_by" class="form-label">Completion of Masters Degree </label></div>');
                 $('.leaveOption').append('<div class="form-group col-4" id="same2"> <input type="radio" id="radio7" name="details"> <label for="requested_by" class="form-label">BAR/Board Examination Review</label></div>');
                 $('.select2').select2({});
+                break;
+
+            case "vawc_leave":
+                document.getElementById('same1')?.remove();
+                document.getElementById('same2')?.remove();
+                document.getElementById('same3')?.remove();
+                break;
+
+            case "rehabilitation_leave":
+                document.getElementById('same1')?.remove();
+                document.getElementById('same2')?.remove();
+                document.getElementById('same3')?.remove();
+                break;
+
+            case "special_leave_benefit":
+                document.getElementById('same1')?.remove();
+                document.getElementById('same2')?.remove();
+                document.getElementById('same3')?.remove();
+                break;
+
+            case "special_emergency_leave":
+                document.getElementById('same1')?.remove();
+                document.getElementById('same2')?.remove();
+                document.getElementById('same3')?.remove();
+                break;
+
+            case "adoption_leave":
+                document.getElementById('same1')?.remove();
+                document.getElementById('same2')?.remove();
+                document.getElementById('same3')?.remove();
                 break;
 
             case "other":
