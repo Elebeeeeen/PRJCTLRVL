@@ -22,13 +22,14 @@
 
     .border {
         width: 99%;
-        height: 100px;
+        height: 200px;
         border: 5px;
         padding: 10px;
         border-radius: 5px;
         margin-left: 5px;
         display: flex;
     }
+
 
     .forCheckbox {
         display: flex;
@@ -115,20 +116,20 @@
                 <span id="requiredStyle"> *</span>
                 <select class="select2 form-control" name="type_of_leave" id="type_of_leave">
                     <option disabled selected value> -- select an option -- </option>
-                    <option value="vacation_leave">Vacation Leave (Sec. 51, Rule XVI, Omnibus Rules Implementation E.O No. 292)</option>
-                    <option value="mandatory_forced_leave">Mandatory/Forced Leave (Sec. 25, Rule XVI, Omnibus Rules Implementation E.O No. 292)</option>
-                    <option value="sick_leave">Sick Leave (Sec. 43, Rule XVI, Omnibus Rules Implementation E.O No. 292)</option>
-                    <option value="maternity_leave">Maternity Leave (R.A No.11210/IRR issuedby CSC, DOLE, and SSS)</option>
-                    <option value="paternity_leave">Paternity Leave (R.A. No.8187/ CSC MC No. 71, S. 1998, as amended)</option>
-                    <option value="special_privilage_leave">Special Privelage Leave (Sec. 21, Rule XVI, Omnibus Rules Implementation E.O No. 292)</option>
-                    <option value="solo_parent_leave">Solo Parent Leave (RA No. 8972/CSC MC No. 8, s. 2004)</option>
-                    <option value="study_leave">Study Leave (Sec. 68, Rule XVI, Omnibus Rules Implementation E.O No. 292)</option>
-                    <option value="vawc_leave">10-Day VAWC Leave (RA No. 9262/CSC MC No.15, s. 2005)</option>
-                    <option value="rehabilitation_leave">Rehabilitation Privilage (Sec. 55, Rule XVI, Omnibus Rules Implementation E.O No. 292)</option>
-                    <option value="special_leave_benefit">Special Leave Benefits for Women (RA. No. 9710/ CSC MC No. 25, s. 2010)</option>
-                    <option value="special_emergency_leave">Special Emergency (Calamity) Leave (CSC MC No. 2, s. 2012, as amended)</option>
-                    <option value="adoption_leave">Adoption Leave (R.A No. 8552)</option>
-                    <option value="other">Others</option>
+                    <option value="Vacation Leave (Sec. 51, Rule XVI, Omnibus Rules Implementation E.O No. 292)">Vacation Leave (Sec. 51, Rule XVI, Omnibus Rules Implementation E.O No. 292)</option>
+                    <option value="Mandatory/Forced Leave (Sec. 25, Rule XVI, Omnibus Rules Implementation E.O No. 292)">Mandatory/Forced Leave (Sec. 25, Rule XVI, Omnibus Rules Implementation E.O No. 292)</option>
+                    <option value="Sick Leave (Sec. 43, Rule XVI, Omnibus Rules Implementation E.O No. 292)">Sick Leave (Sec. 43, Rule XVI, Omnibus Rules Implementation E.O No. 292)</option>
+                    <option value="Maternity Leave (R.A No.11210/IRR issuedby CSC, DOLE, and SSS)">Maternity Leave (R.A No.11210/IRR issuedby CSC, DOLE, and SSS)</option>
+                    <option value="Paternity Leave (R.A. No.8187/ CSC MC No. 71, S. 1998, as amended)">Paternity Leave (R.A. No.8187/ CSC MC No. 71, S. 1998, as amended)</option>
+                    <option value="Special Privelage Leave (Sec. 21, Rule XVI, Omnibus Rules Implementation E.O No. 292)">Special Privelage Leave (Sec. 21, Rule XVI, Omnibus Rules Implementation E.O No. 292)</option>
+                    <option value="Solo Parent Leave (RA No. 8972/CSC MC No. 8, s. 2004)">Solo Parent Leave (RA No. 8972/CSC MC No. 8, s. 2004)</option>
+                    <option value="Study Leave (Sec. 68, Rule XVI, Omnibus Rules Implementation E.O No. 292)">Study Leave (Sec. 68, Rule XVI, Omnibus Rules Implementation E.O No. 292)</option>
+                    <option value="10-Day VAWC Leave (RA No. 9262/CSC MC No.15, s. 2005)">10-Day VAWC Leave (RA No. 9262/CSC MC No.15, s. 2005)</option>
+                    <option value="Rehabilitation Privilage (Sec. 55, Rule XVI, Omnibus Rules Implementation E.O No. 292)">Rehabilitation Privilage (Sec. 55, Rule XVI, Omnibus Rules Implementation E.O No. 292)</option>
+                    <option value="Special Leave Benefits for Women (RA. No. 9710/ CSC MC No. 25, s. 2010)">Special Leave Benefits for Women (RA. No. 9710/ CSC MC No. 25, s. 2010)</option>
+                    <option value="Special Emergency (Calamity) Leave (CSC MC No. 2, s. 2012, as amended)">Special Emergency (Calamity) Leave (CSC MC No. 2, s. 2012, as amended)</option>
+                    <option value="Adoption Leave (R.A No. 8552)">Adoption Leave (R.A No. 8552)</option>
+                    <option value="Others">Others</option>
                 </select>
             </div>
 
@@ -209,56 +210,56 @@
     $('#type_of_leave').change(function() {
         var leave = $('#type_of_leave').val();
         switch (leave) {
-            case "vacation_leave":
+            case "Vacation Leave (Sec. 51, Rule XVI, Omnibus Rules Implementation E.O No. 292)":
                 document.getElementById('same1')?.remove();
                 document.getElementById('same2')?.remove();
                 document.getElementById('same3')?.remove();
-                $('.leaveOption').append('<div class="form-group col-6" id="same1"> <input type="radio" id="radio1" name="details" value="Within the Philippines"> <label for="requested_by" class="form-label">Within the Philippines</label> <input type="text" placeholder="Specify" class="form-control" id="specification" name="specification"></div>');
-                $('.leaveOption').append('<div class="form-group col-6" id="same2"> <input type="radio" id="radio2" name="details" value="Within Abroad"> <label for="requested_by" class="form-label">Within Abroad</label> <input type="text" placeholder="Specify" class="form-control" id="specification" name="specification"></div>');
+                $('.leaveOption').append('<div class="form-group col-12" id="same1"> <input type="radio" id="radio1" name="details" value="Within the Philippines"> <label for="requested_by" class="form-label">Within the Philippines</label> <div class="form-group " id="same2"> <input type="radio" id="radio2" name="details" value="Within Abroad"> <label for="requested_by" class="form-label">Within Abroad</label></div> <input type="text" placeholder="Specify" class="form-control" id="specification" name="specification"></div>');
+                $('.leaveOption').append();
                 $('.select2').select2({});
                 break;
 
-            case "mandatory_forced_leave":
+            case "Mandatory/Forced Leave (Sec. 25, Rule XVI, Omnibus Rules Implementation E.O No. 292)":
                 document.getElementById('same1')?.remove();
                 document.getElementById('same2')?.remove();
                 document.getElementById('same3')?.remove();
                 break;
 
-            case "sick_leave":
+            case "Sick Leave (Sec. 43, Rule XVI, Omnibus Rules Implementation E.O No. 292)":
                 document.getElementById('same1')?.remove();
                 document.getElementById('same2')?.remove();
                 document.getElementById('same3')?.remove();
                 $('.leaveOption').append('<div class="form-group col-4" id="same1"> <input type="radio" id="radio3" name="details" value="In Hospital"> <label for="requested_by" class="form-label">In Hospital</label> <input type="text" placeholder="Illness (Specify)" class="form-control" id="specification" name="specification"></div>');
-                $('.leaveOption').append('<div class="form-group col-4" id="same2"> <input type="radio" id="radio4" name="details" value="Out Patient"> <label for="requested_by" class="form-label">Out Patient</label> <input type="text" placeholder="Illness (Specify)" class="form-control" id="specification" name="specification"></div>');
-                $('.leaveOption').append('<div class="form-group col-4" id="same3"> <input type="radio" id="radio5" name="details" value="In case Leave Benefits for Women"> <label for="requested_by" class="form-label">In case Leave Benefits for Women</label> <input type="text" placeholder="Illness (Specify)" class="form-control" id="specification" name="specification"></div>');
+                $('.leaveOption').append('<div class="form-group col-4" id="same2"> <input type="radio" id="radio4" name="details" value="Out Patient"> <label for="requested_by" class="form-label">Out Patient</label></div>');
+                $('.leaveOption').append('<div class="form-group col-4" id="same3"> <input type="radio" id="radio5" name="details" value="In case Leave Benefits for Women"> <label for="requested_by" class="form-label">In case Leave Benefits for Women</label></div>');
                 $('.select2').select2({});
                 break;
 
-            case "maternity_leave":
+            case "Maternity Leave (R.A No.11210/IRR issuedby CSC, DOLE, and SSS)":
                 document.getElementById('same1')?.remove();
                 document.getElementById('same2')?.remove();
                 document.getElementById('same3')?.remove();
                 break;
 
-            case "paternity_leave":
+            case "Paternity Leave (R.A. No.8187/ CSC MC No. 71, S. 1998, as amended)":
                 document.getElementById('same1')?.remove();
                 document.getElementById('same2')?.remove();
                 document.getElementById('same3')?.remove();
                 break;
 
-            case "special_privilage_leave":
+            case "Special Privelage Leave (Sec. 21, Rule XVI, Omnibus Rules Implementation E.O No. 292)":
                 document.getElementById('same1')?.remove();
                 document.getElementById('same2')?.remove();
                 document.getElementById('same3')?.remove();
                 break;
 
-            case "solo_parent_leave":
+            case "Solo Parent Leave (RA No. 8972/CSC MC No. 8, s. 2004)":
                 document.getElementById('same1')?.remove();
                 document.getElementById('same2')?.remove();
                 document.getElementById('same3')?.remove();
                 break;
 
-            case "study_leave":
+            case "Study Leave (Sec. 68, Rule XVI, Omnibus Rules Implementation E.O No. 292)":
                 document.getElementById('same1')?.remove();
                 document.getElementById('same2')?.remove();
                 document.getElementById('same3')?.remove();
@@ -267,37 +268,37 @@
                 $('.select2').select2({});
                 break;
 
-            case "vawc_leave":
+            case "10-Day VAWC Leave (RA No. 9262/CSC MC No.15, s. 2005)":
                 document.getElementById('same1')?.remove();
                 document.getElementById('same2')?.remove();
                 document.getElementById('same3')?.remove();
                 break;
 
-            case "rehabilitation_leave":
+            case "Rehabilitation Privilage (Sec. 55, Rule XVI, Omnibus Rules Implementation E.O No. 292)":
                 document.getElementById('same1')?.remove();
                 document.getElementById('same2')?.remove();
                 document.getElementById('same3')?.remove();
                 break;
 
-            case "special_leave_benefit":
+            case "Special Leave Benefits for Women (RA. No. 9710/ CSC MC No. 25, s. 2010)":
                 document.getElementById('same1')?.remove();
                 document.getElementById('same2')?.remove();
                 document.getElementById('same3')?.remove();
                 break;
 
-            case "special_emergency_leave":
+            case "Special Emergency (Calamity) Leave (CSC MC No. 2, s. 2012, as amended)":
                 document.getElementById('same1')?.remove();
                 document.getElementById('same2')?.remove();
                 document.getElementById('same3')?.remove();
                 break;
 
-            case "adoption_leave":
+            case "Adoption Leave (R.A No. 8552)":
                 document.getElementById('same1')?.remove();
                 document.getElementById('same2')?.remove();
                 document.getElementById('same3')?.remove();
                 break;
 
-            case "other":
+            case "Others":
                 document.getElementById('same1')?.remove();
                 document.getElementById('same2')?.remove();
                 document.getElementById('same3')?.remove();

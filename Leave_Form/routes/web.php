@@ -20,6 +20,9 @@ Route::get('/', function () {
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::resource('/leaveform', App\Http\Controllers\EmployeeController::class);
 
+//print
+Route::post("/printform/{id}", [App\Http\Controllers\PrintController::class, "printform"])->name("printform");
+
 Route::resource('/humanresource', App\Http\Controllers\HRController::class);
 
 Auth::routes();
