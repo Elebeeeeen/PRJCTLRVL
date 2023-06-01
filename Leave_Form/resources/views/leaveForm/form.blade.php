@@ -344,7 +344,7 @@
                                 confirmButtonText: 'Okay'
                             }).then((result) => {
                                 if (result.isConfirmed) {
-                                    window.location.href = "/listofleaveapp/";
+                                    window.location.href = "/leaveform/";
                                 }
                             })
                         } else {

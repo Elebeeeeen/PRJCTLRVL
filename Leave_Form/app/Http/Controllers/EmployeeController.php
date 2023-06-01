@@ -15,8 +15,8 @@ class EmployeeController extends Controller
     public function index()
     {
         //
-        //$leave_form = Import::get();
-        return view('leaveForm.list');
+        $leave_form = Employees::get();
+        return view('leaveForm.list', compact(['leave_form']));
     }
 
     /**
@@ -36,27 +36,43 @@ class EmployeeController extends Controller
     public function store(Request $request)
     {
         $message_error = [
-        //     'office.required' => 'Please state your department office',
-        //     'last_name.required' => 'Please indicate your Last Name',
-        //     'first_name.required' => 'Please indicate your First Name',
-        //     'middle_initial.required' => 'Please indicate your Middle Initial',
-        //     'employee_number.required' => 'Please indicate your Employee Number',
-        //     'position.required' => 'Please indicate your Position',
-        //     'employee_number.required' => 'Please indicate your Employee Number',
-        //     'salary.required' => 'Please indicate your Salary',
-        //     'email.required' => 'Please indicate your E-mail',
-        //     'type_of_leave.required' => 'Please indicate your Type of Leave',
-        //     'date.required' => 'Please indicate your Date',
-        //     'no_working_days.required' => 'Please indicate your no_working_days',
-        //     'inclusive_dates.required' => 'Please indicate your inclusive_dates',
-        //     'approver.required' => 'Please indicate your approver',
-        //     'commutation.required' => 'Please indicate your commutation',
+            'office.required' => 'Please state your Department Office',
+            'last_name.required' => 'Please indicate your Last Name',
+            'first_name.required' => 'Please indicate your First Name',
+            'middle_initial.required' => 'Please indicate your Middle Initial',
+            'employee_number.required' => 'Please indicate your Employee Number',
+            'position.required' => 'Please indicate your Position',
+            'employee_number.required' => 'Please indicate your Employee Number',
+            'salary.required' => 'Please indicate your Salary',
+            'email.required' => 'Please indicate your E-mail',
+            'type_of_leave.required' => 'Please indicate your Type of Leave',
+            'date.required' => 'Please indicate your Date',
+            'no_working_days.required' => 'Please indicate your Number Working Days',
+            'inclusive_dates.required' => 'Please indicate your Inclusive Dates',
+            'details.required' => 'Please fill the addtional Details',
+            'specification.required' => 'Please specify your Specification',
+            'approver.required' => 'Please indicate your Approver',
+            'commutation.required' => 'Please indicate your Commutation',
             
 
         ];
 
         $validator = Validator::make($request->all(), [
-            'first_name' => 'required|max:25'
+            'office' => 'required|max:25',
+            'last_name' => 'required|max:25',
+            'first_name' => 'required|max:25',
+            'middle_initial' => 'required|max:1',
+            'employee_number' => 'required|numeric|max:9999',
+            'salary' => 'required|numeric|max:9999',
+            'email' => 'required',
+            'type_of_leave' => 'required',
+            'date' => 'required',
+            'no_working_days' => 'required|numeric',
+            'details' => 'required',
+            'specification' => 'required',
+            'approver' => 'required',
+            'commutation' => 'required',
+            
         ], $message_error);
 
         if ($validator->passes()) {

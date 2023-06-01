@@ -44,12 +44,13 @@
             </thead>
             <tbody>
                 <tr>
-                    <td>sample</td>
-                    <td>sample</td>
-                    <td>sample</td>
-                    <td>sample</td>
-                    <td>sample</td>
-                    <td>sample</td>
+                    @foreach($leave_form as $leavelist)
+                    <td>{{$leavelist['employee_number']}}</td>
+                    <td>{{$leavelist['last_name']}}</td>
+                    <td>{{$leavelist['first_name']}}</td>
+                    <td>{{$leavelist['middle_initial']}}</td>
+                    <td>Pending</td>
+                    <td>{{$leavelist['employee_number']}}</td>
                     <td>
 
                         <div class="btn-group" id="btnGroup">
@@ -68,6 +69,7 @@
                             </div>
                         </div> -->
                     </td>
+                    @endforeach
                 </tr>
             </tbody>
         </table>
