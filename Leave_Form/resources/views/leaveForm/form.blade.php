@@ -38,7 +38,6 @@
     .divider {
         padding-left: 100px;
     }
-
 </style>
 
 <form action="/leaveform" id="submitForm" method="POST">
@@ -144,7 +143,7 @@
             <div class="form-group col-3">
                 <label for="requested_by" class="form-label">No. Of Working Days</label>
                 <span id="requiredStyle"> *</span>
-                <input type="text" class="form-control" placeholder="Ex: (1) One day" id="no_working_days" name="no_working_days">
+                <input type="text" class="form-control" placeholder="Ex: (1) One day" id="num_working_days" name="num_working_days">
             </div>
 
             <div class="form-group col-3">
@@ -154,7 +153,7 @@
             </div>
         </div>
 
-        
+
 
         <!-- fifth row (pop-up) -->
         <div class="row">
@@ -178,7 +177,7 @@
                         <label for="requested_by" class="form-label"> Requested</label>
 
                         <div class="divider">
-                            <input type="checkbox" id="radio12" name="radio_group">
+                            <input type="radio" id="radio12" name="radio_group2">
                             <label for="requested_by" class="form-label">Not Requested</label>
                         </div>
                     </div>
@@ -215,37 +214,96 @@
                 document.getElementById('same1')?.remove();
                 document.getElementById('same2')?.remove();
                 document.getElementById('same3')?.remove();
-                $('.leaveOption').append('<div class="form-group col-6" id="same1"> <input type="radio" id="radio1" name="radio-group"> <label for="requested_by" class="form-label">Within the Philippines</label> <input type="text" placeholder="Specify" class="form-control" id="pop_up" name="pop_up"></div>');
-                $('.leaveOption').append('<div class="form-group col-6" id="same2"> <input type="radio" id="radio2" name="radio-group"> <label for="requested_by" class="form-label">Within Abroad</label> <input type="text" placeholder="Specify" class="form-control" id="pop_up" name="pop_up"></div>');
+                $('.leaveOption').append('<div class="form-group col-6" id="same1"> <input type="radio" id="details" name="radio-group"> <label for="requested_by" class="form-label">Within the Philippines</label> <input type="text" placeholder="Specify" class="form-control" id="specification" name="specification"></div>');
+                $('.leaveOption').append('<div class="form-group col-6" id="same2"> <input type="radio" id="details" name="radio-group"> <label for="requested_by" class="form-label">Within Abroad</label> <input type="text" placeholder="Specify" class="form-control" id="specification" name="specification"></div>');
                 $('.select2').select2({});
                 break;
 
+            case "mandatory_forced_leave":
+                document.getElementById('same1')?.remove();
+                document.getElementById('same2')?.remove();
+                document.getElementById('same3')?.remove();
+                break;
 
             case "sick_leave":
                 document.getElementById('same1')?.remove();
                 document.getElementById('same2')?.remove();
                 document.getElementById('same3')?.remove();
-                $('.leaveOption').append('<div class="form-group col-4" id="same1"> <input type="radio" id="radio3" name="radio-group"> <label for="requested_by" class="form-label">In Hospital</label> <input type="text" placeholder="Illness (Specify)" class="form-control" id="pop_up" name="pop_up"></div>');
-                $('.leaveOption').append('<div class="form-group col-4" id="same2"> <input type="radio" id="radio4" name="radio-group"> <label for="requested_by" class="form-label">Out Patient</label> <input type="text" placeholder="Illness (Specify)" class="form-control" id="pop_up" name="pop_up"></div>');
-                $('.leaveOption').append('<div class="form-group col-4" id="same3"> <input type="radio" id="radio5" name="radio-group"> <label for="requested_by" class="form-label">In case Leave Benefits for Women</label> <input type="text" placeholder="Illness (Specify)" class="form-control" id="pop_up" name="pop_up"></div>');
+                $('.leaveOption').append('<div class="form-group col-4" id="same1"> <input type="radio" id="details" name="radio-group"> <label for="requested_by" class="form-label">In Hospital</label> <input type="text" placeholder="Illness (Specify)" class="form-control" id="specification" name="specification"></div>');
+                $('.leaveOption').append('<div class="form-group col-4" id="same2"> <input type="radio" id="details" name="radio-group"> <label for="requested_by" class="form-label">Out Patient</label> <input type="text" placeholder="Illness (Specify)" class="form-control" id="specification" name="specification"></div>');
+                $('.leaveOption').append('<div class="form-group col-4" id="same3"> <input type="radio" id="details" name="radio-group"> <label for="requested_by" class="form-label">In case Leave Benefits for Women</label> <input type="text" placeholder="Illness (Specify)" class="form-control" id="specification" name="specification"></div>');
                 $('.select2').select2({});
+                break;
+
+            case "maternity_leave":
+                document.getElementById('same1')?.remove();
+                document.getElementById('same2')?.remove();
+                document.getElementById('same3')?.remove();
+                break;
+
+            case "paternity_leave":
+                document.getElementById('same1')?.remove();
+                document.getElementById('same2')?.remove();
+                document.getElementById('same3')?.remove();
+                break;
+
+            case "special_privilage_leave":
+                document.getElementById('same1')?.remove();
+                document.getElementById('same2')?.remove();
+                document.getElementById('same3')?.remove();
+                break;
+
+            case "solo_parent_leave":
+                document.getElementById('same1')?.remove();
+                document.getElementById('same2')?.remove();
+                document.getElementById('same3')?.remove();
                 break;
 
             case "study_leave":
                 document.getElementById('same1')?.remove();
                 document.getElementById('same2')?.remove();
                 document.getElementById('same3')?.remove();
-                $('.leaveOption').append('<div class="form-group col-4" id="same1"> <input type="radio" id="radio6" name="radio-group"> <label for="requested_by" class="form-label">Completion of Masters Degree </label></div>');
-                $('.leaveOption').append('<div class="form-group col-4" id="same2"> <input type="radio" id="radio7" name="radio-group"> <label for="requested_by" class="form-label">BAR/Board Examination Review</label></div>');
+                $('.leaveOption').append('<div class="form-group col-4" id="same1"> <input type="radio" id="details" name="radio-group"> <label for="requested_by" class="form-label">Completion of Masters Degree </label></div>');
+                $('.leaveOption').append('<div class="form-group col-4" id="same2"> <input type="radio" id="details" name="radio-group"> <label for="requested_by" class="form-label">BAR/Board Examination Review</label></div>');
                 $('.select2').select2({});
+                break;
+
+            case "vawc_leave":
+                document.getElementById('same1')?.remove();
+                document.getElementById('same2')?.remove();
+                document.getElementById('same3')?.remove();
+                break;
+
+            case "rehabilitation_leave":
+                document.getElementById('same1')?.remove();
+                document.getElementById('same2')?.remove();
+                document.getElementById('same3')?.remove();
+                break;
+
+            case "special_leave_benefit":
+                document.getElementById('same1')?.remove();
+                document.getElementById('same2')?.remove();
+                document.getElementById('same3')?.remove();
+                break;
+
+            case "special_emergency_leave":
+                document.getElementById('same1')?.remove();
+                document.getElementById('same2')?.remove();
+                document.getElementById('same3')?.remove();
+                break;
+
+            case "adoption_leave":
+                document.getElementById('same1')?.remove();
+                document.getElementById('same2')?.remove();
+                document.getElementById('same3')?.remove();
                 break;
 
             case "other":
                 document.getElementById('same1')?.remove();
                 document.getElementById('same2')?.remove();
                 document.getElementById('same3')?.remove();
-                $('.leaveOption').append('<div class="form-group col-4" id="same1"> <input type="radio" id="radio8" name="radio-group"> <label for="requested_by" class="form-label">Monetization of Leave Credits </label></div>');
-                $('.leaveOption').append('<div class="form-group col-4" id="same2"> <input type="radio" id="radio9" name="radio-group"> <label for="requested_by" class="form-label">Terminal Leave</label></div>');
+                $('.leaveOption').append('<div class="form-group col-4" id="same1"> <input type="radio" id="details" name="radio-group"> <label for="requested_by" class="form-label">Monetization of Leave Credits </label></div>');
+                $('.leaveOption').append('<div class="form-group col-4" id="same2"> <input type="radio" id="details" name="radio-group"> <label for="requested_by" class="form-label">Terminal Leave</label></div>');
                 $('.select2').select2({});
                 break;
         }
