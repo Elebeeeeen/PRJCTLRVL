@@ -15,9 +15,9 @@ class EmployeeController extends Controller
     public function index()
     {
         //
-        //$leave_form = Import::get();
-        return view('leaveForm.list');
-    }
+        $leave_form = Employees::get();
+        return view('leaveForm.list', compact(['leave_form']));
+        }
 
     /**
      * Show the form for creating a new resource.
@@ -36,21 +36,21 @@ class EmployeeController extends Controller
     public function store(Request $request)
     {
         $message_error = [
-        //     'office.required' => 'Please state your department office',
-        //     'last_name.required' => 'Please indicate your Last Name',
-        //     'first_name.required' => 'Please indicate your First Name',
-        //     'middle_initial.required' => 'Please indicate your Middle Initial',
-        //     'employee_number.required' => 'Please indicate your Employee Number',
-        //     'position.required' => 'Please indicate your Position',
-        //     'employee_number.required' => 'Please indicate your Employee Number',
-        //     'salary.required' => 'Please indicate your Salary',
-        //     'email.required' => 'Please indicate your E-mail',
-        //     'type_of_leave.required' => 'Please indicate your Type of Leave',
-        //     'date.required' => 'Please indicate your Date',
-        //     'no_working_days.required' => 'Please indicate your no_working_days',
-        //     'inclusive_dates.required' => 'Please indicate your inclusive_dates',
-        //     'approver.required' => 'Please indicate your approver',
-        //     'commutation.required' => 'Please indicate your commutation',
+            'office.required' => 'Please state your department office',
+            'last_name.required' => 'Please indicate your Last Name',
+            'first_name.required' => 'Please indicate your First Name',
+            'middle_initial.required' => 'Please indicate your Middle Initial',
+            'employee_number.required' => 'Please indicate your Employee Number',
+            'position.required' => 'Please indicate your Position',
+            'employee_number.required' => 'Please indicate your Employee Number',
+            'salary.required' => 'Please indicate your Salary',
+            'email.required' => 'Please indicate your E-mail',
+            'type_of_leave.required' => 'Please indicate your Type of Leave',
+            'date.required' => 'Please indicate your Date',
+            'no_working_days.required' => 'Please indicate your no_working_days',
+            'inclusive_dates.required' => 'Please indicate your inclusive_dates',
+            'approver.required' => 'Please indicate your approver',
+            'commutation.required' => 'Please indicate your commutation',
             
 
         ];
@@ -89,7 +89,10 @@ class EmployeeController extends Controller
      */
     public function show(string $id)
     {
-        //
+
+        $lf_employees = Employees::find($id);
+        return view('leaveform.view', compact(['lf_employees']));
+
     }
 
     /**
