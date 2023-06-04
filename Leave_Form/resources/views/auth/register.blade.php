@@ -11,7 +11,7 @@
                 <div class="card-body register-card-body">
                     <p class="login-box-msg">Register</p>
 
-                    <form method="post" action="{{ route('register') }}">
+                    <form method="post" action="{{ route('register') }}" autocomplete="off">
                         @csrf
                         <div class="row input-group mb-3">
                             <div class="col-4">
@@ -41,7 +41,7 @@
 
                         <div class="row input-group mb-3">
                             <div class="col-4">
-                                <input type="text" name="middle_initial" class="form-control @error('middle_initial') is-invalid @enderror" value="{{ old('middle_initial') }}" placeholder="M.I.">
+                                <input type="text" name="middle_initial" class="form-control @error('middle_initial') is-invalid @enderror" value="{{ old('middle_initial') }}" placeholder="M.I." maxlength="3">
                                 <!-- <div class="input-group-append">
                                 <div class="input-group-text"><span class="fas fa-user"></span></div>
                             </div> -->
@@ -70,7 +70,7 @@
                             <!-- <div class="input-group-append">
                                 <div class="input-group-text"><span class="fas fa-user"></span></div>
                             </div> -->
-                            @error('email')
+                            @error('email') 
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>

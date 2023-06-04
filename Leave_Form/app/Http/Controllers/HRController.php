@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Employees;
 use Illuminate\Http\Request;
 
 class HRController extends Controller
@@ -15,12 +15,18 @@ class HRController extends Controller
         return view('HumanResource.form');
     }
 
+    public function index2()
+    {
+        $leave_form = Employees::get();
+        return view('HumanResource.leave', compact(['leave_form']));
+    }
+
     /**
      * Show the form for creating a new resource.
      */
     public function create()
     {
-        //
+        
     }
 
     /**
@@ -36,7 +42,8 @@ class HRController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $lf_employees = Employees::find($id);
+        return view('HumanResource.view', compact(['lf_employees']));
     }
 
     /**
