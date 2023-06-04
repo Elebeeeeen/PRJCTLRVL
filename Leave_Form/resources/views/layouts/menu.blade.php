@@ -28,7 +28,7 @@
     <a class="dropdown-btn nav-link"><i class="nav-icon far fa-edit"></i> For Approve <i class="fa fa-caret-down"></i>
         <div class="dropdown-container">
             <a href="#">Account</a>
-            <a href="#">Leave Application</a>
+            <a href="/leaveapplication">Leave Application</a>
         </div>
 
 </div>

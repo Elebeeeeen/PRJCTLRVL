@@ -20,7 +20,7 @@
         padding-top: 10px;
     }
 
-    .border{
+    .border {
         width: 99%;
         height: 200px;
         border: 5px;
@@ -177,14 +177,15 @@
 
     <br>
 
-    <!--button-->
-    <!-- <div class="w-100">
-        <div class="float-right">
-            <a href="/leaveform" class="btn btn-primary">Back</a>
-        </div>
-    </div> -->
-
-
+    <!-- button-->
+    <div class="buttons">
+        <div class="w-100">
+            <div class="float-right">
+                <a href="/leaveform" class="btn btn-success">Approve</a>
+                <a href="/leaveform" class="btn btn-danger">Reject</a>
+            </div>
+        </div>        
+    </div>
 </div>
 
 <script>
@@ -221,9 +222,10 @@
                 document.getElementById('same1')?.remove();
                 document.getElementById('same2')?.remove();
                 document.getElementById('same3')?.remove();
-                $('.leaveOption').append('<div class="form-group col-4" id="same1"> <input type="radio" id="radio3" name="details" value="In Hospital"> <label for="requested_by" class="form-label">In Hospital</label> <input type="text" placeholder="Illness (Specify)" class="form-control" id="specification" name="specification" value="{{$lf_employees["specification"]}}></div>');                $('.leaveOption').append('<div class="form-group col-4" id="same2"> <input type="radio" id="radio4" name="details" value="Out Patient"> <label for="requested_by" class="form-label">Out Patient</label></div>');
+                $('.leaveOption').append('<div class="form-group col-4" id="same1"> <input type="radio" id="radio3" name="details" value="In Hospital"> <label for="requested_by" class="form-label">In Hospital</label> <input type="text" placeholder="Illness (Specify)" class="form-control" id="specification" name="specification" value="{{$lf_employees["specification"]}}></div>');
+                $('.leaveOption').append('<div class="form-group col-4" id="same2"> <input type="radio" id="radio4" name="details" value="Out Patient"> <label for="requested_by" class="form-label">Out Patient</label></div>');
                 $('.leaveOption').append('<div class="form-group col-4" id="same3"> <input type="radio" id="radio5" name="details" value="In case Leave Benefits for Women"> <label for="requested_by" class="form-label">In case Leave Benefits for Women</label></div>');
-                
+
                 if ("{{$lf_employees['details']}}" == $('#radio3').val()) {
                     $("#radio3").prop("checked", true);
                 } else {
