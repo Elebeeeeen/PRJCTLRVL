@@ -28,6 +28,7 @@ return new class extends Migration
             $table->integer('num_working_days');
             $table->string('inclusive_dates');
             $table->string('details');
+            // $table->string('status');
             $table->string('specification');
             $table->string('commutation');
             $table->string('approver');

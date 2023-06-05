@@ -42,7 +42,7 @@ class HRController extends Controller
      */
     public function show(string $id)
     {
-        $lf_employees = Employees::find($id);
+        $lf_employee = Employees::find($id);
         return view('HumanResource.view', compact(['lf_employees']));
     }
 
