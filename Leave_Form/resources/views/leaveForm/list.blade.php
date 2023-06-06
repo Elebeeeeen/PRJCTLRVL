@@ -13,7 +13,7 @@
         padding: 5px;
     }
 
-    #btnGroup {
+    #btnGroup, #print_form {
         width: 90px;
         justify-content: center;
     }
@@ -56,11 +56,11 @@
 
 
                     <div class="btn-group" id="btnGroup">
-                            <form action="/printform/{{$leavelist['id']}}" id="print_form" data-product-id="{{$leavelist['id']}}" method="POST">
-                                @CSRF
-                                <button type="submit" class="btn btn-success" id="print_form">Print </button>
-                            </form>
-                        </div>
+                        <form action="/printform/{{$leavelist['id']}}" id="print_form" data-product-id="{{$leavelist['id']}}" method="POST">
+                            @CSRF
+                            <button type="submit" class="btn btn-success" id="print_form">Print </button>
+                        </form>
+                    </div>
 
 
 

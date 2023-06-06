@@ -28,7 +28,7 @@
 <div class="sidenav">
     <a class="dropdown-btn nav-link"><i class="nav-icon far fa-edit"></i> For Approve <i class="fa fa-caret-down"></i>
         <div class="dropdown-container">
-            <a href="#">Account</a>
+            <a href="/accountapplication">Account</a>
             <a href="/leaveapplication">Leave Application</a>
         </div>
 

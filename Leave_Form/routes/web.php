@@ -15,7 +15,7 @@ use Spatie\FlareClient\Api;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
@@ -26,5 +26,7 @@ Route::post("/printform/{id}", [App\Http\Controllers\PrintController::class, "pr
 
 Route::resource('/humanresource', App\Http\Controllers\HRController::class);
 Route::get('/leaveapplication', [App\Http\Controllers\HRController::class, 'index2'])->name('index2');
+Route::get('/accountapplication', [App\Http\Controllers\HRController::class, 'index3'])->name('index3');
+Route::get('/leavelist', [App\Http\Controllers\EmployeeController::class, 'leavelist']);
 
 Auth::routes();
