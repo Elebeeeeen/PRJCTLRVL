@@ -160,7 +160,13 @@
             <div class="form-group col-3">
                 <label for="requested_by" class="form-label titleBox">Additional Info</label>
             </div>
-            <div class="border leaveOption"></div>
+            <div class="border leaveOption">
+
+                <div class="form-group" style="display: none">
+
+                </div>
+
+            </div>
         </div>
         <br>
 
@@ -229,7 +235,8 @@
                 document.getElementById('same1')?.remove();
                 document.getElementById('same2')?.remove();
                 document.getElementById('same3')?.remove();
-                $('.leaveOption').append('<div class="form-group col-4" id="same1"> <input type="radio" id="radio3" name="details" value="In Hospital"> <label for="requested_by" class="form-label">In Hospital</label> <input type="text" placeholder="Illness (Specify)" class="form-control" id="specification" name="specification"></div>');
+                $('.leaveOption').append('<div class="form-group col-4" id="same1">
+                +'<input type="radio" id="radio3" name="details" value="In Hospital"> <label for="requested_by" class="form-label">In Hospital</label> <input type="text" placeholder="Illness (Specify)" class="form-control" id="specification" name="specification"></div>');
                 $('.leaveOption').append('<div class="form-group col-4" id="same2"> <input type="radio" id="radio4" name="details" value="Out Patient"> <label for="requested_by" class="form-label">Out Patient</label></div>');
                 $('.leaveOption').append('<div class="form-group col-4" id="same3"> <input type="radio" id="radio5" name="details" value="In case Leave Benefits for Women"> <label for="requested_by" class="form-label">In case Leave Benefits for Women</label></div>');
                 $('.select2').select2({});

@@ -14,6 +14,7 @@
     </a>
 </li>
 
+@role('h_r')
 <p style="color:white">HR</p>
 
 <li class="nav-item">
@@ -32,7 +33,7 @@
         </div>
 
 </div>
-
+@endrole
 <style>
     .sidenav a,
     .dropdown-btn {

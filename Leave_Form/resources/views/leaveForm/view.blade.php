@@ -170,7 +170,7 @@
             <div class="form-group col-6">
                 <label for="requested_by" class="form-label">Approver</label>
                 <span id="requiredStyle"> *</span>
-                <input type="text" class="form-control" id="approver" name="approver" value="{{$lf_employees['approver']}}">
+                <input type="text" class="form-control" id="approver" name="approver" value="{{$lf_employees['approver']}}" disabled>
             </div>
         </div>
     </div>
@@ -200,7 +200,7 @@
                 document.getElementById('same1')?.remove();
                 document.getElementById('same2')?.remove();
                 document.getElementById('same3')?.remove();
-                $('.leaveOption').append('<div class="form-group col-12" id="same1"> <input type="radio" id="radio1" name="details" value="Within the Philippines" disabled> <label for="requested_by" class="form-label">Within the Philippines</label> <div class="form-group " id="same2"> <input type="radio" id="radio2" name="details" value="Within Abroad" disabled> <label for="requested_by" class="form-label">Within Abroad</label></div> <input type="text" placeholder="Specify" class="form-control" id="specification" name="specification" value="{{$lf_employees["specification"]}}" ></div>');
+                $('.leaveOption').append('<div class="form-group col-12" id="same1"> <input type="radio" id="radio1" name="details" value="Within the Philippines" disabled> <label for="requested_by" class="form-label">Within the Philippines</label> <div class="form-group " id="same2"> <input type="radio" id="radio2" name="details" value="Within Abroad" disabled> <label for="requested_by" class="form-label">Within Abroad</label></div> <input type="text" placeholder="Specify" class="form-control" id="specification" name="specification" value="{{$lf_employees["specification"]}}" disabled ></div>');
                 $('.leaveOption').append();
 
                 if ("{{$lf_employees['details']}}" == $('#radio1').val()) {
@@ -221,8 +221,8 @@
                 document.getElementById('same1')?.remove();
                 document.getElementById('same2')?.remove();
                 document.getElementById('same3')?.remove();
-                $('.leaveOption').append('<div class="form-group col-4" id="same1"> <input type="radio" id="radio3" name="details" value="In Hospital"> <label for="requested_by" class="form-label">In Hospital</label> <input type="text" placeholder="Illness (Specify)" class="form-control" id="specification" name="specification" value="{{$lf_employees["specification"]}}></div>');                $('.leaveOption').append('<div class="form-group col-4" id="same2"> <input type="radio" id="radio4" name="details" value="Out Patient"> <label for="requested_by" class="form-label">Out Patient</label></div>');
-                $('.leaveOption').append('<div class="form-group col-4" id="same3"> <input type="radio" id="radio5" name="details" value="In case Leave Benefits for Women"> <label for="requested_by" class="form-label">In case Leave Benefits for Women</label></div>');
+                $('.leaveOption').append('<div class="form-group col-4" id="same1"> <input type="radio" id="radio3" name="details" value="In Hospital" disabled> <label for="requested_by" class="form-label">In Hospital</label> <input type="text" placeholder="Illness (Specify)" class="form-control" id="specification" name="specification" value="{{$lf_employees["specification"]}} disabled></div>');                $('.leaveOption').append('<div class="form-group col-4" id="same2"> <input type="radio" id="radio4" name="details" value="Out Patient"> <label for="requested_by" class="form-label">Out Patient</label></div>');
+                $('.leaveOption').append('<div class="form-group col-4" id="same3"> <input type="radio" id="radio5" name="details" value="In case Leave Benefits for Women" disabled> <label for="requested_by" class="form-label">In case Leave Benefits for Women</label></div>');
                 
                 if ("{{$lf_employees['details']}}" == $('#radio3').val()) {
                     $("#radio3").prop("checked", true);
@@ -259,8 +259,8 @@
                 document.getElementById('same1')?.remove();
                 document.getElementById('same2')?.remove();
                 document.getElementById('same3')?.remove();
-                $('.leaveOption').append('<div class="form-group col-4" id="same1"> <input type="radio" id="radio6" name="details" value="{{$lf_employees["specification"]}}> <label for="requested_by" class="form-label">Completion of Masters Degree </label></div>');
-                $('.leaveOption').append('<div class="form-group col-4" id="same2"> <input type="radio" id="radio7" name="details" value="{{$lf_employees["specification"]}}> <label for="requested_by" class="form-label">BAR/Board Examination Review</label></div>');
+                $('.leaveOption').append('<div class="form-group col-4" id="same1"> <input type="radio" id="radio6" name="details" value="{{$lf_employees["specification"]}} disabled> <label for="requested_by" class="form-label">Completion of Masters Degree </label></div>');
+                $('.leaveOption').append('<div class="form-group col-4" id="same2"> <input type="radio" id="radio7" name="details" value="{{$lf_employees["specification"]}} disabled> <label for="requested_by" class="form-label">BAR/Board Examination Review</label></div>');
                 $('.select2').select2({});
                 break;
 
@@ -298,8 +298,8 @@
                 document.getElementById('same1')?.remove();
                 document.getElementById('same2')?.remove();
                 document.getElementById('same3')?.remove();
-                $('.leaveOption').append('<div class="form-group col-4" id="same1"> <input type="radio" id="radio8" name="details" value="{{$lf_employees["specification"]}}> <label for="requested_by" class="form-label">Monetization of Leave Credits </label></div>');
-                $('.leaveOption').append('<div class="form-group col-4" id="same2"> <input type="radio" id="radio9" name="details" value="{{$lf_employees["specification"]}}> <label for="requested_by" class="form-label">Terminal Leave</label></div>');
+                $('.leaveOption').append('<div class="form-group col-4" id="same1"> <input type="radio" id="radio8" name="details" value="{{$lf_employees["specification"]}} disabled> <label for="requested_by" class="form-label">Monetization of Leave Credits </label></div>');
+                $('.leaveOption').append('<div class="form-group col-4" id="same2"> <input type="radio" id="radio9" name="details" value="{{$lf_employees["specification"]}} disabled> <label for="requested_by" class="form-label">Terminal Leave</label></div>');
                 $('.select2').select2({});
                 break;
         }

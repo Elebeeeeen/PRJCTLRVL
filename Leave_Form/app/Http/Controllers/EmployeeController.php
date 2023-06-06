@@ -47,10 +47,8 @@ class EmployeeController extends Controller
             'email.required' => 'Please indicate your E-mail',
             'type_of_leave.required' => 'Please indicate your Type of Leave',
             'date.required' => 'Please indicate your Date',
-            'no_working_days.required' => 'Please indicate your Number Working Days',
+            'num_working_days.required' => 'Please indicate your Number Working Days',
             'inclusive_dates.required' => 'Please indicate your Inclusive Dates',
-            'details.required' => 'Please fill the addtional Details',
-            'specification.required' => 'Please specify your Specification',
             'approver.required' => 'Please indicate your Approver',
             'commutation.required' => 'Please indicate your Commutation',
             
@@ -63,13 +61,11 @@ class EmployeeController extends Controller
             'first_name' => 'required|max:25',
             'middle_initial' => 'required|max:1',
             'employee_number' => 'required|numeric|max:99999',
-            'salary' => 'required|numeric|max:99999',
+            'salary' => 'required|numeric|max:999999',
             'email' => 'required',
             'type_of_leave' => 'required',
             'date' => 'required',
             'num_working_days' => 'required|numeric',
-            'details' => 'required',
-            'specification' => 'required',
             'approver' => 'required',
             'commutation' => 'required',
             
@@ -89,8 +85,6 @@ class EmployeeController extends Controller
                 'date'=>$request->date,
                 'num_working_days'=>$request->num_working_days,
                 'inclusive_dates'=>$request->inclusive_dates,
-                'details'=>$request->details,
-                'specification'=>$request->specification,
                 'commutation'=>$request->commutation,
                 'approver'=>$request->approver
             ]);
