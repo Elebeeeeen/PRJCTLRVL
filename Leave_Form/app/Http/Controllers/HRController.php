@@ -21,6 +21,11 @@ class HRController extends Controller
         return view('HumanResource.leave', compact(['leave_form']));
     }
 
+    public function index3(){
+        $leave_form = Employees::get();
+        return view('HumanResource.account', compact(['leave_form']));
+    }
+
     /**
      * Show the form for creating a new resource.
      */
@@ -42,8 +47,8 @@ class HRController extends Controller
      */
     public function show(string $id)
     {
-        $lf_employees = Employees::find($id);
-        return view('HumanResource.view', compact(['lf_employees']));
+        $lf_employee = Employees::find($id);
+        return view('HumanResource.view', compact(['lf_employee']));
     }
 
     /**
