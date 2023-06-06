@@ -24,7 +24,7 @@
 
     <!-- header -->
     <div class="header">
-        <h3> List of Leave Application </h3>
+        <h3> fasdfasdfasd</h3>
     </div>
 
     <table class="table table-striped table-bordered table-mm" id="user_table">
@@ -47,11 +47,11 @@
                 <td>{{$leavelist['first_name']}}</td>
                 <td>{{$leavelist['middle_initial']}}</td>
                 <td>Pending</td>
-                <td>{{$leavelist['employee_number']}}</td>
+                <td>{{$leavelist['type_of_leave']}}</td>
                 <td>
 
                     <div class="btn-group" id="btnGroup">
-                        <a href="/leaveform/{{$leavelist['id']}}" type="button" class="btn btn-primary"> View </a>
+                        <a href="/humanresource/{{$leavelist['id']}}" type="button" class="btn btn-primary"> View </a>
                     </div>
 
                 </td>
@@ -59,40 +59,6 @@
             @endforeach
         </tbody>
     </table>
-
 </div>
-<script>
-    $('#print_form').on('submit', function(e) {
-        let errorMessages = '';
-        let formData = new FormData($("#print_form")[0]);
-        $.ajax({
-            url: '/printform/' + $(this).attr("data-product-id"),
-            method: "POST",
-            processData: false,
-            contentType: false,
-            cache: false,
-            data: formData,
-            success: function(response) {
-                if (response.success) {
-                    window.location.href = '/printform/' + $(this).attr("data-product-id");
-                } else {
-                    for (let i = 0; i < response.errors.length; i++) {
-                        errorMessages += "-" + response.errors[i] + "\n";
-                    }
-                    Swal.fire({
-                        html: '<pre>' + errorMessages + '</pre>',
-                        customClass: {
-                            popup: 'format-pre'
-                        },
-                        title: 'Error!',
-                        icon: 'error',
-                        confirmButtonText: 'Okay'
-                    })
-                    errorMessages = "";
-                }
-            }
-        });
-    });
-</script>
 
 @endsection

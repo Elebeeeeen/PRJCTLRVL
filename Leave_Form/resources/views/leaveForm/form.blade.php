@@ -138,128 +138,128 @@
                 <input type="text" class="form-control" placeholder="Ex: April 26,2023" id="inclusive_dates" name="inclusive_dates">
             </div>
         </div>
-    </div>
 
 
 
-    <!-- fifth row (pop-up) -->
-    <div class="row">
-        <div class="form-group col-3">
-            <label for="requested_by" class="form-label titleBox">Additional Info</label>
-        </div>
-        <div class="border leaveOption">
-
-            <!-- vacation leave 0 -->
-            <div class="form-group" style="display: none">
-
-                <div class="form-group col-12" id="same1">
-                    <input type="radio" id="radio1" name="details" value="Within the Philippines">
-                    <label for="requested_by" class="form-label">Within the Philippines</label>
-
-                    <div class="form-group " id="same2">
-                        <input type="radio" id="radio2" name="details" value="Within Abroad">
-                        <label for="requested_by" class="form-label">Within Abroad</label>
-                    </div>
-
-                    <input type="text" placeholder="Specify" class="form-control" id="specification" name="specification">
-
-                </div>
+        <!-- fifth row (pop-up) -->
+        <div class="row">
+            <div class="form-group col-3">
+                <label for="requested_by" class="form-label titleBox">Additional Info</label>
             </div>
+            <div class="border leaveOption">
 
-            <!-- sick leave 3-->
-            <div class="form-group" style="display: none">
+                <!-- vacation leave 0 -->
+                <div class="form-group" style="display: none">
 
-                <div class="form-group col-12" id="same1">
-                    <input type="radio" id="radio1" name="details" value="In Hospital">
-                    <label for="requested_by" class="form-label">In Hospital</label>
+                    <div class="form-group col-12" id="same1">
+                        <input type="radio" id="radio1" name="details" value="Within the Philippines">
+                        <label for="requested_by" class="form-label">Within the Philippines</label>
 
-                    <div class="form-group " id="same2">
-                        <input type="radio" id="radio2" name="details" value="Out Patient">
-                        <label for="requested_by" class="form-label">Out Patient</label>
-                    </div>
+                        <div class="form-group " id="same2">
+                            <input type="radio" id="radio2" name="details" value="Within Abroad">
+                            <label for="requested_by" class="form-label">Within Abroad</label>
+                        </div>
 
-                    <div class="form-group " id="same3">
-                        <input type="radio" id="radio3" name="details" value="In case Leave Benefits for Women">
-                        <label for="requested_by" class="form-label">In case Leave Benefits for Women</label>
-                    </div>
+                        <input type="text" placeholder="Specify" class="form-control" id="specification" name="specification">
 
-                    <input type="text" placeholder="Specify" class="form-control" id="specification" name="specification">
-
-                </div>
-            </div>
-
-            <!-- study leave 7 -->
-            <div class="form-group" style="display: none">
-
-                <div class="form-group col-12" id="same1">
-                    <input type="radio" id="radio1" name="details" value="masters">
-                    <label for="requested_by" class="form-label">Completion of Masters Degree</label>
-
-                    <div class="form-group " id="same2">
-                        <input type="radio" id="radio2" name="details" value="barBoard">
-                        <label for="requested_by" class="form-label">BAR/Board Examination Review</label>
-                    </div>
-
-                </div>
-            </div>
-
-            <!-- others 10 -->
-            <div class="form-group" style="display: none">
-
-                <div class="form-group col-12" id="same1">
-                    <input type="radio" id="radio1" name="details" value="monetization">
-                    <label for="requested_by" class="form-label">Monetization of leave Credits</label>
-
-                    <div class="form-group " id="same2">
-                        <input type="radio" id="radio2" name="details" value="terminal">
-                        <label for="requested_by" class="form-label">Terminal Leave</label>
-                    </div>
-
-                </div>
-            </div>
-
-
-        </div>
-    </div>
-    <br>
-
-    <!-- Sixth row-->
-    <div class="row">
-        <div class="border">
-
-            <div class="form-group col-6">
-                <label for="requested_by" class="form-label">Commutation</label>
-                <span id="requiredStyle"> *</span>
-
-                <div class="forCheckbox">
-                    <input type="radio" id="radio11" name="commutation" value="Requested">
-                    <label for="requested_by" class="form-label"> Requested</label>
-
-                    <div class="divider">
-                        <input type="radio" id="radio12" name="commutation" value="Not Requested">
-                        <label for="requested_by" class="form-label">Not Requested</label>
                     </div>
                 </div>
-            </div>
 
-            <div class="form-group col-6">
-                <label for="requested_by" class="form-label">Approver</label>
-                <span id="requiredStyle"> *</span>
-                <input type="text" class="form-control" placeholder="Ex: Approver" id="approver" name="approver">
+                <!-- sick leave 3-->
+                <div class="form-group" style="display: none">
+
+                    <div class="form-group col-12" id="same1">
+                        <input type="radio" id="radio1" name="details" value="In Hospital">
+                        <label for="requested_by" class="form-label">In Hospital</label>
+
+                        <div class="form-group " id="same2">
+                            <input type="radio" id="radio2" name="details" value="Out Patient">
+                            <label for="requested_by" class="form-label">Out Patient</label>
+                        </div>
+
+                        <div class="form-group " id="same3">
+                            <input type="radio" id="radio3" name="details" value="In case Leave Benefits for Women">
+                            <label for="requested_by" class="form-label">In case Leave Benefits for Women</label>
+                        </div>
+
+                        <input type="text" placeholder="Specify" class="form-control" id="specification" name="specification">
+
+                    </div>
+                </div>
+
+                <!-- study leave 7 -->
+                <div class="form-group" style="display: none">
+
+                    <div class="form-group col-12" id="same1">
+                        <input type="radio" id="radio1" name="details" value="masters">
+                        <label for="requested_by" class="form-label">Completion of Masters Degree</label>
+
+                        <div class="form-group " id="same2">
+                            <input type="radio" id="radio2" name="details" value="barBoard">
+                            <label for="requested_by" class="form-label">BAR/Board Examination Review</label>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- others 10 -->
+                <div class="form-group" style="display: none">
+
+                    <div class="form-group col-12" id="same1">
+                        <input type="radio" id="radio1" name="details" value="monetization">
+                        <label for="requested_by" class="form-label">Monetization of leave Credits</label>
+
+                        <div class="form-group " id="same2">
+                            <input type="radio" id="radio2" name="details" value="terminal">
+                            <label for="requested_by" class="form-label">Terminal Leave</label>
+                        </div>
+
+                    </div>
+                </div>
+
+
             </div>
         </div>
-    </div>
+        <br>
 
-    <br>
+        <!-- Sixth row-->
+        <div class="row">
+            <div class="border">
 
-    <!--button-->
-    <div class="w-100">
-        <div class="float-right">
-            <button type="submit" id="submitApp" class="btn btn-primary">Submit</button>
+                <div class="form-group col-6">
+                    <label for="requested_by" class="form-label">Commutation</label>
+                    <span id="requiredStyle"> *</span>
+
+                    <div class="forCheckbox">
+                        <input type="radio" id="radio11" name="commutation" value="Requested">
+                        <label for="requested_by" class="form-label"> Requested</label>
+
+                        <div class="divider">
+                            <input type="radio" id="radio12" name="commutation" value="Not Requested">
+                            <label for="requested_by" class="form-label">Not Requested</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group col-6">
+                    <label for="requested_by" class="form-label">Approver</label>
+                    <span id="requiredStyle"> *</span>
+                    <input type="text" class="form-control" placeholder="Ex: Approver" id="approver" name="approver">
+                </div>
+            </div>
         </div>
+
+        <br>
+
+        <!--button-->
+        <div class="w-100">
+            <div class="float-right">
+                <button type="submit" id="submitApp" class="btn btn-primary">Submit</button>
+            </div>
+        </div>
+
+
     </div>
-
-
     </div>
 
 </form>
@@ -342,20 +342,6 @@
 
             }
         });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     });
 
     //sweet alert for submit

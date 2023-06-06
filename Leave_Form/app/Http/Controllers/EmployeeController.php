@@ -48,8 +48,6 @@ class EmployeeController extends Controller
             'date.required' => 'Please indicate your Date',
             'no_working_days.required' => 'Please indicate your Number Working Days',
             'inclusive_dates.required' => 'Please indicate your Inclusive Dates',
-            'details.required' => 'Please fill the addtional Details',
-            'specification.required' => 'Please specify your Specification',
             'approver.required' => 'Please indicate your Approver',
             'commutation.required' => 'Please indicate your Commutation',
 
@@ -67,15 +65,13 @@ class EmployeeController extends Controller
             'type_of_leave' => 'required',
             'date' => 'required',
             'num_working_days' => 'required|numeric',
-            'details' => 'required',
-            'specification' => 'required',
             'approver' => 'required',
             'commutation' => 'required',
 
         ], $message_error);
 
         if ($validator->passes()) {
-            $lf_employees = Employees::create([
+            $lf_employee = Employees::create([
                 'office' => $request->office,
                 'last_name' => $request->last_name,
                 'first_name' => $request->first_name,
@@ -93,7 +89,7 @@ class EmployeeController extends Controller
                 'commutation' => $request->commutation,
                 'approver' => $request->approver
             ]);
-            return response()->json([$lf_employees, "success" => true, 'message' => 'Successfully added']);
+            return response()->json([$lf_employee, "success" => true, 'message' => 'Successfully added']);
         } else {
             return response()->json(["status" => false, "errors" => $validator->errors()->all()]);
         }
@@ -105,7 +101,7 @@ class EmployeeController extends Controller
     public function show(string $id)
     {
 
-        $lf_employee = Employees::find($id);
+        $lf_employees = Employees::find($id);
         return view('leaveform.view', compact(['lf_employees']));
     }
 
