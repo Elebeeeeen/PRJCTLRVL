@@ -13,7 +13,7 @@
         padding: 5px;
     }
 
-    #btnGroup {
+    #btnGroup, #print_form {
         width: 90px;
         justify-content: center;
     }
@@ -27,50 +27,48 @@
         <h3> List of Leave Application </h3>
     </div>
 
-    <form action="" method="POST">
-        @CSRF
+    <table class="table table-striped table-bordered table-mm" id="user_table">
+        <thead>
+            <tr>
+                <th>Emp. No.</th>
+                <th>Last Name</th>
+                <th>First Name</th>
+                <th>M.I.</th>
+                <th>Status</th>
+                <th>Type of Leave</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                @foreach($leave_form as $leavelist)
+                <td>{{$leavelist['employee_number']}}</td>
+                <td>{{$leavelist['last_name']}}</td>
+                <td>{{$leavelist['first_name']}}</td>
+                <td>{{$leavelist['middle_initial']}}</td>
+                <td>Pending</td>
+                <td>{{$leavelist['type_of_leave']}}</td>
+                <td>
 
-        <table class="table table-striped table-bordered table-mm" id="user_table">
-            <thead>
-                <tr>
-                    <th>Emp. No.</th>
-                    <th>Last Name</th>
-                    <th>First Name</th>
-                    <th>M.I.</th>
-                    <th>Status</th>
-                    <th>Type of Leave</th>
-                    <th>Action</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    @foreach($leave_form as $leavelist)
-                    <td>{{$leavelist['employee_number']}}</td>
-                    <td>{{$leavelist['last_name']}}</td>
-                    <td>{{$leavelist['first_name']}}</td>
-                    <td>{{$leavelist['middle_initial']}}</td>
-                    <td>Pending</td>
-                    <td>{{$leavelist['employee_number']}}</td>
-                    <td>
+                    <div class="btn-group" id="btnGroup">
+                        <a href="/leaveform/{{$leavelist['id']}}" type="button" class="btn btn-primary"> View </a>
+                    </div>
 
-                        <div class="btn-group" id="btnGroup">
-                            <a href="/leaveform/{{$leavelist['id']}}" type="button" class="btn btn-primary"> View </a>
-                        </div>
 
-                        <div class="btn-group" id="btnGroup">
-                            <form action="/printform/{{$leavelist['id']}}" id="print_form" data-product-id="{{$leavelist['id']}}" method="POST">
-                                @CSRF
-                                <button type="submit" class="btn btn-success" id="print_form">Print </button>
-                            </form>
-                        </div>
+                    <div class="btn-group" id="btnGroup">
+                        <form action="/printform/{{$leavelist['id']}}" id="print_form" data-product-id="{{$leavelist['id']}}" method="POST">
+                            @CSRF
+                            <button type="submit" class="btn btn-success" id="print_form">Print </button>
+                        </form>
+                    </div>
 
-                    </td>
-                </tr>
-                @endforeach
-            </tbody>
-        </table>
 
-    </form>
+
+                </td>
+            </tr>
+            @endforeach
+        </tbody>
+    </table>
 
 </div>
 <script>

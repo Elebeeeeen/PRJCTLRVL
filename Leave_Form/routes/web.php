@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Spatie\FlareClient\Api;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
@@ -22,5 +23,10 @@ Route::resource('/leaveform', App\Http\Controllers\EmployeeController::class);
 
 //print
 Route::post("/printform/{id}", [App\Http\Controllers\PrintController::class, "printform"])->name("printform");
+
+Route::resource('/humanresource', App\Http\Controllers\HRController::class);
+Route::get('/leaveapplication', [App\Http\Controllers\HRController::class, 'index2'])->name('index2');
+Route::get('/accountapplication', [App\Http\Controllers\HRController::class, 'index3'])->name('index3');
+Route::get('/leavelist', [App\Http\Controllers\EmployeeController::class, 'leavelist']);
 
 Auth::routes();
