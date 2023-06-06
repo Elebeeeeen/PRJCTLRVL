@@ -24,7 +24,7 @@
 
     <!-- header -->
     <div class="header">
-        <h3> fasdfasdfasd</h3>
+        <h3> Pending Account Application (di pa naka connect sa database ng register)</h3>
     </div>
 
     <table class="table table-striped table-bordered table-mm" id="user_table">
