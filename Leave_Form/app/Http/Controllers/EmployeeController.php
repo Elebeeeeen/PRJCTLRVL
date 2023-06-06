@@ -46,7 +46,7 @@ class EmployeeController extends Controller
             'email.required' => 'Please indicate your E-mail',
             'type_of_leave.required' => 'Please indicate your Type of Leave',
             'date.required' => 'Please indicate your Date',
-            'no_working_days.required' => 'Please indicate your Number Working Days',
+            'num_working_days.required' => 'Please indicate your Number Working Days',
             'inclusive_dates.required' => 'Please indicate your Inclusive Dates',
             'approver.required' => 'Please indicate your Approver',
             'commutation.required' => 'Please indicate your Commutation',
@@ -60,7 +60,7 @@ class EmployeeController extends Controller
             'first_name' => 'required|max:25',
             'middle_initial' => 'required|max:1',
             'employee_number' => 'required|numeric|max:99999',
-            'salary' => 'required|numeric|max:99999',
+            'salary' => 'required|numeric|max:999999',
             'email' => 'required',
             'type_of_leave' => 'required',
             'date' => 'required',
@@ -71,6 +71,8 @@ class EmployeeController extends Controller
         ], $message_error);
 
         if ($validator->passes()) {
+
+
             $lf_employee = Employees::create([
                 'office' => $request->office,
                 'last_name' => $request->last_name,

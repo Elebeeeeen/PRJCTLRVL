@@ -41,7 +41,6 @@
 </style>
 
 
-
 <div class="card">
 
     <!-- header -->
@@ -138,7 +137,6 @@
     </div>
 
 
-
     <!-- fifth row (pop-up) -->
     <div class="row">
         <div class="form-group col-3">
@@ -170,7 +168,8 @@
             <div class="form-group col-6">
                 <label for="requested_by" class="form-label">Approver</label>
                 <span id="requiredStyle"> *</span>
-                <input type="text" class="form-control" id="approver" name="approver" value="{{$lf_employee['approver']}}">
+
+
             </div>
         </div>
     </div>
@@ -178,16 +177,6 @@
     <br>
 
     <!-- button-->
-    <div class="buttons">
-        <div class="w-100">
-            <div class="float-right">
-                <a href="/leaveform" class="btn btn-success">Approve</a>
-                <a href="/leaveform" class="btn btn-danger">Reject</a>
-            </div>
-        </div>        
-    </div>
-</div>
-
 <script>
     $(document).ready(function() {
         if ("{{$lf_employee['commutation']}}" == $('#radio11').val()) {
@@ -270,6 +259,7 @@
 
             }
         });
+
     });
 </script>
 @endsection
