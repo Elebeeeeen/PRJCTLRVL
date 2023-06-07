@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 use App\Models\Employees;
+use App\Models\registerUser;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class HRController extends Controller
@@ -22,8 +24,8 @@ class HRController extends Controller
     }
 
     public function index3(){
-        $leave_form = Employees::get();
-        return view('HumanResource.account', compact(['leave_form']));
+        $application_form = User::get();
+        return view('HumanResource.account', compact(['application_form']));
     }
 
     /**
@@ -51,6 +53,11 @@ class HRController extends Controller
         return view('HumanResource.view', compact(['lf_employee']));
     }
 
+    public function show2(string $id){
+
+        $application_form = registerUser::find($id);
+        return view('HumanResource.viewaccount', compact(['application_form']));
+    }
     /**
      * Show the form for editing the specified resource.
      */
