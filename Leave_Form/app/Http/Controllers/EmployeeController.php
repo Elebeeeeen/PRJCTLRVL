@@ -103,8 +103,8 @@ class EmployeeController extends Controller
     public function show(string $id)
     {
 
-        $lf_employees = Employees::find($id);
-        return view('leaveform.view', compact(['lf_employees']));
+        $lf_employee = Employees::find($id);
+        return view('leaveform.view', compact(['lf_employee']));
     }
 
     /**

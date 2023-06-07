@@ -176,15 +176,22 @@
 
     <br>
 
-    <!-- button-->
-<script>
+    <div class="w-100">
+        <div class="float-right">
+            <button type="button" id="approve" class="btn btn-primary">Approve</button>
+            <button type="button" id="reject" class="btn btn-danger">Reject</button>
+        </div>
+    </div>
+</div>
+<!-- <script>
+
     $(document).ready(function() {
         if ("{{$lf_employee['commutation']}}" == $('#radio11').val()) {
             $("#radio11").prop("checked", true);
         } else {
             $("#radio12").prop("checked", true);
         }
-        
+
         let vacation_form = $($('.leaveOption div')[0]);
         let sick_form = $($('.leaveOption div')[3]);
         let study_form = $($('.leaveOption div')[7]);
@@ -261,5 +268,5 @@
         });
 
     });
-</script>
+</script> -->
 @endsection
