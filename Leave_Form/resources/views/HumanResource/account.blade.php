@@ -25,6 +25,7 @@
     <!-- header -->
     <div class="header">
         <h3> Pending Account Application</h3>
+
     </div>
 
     <table class="table table-striped table-bordered table-mm" id="user_table">

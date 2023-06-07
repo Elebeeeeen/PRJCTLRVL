@@ -170,7 +170,9 @@
             <div class="form-group col-6">
                 <label for="requested_by" class="form-label">Approver</label>
                 <span id="requiredStyle"> *</span>
-                <input type="text" class="form-control" id="approver" name="approver" value="{{$lf_employee['approver']}}">
+
+                <input type="text" class="form-control" id="approver" name="approver" value="{{$lf_employees['approver']}}" disabled>
+
             </div>
         </div>
     </div>

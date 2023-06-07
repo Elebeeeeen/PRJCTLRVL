@@ -41,7 +41,6 @@
 </style>
 
 
-
 <div class="card">
 
     <!-- header -->
@@ -176,6 +175,7 @@
     </div>
 
     <br>
+
     <div class="w-100">
         <div class="float-right">
             <button type="button" id="approve" class="btn btn-primary">Approve</button>
@@ -184,6 +184,7 @@
     </div>
 </div>
 <!-- <script>
+
     $(document).ready(function() {
         if ("{{$lf_employee['commutation']}}" == $('#radio11').val()) {
             $("#radio11").prop("checked", true);
@@ -265,6 +266,7 @@
 
             }
         });
+
     });
 </script> -->
 @endsection
