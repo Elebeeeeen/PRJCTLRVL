@@ -138,7 +138,6 @@
     </div>
 
 
-
     <!-- fifth row (pop-up) -->
     <div class="row">
         <div class="form-group col-3">
@@ -170,32 +169,28 @@
             <div class="form-group col-6">
                 <label for="requested_by" class="form-label">Approver</label>
                 <span id="requiredStyle"> *</span>
-                <input type="text" class="form-control" id="approver" name="approver" value="{{$lf_employee['approver']}}">
+
+
             </div>
         </div>
     </div>
 
     <br>
-
-    <!-- button-->
-    <div class="buttons">
-        <div class="w-100">
-            <div class="float-right">
-                <a href="/leaveform" class="btn btn-success">Approve</a>
-                <a href="/leaveform" class="btn btn-danger">Reject</a>
-            </div>
-        </div>        
+    <div class="w-100">
+        <div class="float-right">
+            <button type="button" id="approve" class="btn btn-primary">Approve</button>
+            <button type="button" id="reject" class="btn btn-danger">Reject</button>
+        </div>
     </div>
 </div>
-
-<script>
+<!-- <script>
     $(document).ready(function() {
         if ("{{$lf_employee['commutation']}}" == $('#radio11').val()) {
             $("#radio11").prop("checked", true);
         } else {
             $("#radio12").prop("checked", true);
         }
-        
+
         let vacation_form = $($('.leaveOption div')[0]);
         let sick_form = $($('.leaveOption div')[3]);
         let study_form = $($('.leaveOption div')[7]);
@@ -271,5 +266,5 @@
             }
         });
     });
-</script>
+</script> -->
 @endsection

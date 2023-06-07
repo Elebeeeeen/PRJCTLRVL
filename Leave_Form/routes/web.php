@@ -26,7 +26,9 @@ Route::post("/printform/{id}", [App\Http\Controllers\PrintController::class, "pr
 
 Route::resource('/humanresource', App\Http\Controllers\HRController::class);
 Route::get('/leaveapplication', [App\Http\Controllers\HRController::class, 'index2'])->name('index2');
-Route::get('/accountapplication', [App\Http\Controllers\HRController::class, 'index3'])->name('index3');
 Route::get('/leavelist', [App\Http\Controllers\EmployeeController::class, 'leavelist']);
+
+Route::get('/accountapplication', [App\Http\Controllers\HRController::class, 'index3'])->name('index3');
+Route::get('/viewaccount/{id}', [App\Http\Controllers\HRController::class, 'show2'])->name('show2');
 
 Auth::routes();
