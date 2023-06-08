@@ -71,6 +71,8 @@
     </table>
 
 </div>
+
+
 <script>
     $('#print_form').on('submit', function(e) {
         let errorMessages = '';
