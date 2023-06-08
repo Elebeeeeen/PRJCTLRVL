@@ -41,7 +41,7 @@
 </style>
 
 
-
+<!--viewing leave form -->
 <div class="card">
 
     <!-- header -->
@@ -53,26 +53,21 @@
     <div class="row">
         <div class="form-group col-3">
             <label for="requested_by" class="form-label">Office</label>
-            <span id="requiredStyle"> *</span>
             <input type="text" class="form-control" id="office" name="office" value="{{$lf_employee['office']}}" disabled>
 
         </div>
-
         <div class="form-group col-4">
-            <label for="requested_by" class="form-label">Last Name</label>
-            <span id="requiredStyle"> *</span>
+            <label for="requested_by" class="form-label">Employee</label>
             <input type="text" class="form-control" id="last_name" name="last_name" value="{{$lf_employee['last_name']}}" disabled>
         </div>
 
         <div class="form-group col-4">
             <label for="requested_by" class="form-label">First Name</label>
-            <span id="requiredStyle"> *</span>
             <input type="text" class="form-control" id="first_name" name="first_name" value="{{$lf_employee['first_name']}}" disabled>
         </div>
 
         <div class="form-group col-1">
             <label for="requested_by" class="form-label">M.I.</label>
-            <span id="requiredStyle"> *</span>
             <input type="text" class="form-control" id="middle_initial" name="middle_initial" value="{{$lf_employee['middle_initial']}}" disabled>
         </div>
     </div>
@@ -81,19 +76,16 @@
     <div class="row">
         <div class="form-group col-4">
             <label for="requested_by" class="form-label">Employee Number</label>
-            <span id="requiredStyle"> *</span>
             <input type="text" class="form-control" id="employee_number" name="employee_number" value="{{$lf_employee['employee_number']}}" disabled>
         </div>
 
         <div class="form-group col-4">
             <label for="requested_by" class="form-label">Position</label>
-            <span id="requiredStyle"> *</span>
             <input type="text" class="form-control" id="position" name="position" value="{{$lf_employee['position']}}" disabled>
         </div>
 
         <div class="form-group col-4">
             <label for="requested_by" class="form-label">Salary</label>
-            <span id="requiredStyle"> *</span>
             <input type="text" class="form-control" id="salary" name="salary" value="{{$lf_employee['salary']}}" disabled>
         </div>
     </div>
@@ -102,7 +94,6 @@
     <div class="row">
         <div class="form-group col-12">
             <label for="requested_by" class="form-label">E-mail</label>
-            <span id="requiredStyle"> *</span>
             <input type="text" class="form-control" id="email" name="email" value="{{$lf_employee['email']}}" disabled>
         </div>
     </div>
@@ -111,7 +102,6 @@
     <div class="row">
         <div class="form-group col-3">
             <label for="requested_by" class="form-label">Type of Leave</label>
-            <span id="requiredStyle"> *</span>
             <input class="select2 form-control" name="type_of_leave" id="type_of_leave" value="{{$lf_employee['type_of_leave']}}" disabled>
 
             </input>
@@ -120,19 +110,16 @@
 
         <div class="form-group col-3">
             <label for="requested_by" class="form-label">Date</label>
-            <span id="requiredStyle"> *</span>
             <input type="date" class="form-control" id="date" name="date" value="{{$lf_employee['date']}}" disabled>
         </div>
 
         <div class="form-group col-3">
             <label for="requested_by" class="form-label">No. Of Working Days</label>
-            <span id="requiredStyle"> *</span>
             <input type="text" class="form-control" id="num_working_days" name="num_working_days" value="{{$lf_employee['num_working_days']}}" disabled>
         </div>
 
         <div class="form-group col-3">
             <label for="requested_by" class="form-label">Inclusive Dates</label>
-            <span id="requiredStyle"> *</span>
             <input type="text" class="form-control" id="inclusive_dates" name="inclusive_dates" value="{{$lf_employee['inclusive_dates']}}" disabled>
         </div>
     </div>
@@ -144,6 +131,9 @@
             <label for="requested_by" class="form-label titleBox">Additional Info</label>
         </div>
         <div class="border leaveOption"></div>
+
+        <!-- wala patayong inilalabas dito -->
+
     </div>
     <br>
 
@@ -153,7 +143,6 @@
 
             <div class="form-group col-6">
                 <label for="requested_by" class="form-label">Commutation</label>
-                <span id="requiredStyle"> *</span>
 
                 <div class="forCheckbox">
                     <input type="radio" id="radio11" name="commutation" value="Requested" disabled>
@@ -168,9 +157,7 @@
 
             <div class="form-group col-6">
                 <label for="requested_by" class="form-label">Approver</label>
-                <span id="requiredStyle"> *</span>
-
-
+                <input type="text" class="form-control" id="approver" name="approver" value="{{$lf_employee['approver']}}">
             </div>
         </div>
     </div>
@@ -183,7 +170,9 @@
         </div>
     </div>
 </div>
-<!-- <script>
+
+
+<script>
     $(document).ready(function() {
         if ("{{$lf_employee['commutation']}}" == $('#radio11').val()) {
             $("#radio11").prop("checked", true);
@@ -266,5 +255,5 @@
             }
         });
     });
-</script> -->
+</script>
 @endsection
