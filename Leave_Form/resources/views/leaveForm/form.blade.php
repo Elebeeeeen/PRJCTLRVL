@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+
 <style>
     .header {
         background-color: #00B0F0;
@@ -10,26 +11,22 @@
         width: 100%;
         height: 45px;
         padding: 5px;
+        margin-bottom: 15px;
     }
 
     #requiredStyle {
         color: #F72C00
     }
 
-    .form-label {
-        padding-top: 10px;
-    }
-
     .border {
         width: 99%;
-        height: 200px;
+        height: 90px;
         border: 5px;
         padding: 10px;
         border-radius: 5px;
         margin-left: 5px;
         display: flex;
     }
-
 
     .forCheckbox {
         display: flex;
@@ -51,7 +48,9 @@
             <h3> Leave Form </h3>
         </div>
 
-        <!-- first row -->
+
+        <!-- start of first row -->
+
         <div class="row">
             <div class="form-group col-3">
                 <label for="requested_by" class="form-label">Office</label>
@@ -77,15 +76,21 @@
                 <span id="requiredStyle"> *</span>
                 <input type="text" class="form-control" placeholder="Ex: M" id="middle_initial" name="middle_initial" value="{{ Auth::user()->middle_initial}}" readonly>
             </div>
+
         </div>
 
-        <!-- second row -->
+        <!-- end of first row -->
+
+        <!-- start of second row -->
+
         <div class="row">
+
             <div class="form-group col-4">
                 <label for="requested_by" class="form-label">Employee Number</label>
                 <span id="requiredStyle"> *</span>
                 <input type="text" class="form-control" placeholder="Ex: 1001" id="employee_number" name="employee_number" value="{{ Auth::user()->employee_number}}" readonly>
             </div>
+
 
             <div class="form-group col-4">
                 <label for="requested_by" class="form-label">Position</label>
@@ -98,9 +103,14 @@
                 <span id="requiredStyle"> *</span>
                 <input type="text" class="form-control" placeholder="Ex: ₱10,000" id="salary" name="salary" value="{{ Auth::user()->salary}}" readonly>
             </div>
+
         </div>
 
-        <!-- third row -->
+        <!-- end of second row -->
+
+
+        <!-- start of third row -->
+
         <div class="row">
             <div class="form-group col-12">
                 <label for="requested_by" class="form-label">E-mail</label>
@@ -109,16 +119,17 @@
             </div>
         </div>
 
-        <!-- fourth row -->
+        <!-- end of third row -->
+
+        <!-- start of fourth row -->
+
         <div class="row">
+
             <div class="form-group col-3">
                 <label for="requested_by" class="form-label">Type of Leave</label>
                 <span id="requiredStyle"> *</span>
-                <select class="select2 form-control" name="type_of_leave" id="type_of_leave">
-
-                </select>
+                <select class="select2 form-control" name="type_of_leave" id="type_of_leave"></select>
             </div>
-
 
             <div class="form-group col-3">
                 <label for="requested_by" class="form-label">Date</label>
@@ -137,131 +148,186 @@
                 <span id="requiredStyle"> *</span>
                 <input type="text" class="form-control" placeholder="Ex: April 26,2023" id="inclusive_dates" name="inclusive_dates">
             </div>
+
         </div>
 
+        <!-- end of fourth row -->
 
 
-        <!-- fifth row (pop-up) -->
+        <!-- start of fifth row (pop-up) -->
+
         <div class="row">
-            <div class="form-group col-3">
-                <label for="requested_by" class="form-label titleBox">Additional Info</label>
-            </div>
-            <div class="border leaveOption">
+
+            <div class="leaveOption">
+
 
                 <!-- vacation leave 0 -->
-                <div class="form-group" style="display: none">
+                <div class="form-group col-12" style="display:none">
+
+                    <label for="requested_by" class="form-label"> Additional Info </label>
+                    <span id="requiredStyle"> *</span>
 
                     <div class="form-group col-12" id="same1">
                         <input type="radio" id="radio1" name="details" value="Within the Philippines">
                         <label for="requested_by" class="form-label">Within the Philippines</label>
+                    </div>
 
-                        <div class="form-group " id="same2">
-                            <input type="radio" id="radio2" name="details" value="Within Abroad">
-                            <label for="requested_by" class="form-label">Within Abroad</label>
-                        </div>
+                    <div class="form-group col-12" id="same2">
+                        <input type="radio" id="radio2" name="details" value="Within the Philippines">
+                        <label for="requested_by" class="form-label">Within Abroad</label>
 
-                        <input type="text" placeholder="Specify" class="form-control" id="specification" name="specification">
-
+                        <input type="text" placeholder="Specify" class="form-control" id="specification" name="specification" style="width: 1050px">
                     </div>
                 </div>
+                <!-- end of vacation leave -->
 
-                <!-- sick leave 3-->
-                <div class="form-group" style="display: none">
+
+                <!-- sick leave 3 -->
+
+                <div class="form-group col-12" style="display:none">
+
+                    <label for="requested_by" class="form-label"> Additional Info </label>
+                    <span id="requiredStyle"> *</span>
 
                     <div class="form-group col-12" id="same1">
                         <input type="radio" id="radio1" name="details" value="In Hospital">
                         <label for="requested_by" class="form-label">In Hospital</label>
-
-                        <div class="form-group " id="same2">
-                            <input type="radio" id="radio2" name="details" value="Out Patient">
-                            <label for="requested_by" class="form-label">Out Patient</label>
-                        </div>
-
-                        <div class="form-group " id="same3">
-                            <input type="radio" id="radio3" name="details" value="In case Leave Benefits for Women">
-                            <label for="requested_by" class="form-label">In case Leave Benefits for Women</label>
-                        </div>
-
-                        <input type="text" placeholder="Specify" class="form-control" id="specification" name="specification">
-
                     </div>
+
+                    <div class="form-group col-12" id="same2">
+                        <input type="radio" id="radio2" name="details" value="Out Patient">
+                        <label for="requested_by" class="form-label">Out Patient</label>
+                    </div>
+
+                    <div class="form-group col-12" id="same3">
+                        <input type="radio" id="radio3" name="details" value="In case Leave Benefits for Women">
+                        <label for="requested_by" class="form-label">In case Leave Benefits for Women</label>
+
+                        <input type="text" placeholder="Specify" class="form-control" id="specification" name="specification" style="width: 1050px">
+                    </div>
+
                 </div>
+                <!-- end of sick leave -->
 
                 <!-- study leave 7 -->
-                <div class="form-group" style="display: none">
+                <div class="form-group col-12" style="display:none">
+
+                    <label for="requested_by" class="form-label"> Additional Info </label>
+                    <span id="requiredStyle"> *</span>
 
                     <div class="form-group col-12" id="same1">
                         <input type="radio" id="radio1" name="details" value="masters">
                         <label for="requested_by" class="form-label">Completion of Masters Degree</label>
-
-                        <div class="form-group " id="same2">
-                            <input type="radio" id="radio2" name="details" value="barBoard">
-                            <label for="requested_by" class="form-label">BAR/Board Examination Review</label>
-                        </div>
-
                     </div>
+
+                    <div class="form-group col-12" id="same2">
+                        <input type="radio" id="radio2" name="details" value="barBoard">
+                        <label for="requested_by" class="form-label">BAR/Board Examination Review</label>
+                    </div>
+
                 </div>
+                <!-- end of study leave -->
+
+
+
+                <!-- study leave 7 -->
+                <div class="form-group col-12" style="display:none">
+
+                    <label for="requested_by" class="form-label"> Additional Info </label>
+                    <span id="requiredStyle"> *</span>
+
+                    <div class="form-group col-12" id="same1">
+                        <input type="radio" id="radio1" name="details" value="masters">
+                        <label for="requested_by" class="form-label">Completion of Masters Degree</label>
+                    </div>
+
+                    <div class="form-group col-12" id="same2">
+                        <input type="radio" id="radio2" name="details" value="barBoard">
+                        <label for="requested_by" class="form-label">BAR/Board Examination Review</label>
+                    </div>
+
+                </div>
+                <!-- end of study leave -->
+
 
                 <!-- others 10 -->
-                <div class="form-group" style="display: none">
+                <div class="form-group col-12" style="display:none">
+
+                    <label for="requested_by" class="form-label"> Additional Info </label>
+                    <span id="requiredStyle"> *</span>
 
                     <div class="form-group col-12" id="same1">
                         <input type="radio" id="radio1" name="details" value="monetization">
                         <label for="requested_by" class="form-label">Monetization of leave Credits</label>
-
-                        <div class="form-group " id="same2">
-                            <input type="radio" id="radio2" name="details" value="terminal">
-                            <label for="requested_by" class="form-label">Terminal Leave</label>
-                        </div>
-
                     </div>
+
+                    <div class="form-group col-12" id="same2">
+                        <input type="radio" id="radio2" name="details" value="terminal">
+                        <label for="requested_by" class="form-label">Terminal Leave</label>
+                    </div>
+
                 </div>
+                <!-- end of others -->
+
 
 
             </div>
+
         </div>
-        <br>
 
-        <!-- Sixth row-->
+        <!-- end of fifth row -->
+
+
+
+        <!-- start of sixth row -->
         <div class="row">
-            <div class="border">
 
-                <div class="form-group col-6">
+            <div class="border">
+                <div class="form-group col-12">
                     <label for="requested_by" class="form-label">Commutation</label>
                     <span id="requiredStyle"> *</span>
 
                     <div class="forCheckbox">
-                        <input type="radio" id="radio11" name="commutation" value="Requested">
-                        <label for="requested_by" class="form-label"> Requested</label>
+                        <div class="form-group col-3" id="same1">
+                            <input type="radio" id="radio11" name="commutation" value="Requested">
+                            <label for="requested_by" class="form-label"> Requested</label>
+                        </div>
 
-                        <div class="divider">
+                        <div class="form-group col-3" id="same1">
                             <input type="radio" id="radio12" name="commutation" value="Not Requested">
                             <label for="requested_by" class="form-label">Not Requested</label>
                         </div>
+
                     </div>
                 </div>
-
-                <div class="form-group col-6">
-                    <label for="requested_by" class="form-label">Approver</label>
-                    <span id="requiredStyle"> *</span>
-                    <input type="text" class="form-control" placeholder="Ex: Approver" id="approver" name="approver">
-                </div>
             </div>
+
         </div>
 
-        <br>
+        <!-- end of sixth row -->
 
-        <!--button-->
+<br>
+
+        <!-- start of seventh row -->
+        <div class="row">
+            <div class="form-group col-12">
+                <label for="requested_by" class="form-label">Approver</label>
+                <span id="requiredStyle"> *</span>
+                <input type="text" class="form-control" placeholder="Ex: Approver" id="approver" name="approver">
+            </div>
+        </div>
+        <!-- end of seventh row -->
+
+
+
+        <!--just button-->
         <div class="w-100">
             <div class="float-right">
                 <button type="submit" id="submitApp" class="btn btn-primary">Submit</button>
             </div>
         </div>
 
-
     </div>
-    </div>
-
 </form>
 
 
@@ -271,8 +337,14 @@
         let vacation_form = $($('.leaveOption div')[0]);
         let sick_form = $($('.leaveOption div')[3]);
         let study_form = $($('.leaveOption div')[7]);
-        let other = $($('.leaveOption div')[10]);
+        let other = $($('.leaveOption div')[13]);
 
+        function clearType() {
+            vacation_form.css('display', 'none')
+            sick_form.css('display', 'none')
+            study_form.css('display', 'none')
+            other.css('display', 'none')
+        }
 
         $('#type_of_leave').select2({
 
@@ -288,15 +360,11 @@
             }
 
         }).on('change', function() {
-            console.log(this.value);
-
             switch (this.value) {
                 // Vacation
                 case '1':
+                    clearType()
                     vacation_form.css('display', 'block')
-                    sick_form.css('display', 'none')
-                    study_form.css('display', 'none')
-                    other.css('display', 'none')
                     break;
 
                     //walang laman
@@ -310,33 +378,23 @@
                 case '11':
                 case '12':
                 case '13':
-
-                    vacation_form.css('display', 'none')
-                    sick_form.css('display', 'none')
-                    study_form.css('display', 'none')
-                    other.css('display', 'none')
+                    clearType()
                     break;
 
                     //Sick
                 case '3':
-                    vacation_form.css('display', 'none')
+                    clearType()
                     sick_form.css('display', 'block')
-                    study_form.css('display', 'none')
-                    other.css('display', 'none')
                     break;
 
                     //study 
                 case '8':
-                    vacation_form.css('display', 'none')
-                    sick_form.css('display', 'none')
+                    clearType()
                     study_form.css('display', 'block')
-                    other.css('display', 'none')
                     break;
 
                 case '14':
-                    vacation_form.css('display', 'none')
-                    sick_form.css('display', 'none')
-                    study_form.css('display', 'none')
+                    clearType()
                     other.css('display', 'block')
                     break;
 
@@ -344,7 +402,6 @@
         });
     });
 
-    //sweet alert for submit
     let errorMessages = '';
     $("#submitForm").on("submit", function(e) {
         e.preventDefault();
@@ -398,5 +455,10 @@
         });
     });
 </script>
-<!-- hello -->
+
+
+
+
+<!-- malinis na po ito -->
+
 @endsection

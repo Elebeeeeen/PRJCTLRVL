@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Employees;
 use PDF;
 
+// printing the forms
 class PrintController extends Controller
 {
 
