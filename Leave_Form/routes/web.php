@@ -31,4 +31,8 @@ Route::get('/leavelist', [App\Http\Controllers\EmployeeController::class, 'leave
 Route::get('/accountapplication', [App\Http\Controllers\HRController::class, 'index3'])->name('index3');
 Route::get('/viewaccount/{id}', [App\Http\Controllers\HRController::class, 'show2'])->name('show2');
 
+Route::resource('/divisionchief', App\Http\Controllers\DCController::class);
+
+
+
 Auth::routes();

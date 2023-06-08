@@ -2,6 +2,7 @@
 
 @section('content')
 
+<!-- design for this page -->
 <style>
     .header {
         background-color: #00B0F0;
@@ -19,7 +20,7 @@
     }
 </style>
 
-
+<!-- creating table and to foresee the inputed datas(register account) of the users/employee -->
 <div class="card">
 
     <!-- header -->

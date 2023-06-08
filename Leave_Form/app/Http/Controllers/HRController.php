@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\Employees;
 use App\Models\registerUser;
 use App\Models\User;
@@ -13,17 +14,24 @@ class HRController extends Controller
      */
     public function index()
     {
-        //
+        //displaying the page
         return view('HumanResource.form');
     }
 
     public function index2()
     {
-        $leave_form = Employees::get();
+        // displaying the type of leave connecting the the model(employees)
+
+        $list = new Employees();
+        $leave_form  = $list->leaveType(Employees::get());
+
         return view('HumanResource.leave', compact(['leave_form']));
     }
 
-    public function index3(){
+    public function index3()
+    {
+        //getting the registered account to view the page of account in hr's page
+
         $application_form = User::get();
         return view('HumanResource.account', compact(['application_form']));
     }
@@ -33,7 +41,6 @@ class HRController extends Controller
      */
     public function create()
     {
-        
     }
 
     /**
@@ -49,11 +56,16 @@ class HRController extends Controller
      */
     public function show(string $id)
     {
+        //showing the inputed data's in leave form 
+
         $lf_employee = Employees::find($id);
         return view('HumanResource.view', compact(['lf_employee']));
     }
 
-    public function show2(string $id){
+    public function show2(string $id)
+    {
+
+        //showing the inputed data's in accounts form 
 
         $application_form = registerUser::find($id);
         return view('HumanResource.viewaccount', compact(['application_form']));
@@ -80,5 +92,13 @@ class HRController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+    // additional function to read the arrays to the employee model
+    public function leaveList()
+    {
+
+        $list = new Employees();
+        return $list->leaveList();
     }
 }
