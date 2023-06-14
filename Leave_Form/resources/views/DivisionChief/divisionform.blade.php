@@ -38,7 +38,7 @@
     }
 </style>
 
-<form action="/leaveform" id="submitForm" method="POST">
+<form action="/divisionchief" id="submitForm" method="POST">
     @CSRF
 
     <div class="card">
@@ -323,7 +323,7 @@
         <!--just button-->
         <div class="w-100">
             <div class="float-right">
-                <button type="submit" id="submitForm" class="btn btn-primary">Submit</button>
+                <button type="submit" id="submitApp" class="btn btn-primary">Submit</button>
             </div>
         </div>
 
@@ -416,7 +416,7 @@
         }).then((result) => {
             if (result.isConfirmed) {
                 $.ajax({
-                    url: "/leaveform",
+                    url: "/divisionchief",
                     method: "POST",
                     processData: false,
                     contentType: false,
@@ -431,7 +431,7 @@
                                 confirmButtonText: 'Okay'
                             }).then((result) => {
                                 if (result.isConfirmed) {
-                                    window.location.href = "/leaveform/";
+                                    window.location.href = "/divisionchief/";
                                 }
                             })
                         } else {
