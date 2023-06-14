@@ -1,3 +1,77 @@
+@role('main')
+<p>Employee</p>
+
+<li class="nav-item">
+    <a href="/leaveform/create" class="nav-link {{ Request::is('leaveform/create') ? 'active' : '' }}">
+        <i class="nav-icon fas fa-file "></i>
+        <p>Leave Form</p>
+    </a>
+</li>
+
+<li class="nav-item">
+    <a href="/leaveform" class="nav-link {{ Request::is('leaveform') ? 'active' : '' }}">
+        <i class="nav-icon fas fa-folder-open"></i>
+        <p>List of leave application</p>
+    </a>
+</li>
+
+<p> hr </p>
+
+<li class="nav-item">
+    <a href="/humanresource" class="nav-link {{ Request::is('humanresource') ? 'active' : '' }}">
+        <i class="nav-icon fas fa-home"></i>
+        <p>Home</p>
+    </a>
+</li>
+
+
+<div class="sidenav">
+    <a class="dropdown-btn nav-link"><i class="nav-icon far fa-edit"></i> For Approve <i class="fa fa-caret-down"></i>
+        <div class="dropdown-container">
+            <a href="/accountapplication">Account</a>
+            <a href="/leaveapplication">Leave Application</a>
+        </div>
+
+</div>
+
+<p>Division chief</p>
+<li class="nav-item">
+    <a href="/divisionchief" class="nav-link {{ Request::is('divisionchief') ? 'active' : '' }}">
+        <i class="nav-icon fas fa-home"></i>
+        <p>Home</p>
+    </a>
+</li>
+
+<li class="nav-item">
+    <!--<a href="/leaveform/create" class="nav-link {{ Request::is('leaveform/create') ? 'active' : '' }}"> -->
+    <a href="/divisionchief/create" class="nav-link {{ Request::is('divisionchief/create') ? 'active' : '' }}">
+        <i class="nav-icon fas fa-file "></i>
+        <p>Leave Form</p>
+    </a>
+</li>
+
+
+<li class="nav-item">
+    <a href="/divisionlist" class="nav-link {{ Request::is('divisionlist') ? 'active' : '' }}">
+        <i class="nav-icon fas fa-folder-open"></i>
+        <p>List of leave application</p>
+    </a>
+</li>
+
+<div class="sidenav">
+    <a class="dropdown-btn nav-link"><i class="nav-icon far fa-edit"></i> For Approve <i class="fa fa-caret-down"></i>
+        <div class="dropdown-container">
+            <a href="/leaveapplication">Leave Application</a>
+        </div>
+
+</div>
+
+
+@endrole
+
+
+
+
 <!-- for employee-->
 @role('employee')
 <li class="nav-item">
@@ -48,26 +122,27 @@
 @role('division_chief')
 
 <li class="nav-item">
-    <a href="/divisionchief" class="nav-link {{ Request::is('divisionchief') ? 'active' : '' }}">
+    <a href="/divisionchief" class="nav-link {{ Request::is('divisionchief/index2') ? 'active' : '' }}">
         <i class="nav-icon fas fa-home"></i>
         <p>Home</p>
     </a>
 </li>
 
 <li class="nav-item">
-    <a href="/leaveform/create" class="nav-link {{ Request::is('leaveform/create') ? 'active' : '' }}">
+    <!--<a href="/leaveform/create" class="nav-link {{ Request::is('leaveform/create') ? 'active' : '' }}"> -->
+    <a href="/divisionchief/create" class="nav-link {{ Request::is('divisionchief/create') ? 'active' : '' }}">
         <i class="nav-icon fas fa-file "></i>
         <p>Leave Form</p>
     </a>
 </li>
 
+
 <li class="nav-item">
-    <a href="/leaveform" class="nav-link {{ Request::is('leaveform') ? 'active' : '' }}">
+    <a href="/divisionchief" class="nav-link {{ Request::is('divisionchief') ? 'active' : '' }}">
         <i class="nav-icon fas fa-folder-open"></i>
         <p>List of leave application</p>
     </a>
 </li>
-
 
 <div class="sidenav">
     <a class="dropdown-btn nav-link"><i class="nav-icon far fa-edit"></i> For Approve <i class="fa fa-caret-down"></i>

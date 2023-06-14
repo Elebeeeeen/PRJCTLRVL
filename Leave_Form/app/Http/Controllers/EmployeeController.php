@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Employees;
 use App\Models\User;
 use Sabberworm\CSS\Property\Import;
-use Illuminate\SUpport\Facades\Validator;
+use Illuminate\Support\Facades\Validator;
 
 class EmployeeController extends Controller
 {
@@ -111,8 +111,18 @@ class EmployeeController extends Controller
         //viewing the inserted data's through tables using view. 
 
         $lf_employee = Employees::find($id);
+
+        //new class
+        $typeleave = new Employees();
+
+        //getting the object and its property para mapalabas yung laman ng array
+        $lf_employee->type_of_leave = $typeleave->getLeaveType($lf_employee->type_of_leave);
+
         return view('leaveform.view', compact(['lf_employee']));
+        
+
     }
+
 
     /**
      * Show the form for editing the specified resource.

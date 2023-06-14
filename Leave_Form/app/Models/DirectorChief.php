@@ -5,24 +5,23 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Employees extends Model
+class DirectorChief extends Model
 {
     use HasFactory;
 
-    // connecting to the database named lf_employee
-    protected $table = 'lf_employee';
+        // connecting to the database named directors_data
+        protected $table = 'directors_data';
 
 
-    //collecting/locate the id's in the database 
-    protected $primaryKey = 'id';
+        //collecting/locate the id's in the database 
+        protected $primaryKey = 'id';
+    
+    
+        //fill out the users input
+        protected $fillable = ['office', 'last_name', 'first_name', 'middle_initial', 'employee_number', 'position', 'salary', 'email', 'type_of_leave', 'date', 'num_working_days', 'inclusive_dates', 'commutation', 'approver', 'status','details', 'specification'];
+    
 
-
-    //fill out the users input
-    protected $fillable = ['office', 'last_name', 'first_name', 'middle_initial', 'employee_number', 'position', 'salary', 'email', 'type_of_leave', 'date', 'num_working_days', 'inclusive_dates', 'commutation', 'approver', 'details', 'specification'];
-
-
-
-    //array for type of leave
+            //array for type of leave
     public function leaveList()
     {
         $list = [];
@@ -83,5 +82,4 @@ class Employees extends Model
         return $type;
 
     }// getLeaveType
-
 }

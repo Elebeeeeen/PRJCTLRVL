@@ -59,6 +59,13 @@ class HRController extends Controller
         //showing the inputed data's in leave form 
 
         $lf_employee = Employees::find($id);
+
+        //new class
+        $typeleave = new Employees();
+
+        //getting the object and its property para mapalabas yung laman ng array
+        $lf_employee->type_of_leave = $typeleave->getLeaveType($lf_employee->type_of_leave);
+
         return view('HumanResource.view', compact(['lf_employee']));
     }
 

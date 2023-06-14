@@ -54,23 +54,23 @@
     <div class="row">
         <div class="form-group col-3">
             <label for="requested_by" class="form-label">Office</label>
-            <input type="text" class="form-control" id="office" name="office" value="{{$lf_employee['office']}}" disabled>
+            <input type="text" class="form-control" id="office" name="office" value="{{$directors_form['office']}}" disabled>
 
         </div>
 
         <div class="form-group col-4">
             <label for="requested_by" class="form-label">Last Name</label>
-            <input type="text" class="form-control" id="last_name" name="last_name" value="{{$lf_employee['last_name']}}" disabled>
+            <input type="text" class="form-control" id="last_name" name="last_name" value="{{$directors_form['last_name']}}" disabled>
         </div>
 
         <div class="form-group col-4">
             <label for="requested_by" class="form-label">First Name</label>
-            <input type="text" class="form-control" id="first_name" name="first_name" value="{{$lf_employee['first_name']}}" disabled>
+            <input type="text" class="form-control" id="first_name" name="first_name" value="{{$directors_form['first_name']}}" disabled>
         </div>
 
         <div class="form-group col-1">
             <label for="requested_by" class="form-label">M.I.</label>
-            <input type="text" class="form-control" id="middle_initial" name="middle_initial" value="{{$lf_employee['middle_initial']}}" disabled>
+            <input type="text" class="form-control" id="middle_initial" name="middle_initial" value="{{$directors_form['middle_initial']}}" disabled>
         </div>
     </div>
 
@@ -78,17 +78,17 @@
     <div class="row">
         <div class="form-group col-4">
             <label for="requested_by" class="form-label">Employee Number</label>
-            <input type="text" class="form-control" id="employee_number" name="employee_number" value="{{$lf_employee['employee_number']}}" disabled>
+            <input type="text" class="form-control" id="employee_number" name="employee_number" value="{{$directors_form['employee_number']}}" disabled>
         </div>
 
         <div class="form-group col-4">
             <label for="requested_by" class="form-label">Position</label>
-            <input type="text" class="form-control" id="position" name="position" value="{{$lf_employee['position']}}" disabled>
+            <input type="text" class="form-control" id="position" name="position" value="{{$directors_form['position']}}" disabled>
         </div>
 
         <div class="form-group col-4">
             <label for="requested_by" class="form-label">Salary</label>
-            <input type="text" class="form-control" id="salary" name="salary" value="{{$lf_employee['salary']}}" disabled>
+            <input type="text" class="form-control" id="salary" name="salary" value="{{$directors_form['salary']}}" disabled>
         </div>
     </div>
 
@@ -96,7 +96,7 @@
     <div class="row">
         <div class="form-group col-12">
             <label for="requested_by" class="form-label">E-mail</label>
-            <input type="text" class="form-control" id="email" name="email" value="{{$lf_employee['email']}}" disabled>
+            <input type="text" class="form-control" id="email" name="email" value="{{$directors_form['email']}}" disabled>
         </div>
     </div>
 
@@ -104,7 +104,7 @@
     <div class="row">
         <div class="form-group col-3">
             <label for="requested_by" class="form-label">Type of Leave</label>
-            <input class="select2 form-control" name="type_of_leave" id="type_of_leave" value="{{$lf_employee['type_of_leave']}}" disabled>
+            <input class="select2 form-control" name="type_of_leave" id="type_of_leave" value="{{$directors_form['type_of_leave']}}" disabled>
 
             </input>
         </div>
@@ -112,17 +112,17 @@
 
         <div class="form-group col-3">
             <label for="requested_by" class="form-label">Date</label>
-            <input type="date" class="form-control" id="date" name="date" value="{{$lf_employee['date']}}" disabled>
+            <input type="date" class="form-control" id="date" name="date" value="{{$directors_form['date']}}" disabled>
         </div>
 
         <div class="form-group col-3">
             <label for="requested_by" class="form-label">No. Of Working Days</label>
-            <input type="text" class="form-control" id="num_working_days" name="num_working_days" value="{{$lf_employee['num_working_days']}}" disabled>
+            <input type="text" class="form-control" id="num_working_days" name="num_working_days" value="{{$directors_form['num_working_days']}}" disabled>
         </div>
 
         <div class="form-group col-3">
             <label for="requested_by" class="form-label">Inclusive Dates</label>
-            <input type="text" class="form-control" id="inclusive_dates" name="inclusive_dates" value="{{$lf_employee['inclusive_dates']}}" disabled>
+            <input type="text" class="form-control" id="inclusive_dates" name="inclusive_dates" value="{{$directors_form['inclusive_dates']}}" disabled>
         </div>
     </div>
 
@@ -135,7 +135,7 @@
         </div>
         <div class="border leaveOption">
 
-            <!-- wala patayong inilalabas dito -->
+ <!-- wala patayong inilalabas dito -->
 
         </div>
     </div>
@@ -160,13 +160,13 @@
 
             <div class="form-group col-6">
                 <label for="requested_by" class="form-label">Approver</label>
-                <input type="text" class="form-control" id="approver" name="approver" value="{{$lf_employee['approver']}}">
+                <input type="text" class="form-control" id="approver" name="approver" value="{{$directors_form['approver']}}">
             </div>
         </div>
     </div>
 
     <br>
-
+    
 </div>
 
 <script>
@@ -174,7 +174,7 @@
 
 
         //radio button for commutation
-        if ("{{$lf_employee['commutation']}}" == $('#radio11').val()) {
+        if ("{{$directors_form['commutation']}}" == $('#radio11').val()) {
             $("#radio11").prop("checked", true);
         } else {
             $("#radio12").prop("checked", true);

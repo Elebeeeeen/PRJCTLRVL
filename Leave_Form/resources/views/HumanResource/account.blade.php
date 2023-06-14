@@ -12,6 +12,7 @@
         width: 100%;
         height: 45px;
         padding: 5px;
+        margin-bottom: 10px;
     }
 
     #btnGroup {
@@ -60,4 +61,16 @@
     </table>
 </div>
 
+<script>
+    $('#user_table').DataTable({
+        width: '100%',
+        "paging": true,
+        "lengthChange": false,
+        "searching": true,
+        "ordering": true,
+        "info": true,
+        "autoWidth": false,
+        "responsive": true
+    });
+</script>
 @endsection
