@@ -271,6 +271,76 @@
 
 
 
+                <!-- vacation leave 0 -->
+                <div class="form-group" style="display: none">
+
+                    <div class="form-group col-12" id="same1">
+                        <input type="radio" id="radio1" name="details" value="Within the Philippines">
+                        <label for="requested_by" class="form-label">Within the Philippines</label>
+
+                        <div class="form-group " id="same2">
+                            <input type="radio" id="radio2" name="details" value="Within Abroad">
+                            <label for="requested_by" class="form-label">Within Abroad</label>
+                        </div>
+
+                        <input type="text" placeholder="Specify" class="form-control" id="specification" name="specification">
+
+                    </div>
+                </div>
+
+                <!-- sick leave 3-->
+                <div class="form-group" style="display: none">
+
+                    <div class="form-group col-12" id="same1">
+                        <input type="radio" id="radio1" name="details" value="In Hospital">
+                        <label for="requested_by" class="form-label">In Hospital</label>
+
+                        <div class="form-group " id="same2">
+                            <input type="radio" id="radio2" name="details" value="Out Patient">
+                            <label for="requested_by" class="form-label">Out Patient</label>
+                        </div>
+
+                        <div class="form-group " id="same3">
+                            <input type="radio" id="radio3" name="details" value="In case Leave Benefits for Women">
+                            <label for="requested_by" class="form-label">In case Leave Benefits for Women</label>
+                        </div>
+
+                        <input type="text" placeholder="Specify" class="form-control" id="specification" name="specification">
+
+                    </div>
+                </div>
+
+                <!-- study leave 7 -->
+                <div class="form-group" style="display: none">
+
+                    <div class="form-group col-12" id="same1">
+                        <input type="radio" id="radio1" name="details" value="masters">
+                        <label for="requested_by" class="form-label">Completion of Masters Degree</label>
+
+                        <div class="form-group " id="same2">
+                            <input type="radio" id="radio2" name="details" value="barBoard">
+                            <label for="requested_by" class="form-label">BAR/Board Examination Review</label>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- others 10 -->
+                <div class="form-group" style="display: none">
+
+                    <div class="form-group col-12" id="same1">
+                        <input type="radio" id="radio1" name="details" value="monetization">
+                        <label for="requested_by" class="form-label">Monetization of leave Credits</label>
+
+                        <div class="form-group " id="same2">
+                            <input type="radio" id="radio2" name="details" value="terminal">
+                            <label for="requested_by" class="form-label">Terminal Leave</label>
+                        </div>
+
+                    </div>
+                </div>
+
+
             </div>
 
         </div>
@@ -278,6 +348,8 @@
         <!-- end of fifth row -->
 
 
+
+        <br>
 
         <!-- start of sixth row -->
         <div class="row">

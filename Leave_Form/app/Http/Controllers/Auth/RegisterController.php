@@ -73,6 +73,7 @@ class RegisterController extends Controller
     {
         return User::create([
             'employee_number' => $data['employee_number'],
+            'status'=> "Pending",
             'last_name' => $data['last_name'],
             'middle_initial' => $data['middle_initial'],
             'first_name' => $data['first_name'],

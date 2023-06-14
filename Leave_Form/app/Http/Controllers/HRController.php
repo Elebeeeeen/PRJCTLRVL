@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+
 use App\Models\Employees;
 use App\Models\registerUser;
 use App\Models\User;
@@ -29,6 +30,7 @@ class HRController extends Controller
     }
 
     public function index3()
+    
     {
         //getting the registered account to view the page of account in hr's page
 
@@ -70,27 +72,42 @@ class HRController extends Controller
     }
 
     public function show2(string $id)
+    
     {
 
         //showing the inputed data's in accounts form 
 
         $application_form = registerUser::find($id);
-        return view('HumanResource.viewaccount', compact(['application_form']));
+        return view('HumanResource.viewaccount', compact(['application_form','id']));
     }
     /**
      * Show the form for editing the specified resource.
      */
     public function edit(string $id)
     {
-        //
-    }
+        
+}
 
     /**
      * Update the specified resource in storage.
      */
     public function update(Request $request, string $id)
     {
-        //
+        $application_form = Employees::find($id);
+        $status = $request->status;
+//for accept and reject button
+        if ($status == "Approve by HR") {
+            
+            $application_form->status = $request->status;
+            $application_form->save();
+
+            return response()->json(["success" => true, "message" => "Successfully Approve!"]);
+        } else if ($status == "Reject by HR") {
+            $application_form->status = $request->status;
+            $application_form->save();
+
+            return response()->json(["success" => true, "message" => "Successfully Reject!"]);
+        }
     }
 
     /**

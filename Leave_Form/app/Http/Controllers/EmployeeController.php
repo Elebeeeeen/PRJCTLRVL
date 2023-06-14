@@ -80,8 +80,9 @@ class EmployeeController extends Controller
         if ($validator->passes()) {
 
 
-            $lf_employee = Employees::create([
+            $lf_employees = Employees::create([
                 'office' => $request->office,
+                'status'=> "Pending",
                 'last_name' => $request->last_name,
                 'first_name' => $request->first_name,
                 'middle_initial' => $request->middle_initial,
@@ -98,7 +99,7 @@ class EmployeeController extends Controller
                 'commutation' => $request->commutation,
                 'approver' => $request->approver
             ]);
-            return response()->json([$lf_employee, "success" => true, 'message' => 'Successfully added']);
+            return response()->json([$lf_employees, "success" => true, 'message' => 'Successfully added']);
         } else {
             return response()->json(["status" => false, "errors" => $validator->errors()->all()]);
         }

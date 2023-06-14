@@ -53,22 +53,27 @@
     <div class="row">
         <div class="form-group col-3">
             <label for="requested_by" class="form-label">Office</label>
+            <span id="requiredStyle"> *</span>
+            <input type="text" class="form-control" id="office" name="office" value="{{$lf_employees['office']}}" disabled>
             <input type="text" class="form-control" id="office" name="office" value="{{$lf_employee['office']}}" disabled>
 
         </div>
         <div class="form-group col-4">
-            <label for="requested_by" class="form-label">Employee</label>
-            <input type="text" class="form-control" id="last_name" name="last_name" value="{{$lf_employee['last_name']}}" disabled>
+            <label for="requested_by" class="form-label">Last Name</label>
+            <span id="requiredStyle"> *</span>
+            <input type="text" class="form-control" id="last_name" name="last_name" value="{{$lf_employees['last_name']}}" disabled>
         </div>
 
         <div class="form-group col-4">
             <label for="requested_by" class="form-label">First Name</label>
-            <input type="text" class="form-control" id="first_name" name="first_name" value="{{$lf_employee['first_name']}}" disabled>
+            <span id="requiredStyle"> *</span>
+            <input type="text" class="form-control" id="first_name" name="first_name" value="{{$lf_employees['first_name']}}" disabled>
         </div>
 
         <div class="form-group col-1">
             <label for="requested_by" class="form-label">M.I.</label>
-            <input type="text" class="form-control" id="middle_initial" name="middle_initial" value="{{$lf_employee['middle_initial']}}" disabled>
+            <span id="requiredStyle"> *</span>
+            <input type="text" class="form-control" id="middle_initial" name="middle_initial" value="{{$lf_employees['middle_initial']}}" disabled>
         </div>
     </div>
 
@@ -76,17 +81,20 @@
     <div class="row">
         <div class="form-group col-4">
             <label for="requested_by" class="form-label">Employee Number</label>
-            <input type="text" class="form-control" id="employee_number" name="employee_number" value="{{$lf_employee['employee_number']}}" disabled>
+            <span id="requiredStyle"> *</span>
+            <input type="text" class="form-control" id="employee_number" name="employee_number" value="{{$lf_employees['employee_number']}}" disabled>
         </div>
 
         <div class="form-group col-4">
             <label for="requested_by" class="form-label">Position</label>
-            <input type="text" class="form-control" id="position" name="position" value="{{$lf_employee['position']}}" disabled>
+            <span id="requiredStyle"> *</span>
+            <input type="text" class="form-control" id="position" name="position" value="{{$lf_employees['position']}}" disabled>
         </div>
 
         <div class="form-group col-4">
             <label for="requested_by" class="form-label">Salary</label>
-            <input type="text" class="form-control" id="salary" name="salary" value="{{$lf_employee['salary']}}" disabled>
+            <span id="requiredStyle"> *</span>
+            <input type="text" class="form-control" id="salary" name="salary" value="{{$lf_employees['salary']}}" disabled>
         </div>
     </div>
 
@@ -94,7 +102,8 @@
     <div class="row">
         <div class="form-group col-12">
             <label for="requested_by" class="form-label">E-mail</label>
-            <input type="text" class="form-control" id="email" name="email" value="{{$lf_employee['email']}}" disabled>
+            <span id="requiredStyle"> *</span>
+            <input type="text" class="form-control" id="email" name="email" value="{{$lf_employees['email']}}" disabled>
         </div>
     </div>
 
@@ -102,7 +111,8 @@
     <div class="row">
         <div class="form-group col-3">
             <label for="requested_by" class="form-label">Type of Leave</label>
-            <input class="select2 form-control" name="type_of_leave" id="type_of_leave" value="{{$lf_employee['type_of_leave']}}" disabled>
+            <span id="requiredStyle"> *</span>
+            <input class="select2 form-control" name="type_of_leave" id="type_of_leave" value="{{$lf_employees['type_of_leave']}}" disabled>
 
             </input>
         </div>
@@ -110,17 +120,20 @@
 
         <div class="form-group col-3">
             <label for="requested_by" class="form-label">Date</label>
-            <input type="date" class="form-control" id="date" name="date" value="{{$lf_employee['date']}}" disabled>
+            <span id="requiredStyle"> *</span>
+            <input type="date" class="form-control" id="date" name="date" value="{{$lf_employees['date']}}" disabled>
         </div>
 
         <div class="form-group col-3">
             <label for="requested_by" class="form-label">No. Of Working Days</label>
-            <input type="text" class="form-control" id="num_working_days" name="num_working_days" value="{{$lf_employee['num_working_days']}}" disabled>
+            <span id="requiredStyle"> *</span>
+            <input type="text" class="form-control" id="num_working_days" name="num_working_days" value="{{$lf_employees['num_working_days']}}" disabled>
         </div>
 
         <div class="form-group col-3">
             <label for="requested_by" class="form-label">Inclusive Dates</label>
-            <input type="text" class="form-control" id="inclusive_dates" name="inclusive_dates" value="{{$lf_employee['inclusive_dates']}}" disabled>
+            <span id="requiredStyle"> *</span>
+            <input type="text" class="form-control" id="inclusive_dates" name="inclusive_dates" value="{{$lf_employees['inclusive_dates']}}" disabled>
         </div>
     </div>
 
@@ -157,7 +170,10 @@
 
             <div class="form-group col-6">
                 <label for="requested_by" class="form-label">Approver</label>
-                <input type="text" class="form-control" id="approver" name="approver" value="{{$lf_employee['approver']}}">
+                <span id="requiredStyle"> *</span>
+
+                <input type="text" class="form-control" id="approver" name="approver" value="{{$lf_employees['approver']}}" disabled>
+
             </div>
         </div>
     </div>
@@ -166,16 +182,17 @@
 
     <div class="w-100">
         <div class="float-right">
-            <button type="button" id="approve" class="btn btn-primary">Approve</button>
-            <button type="button" id="reject" class="btn btn-danger">Reject</button>
+        <form action="/humanresource/{{$id}}" data-id={{$id}} id="approve_form" method="POST">
+                @METHOD('PUT')
+                <button type="submit" id="approve" value="Approve by HR" class="btn btn-primary">Approve</button>
+                <button type="submit" id="reject" value="Reject by HR" class="btn btn-danger">Reject</button>
+            </form>
         </div>
     </div>
 </div>
-
-
 <script>
     $(document).ready(function() {
-        if ("{{$lf_employee['commutation']}}" == $('#radio11').val()) {
+        if ("{{$lf_employees['commutation']}}" == $('#radio11').val()) {
             $("#radio11").prop("checked", true);
         } else {
             $("#radio12").prop("checked", true);
@@ -257,5 +274,168 @@
         });
 
     });
+
+    let errorMessages = '';
+    var form = document.getElementById('approve_form');
+    var buttons = form.querySelectorAll('button[type="submit"]');
+
+    buttons.forEach(function(button) {
+        button.addEventListener('click', function(e) {
+            var status = button.value;
+            let formData = new FormData($('#approve_form')[0]);
+
+            if (status == "Approve by HR") {
+                e.preventDefault();
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'Are you sure?',
+                    text: "You want to approve this application?",
+                    showCancelButton: true,
+                    confirmButtonText: "Yes",
+                    cancelButtonText: "Cancel",
+
+
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        formData.append('status', status);
+                        $.ajax({
+                            url: '/humanresource/' + $('#approve_form').attr("data-id"),
+                            method: "POST",
+                            processData: false,
+                            contentType: false,
+                            cache: false,
+                            data: formData,
+                            headers: {
+                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                            },
+                            success: function(response) {
+                                if (response.success) {
+                                    Swal.fire({
+                                        icon: 'success',
+                                        title: 'Approve',
+                                        text: "The user applicaiton has been approve!",
+                                        showCancelButton: true,
+                                        confirmButtonText: "confirm",
+                                    }).then((result) => {
+                                        if (result.isConfirmed) {
+                                            window.location.href = "/humanresource";
+                                        }
+                                    })
+                                } else {
+                                    for (let i = 0; i < response.errors.length; i++) {
+                                        errorMessages += "-" + response.errors[i] + "\n";
+                                    }
+                                    Swal.fire({
+                                        html: '<pre>' + errorMessages + '</pre>',
+                                        customClass: {
+                                            popup: 'format-pre'
+                                        },
+                                        title: 'Error!',
+                                        icon: 'error',
+                                        confirmButtonText: 'Okay'
+                                    })
+                                    errorMessages = "";
+                                }
+                            }
+                        });
+                    } else {
+                        Swal.fire({
+                            title: 'Are you sure you want to cancel it?',
+                            icon: 'info',
+                            showCancelButton: true,
+                            confirmButtonText: "confirm",
+                        })
+                    }
+                });
+            } else if (status == "Reject by HR") {
+                e.preventDefault();
+                Swal.fire({
+                    title: 'Are you sure you want to reject?',
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonText: "confirm",
+                    cancelButtonText: "cancel",
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        Swal.fire({
+                            title: 'Are you sure?',
+                            text: 'state the reason:',
+                            icon: 'warning',
+                            showCancelButton: true,
+                            confirmButtonText: "confirm",
+                            cancelButtonText: "cancel",
+                            input: "text",
+                            inputValidator: (value) => {
+                                if (!value) {
+                                    return "please state the reason.";
+                                }
+                            }
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+                                let reason = result.value;
+                                formData.append('status', status);
+                                formData.append('reason', reason);
+                                $.ajax({
+                                    url: '/humanresource/' + $('#approve_form').attr("data-id"),
+                                    method: "POST",
+                                    processData: false,
+                                    contentType: false,
+                                    cache: false,
+                                    data: formData,
+                                    headers: {
+                                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                                    },
+                                    success: function(response) {
+                                        if (response.success) {
+                                            Swal.fire({
+                                                title: '',
+                                                icon: 'warning',
+                                                showCancelButton: true,
+                                                confirmButtonText: "confirm",
+                                            }).then((result) => {
+                                                if (result.isConfirmed) {
+                                                    window.location.href = "/humanresource";
+                                                }
+                                            })
+                                        } else {
+                                            for (let i = 0; i < response.errors.length; i++) {
+                                                errorMessages += "-" + response.errors[i] + "\n";
+                                            }
+                                            Swal.fire({
+                                                html: '<pre>' + errorMessages + '</pre>',
+                                                customClass: {
+                                                    popup: 'format-pre'
+                                                },
+                                                title: 'Error!',
+                                                icon: 'error',
+                                                confirmButtonText: 'Okay'
+                                            })
+                                            errorMessages = "";
+                                        }
+                                    }
+
+                                });
+                            } else {
+                                Swal.fire({
+                                    title: 'Are you sure you want to cancel it?',
+                                    icon: 'warning',
+                                    showCancelButton: true,
+                                    confirmButtonText: "Yes",
+                                })
+                            }
+                        });
+                    } else {
+                        Swal.fire({
+                            title: 'Are you sure want to cancel it?',
+                            icon: 'warning',
+                            showCancelButton: true,
+                            confirmButtonText: "Yes",
+                        })
+                    }
+                });
+
+            }
+        })
+    })
 </script>
 @endsection

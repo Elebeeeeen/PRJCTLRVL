@@ -48,7 +48,7 @@
                 <td>{{$applicationForm['first_name']}}</td>
                 <td>{{$applicationForm['middle_initial']}}</td>
                 <td>{{$applicationForm['last_name']}}</td>
-                <td>Pending</td>
+                <td>{{$applicationForm['status']}}</td>
                 <td>
 
                     <div class="btn-group" id="btnGroup">

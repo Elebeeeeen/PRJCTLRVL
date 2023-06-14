@@ -101,10 +101,179 @@
     <br>
     <div class="w-100">
         <div class="float-right">
-            <button type="button" id="approve" class="btn btn-primary">Approve</button>
-            <button type="button" id="reject" class="btn btn-danger">Reject</button>
+            <form action="/humanresource/{{$id}}" data-id={{$id}} id="approve_form" method="POST">
+                @METHOD('PUT')
+                <button type="submit" id="approve" value="Approve by HR" class="btn btn-primary">Approve</button>
+                <button type="submit" id="reject" value="Reject by HR" class="btn btn-danger">Reject</button>
+            </form>
         </div>
     </div>
 </div>
 
-    @endsection
+<script>
+    let errorMessages = '';
+    var form = document.getElementById('approve_form');
+    var buttons = form.querySelectorAll('button[type="submit"]');
+
+    buttons.forEach(function(button) {
+        button.addEventListener('click', function(e) {
+            var status = button.value;
+            let formData = new FormData($('#approve_form')[0]);
+
+            if (status == "Approve by HR") {
+                e.preventDefault();
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'Are you sure?',
+                    text:"You want to approve this application?",
+                    showCancelButton: true,
+                    confirmButtonText: "Yes",
+                    cancelButtonText: "Cancel",
+
+
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        formData.append('status', status);
+                        $.ajax({
+                            url: '/humanresource/' + $('#approve_form').attr("data-id"),
+                            method: "POST",
+                            processData: false,
+                            contentType: false,
+                            cache: false,
+                            data: formData,
+                            headers: {
+                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                            },
+                            success: function(response) {
+                                if (response.success) {
+                                    Swal.fire({
+                                        icon: 'success',
+                                        title: 'Approve',
+                                        text:"The user applicaiton has been approve!",
+                                        showCancelButton: true,
+                                        confirmButtonText: "confirm",
+                                    }).then((result) => {
+                                        if (result.isConfirmed) {
+                                            window.location.href = "/humanresource";
+                                        }
+                                    })
+                                } else {
+                                    for (let i = 0; i < response.errors.length; i++) {
+                                        errorMessages += "-" + response.errors[i] + "\n";
+                                    }
+                                    Swal.fire({
+                                        html: '<pre>' + errorMessages + '</pre>',
+                                        customClass: {
+                                            popup: 'format-pre'
+                                        },
+                                        title: 'Error!',
+                                        icon: 'error',
+                                        confirmButtonText: 'Okay'
+                                    })
+                                    errorMessages = "";
+                                }
+                            }
+                        });
+                    } else {
+                        Swal.fire({
+                            title: 'Are you sure you want to cancel it?',
+                            icon: 'info',
+                            showCancelButton: true,
+                            confirmButtonText: "confirm",
+                        })
+                    }
+                });
+            } else if (status == "Reject by HR") {
+                e.preventDefault();
+                Swal.fire({
+                    title:'Are you sure you want to reject?',
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonText: "confirm",
+                    cancelButtonText: "cancel",
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        Swal.fire({
+                            title: 'Are you sure?',
+                            text: 'state the reason:',
+                            icon: 'warning',
+                            showCancelButton: true,
+                            confirmButtonText: "confirm",
+                            cancelButtonText: "cancel",
+                            input: "text",
+                            inputValidator: (value) => {
+                                if (!value) {
+                                    return "please state the reason.";
+                                }
+                            }
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+                                let reason = result.value;
+                                formData.append('status', status);
+                                formData.append('reason', reason);
+                                $.ajax({
+                                    url: '/humanresource/' + $('#approve_form').attr("data-id"),
+                                    method: "POST",
+                                    processData: false,
+                                    contentType: false,
+                                    cache: false,
+                                    data: formData,
+                                    headers: {
+                                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                                    },
+                                    success: function(response) {
+                                        if (response.success) {
+                                            Swal.fire({
+                                                title: '',
+                                                icon: 'warning',
+                                                showCancelButton: true,
+                                                confirmButtonText: "confirm",
+                                            }).then((result) => {
+                                                if (result.isConfirmed) {
+                                                    window.location.href = "/humanresource";
+                                                }
+                                            })
+                                        } else {
+                                            for (let i = 0; i < response.errors.length; i++) {
+                                                errorMessages += "-" + response.errors[i] + "\n";
+                                            }
+                                            Swal.fire({
+                                                html: '<pre>' + errorMessages + '</pre>',
+                                                customClass: {
+                                                    popup: 'format-pre'
+                                                },
+                                                title: 'Error!',
+                                                icon: 'error',
+                                                confirmButtonText: 'Okay'
+                                            })
+                                            errorMessages = "";
+                                        }
+                                    }
+
+                                });
+                            } else {
+                                Swal.fire({
+                                    title: 'Are you sure you want to cancel it?',
+                                    icon: 'warning',
+                                    showCancelButton: true,
+                                    confirmButtonText: "Yes",
+                                })
+                            }
+                        });
+                    } else {
+                        Swal.fire({
+                            title: 'Are you sure want to cancel it?',
+                            icon: 'warning',
+                            showCancelButton: true,
+                            confirmButtonText: "Yes",
+                        })
+                    }
+                });
+
+            }
+        })
+    })
+
+</script>
+
+@endsection

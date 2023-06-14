@@ -10,7 +10,7 @@ class Employees extends Model
     use HasFactory;
 
     // connecting to the database named lf_employee
-    protected $table = 'lf_employee';
+    protected $table = 'lf_employees';
 
 
     //collecting/locate the id's in the database 
