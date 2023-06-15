@@ -47,12 +47,12 @@
                 <td>{{$leavelist['last_name']}}</td>
                 <td>{{$leavelist['first_name']}}</td>
                 <td>{{$leavelist['middle_initial']}}</td>
-                <td>{{$leavelist['status']}}</td>
+                <td>Pending</td>
                 <td>{{$leavelist['type_of_leave']}}</td>
                 <td>
 
                     <div class="btn-group" id="btnGroup">
-                        <a href="/humanresource/{{$leavelist['id']}}" type="button" class="btn btn-primary"> View </a>
+                        <a href="/director/{{$leavelist['id']}}" type="button" class="btn btn-primary"> View </a>
                     </div>
 
                 </td>
@@ -66,7 +66,6 @@
     $('#user_table').DataTable({
         width: '100%',
         "paging": true,
-        "lengthChange": false,
         "searching": true,
         "ordering": true,
         "info": true,

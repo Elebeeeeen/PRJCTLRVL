@@ -118,7 +118,11 @@ class EmployeeController extends Controller
         //new class
         $typeleave = new Employees();
 
+        //assign sa ibang property bago mag palit ng value
+        $lf_employee->leaveType = $lf_employee->type_of_leave;
+
         //getting the object and its property para mapalabas yung laman ng array
+
         $lf_employee->type_of_leave = $typeleave->getLeaveType($lf_employee->type_of_leave);
 
         return view('leaveform.view', compact(['lf_employee']));

@@ -20,7 +20,7 @@
 
     .border {
         width: 99%;
-        height: 90px;
+        height: auto;
         border: 5px;
         padding: 10px;
         border-radius: 5px;
@@ -162,7 +162,7 @@
 
 
                 <!-- vacation leave 0 -->
-                <div class="form-group col-12" style="display:none">
+                <div class="border form-group col-12" style="display:none">
 
                     <label for="requested_by" class="form-label"> Additional Info </label>
                     <span id="requiredStyle"> *</span>
@@ -176,7 +176,7 @@
                         <input type="radio" id="radio2" name="details" value="Within the Philippines">
                         <label for="requested_by" class="form-label">Within Abroad</label>
 
-                        <input type="text" placeholder="Specify" class="form-control" id="specification" name="specification" style="width: 1050px">
+                        <input type="text" placeholder="Specify" class="form-control" id="specification" name="specification" style="width: 1020px">
                     </div>
                 </div>
                 <!-- end of vacation leave -->
@@ -184,7 +184,7 @@
 
                 <!-- sick leave 3 -->
 
-                <div class="form-group col-12" style="display:none">
+                <div class="border form-group col-12" style="display:none">
 
                     <label for="requested_by" class="form-label"> Additional Info </label>
                     <span id="requiredStyle"> *</span>
@@ -203,14 +203,14 @@
                         <input type="radio" id="radio3" name="details" value="In case Leave Benefits for Women">
                         <label for="requested_by" class="form-label">In case Leave Benefits for Women</label>
 
-                        <input type="text" placeholder="Specify" class="form-control" id="specification" name="specification" style="width: 1050px">
+                        <input type="text" placeholder="Specify" class="form-control" id="specification" name="specification" style="width: 1020px">
                     </div>
 
                 </div>
                 <!-- end of sick leave -->
 
                 <!-- study leave 7 -->
-                <div class="form-group col-12" style="display:none">
+                <div class="border form-group col-12" style="display:none">
 
                     <label for="requested_by" class="form-label"> Additional Info </label>
                     <span id="requiredStyle"> *</span>
@@ -231,7 +231,7 @@
 
 
                 <!-- study leave 7 -->
-                <div class="form-group col-12" style="display:none">
+                <div class="border form-group col-12" style="display:none">
 
                     <label for="requested_by" class="form-label"> Additional Info </label>
                     <span id="requiredStyle"> *</span>
@@ -251,7 +251,7 @@
 
 
                 <!-- others 10 -->
-                <div class="form-group col-12" style="display:none">
+                <div class="border form-group col-12" style="display:none">
 
                     <label for="requested_by" class="form-label"> Additional Info </label>
                     <span id="requiredStyle"> *</span>

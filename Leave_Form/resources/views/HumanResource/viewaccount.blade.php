@@ -99,6 +99,8 @@
     </div>
 
     <br>
+
+    <!--button-->
     <div class="w-100">
         <div class="float-right">
             <form action="/humanresource/{{$id}}" data-id={{$id}} id="approve_form" method="POST">

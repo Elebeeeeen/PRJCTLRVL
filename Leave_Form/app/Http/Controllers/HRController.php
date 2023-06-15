@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Employees;
 use App\Models\registerUser;
+use App\Models\DivisionChief;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -19,6 +20,9 @@ class HRController extends Controller
         return view('HumanResource.form');
     }
 
+
+// linking to the employees leave applciation
+
     public function index2()
     {
         // displaying the type of leave connecting the the model(employees)
@@ -26,8 +30,16 @@ class HRController extends Controller
         $list = new Employees();
         $leave_form  = $list->leaveType(Employees::get());
 
-        return view('HumanResource.leave', compact(['leave_form']));
+        return view('HumanResource.leaveEmployee', compact(['leave_form']));
+
+        // $lf_employee = Employees::get();
+        // $lf_division = DirectorChief::get();
+
+        // return view('HumanResource.leaveEmployee', compact(['lf_employee', 'lf_division']));
     }
+
+
+//linking to the registered account of the users
 
     public function index3()
     
@@ -36,6 +48,19 @@ class HRController extends Controller
 
         $application_form = User::get();
         return view('HumanResource.account', compact(['application_form']));
+    }
+
+
+// linking to the division chief leave application
+
+    public function index4()
+    {
+        // displaying the type of leave connecting the the model(employees)
+
+        $list = new DivisionChief();
+        $directors_form  = $list->leaveType(DivisionChief::get());
+
+        return view('HumanResource.leaveDivisionChief', compact(['directors_form']));
     }
 
     /**
@@ -64,6 +89,8 @@ class HRController extends Controller
 
         //new class
         $typeleave = new Employees();
+        
+        $lf_employee->leaveType = $lf_employee->type_of_leave;
 
         //getting the object and its property para mapalabas yung laman ng array
         $lf_employee->type_of_leave = $typeleave->getLeaveType($lf_employee->type_of_leave);

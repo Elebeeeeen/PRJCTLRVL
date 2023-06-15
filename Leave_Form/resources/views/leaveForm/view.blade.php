@@ -22,7 +22,6 @@
 
     .border {
         width: 99%;
-        height: 150px;
         border: 5px;
         padding: 10px;
         border-radius: 5px;
@@ -42,13 +41,13 @@
 </style>
 
 
-
 <div class="card">
 
     <!-- header -->
     <div class="header">
         <h3> Leave Form </h3>
     </div>
+
 
     <!-- first row -->
     <div class="row">
@@ -77,6 +76,7 @@
             <input type="text" class="form-control" id="middle_initial" name="middle_initial" value="{{$lf_employees['middle_initial']}}" disabled>
         </div>
     </div>
+
 
     <!-- second row -->
     <div class="row">
@@ -142,44 +142,143 @@
 
     <!-- fifth row (pop-up) -->
     <div class="row">
-        <div class="form-group col-3">
-            <label for="requested_by" class="form-label titleBox">Additional Info</label>
-        </div>
-        <div class="border leaveOption">
 
-            <!-- wala patayong inilalabas dito -->
+        <div class=" leaveOption">
+
+            <!-- vacation leave 0 -->
+            <div class="form-group col-12" style="display:none">
+
+                <label for="requested_by" class="form-label"> Additional Info </label>
+                <span id="requiredStyle"> *</span>
+
+                <div class="form-group col-12" id="same1">
+                    <input type="radio" id="radio3" class="details" name="details" value="Within the Philippines" disabled>
+                    <label for="requested_by" class="form-label">Within the Philippines</label>
+                </div>
+
+                <div class="form-group col-12" id="same2">
+                    <input type="radio" id="radio5" class="details" name="details"value="Within Aborad"  disabled>
+                    <label for="requested_by" class="form-label">Within Aborad</label>
+
+                    <input type="text" class="form-control" id="specification" name="specification" value="{{$lf_employee['specification']}}" style="width: 1050px" disabled>
+                </div>
+
+            </div>
+            <!-- end of vacation leave -->
+
+            <!-- sick leave 3 -->
+
+            <div class="form-group col-12" style="display:none">
+
+                <label for="requested_by" class="form-label"> Additional Info </label>
+                <span id="requiredStyle"> *</span>
+
+                <div class="form-group col-12" id="same1">
+                    <input type="radio" id="radio3" class="details" name="details" value="In Hospital" disabled>
+                    <label for="requested_by" class="form-label">In Hospital</label>
+                </div>
+
+                <div class="form-group col-12" id="same2">
+                    <input type="radio" id="radio4" class="details" name="details" value="Out Patient" disabled>
+                    <label for="requested_by" class="form-label">Out Patient</label>
+                </div>
+
+                <div class="form-group col-12" id="same3">
+                    <input type="radio" id="radio5" class="details" name="details" value="In case Leave Benefits for Women" disabled>
+                    <label for="requested_by" class="form-label">In case Leave Benefits for Women</label>
+
+                    <input type="text" class="form-control" id="specification" name="specification" value="{{$lf_employee['specification']}}" style="width: 1050px" disabled>
+                </div>
+
+            </div>
+            <!-- end of sick leave -->
+
+
+            <!-- study leave 7 -->
+            <div class="form-group col-12" style="display:none">
+
+                <label for="requested_by" class="form-label"> Additional Info </label>
+                <span id="requiredStyle"> *</span>
+
+                <div class="form-group col-12" id="same1">
+                    <input type="radio" id="radio6" class="details" name="details" value="masters" disabled>
+                    <label for="requested_by" class="form-label">Completion of Masters Degree</label>
+                </div>
+
+                <div class="form-group col-12" id="same2">
+                    <input type="radio" id="radio7" class="details" name="details" value="barBoard" disabled>
+                    <label for="requested_by" class="form-label">BAR/Board Examination Review</label>
+                </div>
+
+            </div>
+            <!-- end of study leave -->
+
+            <!-- others 10 -->
+            <div class="form-group col-12" style="display:none">
+
+                <label for="requested_by" class="form-label"> Additional Info </label>
+                <span id="requiredStyle"> *</span>
+
+                <div class="form-group col-12" id="same1">
+                    <input type="radio" id="radio8" class="details" name="details" value="monetization" disabled>
+                    <label for="requested_by" class="form-label">Monetization of leave Credits</label>
+                </div>
+
+                <div class="form-group col-12" id="same2">
+                    <input type="radio" id="radio9" class="details" name="details" value="terminal" disabled>
+                    <label for="requested_by" class="form-label">Terminal Leave</label>
+                </div>
+
+            </div>
+            <!-- end of others -->
 
         </div>
     </div>
+
 
     <!-- Sixth row-->
     <div class="row">
-        <div class="border">
 
-            <div class="form-group col-6">
+        <div class="border">
+            <div class="form-group col-12">
                 <label for="requested_by" class="form-label">Commutation</label>
+                <span id="requiredStyle"> *</span>
 
                 <div class="forCheckbox">
-                    <input type="radio" id="radio11" name="commutation" value="Requested" disabled>
-                    <label for="requested_by" class="form-label"> Requested</label>
+                    <div class="form-group col-3" id="same1">
+                        <input type="radio" id="radio11" name="commutation" value="Requested" disabled>
+                        <label for="requested_by" class="form-label"> Requested</label>
+                    </div>
 
-                    <div class="divider">
+                    <div class="form-group col-3" id="same1">
                         <input type="radio" id="radio12" name="commutation" value="Not Requested" disabled>
                         <label for="requested_by" class="form-label">Not Requested</label>
                     </div>
-                </div>
-            </div>
 
-            <div class="form-group col-6">
-                <label for="requested_by" class="form-label">Approver</label>
-                <input type="text" class="form-control" id="approver" name="approver" value="{{$lf_employee['approver']}}">
+                </div>
+
             </div>
         </div>
+
     </div>
+
+
+    <!-- start of seventh row -->
+    <div class="row">
+        <div class="form-group col-12">
+            <label for="requested_by" class="form-label">Approver</label>
+            <input type="text" class="form-control" id="approver" name="approver" value="{{$lf_employee['approver']}}">
+        </div>
+    </div>
+    <!-- end of seventh row -->
 
     <br>
 
 </div>
+
+
+
+
 
 <script>
     $(document).ready(function() {
@@ -194,10 +293,29 @@
 
         // select2 for type of leave
 
+
         let vacation_form = $($('.leaveOption div')[0]);
         let sick_form = $($('.leaveOption div')[3]);
         let study_form = $($('.leaveOption div')[7]);
         let other = $($('.leaveOption div')[10]);
+
+        //vacation
+        let radio1 = $($('.details')[0]);
+        let radio2 = $($('.details')[1]);
+
+        //sick
+        let radio3 = $($('.details')[2]);
+        let radio4 = $($('.details')[3]);
+        let radio5 = $($('.details')[4]); 
+
+        //study
+        let radio6 = $($('.details')[5]);
+        let radio7 = $($('.details')[6]);
+
+        //other
+        let radio8 = $($('.details')[7]);
+        let radio9 = $($('.details')[8]);
+
 
         function clearType() {
             vacation_form.css('display', 'none')
@@ -206,61 +324,54 @@
             other.css('display', 'none')
         }
 
-        $('#type_of_leave').select2({
 
-            width: '100%',
-            ajax: {
-                url: '/leavelist',
-                type: 'GET',
-                processResults: function(data, params) {
-                    return {
-                        results: data
-                    };
-                }
-            }
+        switch (@json($lf_employee -> leaveType)) {
+            // Vacation
+            case '1':
+                clearType()
+                vacation_form.css('display', 'block');
+                (@json($lf_employee -> details) == radio1.val()) ? radio1.prop('checked', true): radio2.prop('checked', true);
+                break;
 
-        }).on('change', function() {
-            switch (this.value) {
-                // Vacation
-                case '1':
-                    clearType()
-                    vacation_form.css('display', 'block')
-                    break;
+                //walang laman
+            case '2':
+            case '4':
+            case '5':
+            case '6':
+            case '7':
+            case '9':
+            case '10':  
+            case '11':
+            case '12':
+            case '13':
+                clearType()
+                break;
 
-                    //walang laman
-                case '2':
-                case '4':
-                case '5':
-                case '6':
-                case '7':
-                case '9':
-                case '10':
-                case '11':
-                case '12':
-                case '13':
-                    clearType()
-                    break;
+                //Sick
+            case '3':
+                clearType()
+                sick_form.css('display', 'block');
+                (@json($lf_employee -> details) == radio3.val()) ? radio3.prop('checked', true)
+                : (@json($lf_employee -> details) == radio4.val()) ? radio4.prop('checked', true)
+                : radio5.prop('checked', true);
+                break;
 
-                    //Sick
-                case '3':
-                    clearType()
-                    sick_form.css('display', 'block')
-                    break;
+                //study 
+            case '8':
+                clearType()
+                study_form.css('display', 'block');
+                (@json($lf_employee -> details) == radio6.val()) ? radio6.prop('checked', true): radio7.prop('checked', true);
+                break;
 
-                    //study 
-                case '8':
-                    clearType()
-                    study_form.css('display', 'block')
-                    break;
+            case '14':
+                clearType()
+                other.css('display', 'block')
+                (@json($lf_employee -> details) == radio8.val()) ? radio8.prop('checked', true): radio9.prop('checked', true);
+                break;
 
-                case '14':
-                    clearType()
-                    other.css('display', 'block')
-                    break;
-
-            }
-        });
+        }
     });
+
 
     //sweet alert for submit
     let errorMessages = '';
