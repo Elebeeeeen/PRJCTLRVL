@@ -16,7 +16,9 @@ class DCController extends Controller
 
     public function index()
     {
-        return view('DivisionChief.form');
+        $count = Employees::count();
+
+        return view('DivisionChief.form', compact(['count']));
     }
 
 
@@ -36,7 +38,7 @@ class DCController extends Controller
 
     public function index3(){
         $list = new Employees();
-        $leave_form  = $list->leaveType(Employees::get());
+        $leave_form  = $list->leaveType(Employees::where('status', 'Pending')->get());
 
         return view('DivisionChief.listemployee', compact(['leave_form']));
     }

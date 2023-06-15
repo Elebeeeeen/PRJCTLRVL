@@ -78,7 +78,7 @@ class EmployeeController extends Controller
         ], $message_error);
 
         if ($validator->passes()) {
-
+            $status = 'Pending';
             if($request->specification1 != null){
                 $lf_employee = Employees::create([
                     'office' => $request->office,
@@ -96,7 +96,8 @@ class EmployeeController extends Controller
                     'details' => $request->details,
                     'specification' => $request->specification1,
                     'commutation' => $request->commutation,
-                    'approver' => $request->approver
+                    'approver' => $request->approver,
+                    'status' => $status,
                 ]);
             }else if ($request->specification2 != null){
                 $lf_employee = Employees::create([
@@ -115,7 +116,8 @@ class EmployeeController extends Controller
                     'details' => $request->details,
                     'specification' => $request->specification2,
                     'commutation' => $request->commutation,
-                    'approver' => $request->approver
+                    'approver' => $request->approver,
+                    'status' => $status,
                 ]);
             }else{
                 $lf_employee = Employees::create([
@@ -133,7 +135,8 @@ class EmployeeController extends Controller
                     'inclusive_dates' => $request->inclusive_dates,
                     'details' => $request->details,
                     'commutation' => $request->commutation,
-                    'approver' => $request->approver
+                    'approver' => $request->approver,
+                    'status' => $status,
                 ]);
             }
             return response()->json([$lf_employee, "success" => true, 'message' => 'Successfully added']);
