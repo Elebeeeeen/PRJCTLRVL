@@ -15,8 +15,10 @@ class HRController extends Controller
      */
     public function index()
     {
+        $count = Employees::where('Status', 'Approved by Director')->count();
+        $count2 = registerUser::where('verified', 'false')->count();
         //displaying the page
-        return view('HumanResource.form');
+        return view('HumanResource.form', compact(['count', 'count2']));
     }
 
 
@@ -27,7 +29,7 @@ class HRController extends Controller
         // displaying the type of leave connecting the the model(employees)
 
         $list = new Employees();
-        $leave_form  = $list->leaveType(Employees::get());
+        $leave_form  = $list->leaveType(Employees::where('status', 'Approved by Director')->get());
 
         return view('HumanResource.leaveEmployee', compact(['leave_form']));
 

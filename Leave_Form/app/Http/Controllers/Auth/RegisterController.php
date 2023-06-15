@@ -81,6 +81,7 @@ class RegisterController extends Controller
             'position' => $data['position'],
             'salary' => $data['salary'],
             'password' => Hash::make($data['password']),
+            'verified' => 'false',
 
         ]);
     }
