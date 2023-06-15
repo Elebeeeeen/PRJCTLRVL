@@ -125,7 +125,7 @@
     <!-- fifth row (pop-up) -->
     <div class="row">
 
-        <div class="border leaveOption">
+        <div class="leaveOption">
 
             <!-- vacation leave 0 -->
             <div class="form-group col-12" style="display:none">
