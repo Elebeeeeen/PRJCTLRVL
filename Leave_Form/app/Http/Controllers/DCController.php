@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\DirectorChief;
+use App\Models\DivisionChief;
+use App\Models\Employees;
 use Illuminate\Support\Facades\Validator;
 
 
@@ -19,17 +20,25 @@ class DCController extends Controller
     }
 
 
+    //displaing the page of the leave list of the division chief
     public function index2()
     {
         //displaying the page
 
 
-        $list = new DirectorChief();
-        $directors_form  = $list->leaveType(DirectorChief::get());
+        $list = new DivisionChief();
+        $division_form  = $list->leaveType(DivisionChief::get());
 
-        return view('DivisionChief.list', compact(['directors_form']));
+        return view('DivisionChief.listdivision', compact(['division_form']));
 
         // return view('DivisionChief.form');
+    }
+
+    public function index3(){
+        $list = new Employees();
+        $leave_form  = $list->leaveType(Employees::get());
+
+        return view('DivisionChief.listemployee', compact(['leave_form']));
     }
 
     public function create()
@@ -82,7 +91,7 @@ class DCController extends Controller
         if ($validator->passes()) {
 
 
-            $directors_data = DirectorChief::create([
+            $directors_data = DivisionChief::create([
                 'office' => $request->office,
                 'last_name' => $request->last_name,
                 'first_name' => $request->first_name,
@@ -111,12 +120,64 @@ class DCController extends Controller
      */
     public function show(string $id)
     {
-        $directors_form = DirectorChief::find($id);
-        return view('DivisionChief.leave', compact(['directors_form']));
+        //viewing the inserted data's through tables using view. 
+
+        $division_form = DivisionChief::find($id);
+
+        //new class
+        $typeleave = new DivisionChief();
+
+        //assign sa ibang property bago mag palit ng value
+        $division_form->leaveType = $division_form->type_of_leave;
+
+        //getting the object and its property para mapalabas yung laman ng array
+
+        $division_form->type_of_leave = $typeleave->getLeaveType($division_form->type_of_leave);
+
+        return view('DivisionChief.leave', compact(['division_form']));
     }
     /**
      * Show the form for editing the specified resource.
      */
+
+    public function show2(string $id)
+    {
+        // $lf_employee = Employees::find($id);
+        // return view('DivisionChief.view', compact(['lf_employee']));
+
+        $lf_employee = DivisionChief::find($id);
+
+        //new class
+        $typeleave = new DivisionChief();
+
+        //assign sa ibang property bago mag palit ng value
+        $lf_employee->leaveType = $lf_employee->type_of_leave;
+
+        //getting the object and its property para mapalabas yung laman ng array
+
+        $lf_employee->type_of_leave = $typeleave->getLeaveType($lf_employee->type_of_leave);
+
+        return view('DivisionChief.leave', compact(['lf_employee']));
+        
+    }
+
+    public function show3(string $id)
+    {
+
+        $lf_employee = Employees::find($id);
+
+        //new class
+        $typeleave = new Employees();
+
+        //assign sa ibang property bago mag palit ng value
+        $lf_employee->leaveType = $lf_employee->type_of_leave;
+
+        //getting the object and its property para mapalabas yung laman ng array
+
+        $lf_employee->type_of_leave = $typeleave->getLeaveType($lf_employee->type_of_leave);
+
+        return view('DivisionChief.view', compact(['lf_employee']));
+    }
     public function edit(string $id)
     {
         //
@@ -141,7 +202,7 @@ class DCController extends Controller
     public function leaveList()
     {
 
-        $list = new DirectorChief();
+        $list = new DivisionChief();
         return $list->leaveList();
     }
 }

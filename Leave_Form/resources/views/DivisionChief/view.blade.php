@@ -10,14 +10,11 @@
         width: 100%;
         height: 45px;
         padding: 5px;
+        margin-bottom: 15px;
     }
 
     #requiredStyle {
         color: #F72C00
-    }
-
-    .form-label {
-        padding-top: 10px;
     }
 
     .border {
@@ -27,8 +24,6 @@
         padding: 10px;
         border-radius: 5px;
         margin-left: 5px;
-        margin-bottom: 10px;
-        display: flex;
     }
 
     .forCheckbox {
@@ -49,47 +44,45 @@
         <h3> Leave Form </h3>
     </div>
 
-
     <!-- first row -->
     <div class="row">
         <div class="form-group col-3">
             <label for="requested_by" class="form-label">Office</label>
-            <input type="text" class="form-control" id="office" name="office" value="{{$division_form['office']}}" disabled>
+            <input type="text" class="form-control" id="office" name="office" value="{{$lf_employee['office']}}" disabled>
 
         </div>
 
         <div class="form-group col-4">
             <label for="requested_by" class="form-label">Last Name</label>
-            <input type="text" class="form-control" id="last_name" name="last_name" value="{{$division_form['last_name']}}" disabled>
+            <input type="text" class="form-control" id="last_name" name="last_name" value="{{$lf_employee['last_name']}}" disabled>
         </div>
 
         <div class="form-group col-4">
             <label for="requested_by" class="form-label">First Name</label>
-            <input type="text" class="form-control" id="first_name" name="first_name" value="{{$division_form['first_name']}}" disabled>
+            <input type="text" class="form-control" id="first_name" name="first_name" value="{{$lf_employee['first_name']}}" disabled>
         </div>
 
         <div class="form-group col-1">
             <label for="requested_by" class="form-label">M.I.</label>
-            <input type="text" class="form-control" id="middle_initial" name="middle_initial" value="{{$division_form['middle_initial']}}" disabled>
+            <input type="text" class="form-control" id="middle_initial" name="middle_initial" value="{{$lf_employee['middle_initial']}}" disabled>
         </div>
     </div>
-
 
     <!-- second row -->
     <div class="row">
         <div class="form-group col-4">
             <label for="requested_by" class="form-label">Employee Number</label>
-            <input type="text" class="form-control" id="employee_number" name="employee_number" value="{{$division_form['employee_number']}}" disabled>
+            <input type="text" class="form-control" id="employee_number" name="employee_number" value="{{$lf_employee['employee_number']}}" disabled>
         </div>
 
         <div class="form-group col-4">
             <label for="requested_by" class="form-label">Position</label>
-            <input type="text" class="form-control" id="position" name="position" value="{{$division_form['position']}}" disabled>
+            <input type="text" class="form-control" id="position" name="position" value="{{$lf_employee['position']}}" disabled>
         </div>
 
         <div class="form-group col-4">
             <label for="requested_by" class="form-label">Salary</label>
-            <input type="text" class="form-control" id="salary" name="salary" value="{{$division_form['salary']}}" disabled>
+            <input type="text" class="form-control" id="salary" name="salary" value="{{$lf_employee['salary']}}" disabled>
         </div>
     </div>
 
@@ -97,7 +90,7 @@
     <div class="row">
         <div class="form-group col-12">
             <label for="requested_by" class="form-label">E-mail</label>
-            <input type="text" class="form-control" id="email" name="email" value="{{$division_form['email']}}" disabled>
+            <input type="text" class="form-control" id="email" name="email" value="{{$lf_employee['email']}}" disabled>
         </div>
     </div>
 
@@ -105,7 +98,7 @@
     <div class="row">
         <div class="form-group col-3">
             <label for="requested_by" class="form-label">Type of Leave</label>
-            <input class="select2 form-control" name="type_of_leave" id="type_of_leave" value="{{$division_form['type_of_leave']}}" disabled>
+            <input class="select2 form-control" name="type_of_leave" id="type_of_leave" value="{{$lf_employee['type_of_leave']}}" disabled>
 
             </input>
         </div>
@@ -113,17 +106,17 @@
 
         <div class="form-group col-3">
             <label for="requested_by" class="form-label">Date</label>
-            <input type="date" class="form-control" id="date" name="date" value="{{$division_form['date']}}" disabled>
+            <input type="date" class="form-control" id="date" name="date" value="{{$lf_employee['date']}}" disabled>
         </div>
 
         <div class="form-group col-3">
             <label for="requested_by" class="form-label">No. Of Working Days</label>
-            <input type="text" class="form-control" id="num_working_days" name="num_working_days" value="{{$division_form['num_working_days']}}" disabled>
+            <input type="text" class="form-control" id="num_working_days" name="num_working_days" value="{{$lf_employee['num_working_days']}}" disabled>
         </div>
 
         <div class="form-group col-3">
             <label for="requested_by" class="form-label">Inclusive Dates</label>
-            <input type="text" class="form-control" id="inclusive_dates" name="inclusive_dates" value="{{$division_form['inclusive_dates']}}" disabled>
+            <input type="text" class="form-control" id="inclusive_dates" name="inclusive_dates" value="{{$lf_employee['inclusive_dates']}}" disabled>
         </div>
     </div>
 
@@ -140,7 +133,7 @@
                 <label for="requested_by" class="form-label"> Additional Info </label>
                 <span id="requiredStyle"> *</span>
 
-                <div class="form-group col-12" id="same1">
+                <div class="form-group col-12" id="same1"> 
                     <input type="radio" id="radio" class="details" name="details" value="Within the Philippines" disabled>
                     <label for="requested_by" class="form-label">Within the Philippines</label>
                 </div>
@@ -149,7 +142,7 @@
                     <input type="radio" id="radio" class="details" name="details" value="Within Aborad" disabled>
                     <label for="requested_by" class="form-label">Within Abroad</label>
 
-                    <input type="text"  class="form-control" id="specification" name="specification" value="{{$division_form['specification']}}" style="width: 100%" disabled>
+                    <input type="text" placeholder="Specify" class="form-control" id="specification" name="specification" value="{{$lf_employee['specification']}}" style="width: 100%" disabled>
                 </div>
             </div>
             <!-- end of vacation leave -->
@@ -175,7 +168,7 @@
                     <input type="radio" id="radio5" class="details" name="details" value="In case Leave Benefits for Women" disabled>
                     <label for="requested_by" class="form-label">In case Leave Benefits for Women</label>
 
-                    <input type="text" class="form-control" id="specification" name="specification" value="{{$division_form['specification']}}" style="width: 100%" disabled>
+                    <input type="text" placeholder="Specify" class="form-control" id="specification" name="specification" value="{{$lf_employee['specification']}}" style="width: 100%" disabled>
                 </div>
 
             </div>
@@ -208,12 +201,12 @@
                 <span id="requiredStyle"> *</span>
 
                 <div class="form-group col-12" id="same1">
-                    <input type="radio" id="radio8" class="details" name="details" value="monetization" disabled>
+                    <input type="radio" id="radio8"  class="details" name="details" value="monetization" disabled>
                     <label for="requested_by" class="form-label">Monetization of leave Credits</label>
                 </div>
 
                 <div class="form-group col-12" id="same2">
-                    <input type="radio" id="radio9" class="details" name="details" value="terminal" disabled>
+                    <input type="radio" id="radio9"  class="details" name="details" value="terminal" disabled>
                     <label for="requested_by" class="form-label">Terminal Leave</label>
                 </div>
 
@@ -223,6 +216,7 @@
         </div>
     </div>
 
+<br>
 
     <!-- Sixth row-->
     <div class="row">
@@ -244,35 +238,26 @@
                     </div>
 
                 </div>
-
             </div>
         </div>
 
-    </div>
-
-
-    <!-- start of seventh row -->
-    <div class="row">
-        <div class="form-group col-12">
-            <label for="requested_by" class="form-label">Approver</label>
-            <input type="text" class="form-control" id="approver" name="approver" value="{{$division_form['approver']}}">
+        <!-- start of seventh row -->
+        <div class="row">
+            <div class="form-group col-12">
+                <label for="requested_by" class="form-label">Approver</label>
+                <input type="text" class="form-control" id="approver" name="approver" value="{{$lf_employee['approver']}}">
+            </div>
         </div>
-    </div>
-    <!-- end of seventh row -->
+        <!-- end of seventh row -->
 
 </div>
-
-
-
-
-
 
 <script>
     $(document).ready(function() {
 
 
         //radio button for commutation
-        if ("{{$division_form['commutation']}}" == $('#radio11').val()) {
+        if ("{{$lf_employee['commutation']}}" == $('#radio11').val()) {
             $("#radio11").prop("checked", true);
         } else {
             $("#radio12").prop("checked", true);
@@ -293,7 +278,7 @@
         //sick
         let radio3 = $($('.details')[2]);
         let radio4 = $($('.details')[3]);
-        let radio5 = $($('.details')[4]);
+        let radio5 = $($('.details')[4]); 
 
         //study
         let radio6 = $($('.details')[5]);
@@ -312,12 +297,12 @@
         }
 
 
-        switch (@json($division_form -> leaveType)) {
+        switch (@json($lf_employee -> leaveType)) {
             // Vacation
             case '1':
                 clearType()
                 vacation_form.css('display', 'block');
-                (@json($division_form -> details) == radio1.val()) ? radio1.prop('checked', true): radio2.prop('checked', true);
+                (@json($lf_employee -> details) == radio1.val()) ? radio1.prop('checked', true): radio2.prop('checked', true);
                 break;
 
                 //walang laman
@@ -327,7 +312,7 @@
             case '6':
             case '7':
             case '9':
-            case '10':
+            case '10':  
             case '11':
             case '12':
             case '13':
@@ -338,8 +323,8 @@
             case '3':
                 clearType()
                 sick_form.css('display', 'block');
-                (@json($division_form -> details) == radio3.val()) ? radio3.prop('checked', true)
-                : (@json($division_form -> details) == radio4.val()) ? radio4.prop('checked', true) 
+                (@json($lf_employee -> details) == radio3.val()) ? radio3.prop('checked', true)
+                : (@json($lf_employee -> details) == radio4.val()) ? radio4.prop('checked', true)
                 : radio5.prop('checked', true);
                 break;
 
@@ -347,13 +332,13 @@
             case '8':
                 clearType()
                 study_form.css('display', 'block');
-                (@json($division_form -> details) == radio6.val()) ? radio6.prop('checked', true): radio7.prop('checked', true);
+                (@json($lf_employee -> details) == radio6.val()) ? radio6.prop('checked', true): radio7.prop('checked', true);
                 break;
 
             case '14':
                 clearType()
                 other.css('display', 'block')
-                    (@json($division_form -> details) == radio8.val()) ? radio8.prop('checked', true) : radio9.prop('checked', true);
+                (@json($lf_employee -> details) == radio8.val()) ? radio8.prop('checked', true): radio9.prop('checked', true);
                 break;
 
         }
@@ -414,5 +399,4 @@
         });
     });
 </script>
-
 @endsection

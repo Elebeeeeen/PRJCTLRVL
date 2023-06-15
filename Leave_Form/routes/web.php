@@ -27,6 +27,7 @@ Route::post("/printform/{id}", [App\Http\Controllers\PrintController::class, "pr
 //hr and employee
 Route::resource('/humanresource', App\Http\Controllers\HRController::class);
 Route::get('/leaveapplication', [App\Http\Controllers\HRController::class, 'index2'])->name('index2');
+Route::get('/leaveApplicationDivisionChief', [App\Http\Controllers\HRController::class, 'index4']);
 Route::get('/leavelist', [App\Http\Controllers\EmployeeController::class, 'leavelist']);
 
 Route::get('/accountapplication', [App\Http\Controllers\HRController::class, 'index3'])->name('index3');
@@ -35,8 +36,24 @@ Route::get('/viewaccount/{id}', [App\Http\Controllers\HRController::class, 'show
 //division chief
 Route::resource('/divisionchief', App\Http\Controllers\DCController::class);
 Route::get('/divisionlist', [App\Http\Controllers\DCController::class, 'index2']);
+Route::get('/divemplist', [App\Http\Controllers\DCController::class, 'index3']);
+Route::get('/viewemplist/{id}', [App\Http\Controllers\DCController::class, 'show3']);
 
+//Director
+Route::resource('/director', App\Http\Controllers\DirController::class);
+Route::get('/leaveapplicationDir', [App\Http\Controllers\DirController::class, 'index2']);
+Route::get('/viewLeaveAppEmployee/{id}', [App\Http\Controllers\DirController::class, 'show']);
 
+Route::get('/leaveApplicationDivisionChief1', [App\Http\Controllers\DirController::class, 'index3']);
+Route::get('/viewLeaveAppDivision/{id}', [App\Http\Controllers\DirController::class, 'show2']);
+
+//head hr
+Route::resource('/headHR', App\Http\Controllers\HeadController::class);
+Route::get('/leaveapplicationHead', [App\Http\Controllers\HeadController::class, 'index2']);
+Route::get('/leaveapplicationHead1', [App\Http\Controllers\HeadController::class, 'index3']);
+
+Route::get('/viewLeaveAppEmployeeHead/{id}', [App\Http\Controllers\DirController::class, 'show']);
+Route::get('/viewLeaveAppEmployeeHead1/{id}', [App\Http\Controllers\DirController::class, 'show2']);
 
 
 Auth::routes();

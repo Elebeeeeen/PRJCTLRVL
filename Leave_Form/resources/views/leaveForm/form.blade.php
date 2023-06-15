@@ -20,12 +20,11 @@
 
     .border {
         width: 99%;
-        height: 90px;
+        height: auto;
         border: 5px;
         padding: 10px;
         border-radius: 5px;
         margin-left: 5px;
-        display: flex;
     }
 
     .forCheckbox {
@@ -162,7 +161,7 @@
 
 
                 <!-- vacation leave 0 -->
-                <div class="form-group col-12" style="display:none">
+                <div class=" form-group col-12" style="display:none">
 
                     <label for="requested_by" class="form-label"> Additional Info </label>
                     <span id="requiredStyle"> *</span>
@@ -173,7 +172,7 @@
                     </div>
 
                     <div class="form-group col-12" id="same2">
-                        <input type="radio" id="radio2" name="details" value="Within the Philippines">
+                        <input type="radio" id="radio2" name="details" value="Within Abroad">
                         <label for="requested_by" class="form-label">Within Abroad</label>
 
                         <input type="text" placeholder="Specify" class="form-control" id="specification" name="specification" style="width: 1050px">
@@ -231,7 +230,7 @@
 
 
                 <!-- study leave 7 -->
-                <div class="form-group col-12" style="display:none">
+                <!-- <div class="form-group col-12" style="display:none">
 
                     <label for="requested_by" class="form-label"> Additional Info </label>
                     <span id="requiredStyle"> *</span>
@@ -246,7 +245,7 @@
                         <label for="requested_by" class="form-label">BAR/Board Examination Review</label>
                     </div>
 
-                </div>
+                </div> -->
                 <!-- end of study leave -->
 
 
@@ -306,7 +305,7 @@
 
         <!-- end of sixth row -->
 
-<br>
+        <br>
 
         <!-- start of seventh row -->
         <div class="row">

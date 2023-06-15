@@ -149,7 +149,7 @@
                     <input type="radio" id="radio" class="details" name="details" value="Within Aborad" disabled>
                     <label for="requested_by" class="form-label">Within Abroad</label>
 
-                    <input type="text"  class="form-control" id="specification" name="specification" value="{{$division_form['specification']}}" style="width: 100%" disabled>
+                    <input type="text" class="form-control" id="specification" name="specification" value="{{$division_form['specification']}}" style="width: 100%" disabled>
                 </div>
             </div>
             <!-- end of vacation leave -->
@@ -260,6 +260,13 @@
     </div>
     <!-- end of seventh row -->
 
+    <div class="w-100">
+        <div class="float-right">
+            <button type="button" id="approve" class="btn btn-primary">Approve</button>
+            <button type="button" id="reject" class="btn btn-danger">Reject</button>
+        </div>
+    </div>
+
 </div>
 
 
@@ -340,7 +347,7 @@
                 sick_form.css('display', 'block');
                 (@json($division_form -> details) == radio3.val()) ? radio3.prop('checked', true)
                 : (@json($division_form -> details) == radio4.val()) ? radio4.prop('checked', true) 
-                : radio5.prop('checked', true);
+                :radio5.prop('checked', true);
                 break;
 
                 //study 

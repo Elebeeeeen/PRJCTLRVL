@@ -2,7 +2,6 @@
 
 @section('content')
 
-<!-- design for this page -->
 <style>
     .header {
         background-color: #00B0F0;
@@ -21,13 +20,12 @@
     }
 </style>
 
-<!-- creating table and to foresee the inputed datas(register account) of the users/employee -->
+<!-- creating table and to foresee the inputed datas(leave form) of the users/employee -->
 <div class="card">
 
     <!-- header -->
     <div class="header">
-        <h3> Pending Account Application</h3>
-
+        <h3> List of Leave Application </h3>
     </div>
 
     <table class="table table-striped table-bordered table-mm" id="user_table">
@@ -35,24 +33,26 @@
             <tr>
                 <th>Emp. No.</th>
                 <th>Last Name</th>
-                <th>M.I.</th>
                 <th>First Name</th>
+                <th>M.I.</th>
                 <th>Status</th>
+                <th>Type of Leave</th>
                 <th>Action</th>
             </tr>
         </thead>
         <tbody>
             <tr>
-                @foreach($application_form as $applicationForm)
-                <td>{{$applicationForm['employee_number']}}</td>
-                <td>{{$applicationForm['first_name']}}</td>
-                <td>{{$applicationForm['middle_initial']}}</td>
-                <td>{{$applicationForm['last_name']}}</td>
+                @foreach($leave_form as $leavelist)
+                <td>{{$leavelist['employee_number']}}</td>
+                <td>{{$leavelist['last_name']}}</td>
+                <td>{{$leavelist['first_name']}}</td>
+                <td>{{$leavelist['middle_initial']}}</td>
                 <td>Pending</td>
+                <td>{{$leavelist['type_of_leave']}}</td>
                 <td>
 
                     <div class="btn-group" id="btnGroup">
-                        <a href="/viewaccount/{{$applicationForm['id']}}" type="button" class="btn btn-primary"> View </a>
+                        <a href="/director/{{$leavelist['id']}}" type="button" class="btn btn-primary"> View </a>
                     </div>
 
                 </td>
