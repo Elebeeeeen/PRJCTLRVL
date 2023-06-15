@@ -79,25 +79,63 @@ class EmployeeController extends Controller
 
         if ($validator->passes()) {
 
-
-            $lf_employee = Employees::create([
-                'office' => $request->office,
-                'last_name' => $request->last_name,
-                'first_name' => $request->first_name,
-                'middle_initial' => $request->middle_initial,
-                'employee_number' => $request->employee_number,
-                'position' => $request->position,
-                'salary' => $request->salary,
-                'email' => $request->email,
-                'type_of_leave' => $request->type_of_leave,
-                'date' => $request->date,
-                'num_working_days' => $request->num_working_days,
-                'inclusive_dates' => $request->inclusive_dates,
-                'details' => $request->details,
-                'specification' => $request->specification,
-                'commutation' => $request->commutation,
-                'approver' => $request->approver
-            ]);
+            if($request->specification1 != null){
+                $lf_employee = Employees::create([
+                    'office' => $request->office,
+                    'last_name' => $request->last_name,
+                    'first_name' => $request->first_name,
+                    'middle_initial' => $request->middle_initial,
+                    'employee_number' => $request->employee_number,
+                    'position' => $request->position,
+                    'salary' => $request->salary,
+                    'email' => $request->email,
+                    'type_of_leave' => $request->type_of_leave,
+                    'date' => $request->date,
+                    'num_working_days' => $request->num_working_days,
+                    'inclusive_dates' => $request->inclusive_dates,
+                    'details' => $request->details,
+                    'specification' => $request->specification1,
+                    'commutation' => $request->commutation,
+                    'approver' => $request->approver
+                ]);
+            }else if ($request->specification2 != null){
+                $lf_employee = Employees::create([
+                    'office' => $request->office,
+                    'last_name' => $request->last_name,
+                    'first_name' => $request->first_name,
+                    'middle_initial' => $request->middle_initial,
+                    'employee_number' => $request->employee_number,
+                    'position' => $request->position,
+                    'salary' => $request->salary,
+                    'email' => $request->email,
+                    'type_of_leave' => $request->type_of_leave,
+                    'date' => $request->date,
+                    'num_working_days' => $request->num_working_days,
+                    'inclusive_dates' => $request->inclusive_dates,
+                    'details' => $request->details,
+                    'specification' => $request->specification2,
+                    'commutation' => $request->commutation,
+                    'approver' => $request->approver
+                ]);
+            }else{
+                $lf_employee = Employees::create([
+                    'office' => $request->office,
+                    'last_name' => $request->last_name,
+                    'first_name' => $request->first_name,
+                    'middle_initial' => $request->middle_initial,
+                    'employee_number' => $request->employee_number,
+                    'position' => $request->position,
+                    'salary' => $request->salary,
+                    'email' => $request->email,
+                    'type_of_leave' => $request->type_of_leave,
+                    'date' => $request->date,
+                    'num_working_days' => $request->num_working_days,
+                    'inclusive_dates' => $request->inclusive_dates,
+                    'details' => $request->details,
+                    'commutation' => $request->commutation,
+                    'approver' => $request->approver
+                ]);
+            }
             return response()->json([$lf_employee, "success" => true, 'message' => 'Successfully added']);
         } else {
             return response()->json(["status" => false, "errors" => $validator->errors()->all()]);
