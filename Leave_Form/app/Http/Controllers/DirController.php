@@ -2,70 +2,41 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Employees;
-use App\Models\registerUser;
-use App\Models\DivisionChief;
-use App\Models\User;
 use Illuminate\Http\Request;
+use App\Models\Employees;
+use App\Models\DivisionChief;
 
-class HRController extends Controller
+class DirController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //displaying the page
-        return view('HumanResource.form');
+        return view('Director.form');
     }
-
-
-// linking to the employees leave applciation
 
     public function index2()
     {
-        // displaying the type of leave connecting the the model(employees)
-
         $list = new Employees();
         $leave_form  = $list->leaveType(Employees::get());
 
-        return view('HumanResource.leaveEmployee', compact(['leave_form']));
-
-        // $lf_employee = Employees::get();
-        // $lf_division = DirectorChief::get();
-
-        // return view('HumanResource.leaveEmployee', compact(['lf_employee', 'lf_division']));
+        return view('Director.leaveemployee', compact(['leave_form']));
     }
-
-
-//linking to the registered account of the users
 
     public function index3()
     {
-        //getting the registered account to view the page of account in hr's page
-
-        $application_form = User::get();
-        return view('HumanResource.account', compact(['application_form']));
-    }
-
-
-// linking to the division chief leave application
-
-    public function index4()
-    {
-        // displaying the type of leave connecting the the model(employees)
-
         $list = new DivisionChief();
         $directors_form  = $list->leaveType(DivisionChief::get());
 
-        return view('HumanResource.leaveDivisionChief', compact(['directors_form']));
+        return view('Director.leaveDivisionChief', compact(['directors_form']));
     }
-
     /**
      * Show the form for creating a new resource.
      */
     public function create()
     {
+        //
     }
 
     /**
@@ -81,8 +52,6 @@ class HRController extends Controller
      */
     public function show(string $id)
     {
-        //showing the inputed data's in leave form 
-
         $lf_employee = Employees::find($id);
 
         //new class
@@ -93,17 +62,28 @@ class HRController extends Controller
         //getting the object and its property para mapalabas yung laman ng array
         $lf_employee->type_of_leave = $typeleave->getLeaveType($lf_employee->type_of_leave);
 
-        return view('HumanResource.view', compact(['lf_employee']));
+        return view('Director.viewEmployee', compact(['lf_employee']));
     }
 
     public function show2(string $id)
     {
+        //viewing the inserted data's through tables using view. 
 
-        //showing the inputed data's in accounts form 
+        $division_form = DivisionChief::find($id);
 
-        $application_form = registerUser::find($id);
-        return view('HumanResource.viewaccount', compact(['application_form']));
+        //new class
+        $typeleave = new DivisionChief();
+
+        //assign sa ibang property bago mag palit ng value
+        $division_form->leaveType = $division_form->type_of_leave;
+
+        //getting the object and its property para mapalabas yung laman ng array
+
+        $division_form->type_of_leave = $typeleave->getLeaveType($division_form->type_of_leave);
+
+        return view('Director.viewDivision', compact(['division_form']));
     }
+
     /**
      * Show the form for editing the specified resource.
      */
@@ -126,13 +106,5 @@ class HRController extends Controller
     public function destroy(string $id)
     {
         //
-    }
-
-    // additional function to read the arrays to the employee model
-    public function leaveList()
-    {
-
-        $list = new Employees();
-        return $list->leaveList();
     }
 }

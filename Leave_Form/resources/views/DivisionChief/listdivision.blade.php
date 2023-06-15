@@ -42,7 +42,7 @@
         </thead>
         <tbody>
             <tr>
-                @foreach($directors_form as $dcform)
+                @foreach($division_form as $dcform)
                 <td>{{$dcform['employee_number']}}</td>
                 <td>{{$dcform['last_name']}}</td>
                 <td>{{$dcform['first_name']}}</td>
@@ -111,7 +111,6 @@
     $('#user_table').DataTable({
         width: '100%',
         "paging": true,
-        "lengthChange": false,
         "searching": true,
         "ordering": true,
         "info": true,

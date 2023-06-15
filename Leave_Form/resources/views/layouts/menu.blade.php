@@ -29,9 +29,9 @@
     <a class="dropdown-btn nav-link"><i class="nav-icon far fa-edit"></i> For Approve <i class="fa fa-caret-down"></i>
         <div class="dropdown-container">
             <a href="/accountapplication">Account</a>
-            <a href="/leaveapplication">Leave Application</a>
+            <a href="/leaveapplication">Leave Application (Employee)</a>
+            <a href="/leaveApplicationDivisionChief">Leave Application (Division)</a>
         </div>
-
 </div>
 
 <p>Division chief</p>
@@ -66,6 +66,42 @@
 
 </div>
 
+
+<p>director</p>
+
+<li class="nav-item">
+    <a href="/director" class="nav-link {{ Request::is('director') ? 'active' : '' }}">
+        <i class="nav-icon fas fa-home"></i>
+        <p>Home</p>
+    </a>
+</li>
+
+
+<div class="sidenav">
+    <a class="dropdown-btn nav-link"><i class="nav-icon far fa-edit"></i> For Approve <i class="fa fa-caret-down"></i>
+        <div class="dropdown-container">
+            <a href="/leaveapplicationDir">Leave Application (Employee)</a>
+            <a href="/leaveApplicationDivisionChief1">Leave Application (Division)</a>
+        </div>
+</div>
+
+<p>Head HR</p>
+
+<li class="nav-item">
+    <a href="/headHR" class="nav-link {{ Request::is('headHR') ? 'active' : '' }}">
+        <i class="nav-icon fas fa-home"></i>
+        <p>Home</p>
+    </a>
+</li>   
+
+
+<div class="sidenav">
+    <a class="dropdown-btn nav-link"><i class="nav-icon far fa-edit"></i> For Approve <i class="fa fa-caret-down"></i>
+        <div class="dropdown-container">
+            <a href="/leaveapplicationHead">Leave Application (Employee)</a>
+            <a href="/leaveapplicationHead1">Leave Application (Division)</a>
+        </div>
+</div>
 
 @endrole
 
@@ -108,9 +144,9 @@
     <a class="dropdown-btn nav-link"><i class="nav-icon far fa-edit"></i> For Approve <i class="fa fa-caret-down"></i>
         <div class="dropdown-container">
             <a href="/accountapplication">Account</a>
-            <a href="/leaveapplication">Leave Application</a>
+            <a href="/leaveapplication">Leave Application (Employee)</a>
+            <a href="/leaveApplicationDivisionChief">Leave Application (Division)</a>
         </div>
-
 </div>
 
 
@@ -124,7 +160,7 @@
 @role('division_chief')
 
 <li class="nav-item">
-    <a href="/divisionchief" class="nav-link {{ Request::is('divisionchief/index2') ? 'active' : '' }}">
+    <a href="/divisionchief" class="nav-link {{ Request::is('divisionchief') ? 'active' : '' }}">
         <i class="nav-icon fas fa-home"></i>
         <p>Home</p>
     </a>
@@ -140,7 +176,7 @@
 
 
 <li class="nav-item">
-    <a href="/divisionchief" class="nav-link {{ Request::is('divisionchief') ? 'active' : '' }}">
+    <a href="/divisionlist" class="nav-link {{ Request::is('divisionlist') ? 'active' : '' }}">
         <i class="nav-icon fas fa-folder-open"></i>
         <p>List of leave application</p>
     </a>
@@ -149,10 +185,58 @@
 <div class="sidenav">
     <a class="dropdown-btn nav-link"><i class="nav-icon far fa-edit"></i> For Approve <i class="fa fa-caret-down"></i>
         <div class="dropdown-container">
-            <a href="/leaveapplication">Leave Application</a>
+            <a href="/divemplist">Leave Application</a>
         </div>
 
 </div>
+
+@endrole
+
+<!-- for director -->
+
+@role('director')
+
+<li class="nav-item">
+    <a href="/director" class="nav-link {{ Request::is('director') ? 'active' : '' }}">
+        <i class="nav-icon fas fa-home"></i>
+        <p>Home</p>
+    </a>
+</li>
+
+
+<div class="sidenav">
+    <a class="dropdown-btn nav-link"><i class="nav-icon far fa-edit"></i> For Approve <i class="fa fa-caret-down"></i>
+        <div class="dropdown-container">
+            <a href="/leaveapplicationDir">Leave Application (Employee)</a>
+            <a href="/leaveApplicationDivisionChief1">Leave Application (Division)</a>
+        </div>
+</div>
+
+
+
+@endrole
+
+<!-- for head HR -->
+
+@role('head_officer')
+
+<li class="nav-item">
+    <a href="/headHR" class="nav-link {{ Request::is('headHR') ? 'active' : '' }}">
+        <i class="nav-icon fas fa-home"></i>
+        <p>Home</p>
+    </a>
+</li>   
+
+
+<div class="sidenav">
+    <a class="dropdown-btn nav-link"><i class="nav-icon far fa-edit"></i> For Approve <i class="fa fa-caret-down"></i>
+        <div class="dropdown-container">
+            <a href="/leaveapplicationHead">Leave Application (Employee)</a>
+            <a href="/leaveapplicationHead1">Leave Application (Division)</a>
+        </div>
+</div>
+
+
 
 @endrole
 

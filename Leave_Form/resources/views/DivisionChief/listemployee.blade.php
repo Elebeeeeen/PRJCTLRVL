@@ -52,17 +52,8 @@
                 <td>
 
                     <div class="btn-group" id="btnGroup">
-                        <a href="/leaveform/{{$leavelist['id']}}" type="button" class="btn btn-primary"> View </a>
+                        <a href="/viewemplist/{{$leavelist['id']}}" type="button" class="btn btn-primary"> View </a>
                     </div>
-
-
-                    <div class="btn-group" id="btnGroup">
-                        <form action="/printform/{{$leavelist['id']}}" id="print_form" data-product-id="{{$leavelist['id']}}" method="POST">
-                            @CSRF
-                            <button type="submit" class="btn btn-success" id="print_form">Print </button>
-                        </form>
-                    </div>
-
 
 
                 </td>
