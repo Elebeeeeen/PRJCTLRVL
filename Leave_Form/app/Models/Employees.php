@@ -18,7 +18,25 @@ class Employees extends Model
 
 
     //fill out the users input
-    protected $fillable = ['office', 'last_name', 'first_name', 'middle_initial', 'employee_number', 'position', 'salary', 'email', 'type_of_leave', 'date', 'num_working_days', 'inclusive_dates', 'commutation', 'approver', 'details', 'specification'];
+    protected $fillable = [
+        'office',
+        'last_name',
+        'first_name',
+        'middle_initial',
+        'employee_number',
+        'position',
+        'salary',
+        'email',
+        'type_of_leave',
+        'date',
+        'num_working_days',
+        'inclusive_dates',
+        'commutation',
+        'approver',
+        'details',
+        'specification',
+        'status'
+    ];
 
 
 
@@ -62,25 +80,22 @@ class Employees extends Model
         } // data 
 
         return $datas;
-
     } // leaveType
 
     // getting the value/type of the id of each leave
-    public function getLeaveType($data) 
+    public function getLeaveType($data)
     {
         $type = '';
 
-        foreach($this->leaveList() as $key => $val) {
+        foreach ($this->leaveList() as $key => $val) {
 
-            if($data === $val['id']) {
+            if ($data === $val['id']) {
                 $type = $val['type'];
                 break;
-            }       
-
-        }// foreach
+            }
+        } // foreach
 
         return $type;
-
-    }// getLeaveType
+    } // getLeaveType
 
 }

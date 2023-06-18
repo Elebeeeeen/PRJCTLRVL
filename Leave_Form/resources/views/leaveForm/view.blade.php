@@ -160,7 +160,7 @@
                     <input type="radio" id="radio5" class="details" name="details"value="Within Aborad"  disabled>
                     <label for="requested_by" class="form-label">Within Aborad</label>
 
-                    <input type="text" class="form-control" id="specification" name="specification" value="{{$lf_employee['specification']}}" style="width: 1050px" disabled>
+                    <input type="text" class="form-control" id="specification" name="specification" value="{{$lf_employees['specification']}}" style="width: 1205px" disabled>
                 </div>
 
             </div>
@@ -187,7 +187,7 @@
                     <input type="radio" id="radio5" class="details" name="details" value="In case Leave Benefits for Women" disabled>
                     <label for="requested_by" class="form-label">In case Leave Benefits for Women</label>
 
-                    <input type="text" class="form-control" id="specification" name="specification" value="{{$lf_employee['specification']}}" style="width: 1050px" disabled>
+                    <input type="text" class="form-control" id="specification" name="specification" value="{{$lf_employees['specification']}}"style="width: 1205px" disabled>
                 </div>
 
             </div>
@@ -263,14 +263,12 @@
     </div>
 
 
-    <!-- start of seventh row -->
-    <div class="row">
-        <div class="form-group col-12">
-            <label for="requested_by" class="form-label">Approver</label>
-            <input type="text" class="form-control" id="approver" name="approver" value="{{$lf_employee['approver']}}">
+            <div class="form-group col-6">
+                <label for="requested_by" class="form-label">Approver</label>
+                <input type="text" class="form-control" id="approver" name="approver" value="{{$lf_employees['approver']}}">
+            </div>
         </div>
     </div>
-    <!-- end of seventh row -->
 
     <br>
 
@@ -325,12 +323,12 @@
         }
 
 
-        switch (@json($lf_employee -> leaveType)) {
+        switch (@json($lf_employees -> leaveType)) {
             // Vacation
             case '1':
                 clearType()
                 vacation_form.css('display', 'block');
-                (@json($lf_employee -> details) == radio1.val()) ? radio1.prop('checked', true): radio2.prop('checked', true);
+                (@json($lf_employees -> details) == radio1.val()) ? radio1.prop('checked', true): radio2.prop('checked', true);
                 break;
 
                 //walang laman
@@ -351,8 +349,8 @@
             case '3':
                 clearType()
                 sick_form.css('display', 'block');
-                (@json($lf_employee -> details) == radio3.val()) ? radio3.prop('checked', true)
-                : (@json($lf_employee -> details) == radio4.val()) ? radio4.prop('checked', true)
+                (@json($lf_employees -> details) == radio3.val()) ? radio3.prop('checked', true)
+                : (@json($lf_employees -> details) == radio4.val()) ? radio4.prop('checked', true)
                 : radio5.prop('checked', true);
                 break;
 
@@ -360,13 +358,13 @@
             case '8':
                 clearType()
                 study_form.css('display', 'block');
-                (@json($lf_employee -> details) == radio6.val()) ? radio6.prop('checked', true): radio7.prop('checked', true);
+                (@json($lf_employees -> details) == radio6.val()) ? radio6.prop('checked', true): radio7.prop('checked', true);
                 break;
 
             case '14':
                 clearType()
                 other.css('display', 'block')
-                (@json($lf_employee -> details) == radio8.val()) ? radio8.prop('checked', true): radio9.prop('checked', true);
+                (@json($lf_employees -> details) == radio8.val()) ? radio8.prop('checked', true): radio9.prop('checked', true);
                 break;
 
         }

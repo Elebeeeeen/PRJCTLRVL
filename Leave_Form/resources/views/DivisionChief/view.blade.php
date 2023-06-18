@@ -48,23 +48,23 @@
     <div class="row">
         <div class="form-group col-3">
             <label for="requested_by" class="form-label">Office</label>
-            <input type="text" class="form-control" id="office" name="office" value="{{$lf_employee['office']}}" disabled>
+            <input type="text" class="form-control" id="office" name="office" value="{{$lf_employees['office']}}" disabled>
 
         </div>
 
         <div class="form-group col-4">
             <label for="requested_by" class="form-label">Last Name</label>
-            <input type="text" class="form-control" id="last_name" name="last_name" value="{{$lf_employee['last_name']}}" disabled>
+            <input type="text" class="form-control" id="last_name" name="last_name" value="{{$lf_employees['last_name']}}" disabled>
         </div>
 
         <div class="form-group col-4">
             <label for="requested_by" class="form-label">First Name</label>
-            <input type="text" class="form-control" id="first_name" name="first_name" value="{{$lf_employee['first_name']}}" disabled>
+            <input type="text" class="form-control" id="first_name" name="first_name" value="{{$lf_employees['first_name']}}" disabled>
         </div>
 
         <div class="form-group col-1">
             <label for="requested_by" class="form-label">M.I.</label>
-            <input type="text" class="form-control" id="middle_initial" name="middle_initial" value="{{$lf_employee['middle_initial']}}" disabled>
+            <input type="text" class="form-control" id="middle_initial" name="middle_initial" value="{{$lf_employees['middle_initial']}}" disabled>
         </div>
     </div>
 
@@ -72,17 +72,17 @@
     <div class="row">
         <div class="form-group col-4">
             <label for="requested_by" class="form-label">Employee Number</label>
-            <input type="text" class="form-control" id="employee_number" name="employee_number" value="{{$lf_employee['employee_number']}}" disabled>
+            <input type="text" class="form-control" id="employee_number" name="employee_number" value="{{$lf_employees['employee_number']}}" disabled>
         </div>
 
         <div class="form-group col-4">
             <label for="requested_by" class="form-label">Position</label>
-            <input type="text" class="form-control" id="position" name="position" value="{{$lf_employee['position']}}" disabled>
+            <input type="text" class="form-control" id="position" name="position" value="{{$lf_employees['position']}}" disabled>
         </div>
 
         <div class="form-group col-4">
             <label for="requested_by" class="form-label">Salary</label>
-            <input type="text" class="form-control" id="salary" name="salary" value="{{$lf_employee['salary']}}" disabled>
+            <input type="text" class="form-control" id="salary" name="salary" value="{{$lf_employees['salary']}}" disabled>
         </div>
     </div>
 
@@ -90,7 +90,7 @@
     <div class="row">
         <div class="form-group col-12">
             <label for="requested_by" class="form-label">E-mail</label>
-            <input type="text" class="form-control" id="email" name="email" value="{{$lf_employee['email']}}" disabled>
+            <input type="text" class="form-control" id="email" name="email" value="{{$lf_employees['email']}}" disabled>
         </div>
     </div>
 
@@ -98,7 +98,7 @@
     <div class="row">
         <div class="form-group col-3">
             <label for="requested_by" class="form-label">Type of Leave</label>
-            <input class="select2 form-control" name="type_of_leave" id="type_of_leave" value="{{$lf_employee['type_of_leave']}}" disabled>
+            <input class="select2 form-control" name="type_of_leave" id="type_of_leave" value="{{$lf_employees['type_of_leave']}}" disabled>
 
             </input>
         </div>
@@ -106,17 +106,17 @@
 
         <div class="form-group col-3">
             <label for="requested_by" class="form-label">Date</label>
-            <input type="date" class="form-control" id="date" name="date" value="{{$lf_employee['date']}}" disabled>
+            <input type="date" class="form-control" id="date" name="date" value="{{$lf_employees['date']}}" disabled>
         </div>
 
         <div class="form-group col-3">
             <label for="requested_by" class="form-label">No. Of Working Days</label>
-            <input type="text" class="form-control" id="num_working_days" name="num_working_days" value="{{$lf_employee['num_working_days']}}" disabled>
+            <input type="text" class="form-control" id="num_working_days" name="num_working_days" value="{{$lf_employees['num_working_days']}}" disabled>
         </div>
 
         <div class="form-group col-3">
             <label for="requested_by" class="form-label">Inclusive Dates</label>
-            <input type="text" class="form-control" id="inclusive_dates" name="inclusive_dates" value="{{$lf_employee['inclusive_dates']}}" disabled>
+            <input type="text" class="form-control" id="inclusive_dates" name="inclusive_dates" value="{{$lf_employees['inclusive_dates']}}" disabled>
         </div>
     </div>
 
@@ -133,7 +133,7 @@
                 <label for="requested_by" class="form-label"> Additional Info </label>
                 <span id="requiredStyle"> *</span>
 
-                <div class="form-group col-12" id="same1"> 
+                <div class="form-group col-12" id="same1">
                     <input type="radio" id="radio" class="details" name="details" value="Within the Philippines" disabled>
                     <label for="requested_by" class="form-label">Within the Philippines</label>
                 </div>
@@ -142,7 +142,7 @@
                     <input type="radio" id="radio" class="details" name="details" value="Within Aborad" disabled>
                     <label for="requested_by" class="form-label">Within Abroad</label>
 
-                    <input type="text" placeholder="Specify" class="form-control" id="specification" name="specification" value="{{$lf_employee['specification']}}" style="width: 100%" disabled>
+                    <input type="text" placeholder="Specify" class="form-control" id="specification" name="specification" value="{{$lf_employees['specification']}}" style="width: 100%" disabled>
                 </div>
             </div>
             <!-- end of vacation leave -->
@@ -168,7 +168,7 @@
                     <input type="radio" id="radio5" class="details" name="details" value="In case Leave Benefits for Women" disabled>
                     <label for="requested_by" class="form-label">In case Leave Benefits for Women</label>
 
-                    <input type="text" placeholder="Specify" class="form-control" id="specification" name="specification" value="{{$lf_employee['specification']}}" style="width: 100%" disabled>
+                    <input type="text" placeholder="Specify" class="form-control" id="specification" name="specification" value="{{$lf_employees['specification']}}" style="width: 100%" disabled>
                 </div>
 
             </div>
@@ -201,12 +201,12 @@
                 <span id="requiredStyle"> *</span>
 
                 <div class="form-group col-12" id="same1">
-                    <input type="radio" id="radio8"  class="details" name="details" value="monetization" disabled>
+                    <input type="radio" id="radio8" class="details" name="details" value="monetization" disabled>
                     <label for="requested_by" class="form-label">Monetization of leave Credits</label>
                 </div>
 
                 <div class="form-group col-12" id="same2">
-                    <input type="radio" id="radio9"  class="details" name="details" value="terminal" disabled>
+                    <input type="radio" id="radio9" class="details" name="details" value="terminal" disabled>
                     <label for="requested_by" class="form-label">Terminal Leave</label>
                 </div>
 
@@ -216,7 +216,7 @@
         </div>
     </div>
 
-<br>
+    <br>
 
     <!-- Sixth row-->
     <div class="row">
@@ -245,11 +245,22 @@
         <div class="row">
             <div class="form-group col-12">
                 <label for="requested_by" class="form-label">Approver</label>
-                <input type="text" class="form-control" id="approver" name="approver" value="{{$lf_employee['approver']}}">
+                <input type="text" class="form-control" id="approver" name="approver" value="{{$lf_employees['approver']}}">
             </div>
         </div>
         <!-- end of seventh row -->
 
+    </div>
+    <br>
+    <div class="w-100">
+        <div class="float-right">
+            <form action="/viewemplist/" data-id="{{$lf_employees['id']}}" id="approve_form" method="POST">
+                @METHOD('PUT')
+                <button type="submit" id="approve" value="Approve by HR" class="btn btn-primary">Approve</button>
+                <button type="submit" id="reject" value="Reject by HR" class="btn btn-danger">Reject</button>
+            </form>
+        </div>
+    </div>
 </div>
 
 <script>
@@ -257,7 +268,7 @@
 
 
         //radio button for commutation
-        if ("{{$lf_employee['commutation']}}" == $('#radio11').val()) {
+        if ("{{$lf_employees['commutation']}}" == $('#radio11').val()) {
             $("#radio11").prop("checked", true);
         } else {
             $("#radio12").prop("checked", true);
@@ -278,7 +289,7 @@
         //sick
         let radio3 = $($('.details')[2]);
         let radio4 = $($('.details')[3]);
-        let radio5 = $($('.details')[4]); 
+        let radio5 = $($('.details')[4]);
 
         //study
         let radio6 = $($('.details')[5]);
@@ -297,12 +308,12 @@
         }
 
 
-        switch (@json($lf_employee -> leaveType)) {
+        switch (@json($lf_employees -> leaveType)) {
             // Vacation
             case '1':
                 clearType()
                 vacation_form.css('display', 'block');
-                (@json($lf_employee -> details) == radio1.val()) ? radio1.prop('checked', true): radio2.prop('checked', true);
+                (@json($lf_employees -> details) == radio1.val()) ? radio1.prop('checked', true): radio2.prop('checked', true);
                 break;
 
                 //walang laman
@@ -312,7 +323,7 @@
             case '6':
             case '7':
             case '9':
-            case '10':  
+            case '10':
             case '11':
             case '12':
             case '13':
@@ -323,22 +334,21 @@
             case '3':
                 clearType()
                 sick_form.css('display', 'block');
-                (@json($lf_employee -> details) == radio3.val()) ? radio3.prop('checked', true)
-                : (@json($lf_employee -> details) == radio4.val()) ? radio4.prop('checked', true)
-                : radio5.prop('checked', true);
+                (@json($lf_employees -> details) == radio3.val()) ? radio3.prop('checked', true): (@json($lf_employees -> details) == radio4.val()) ? radio4.prop('checked', true) :
+                    radio5.prop('checked', true);
                 break;
 
                 //study 
             case '8':
                 clearType()
                 study_form.css('display', 'block');
-                (@json($lf_employee -> details) == radio6.val()) ? radio6.prop('checked', true): radio7.prop('checked', true);
+                (@json($lf_employees -> details) == radio6.val()) ? radio6.prop('checked', true): radio7.prop('checked', true);
                 break;
 
             case '14':
                 clearType()
                 other.css('display', 'block')
-                (@json($lf_employee -> details) == radio8.val()) ? radio8.prop('checked', true): radio9.prop('checked', true);
+                    (@json($lf_employees -> details) == radio8.val()) ? radio8.prop('checked', true) : radio9.prop('checked', true);
                 break;
 
         }
@@ -347,56 +357,166 @@
 
     //sweet alert for submit
     let errorMessages = '';
-    $("#submitForm").on("submit", function(e) {
-        e.preventDefault();
-        let formData = new FormData($('#submitForm')[0]);
-        Swal.fire({
-            title: "Are you sure?",
-            text: 'You want to submit this application?',
-            icon: "warning",
-            showCancelButton: true,
-            confirmButtonText: "Confirm",
-            cancelButtonText: "Cancel"
-        }).then((result) => {
-            if (result.isConfirmed) {
-                $.ajax({
-                    url: "/leaveform",
-                    method: "POST",
-                    processData: false,
-                    contentType: false,
-                    cache: false,
-                    data: formData,
-                    success: function(response) {
-                        if (response.success) {
-                            Swal.fire({
-                                title: 'Success!',
-                                text: 'You can now view and print your leave form. Wait to notify in your email to be approved.',
-                                icon: 'success',
-                                confirmButtonText: 'Okay'
-                            }).then((result) => {
-                                if (result.isConfirmed) {
-                                    window.location.href = "/leaveform/";
+    var form = document.getElementById('approve_form');
+    var buttons = form.querySelectorAll('button[type="submit"]');
+
+    buttons.forEach(function(button) {
+        button.addEventListener('click', function(e) {
+            var status = button.value;
+            let formData = new FormData($('#approve_form')[0]);
+
+            if (status == "Approve by HR") {
+                e.preventDefault();
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'Are you sure?',
+                    text:"You want to approve this application?",
+                    showCancelButton: true,
+                    confirmButtonText: "Yes",
+                    cancelButtonText: "Cancel",
+
+
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        formData.append('status', status);
+                        $.ajax({
+                            url: '/humanresource/' + $('#approve_form').attr("data-id"),
+                            method: "POST",
+                            processData: false,
+                            contentType: false,
+                            cache: false,
+                            data: formData,
+                            headers: {
+                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                            },
+                            success: function(response) {
+                                if (response.success) {
+                                    Swal.fire({
+                                        icon: 'success',
+                                        title: 'Approve',
+                                        text:"The user applicaiton has been approve!",
+                                        showCancelButton: true,
+                                        confirmButtonText: "confirm",
+                                    }).then((result) => {
+                                        if (result.isConfirmed) {
+                                            window.location.href = "/humanresource";
+                                        }
+                                    })
+                                } else {
+                                    for (let i = 0; i < response.errors.length; i++) {
+                                        errorMessages += "-" + response.errors[i] + "\n";
+                                    }
+                                    Swal.fire({
+                                        html: '<pre>' + errorMessages + '</pre>',
+                                        customClass: {
+                                            popup: 'format-pre'
+                                        },
+                                        title: 'Error!',
+                                        icon: 'error',
+                                        confirmButtonText: 'Okay'
+                                    })
+                                    errorMessages = "";
                                 }
-                            })
-                        } else {
-                            for (let i = 0; i < response.errors.length; i++) {
-                                errorMessages += "-" + response.errors[i] + "\n";
                             }
-                            Swal.fire({
-                                html: '<pre>' + errorMessages + '</pre>',
-                                customClass: {
-                                    popup: 'format-pre'
-                                },
-                                title: 'Error!',
-                                icon: 'error',
-                                confirmButtonText: 'Okay'
-                            })
-                            errorMessages = "";
-                        }
+                        });
+                    } else {
+                        Swal.fire({
+                            title: 'Are you sure you want to cancel it?',
+                            icon: 'info',
+                            showCancelButton: true,
+                            confirmButtonText: "confirm",
+                        })
                     }
-                }); //AJAX
+                });
+            } else if (status == "Reject by HR") {
+                e.preventDefault();
+                Swal.fire({
+                    title:'Are you sure you want to reject?',
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonText: "confirm",
+                    cancelButtonText: "cancel",
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        Swal.fire({
+                            title: 'Are you sure?',
+                            text: 'state the reason:',
+                            icon: 'warning',
+                            showCancelButton: true,
+                            confirmButtonText: "confirm",
+                            cancelButtonText: "cancel",
+                            input: "text",
+                            inputValidator: (value) => {
+                                if (!value) {
+                                    return "please state the reason.";
+                                }
+                            }
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+                                let reason = result.value;
+                                formData.append('status', status);
+                                formData.append('reason', reason);
+                                $.ajax({
+                                    url: '/humanresource/' + $('#approve_form').attr("data-id"),
+                                    method: "POST",
+                                    processData: false,
+                                    contentType: false,
+                                    cache: false,
+                                    data: formData,
+                                    headers: {
+                                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                                    },
+                                    success: function(response) {
+                                        if (response.success) {
+                                            Swal.fire({
+                                                title: '',
+                                                icon: 'warning',
+                                                showCancelButton: true,
+                                                confirmButtonText: "confirm",
+                                            }).then((result) => {
+                                                if (result.isConfirmed) {
+                                                    window.location.href = "/humanresource";
+                                                }
+                                            })
+                                        } else {
+                                            for (let i = 0; i < response.errors.length; i++) {
+                                                errorMessages += "-" + response.errors[i] + "\n";
+                                            }
+                                            Swal.fire({
+                                                html: '<pre>' + errorMessages + '</pre>',
+                                                customClass: {
+                                                    popup: 'format-pre'
+                                                },
+                                                title: 'Error!',
+                                                icon: 'error',
+                                                confirmButtonText: 'Okay'
+                                            })
+                                            errorMessages = "";
+                                        }
+                                    }
+
+                                });
+                            } else {
+                                Swal.fire({
+                                    title: 'Are you sure you want to cancel it?',
+                                    icon: 'warning',
+                                    showCancelButton: true,
+                                    confirmButtonText: "Yes",
+                                })
+                            }
+                        });
+                    } else {
+                        Swal.fire({
+                            title: 'Are you sure want to cancel it?',
+                            icon: 'warning',
+                            showCancelButton: true,
+                            confirmButtonText: "Yes",
+                        })
+                    }
+                });
+
             }
-        });
-    });
+        })
+    })
 </script>
 @endsection

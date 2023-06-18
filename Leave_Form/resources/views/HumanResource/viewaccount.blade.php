@@ -101,12 +101,12 @@
     <br>
 
     <!--button-->
-    <div class="w-100">
-        <div class="float-right">
-            <form action="/humanresource/{{$id}}" data-id={{$id}} id="approve_form" method="POST">
-                @METHOD('PUT')
-                <button type="submit" id="approve" value="Approve by HR" class="btn btn-primary">Approve</button>
-                <button type="submit" id="reject" value="Reject by HR" class="btn btn-danger">Reject</button>
+        <div class="w-100">
+            <div class="float-right">
+                <form action="/humanresource/{{$id}}" data-id={{$id}} id="approve_form" method="POST">
+                    @METHOD('PUT')
+                    <button type="submit" id="approve" value="Approve by HR" class="btn btn-primary">Approve</button>
+                    <button type="submit" id="reject" value="Reject by HR" class="btn btn-danger">Reject</button>
             </form>
         </div>
     </div>

@@ -91,7 +91,7 @@ class DCController extends Controller
         if ($validator->passes()) {
 
             if($request->specification1 != null){
-                $lf_employee = Employees::create([
+                $lf_employees = Employees::create([
                     'office' => $request->office,
                     'last_name' => $request->last_name,
                     'first_name' => $request->first_name,
@@ -110,7 +110,7 @@ class DCController extends Controller
                     'approver' => $request->approver
                 ]);
             }else if ($request->specification2 != null){
-                $lf_employee = Employees::create([
+                $lf_employees = Employees::create([
                     'office' => $request->office,
                     'last_name' => $request->last_name,
                     'first_name' => $request->first_name,
@@ -129,7 +129,7 @@ class DCController extends Controller
                     'approver' => $request->approver
                 ]);
             }else{
-                $lf_employee = Employees::create([
+                $lf_employees = Employees::create([
                     'office' => $request->office,
                     'last_name' => $request->last_name,
                     'first_name' => $request->first_name,
@@ -147,7 +147,7 @@ class DCController extends Controller
                     'approver' => $request->approver
                 ]);
             }
-            return response()->json([$lf_employee, "success" => true, 'message' => 'Successfully added']);
+            return response()->json([$lf_employees, "success" => true, 'message' => 'Successfully added']);
         } else {
             return response()->json(["status" => false, "errors" => $validator->errors()->all()]);
         }
@@ -183,38 +183,38 @@ class DCController extends Controller
         // $lf_employee = Employees::find($id);
         // return view('DivisionChief.view', compact(['lf_employee']));
 
-        $lf_employee = DivisionChief::find($id);
+        $lf_employees = DivisionChief::find($id);
 
         //new class
         $typeleave = new DivisionChief();
 
         //assign sa ibang property bago mag palit ng value
-        $lf_employee->leaveType = $lf_employee->type_of_leave;
+        $lf_employees->leaveType = $lf_employees->type_of_leave;
 
         //getting the object and its property para mapalabas yung laman ng array
 
-        $lf_employee->type_of_leave = $typeleave->getLeaveType($lf_employee->type_of_leave);
+        $lf_employees->type_of_leave = $typeleave->getLeaveType($lf_employees->type_of_leave);
 
-        return view('DivisionChief.leave', compact(['lf_employee']));
+        return view('DivisionChief.leave', compact(['lf_employees']));
         
     }
 
     public function show3(string $id)
     {
 
-        $lf_employee = Employees::find($id);
+        $lf_employees = Employees::find($id);
 
         //new class
         $typeleave = new Employees();
 
         //assign sa ibang property bago mag palit ng value
-        $lf_employee->leaveType = $lf_employee->type_of_leave;
+        $lf_employees->leaveType = $lf_employees->type_of_leave;
 
         //getting the object and its property para mapalabas yung laman ng array
 
-        $lf_employee->type_of_leave = $typeleave->getLeaveType($lf_employee->type_of_leave);
+        $lf_employees->type_of_leave = $typeleave->getLeaveType($lf_employees->type_of_leave);
 
-        return view('DivisionChief.view', compact(['lf_employee']));
+        return view('DivisionChief.view', compact(['lf_employees']));
     }
     public function edit(string $id)
     {
@@ -226,7 +226,21 @@ class DCController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $application_form = Employees::find($id);
+        $status = $request->status;
+//for accept and reject button
+        if ($status == "Approve by HR") {
+            
+            $application_form->status = $request->status;
+            $application_form->save();
+
+            return response()->json(["success" => true, "message" => "Successfully Approve!"]);
+        } else if ($status == "Reject by HR") {
+            $application_form->status = $request->status;
+            $application_form->save();
+
+            return response()->json(["success" => true, "message" => "Successfully Reject!"]);
+        }
     }
 
     /**

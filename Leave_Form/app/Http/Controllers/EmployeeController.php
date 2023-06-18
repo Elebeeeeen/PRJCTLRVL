@@ -96,7 +96,8 @@ class EmployeeController extends Controller
                     'details' => $request->details,
                     'specification' => $request->specification1,
                     'commutation' => $request->commutation,
-                    'approver' => $request->approver
+                    'approver' => $request->approver,
+                    'status' => 'Pending'
                 ]);
             }else if ($request->specification2 != null){
                 $lf_employee = Employees::create([
@@ -115,7 +116,9 @@ class EmployeeController extends Controller
                     'details' => $request->details,
                     'specification' => $request->specification2,
                     'commutation' => $request->commutation,
-                    'approver' => $request->approver
+                    'approver' => $request->approver,
+                    'status' => 'Pending'
+
                 ]);
             }else{
                 $lf_employee = Employees::create([
@@ -150,19 +153,19 @@ class EmployeeController extends Controller
 
         //viewing the inserted data's through tables using view. 
 
-        $lf_employee = Employees::find($id);
+        $lf_employees = Employees::find($id);
 
         //new class
         $typeleave = new Employees();
 
         //assign sa ibang property bago mag palit ng value
-        $lf_employee->leaveType = $lf_employee->type_of_leave;
+        $lf_employees->leaveType = $lf_employees->type_of_leave;
 
         //getting the object and its property para mapalabas yung laman ng array
 
-        $lf_employee->type_of_leave = $typeleave->getLeaveType($lf_employee->type_of_leave);
+        $lf_employees->type_of_leave = $typeleave->getLeaveType($lf_employees->type_of_leave);
 
-        return view('leaveform.view', compact(['lf_employee']));
+        return view('leaveform.view', compact(['lf_employees']));
         
 
     }
