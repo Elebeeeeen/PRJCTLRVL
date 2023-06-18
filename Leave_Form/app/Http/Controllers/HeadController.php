@@ -18,10 +18,16 @@ class HeadController extends Controller
 
     public function index2()
     {
+
         $list = new Employees();
-        $leave_form  = $list->leaveType(Employees::get());
+        $leave_form  = $list->leaveType(Employees::where('status', 'Approved by HR')->get());
 
         return view('Head.leaveEmployee', compact(['leave_form']));
+
+        // $list = new Employees();
+        // $leave_form  = $list->leaveType(Employees::get());
+
+        // return view('Head.leaveEmployee', compact(['leave_form']));
     }
 
     

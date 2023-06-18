@@ -12,11 +12,24 @@
 </style>
 
 <!-- dashboards -->
-    <div class="col-lg-12 col-12">
+<form class="row">
+    <div class="col-lg-6 col-6">
+        <div class="small-box bg-info">
+            <div class="inner">
+                <h3 class="number_pending">{{$count2}}</h3>
+                <p class="text">Pending Leave form Division</p>
+            </div>
+            <div class="icon">
+                <i class="fas fa-male"></i>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-6 col-6">
         <div class="small-box bg-warning">
             <div class="inner">
                 <h3 class="number_pending">{{$count}}</h3>
-                <p class="text">Pending Leave Form/s</p>
+                <p class="text">Pending Leave Form Employee</p>
             </div>
             <div class="icon">
                 <i class="fas fa-file"></i>
