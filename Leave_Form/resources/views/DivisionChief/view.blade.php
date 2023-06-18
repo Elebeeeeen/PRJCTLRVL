@@ -10,20 +10,24 @@
         width: 100%;
         height: 45px;
         padding: 5px;
-        margin-bottom: 15px;
     }
 
     #requiredStyle {
         color: #F72C00
     }
 
+    .form-label {
+        padding-top: 10px;
+    }
+
     .border {
         width: 99%;
-        height: auto;
         border: 5px;
         padding: 10px;
         border-radius: 5px;
         margin-left: 5px;
+        margin-bottom: 10px;
+        display: flex;
     }
 
     .forCheckbox {
@@ -43,6 +47,7 @@
     <div class="header">
         <h3> Leave Form </h3>
     </div>
+
 
     <!-- first row -->
     <div class="row">
@@ -67,6 +72,7 @@
             <input type="text" class="form-control" id="middle_initial" name="middle_initial" value="{{$lf_employee['middle_initial']}}" disabled>
         </div>
     </div>
+
 
     <!-- second row -->
     <div class="row">
@@ -125,7 +131,7 @@
     <!-- fifth row (pop-up) -->
     <div class="row">
 
-        <div class="leaveOption">
+        <div class=" leaveOption">
 
             <!-- vacation leave 0 -->
             <div class="form-group col-12" style="display:none">
@@ -133,17 +139,18 @@
                 <label for="requested_by" class="form-label"> Additional Info </label>
                 <span id="requiredStyle"> *</span>
 
-                <div class="form-group col-12" id="same1"> 
-                    <input type="radio" id="radio" class="details" name="details" value="Within the Philippines" disabled>
+                <div class="form-group col-12" id="same1">
+                    <input type="radio" id="radio3" class="details" name="details" value="Within the Philippines" disabled>
                     <label for="requested_by" class="form-label">Within the Philippines</label>
                 </div>
 
                 <div class="form-group col-12" id="same2">
-                    <input type="radio" id="radio" class="details" name="details" value="Within Aborad" disabled>
-                    <label for="requested_by" class="form-label">Within Abroad</label>
+                    <input type="radio" id="radio5" class="details" name="details"value="Within Aborad"  disabled>
+                    <label for="requested_by" class="form-label">Within Aborad</label>
 
-                    <input type="text" placeholder="Specify" class="form-control" id="specification" name="specification" value="{{$lf_employee['specification']}}" style="width: 100%" disabled>
+                    <input type="text" class="form-control" id="specification" name="specification" value="{{$lf_employee['specification']}}" style="width: 1050px" disabled>
                 </div>
+
             </div>
             <!-- end of vacation leave -->
 
@@ -168,7 +175,7 @@
                     <input type="radio" id="radio5" class="details" name="details" value="In case Leave Benefits for Women" disabled>
                     <label for="requested_by" class="form-label">In case Leave Benefits for Women</label>
 
-                    <input type="text" placeholder="Specify" class="form-control" id="specification" name="specification" value="{{$lf_employee['specification']}}" style="width: 100%" disabled>
+                    <input type="text" class="form-control" id="specification" name="specification" value="{{$lf_employee['specification']}}" style="width: 1050px" disabled>
                 </div>
 
             </div>
@@ -201,12 +208,12 @@
                 <span id="requiredStyle"> *</span>
 
                 <div class="form-group col-12" id="same1">
-                    <input type="radio" id="radio8"  class="details" name="details" value="monetization" disabled>
+                    <input type="radio" id="radio8" class="details" name="details" value="monetization" disabled>
                     <label for="requested_by" class="form-label">Monetization of leave Credits</label>
                 </div>
 
                 <div class="form-group col-12" id="same2">
-                    <input type="radio" id="radio9"  class="details" name="details" value="terminal" disabled>
+                    <input type="radio" id="radio9" class="details" name="details" value="terminal" disabled>
                     <label for="requested_by" class="form-label">Terminal Leave</label>
                 </div>
 
@@ -216,7 +223,6 @@
         </div>
     </div>
 
-<br>
 
     <!-- Sixth row-->
     <div class="row">
@@ -238,19 +244,40 @@
                     </div>
 
                 </div>
+
             </div>
         </div>
 
-        <!-- start of seventh row -->
-        <div class="row">
-            <div class="form-group col-12">
-                <label for="requested_by" class="form-label">Approver</label>
-                <input type="text" class="form-control" id="approver" name="approver" value="{{$lf_employee['approver']}}">
-            </div>
+    </div>
+
+
+    <!-- start of seventh row -->
+    <div class="row">
+        <div class="form-group col-12">
+            <label for="requested_by" class="form-label">Approver</label>
+            <input type="text" class="form-control" id="approver" name="approver" value="{{$lf_employee['approver']}}">
         </div>
-        <!-- end of seventh row -->
+    </div>
+    <!-- end of seventh row -->
+
+    <br>
+
+        <!--button-->
+    <div class="w-100">
+        <div class="float-right">
+            <form action="/divisionchief/{{$id}}" data-id="{{$id}}" id="approve_form" method="POST">
+                @METHOD('PUT')
+                <button type="submit" name="status" value="Approved by DC" class="btn btn-success"> Approve </button>
+                <button type="submit" name="status" value="Rejected by DC" class="btn btn-danger"> Reject </button>
+            </form>
+        </div>
+    </div>
 
 </div>
+
+
+
+
 
 <script>
     $(document).ready(function() {
@@ -345,11 +372,13 @@
     });
 
 
-    //sweet alert for submit
+    //sweet alert for approve and reject
+    //di pa maayos
     let errorMessages = '';
-    $("#submitForm").on("submit", function(e) {
+    var status = $('submit').val();
+    $('#approve_form').on('submit', function(e){
         e.preventDefault();
-        let formData = new FormData($('#submitForm')[0]);
+        let formData = new FormData($('#approve_form')[0]);
         Swal.fire({
             title: "Are you sure?",
             text: 'You want to submit this application?',
@@ -359,13 +388,17 @@
             cancelButtonText: "Cancel"
         }).then((result) => {
             if (result.isConfirmed) {
+                formData.append('status', status);
                 $.ajax({
-                    url: "/leaveform",
+                    url: "/divisionchief/" + $('#approve_form').attr("data-id"),
                     method: "POST",
                     processData: false,
                     contentType: false,
                     cache: false,
                     data: formData,
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
                     success: function(response) {
                         if (response.success) {
                             Swal.fire({
@@ -375,7 +408,7 @@
                                 confirmButtonText: 'Okay'
                             }).then((result) => {
                                 if (result.isConfirmed) {
-                                    window.location.href = "/leaveform/";
+                                    window.location.href = "/divisionlist";
                                 }
                             })
                         } else {

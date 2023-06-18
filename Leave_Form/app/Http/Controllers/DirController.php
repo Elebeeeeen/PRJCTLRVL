@@ -13,9 +13,11 @@ class DirController extends Controller
      */
     public function index()
     {
-        $count = Employees::where('Status', 'Approved by DC')->count();
 
-        return view('Director.form', compact(['count']));
+        $count = Employees::where('Status', 'Approved by DC')->count();
+        $count2 = DivisionChief::where('Status', 'Pending')->count();
+
+        return view('Director.form', compact(['count', 'count2']));
     }
 
     public function index2()

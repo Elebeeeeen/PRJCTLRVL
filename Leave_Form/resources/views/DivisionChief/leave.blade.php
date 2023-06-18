@@ -132,7 +132,7 @@
     <!-- fifth row (pop-up) -->
     <div class="row">
 
-        <div class="border leaveOption">
+        <div class="leaveOption">
 
             <!-- vacation leave 0 -->
             <div class="form-group col-12" style="display:none">
@@ -149,7 +149,7 @@
                     <input type="radio" id="radio" class="details" name="details" value="Within Aborad" disabled>
                     <label for="requested_by" class="form-label">Within Abroad</label>
 
-                    <input type="text"  class="form-control" id="specification" name="specification" value="{{$division_form['specification']}}" style="width: 100%" disabled>
+                    <input type="text"  class="form-control" id="specification" name="specification" value="{{$division_form['specification']}}" style="width: 1050px" disabled>
                 </div>
             </div>
             <!-- end of vacation leave -->
@@ -175,7 +175,7 @@
                     <input type="radio" id="radio5" class="details" name="details" value="In case Leave Benefits for Women" disabled>
                     <label for="requested_by" class="form-label">In case Leave Benefits for Women</label>
 
-                    <input type="text" class="form-control" id="specification" name="specification" value="{{$division_form['specification']}}" style="width: 100%" disabled>
+                    <input type="text" class="form-control" id="specification" name="specification" value="{{$division_form['specification']}}" style="width: 1050px" disabled>
                 </div>
 
             </div>

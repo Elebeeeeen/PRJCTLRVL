@@ -47,12 +47,12 @@
                 <td>{{$leavelist['last_name']}}</td>
                 <td>{{$leavelist['first_name']}}</td>
                 <td>{{$leavelist['middle_initial']}}</td>
-                <td>Pending</td>
+                <td>{{$leavelist['status']}}</td>
                 <td>{{$leavelist['type_of_leave']}}</td>
                 <td>
 
                     <div class="btn-group" id="btnGroup">
-                        <a href="/viewemplist/{{$leavelist['id']}}" type="button" class="btn btn-primary"> View </a>
+                        <a href="/divisionchief/{{$leavelist['id']}}/edit" type="button" class="btn btn-primary"> View </a>
                     </div>
 
 

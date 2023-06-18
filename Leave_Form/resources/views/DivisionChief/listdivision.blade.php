@@ -47,7 +47,7 @@
                 <td>{{$dcform['last_name']}}</td>
                 <td>{{$dcform['first_name']}}</td>
                 <td>{{$dcform['middle_initial']}}</td>
-                <td>Pending</td>
+                <td>{{$dcform['status']}}</td>
                 <td>{{$dcform['type_of_leave']}}</td>
                 <td>
 
