@@ -13,13 +13,17 @@ class DirController extends Controller
      */
     public function index()
     {
-        return view('Director.form');
+
+        $count = Employees::where('Status', 'Approved by DC')->count();
+        $count2 = DivisionChief::where('Status', 'Pending')->count();
+
+        return view('Director.form', compact(['count', 'count2']));
     }
 
     public function index2()
     {
         $list = new Employees();
-        $leave_form  = $list->leaveType(Employees::get());
+        $leave_form  = $list->leaveType(Employees::where('status', 'Approved by DC')->get());
 
         return view('Director.leaveemployee', compact(['leave_form']));
     }
