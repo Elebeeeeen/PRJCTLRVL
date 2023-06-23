@@ -57,7 +57,7 @@
 
 
                     <div class="btn-group" id="btnGroup">
-                        <form action="/printform/{{$dcform['id']}}" id="print_form" data-product-id="{{$dcform['id']}}" method="POST">
+                        <form action="/printformDC/{{$dcform['id']}}" id="print_form" data-product-id="{{$dcform['id']}}" method="POST">
                             @CSRF
                             <button type="submit" class="btn btn-success" id="print_form">Print </button>
                         </form>
@@ -79,7 +79,7 @@
         let errorMessages = '';
         let formData = new FormData($("#print_form")[0]);
         $.ajax({
-            url: '/printform/' + $(this).attr("data-product-id"),
+            url: '/printformDC/' + $(this).attr("data-product-id"),
             method: "POST",
             processData: false,
             contentType: false,
@@ -87,7 +87,7 @@
             data: formData,
             success: function(response) {
                 if (response.success) {
-                    window.location.href = '/printform/' + $(this).attr("data-product-id");
+                    window.location.href = '/printformDC/' + $(this).attr("data-product-id");
                 } else {
                     for (let i = 0; i < response.errors.length; i++) {
                         errorMessages += "-" + response.errors[i] + "\n";

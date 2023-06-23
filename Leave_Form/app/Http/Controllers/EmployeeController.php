@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Employees;
 use App\Models\User;
 use Sabberworm\CSS\Property\Import;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Validator;
 
 class EmployeeController extends Controller
@@ -78,7 +79,17 @@ class EmployeeController extends Controller
         ], $message_error);
 
         if ($validator->passes()) {
+
             $status = 'Pending';
+
+        // for the inclusive dates
+        
+            $firstInclusiveDate = $request->startdate;
+            $startInclusiveDate = Carbon::createFromFormat('Y-m-d', $firstInclusiveDate)->format('F j, Y');
+            $secondInclusiveDate = $request->enddate;
+            $endInclusiveDate = Carbon::createFromFormat('Y-m-d', $secondInclusiveDate)->format('F j, Y');
+
+
             if($request->specification1 != null){
                 $lf_employee = Employees::create([
                     'office' => $request->office,
@@ -92,7 +103,9 @@ class EmployeeController extends Controller
                     'type_of_leave' => $request->type_of_leave,
                     'date' => $request->date,
                     'num_working_days' => $request->num_working_days,
-                    'inclusive_dates' => $request->inclusive_dates,
+                    // 'inclusive_dates' => $request->inclusive_dates,
+                    'start_date' => $startInclusiveDate,
+                    'end_date'=>  $endInclusiveDate,
                     'details' => $request->details,
                     'specification' => $request->specification1,
                     'commutation' => $request->commutation,
@@ -112,7 +125,9 @@ class EmployeeController extends Controller
                     'type_of_leave' => $request->type_of_leave,
                     'date' => $request->date,
                     'num_working_days' => $request->num_working_days,
-                    'inclusive_dates' => $request->inclusive_dates,
+                    'start_date' => $startInclusiveDate,
+                    'end_date'=>  $endInclusiveDate,
+                    // 'inclusive_dates' => $request->inclusive_dates,
                     'details' => $request->details,
                     'specification' => $request->specification2,
                     'commutation' => $request->commutation,
@@ -132,7 +147,9 @@ class EmployeeController extends Controller
                     'type_of_leave' => $request->type_of_leave,
                     'date' => $request->date,
                     'num_working_days' => $request->num_working_days,
-                    'inclusive_dates' => $request->inclusive_dates,
+                    'start_date' => $startInclusiveDate,
+                    'end_date'=>  $endInclusiveDate,
+                    // 'inclusive_dates' => $request->inclusive_dates,
                     'details' => $request->details,
                     'commutation' => $request->commutation,
                     'approver' => $request->approver,

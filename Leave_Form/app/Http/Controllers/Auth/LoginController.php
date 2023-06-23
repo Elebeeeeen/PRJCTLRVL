@@ -5,6 +5,9 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Support\Facades\Auth;
+use Laratrust\Laratrust;
+use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
@@ -36,5 +39,27 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
+    }
+
+    protected function authenticated(Request $request, $user)
+    {
+        if (Auth::check()) {
+            $user = Auth::user();
+            $laratrust = app(Laratrust::class);
+
+            if ($laratrust->hasRole('employee', $user)) {
+                return redirect('/leaveform');
+            } elseif ($laratrust->hasRole('division_chief', $user)) {
+                return redirect('/divisionchief');
+            } elseif ($laratrust->hasRole('director', $user)) {
+                return redirect('/director');
+            } elseif ($laratrust->hasRole('h_r', $user)) {
+                return redirect('/humanresource');
+            } elseif ($laratrust->hasRole('head_officer', $user)) {
+                return redirect('/headHR');
+            }
+        }
+
+        return redirect('/home');
     }
 }

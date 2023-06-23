@@ -53,7 +53,7 @@
                 <td>
 
                     <div class="btn-group" id="btnGroup">
-                        <a href="/leaveApplicationDivisionChief/{{$dcform['id']}}" type="button" class="btn btn-primary"> View </a>
+                        <a href="/viewdivision/{{$dcform['id']}}" type="button" class="btn btn-primary"> View </a>
                     </div>
 
 
