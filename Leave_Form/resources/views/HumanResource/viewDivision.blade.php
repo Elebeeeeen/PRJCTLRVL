@@ -39,7 +39,6 @@
     .divider {
         padding-left: 100px;
     }
-
     #preposition {
         margin: 8px 10px 0px 10px;
         padding-top: 32px;
@@ -63,23 +62,23 @@
     <div class="row">
         <div class="form-group col-3">
             <label for="requested_by" class="form-label">Office</label>
-            <input type="text" class="form-control" id="office" name="office" value="{{$division_form['office']}}" disabled>
+            <input type="text" class="form-control" id="office" name="office" value="{{$directors_form['office']}}" disabled>
 
         </div>
 
         <div class="form-group col-4">
             <label for="requested_by" class="form-label">Last Name</label>
-            <input type="text" class="form-control" id="last_name" name="last_name" value="{{$division_form['last_name']}}" disabled>
+            <input type="text" class="form-control" id="last_name" name="last_name" value="{{$directors_form['last_name']}}" disabled>
         </div>
 
         <div class="form-group col-4">
             <label for="requested_by" class="form-label">First Name</label>
-            <input type="text" class="form-control" id="first_name" name="first_name" value="{{$division_form['first_name']}}" disabled>
+            <input type="text" class="form-control" id="first_name" name="first_name" value="{{$directors_form['first_name']}}" disabled>
         </div>
 
         <div class="form-group col-1">
             <label for="requested_by" class="form-label">M.I.</label>
-            <input type="text" class="form-control" id="middle_initial" name="middle_initial" value="{{$division_form['middle_initial']}}" disabled>
+            <input type="text" class="form-control" id="middle_initial" name="middle_initial" value="{{$directors_form['middle_initial']}}" disabled>
         </div>
     </div>
 
@@ -88,17 +87,17 @@
     <div class="row">
         <div class="form-group col-4">
             <label for="requested_by" class="form-label">Employee Number</label>
-            <input type="text" class="form-control" id="employee_number" name="employee_number" value="{{$division_form['employee_number']}}" disabled>
+            <input type="text" class="form-control" id="employee_number" name="employee_number" value="{{$directors_form['employee_number']}}" disabled>
         </div>
 
         <div class="form-group col-4">
             <label for="requested_by" class="form-label">Position</label>
-            <input type="text" class="form-control" id="position" name="position" value="{{$division_form['position']}}" disabled>
+            <input type="text" class="form-control" id="position" name="position" value="{{$directors_form['position']}}" disabled>
         </div>
 
         <div class="form-group col-4">
             <label for="requested_by" class="form-label">Salary</label>
-            <input type="text" class="form-control" id="salary" name="salary" value="{{$division_form['salary']}}" disabled>
+            <input type="text" class="form-control" id="salary" name="salary" value="{{$directors_form['salary']}}" disabled>
         </div>
     </div>
 
@@ -106,22 +105,21 @@
     <div class="row">
         <div class="form-group col-12">
             <label for="requested_by" class="form-label">E-mail</label>
-            <input type="text" class="form-control" id="email" name="email" value="{{$division_form['email']}}" disabled>
+            <input type="text" class="form-control" id="email" name="email" value="{{$directors_form['email']}}" disabled>
         </div>
     </div>
-
     <!-- fourth row -->
 
     <div class="row">
 
         <div class="form-group col-3">
             <label for="requested_by" class="form-label">No. Of Working Days</label>
-            <input type="text" class="form-control" id="num_working_days" name="num_working_days" value="{{$division_form['num_working_days']}}" disabled>
+            <input type="text" class="form-control" id="num_working_days" name="num_working_days" value="{{$directors_form['num_working_days']}}" disabled>
         </div>
 
         <div class="form-group col-4">
             <label for="requested_by" class="form-label">Inclusive Date</label>
-            <input type="text" class="form-control" id="startdate" name="startdate" value="{{$division_form['start_date']}}" disabled>
+            <input type="text" class="form-control" id="startdate" name="startdate" value="{{$directors_form['start_date']}}" disabled>
         </div>
 
         <div class="form-group" id="preposition">
@@ -130,7 +128,7 @@
 
         <div class="form-group col-4" id="align">
             <label for="requested_by" class="form-label"></label>
-            <input type="text" class="form-control" id="enddate" name="enddate" value="{{$division_form['end_date']}}" disabled>
+            <input type="text" class="form-control" id="enddate" name="enddate" value="{{$directors_form['end_date']}}" disabled>
         </div>
 
     </div>
@@ -141,12 +139,12 @@
 
         <div class="form-group col-8">
             <label for="requested_by" class="form-label">Type of Leave</label>
-            <input class="select2 form-control" name="type_of_leave" id="type_of_leave" value="{{$division_form['type_of_leave']}}" disabled>
+            <input class="select2 form-control" name="type_of_leave" id="type_of_leave" value="{{$directors_form['type_of_leave']}}" disabled>
         </div>
 
         <div class="form-group col-4">
             <label for="requested_by" class="form-label">Date</label>
-            <input type="date" class="form-control" id="date" name="date" value="{{$division_form['date']}}" disabled>
+            <input type="date" class="form-control" id="date" name="date" value="{{$directors_form['date']}}" disabled>
         </div>
     </div>
 
@@ -172,7 +170,7 @@
                     <input type="radio" id="radio" class="details" name="details" value="Within Aborad" disabled>
                     <label for="requested_by" class="form-label">Within Abroad</label>
 
-                    <input type="text" class="form-control" id="specification" name="specification" value="{{$division_form['specification']}}" style="width: 100%" disabled>
+                    <input type="text" placeholder="Specify" class="form-control" id="specification" name="specification" value="{{$directors_form['specification']}}" style="width: 100%" disabled>
                 </div>
             </div>
             <!-- end of vacation leave -->
@@ -198,7 +196,7 @@
                     <input type="radio" id="radio5" class="details" name="details" value="In case Leave Benefits for Women" disabled>
                     <label for="requested_by" class="form-label">In case Leave Benefits for Women</label>
 
-                    <input type="text" class="form-control" id="specification" name="specification" value="{{$division_form['specification']}}" style="width: 100%" disabled>
+                    <input type="text" placeholder="Specify" class="form-control" id="specification" name="specification" value="{{$directors_form['specification']}}" style="width: 100%" disabled>
                 </div>
 
             </div>
@@ -278,21 +276,23 @@
     <div class="row">
         <div class="form-group col-12">
             <label for="requested_by" class="form-label">Approver</label>
-            <input type="text" class="form-control" id="approver" name="approver" value="{{$division_form['approver']}}">
+            <input type="text" class="form-control" id="approver" name="approver" value="{{$directors_form['approver']}}">
         </div>
     </div>
     <!-- end of seventh row -->
 
+    <br>
+
+    <!--button-->
     <div class="w-100">
         <div class="float-right">
-            <form action="/headHR/{{$id}}" data-id="{{$id}}" id="approve_form" method="POST">
+            <form action="/employeeHR/{{$id}}" data-id="{{$id}}" id="approve_form" method="POST">
                 @METHOD('PUT')
-                <button type="submit" id="approve" value="Approved" class="btn btn-success">Approve</button>
-                <button type="submit" id="reject" value="Rejected" class="btn btn-danger">Reject</button>
+                <button type="submit" id="approve" value="Approved by HR" class="btn btn-success">Approve</button>
+                <button type="submit" id="reject" value="Rejected by HR" class="btn btn-danger">Reject</button>
             </form>
         </div>
     </div>
-
 
 </div>
 
@@ -300,9 +300,99 @@
 
 
 
-
 <script>
-         //sweet alert for approve and reject
+    $(document).ready(function() {
+
+
+        //radio button for commutation
+        if ("{{$directors_form['commutation']}}" == $('#radio11').val()) {
+            $("#radio11").prop("checked", true);
+        } else {
+            $("#radio12").prop("checked", true);
+        }
+
+        // select2 for type of leave
+
+
+        let vacation_form = $($('.leaveOption div')[0]);
+        let sick_form = $($('.leaveOption div')[3]);
+        let study_form = $($('.leaveOption div')[7]);
+        let other = $($('.leaveOption div')[10]);
+
+        //vacation
+        let radio1 = $($('.details')[0]);
+        let radio2 = $($('.details')[1]);
+
+        //sick
+        let radio3 = $($('.details')[2]);
+        let radio4 = $($('.details')[3]);
+        let radio5 = $($('.details')[4]); 
+
+        //study
+        let radio6 = $($('.details')[5]);
+        let radio7 = $($('.details')[6]);
+
+        //other
+        let radio8 = $($('.details')[7]);
+        let radio9 = $($('.details')[8]);
+
+
+        function clearType() {
+            vacation_form.css('display', 'none')
+            sick_form.css('display', 'none')
+            study_form.css('display', 'none')
+            other.css('display', 'none')
+        }
+
+
+        switch (@json($directors_form -> leaveType)) {
+            // Vacation
+            case '1':
+                clearType()
+                vacation_form.css('display', 'block');
+                (@json($directors_form -> details) == radio1.val()) ? radio1.prop('checked', true): radio2.prop('checked', true);
+                break;
+
+                //walang laman
+            case '2':
+            case '4':
+            case '5':
+            case '6':
+            case '7':
+            case '9':
+            case '10':  
+            case '11':
+            case '12':
+            case '13':
+                clearType()
+                break;
+
+                //Sick
+            case '3':
+                clearType()
+                sick_form.css('display', 'block');
+                (@json($directors_form -> details) == radio3.val()) ? radio3.prop('checked', true)
+                : (@json($directors_form -> details) == radio4.val()) ? radio4.prop('checked', true)
+                : radio5.prop('checked', true);
+                break;
+
+                //study 
+            case '8':
+                clearType()
+                study_form.css('display', 'block');
+                (@json($directors_form -> details) == radio6.val()) ? radio6.prop('checked', true): radio7.prop('checked', true);
+                break;
+
+            case '14':
+                clearType()
+                other.css('display', 'block')
+                (@json($directors_form -> details) == radio8.val()) ? radio8.prop('checked', true): radio9.prop('checked', true);
+                break;
+
+        }
+    });
+
+    //sweet alert for approve and reject
     //ayos na
     let errorMessages = '';
 
@@ -314,7 +404,7 @@
             var status = button.value;
             let formData = new FormData($('#approve_form')[0]);
 
-            if (status == "Approved") {
+            if (status == "Approved by HR") {
                 e.preventDefault();
                 Swal.fire({
                     icon: 'warning',
@@ -330,7 +420,7 @@
                     if (result.isConfirmed) {
                         formData.append('status', status);
                         $.ajax({
-                            url: '/headHR/' + $('#approve_form').attr("data-id"),
+                            url: '/employeeHR/' + $('#approve_form').attr("data-id"),
                             method: "POST",
                             processData: false,
                             contentType: false,
@@ -349,7 +439,7 @@
                                         confirmButtonText: "confirm",   
                                     }).then((result) => {
                                         if (result.isConfirmed) {
-                                            window.location.href = "/headHR/";
+                                            window.location.href = "/humanresource/";
                                         }
                                     })
                                 } else {
@@ -378,7 +468,7 @@
                         })
                     }
                 });
-            } else if (status == "Rejected") {
+            } else if (status == "Rejected by HR") {
                 e.preventDefault();
                 Swal.fire({
                     title: 'Are you sure?',
@@ -409,8 +499,19 @@
                                 let reason = result.value;
                                 formData.append('status', status);
                                 formData.append('reason', reason);
+                                Swal.fire({
+                                    title: 'Now Loading',
+                                    html: '<b> Please wait... </b>',
+                                    timer: 15000,
+                                    didOpen: () => {
+                                        Swal.showLoading()
+                                    },
+                                    willClose: () => {
+                                        clearInterval(timerInterval)
+                                    }
+                                })
                                 $.ajax({
-                                    url: '/headHR/' + $('#approve_form').attr("data-id"),
+                                    url: '/employeeHR/' + $('#approve_form').attr("data-id"),
                                     method: "POST",
                                     processData: false,
                                     contentType: false,
@@ -428,7 +529,7 @@
                                                 confirmButtonText: "confirm",
                                             }).then((result) => {
                                                 if (result.isConfirmed) {
-                                                    window.location.href = "/headHR/";
+                                                    window.location.href = "/humanresource/";
                                                 }
                                             })
                                         } else {
@@ -472,7 +573,5 @@
             }
         })
     })
-
 </script>
-
 @endsection

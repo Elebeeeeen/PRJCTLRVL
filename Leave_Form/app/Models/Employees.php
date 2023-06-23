@@ -18,7 +18,7 @@ class Employees extends Model
 
 
     //fill out the users input
-    protected $fillable = ['office', 'last_name', 'first_name', 'middle_initial', 'employee_number', 'position', 'salary', 'email', 'type_of_leave', 'date', 'num_working_days', 'inclusive_dates', 'commutation', 'approver', 'details', 'specification', 'status'];
+    protected $fillable = ['office', 'last_name', 'first_name', 'middle_initial', 'employee_number', 'position', 'salary', 'email', 'type_of_leave', 'date', 'num_working_days', 'inclusive_dates', 'commutation', 'approver', 'details', 'specification', 'status', 'start_date', 'end_date'];
 
 
 
