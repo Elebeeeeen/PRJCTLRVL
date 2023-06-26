@@ -1,121 +1,3 @@
-@role('main')
-
-<p>employee 1</p>
-
-<li class="nav-item">
-    <a href="/leaveform/create" class="nav-link {{ Request::is('leaveform/create') ? 'active' : '' }}">
-        <i class="nav-icon fas fa-file "></i>
-        <p>Leave Form</p>
-    </a>
-</li>
-
-<li class="nav-item">
-    <a href="/leaveform" class="nav-link {{ Request::is('leaveform') ? 'active' : '' }}">
-        <i class="nav-icon fas fa-folder-open"></i>
-        <p>List of leave application</p>
-    </a>
-</li>
-
-
-<p>division chief 2</p>
-
-<li class="nav-item">
-    <a href="/divisionchief" class="nav-link {{ Request::is('divisionchief') ? 'active' : '' }}">
-        <i class="nav-icon fas fa-home"></i>
-        <p>Home</p>
-    </a>
-</li>
-
-<li class="nav-item">
-    <!--<a href="/leaveform/create" class="nav-link {{ Request::is('leaveform/create') ? 'active' : '' }}"> -->
-    <a href="/divisionchief/create" class="nav-link {{ Request::is('divisionchief/create') ? 'active' : '' }}">
-        <i class="nav-icon fas fa-file "></i>
-        <p>Leave Form</p>
-    </a>
-</li>
-
-
-<li class="nav-item">
-    <a href="/divisionlist" class="nav-link {{ Request::is('divisionlist') ? 'active' : '' }}">
-        <i class="nav-icon fas fa-folder-open"></i>
-        <p>List of leave application</p>
-    </a>
-</li>
-
-<div class="sidenav">
-    <a class="dropdown-btn nav-link"><i class="nav-icon far fa-edit"></i> For Approve <i class="fa fa-caret-down"></i>
-        <div class="dropdown-container">
-            <a href="/divemplist">Leave Application</a>
-        </div>
-
-</div>
-
-
-<p>director 3</p>
-
-<li class="nav-item">
-    <a href="/director" class="nav-link {{ Request::is('director') ? 'active' : '' }}">
-        <i class="nav-icon fas fa-home"></i>
-        <p>Home</p>
-    </a>
-</li>
-
-
-<div class="sidenav">
-    <a class="dropdown-btn nav-link"><i class="nav-icon far fa-edit"></i> For Approve <i class="fa fa-caret-down"></i>
-        <div class="dropdown-container">
-            <a href="/leaveapplicationDir">Leave Application (Employee)</a>
-            <a href="/leaveApplicationDivisionChief1">Leave Application (Division)</a>
-        </div>
-</div>
-
-
-
-<p>hr 4</p>
-
-
-<li class="nav-item">
-    <a href="/humanresource" class="nav-link {{ Request::is('humanresource') ? 'active' : '' }}">
-        <i class="nav-icon fas fa-home"></i>
-        <p>Home</p>
-    </a>
-</li>
-
-
-<div class="sidenav">
-    <a class="dropdown-btn nav-link"><i class="nav-icon far fa-edit"></i> For Approve <i class="fa fa-caret-down"></i>
-        <div class="dropdown-container">
-            <a href="/accountapplication">Account</a>
-            <a href="/leaveapplication">Leave Application (Employee)</a>
-            <a href="/leaveApplicationDivisionChief">Leave Application (Division)</a>
-        </div>
-</div>
-
-
-<p>head 5</p>
-
-
-<li class="nav-item">
-    <a href="/headHR" class="nav-link {{ Request::is('headHR') ? 'active' : '' }}">
-        <i class="nav-icon fas fa-home"></i>
-        <p>Home</p>
-    </a>
-</li>   
-
-
-<div class="sidenav">
-    <a class="dropdown-btn nav-link"><i class="nav-icon far fa-edit"></i> For Approve <i class="fa fa-caret-down"></i>
-        <div class="dropdown-container">
-            <a href="/leaveapplicationHead">Leave Application (Employee)</a>
-            <a href="/leaveapplicationHead1">Leave Application (Division)</a>
-        </div>
-</div>
-
-
-@endrole
-
-
-
 
 <!-- for employee-->
 @role('employee')
@@ -129,7 +11,7 @@
 <li class="nav-item">
     <a href="/leaveform" class="nav-link {{ Request::is('leaveform') ? 'active' : '' }}">
         <i class="nav-icon fas fa-folder-open"></i>
-        <p>List of leave application</p>
+        <p>List of Leave Application</p>
     </a>
 </li>
 
@@ -187,7 +69,7 @@
 <li class="nav-item">
     <a href="/divisionlist" class="nav-link {{ Request::is('divisionlist') ? 'active' : '' }}">
         <i class="nav-icon fas fa-folder-open"></i>
-        <p>List of leave application</p>
+        <p>List of Leave Application</p>
     </a>
 </li>
 
@@ -264,6 +146,10 @@
         text-align: left;
         cursor: pointer;
 
+    }
+
+    p{
+        font-size: 15px;
     }
 
     .dropdown-container {

@@ -40,41 +40,33 @@ class EmployeeController extends Controller
 
      // Validator in submitting a leave form
 
+     
+
     public function store(Request $request)
     {
         $message_error = [
-            'office.required' => 'Please state your Department Office',
-            'last_name.required' => 'Please indicate your Last Name',
-            'first_name.required' => 'Please indicate your First Name',
-            'middle_initial.required' => 'Please indicate your Middle Initial',
-            'employee_number.required' => 'Please indicate your Employee Number',
-            'position.required' => 'Please indicate your Position',
-            'employee_number.required' => 'Please indicate your Employee Number',
-            'salary.required' => 'Please indicate your Salary',
-            'email.required' => 'Please indicate your E-mail',
-            'type_of_leave.required' => 'Please indicate your Type of Leave',
-            'date.required' => 'Please indicate your Date',
-            'num_working_days.required' => 'Please indicate your Number Working Days',
-            'inclusive_dates.required' => 'Please indicate your Inclusive Dates',
-            'approver.required' => 'Please indicate your Approver',
-            'commutation.required' => 'Please indicate your Commutation',
+
+            'num_working_days.required' => 'Please Indicate Your Number Working Days',
+            'type_of_leave.required' => 'Please Indicate Your Type of Leave',
+            'start_date.required' => 'Please Indicate the Starting Date',
+            'end_date.required' => 'Please Indicate the End Date',
+            'date.required' => 'Please Indicate Your Date',
+            'inclusive_dates.required' => 'Please Indicate Your Inclusive Dates',
+            'commutation.required' => 'Please Indicate Your Commutation',
+            'approver.required' => 'Please Indicate Your Approver',
 
 
         ];
 
         $validator = Validator::make($request->all(), [
-            'office' => 'required|max:25',
-            'last_name' => 'required|max:25',
-            'first_name' => 'required|max:25',
-            'middle_initial' => 'required|max:1',
-            'employee_number' => 'required|numeric|max:99999',
-            'salary' => 'required|numeric|max:999999',
-            'email' => 'required',
+
+            'num_working_days' => 'required|numeric|max:10',
+            'start_date' => 'required',
+            'end_date' => 'required',
             'type_of_leave' => 'required',
             'date' => 'required',
-            'num_working_days' => 'required|numeric',
-            'approver' => 'required',
             'commutation' => 'required',
+            'approver' => 'required',
 
         ], $message_error);
 
