@@ -39,6 +39,15 @@
     .divider {
         padding-left: 100px;
     }
+
+    #preposition {
+        margin: 8px 10px 0px 10px;
+        padding-top: 32px;
+    }
+
+    #align {
+        padding-top: 18px;
+    }
 </style>
 
 
@@ -102,28 +111,42 @@
     </div>
 
     <!-- fourth row -->
+
     <div class="row">
-        <div class="form-group col-3">
-            <label for="requested_by" class="form-label">Type of Leave</label>
-            <input class="select2 form-control" name="type_of_leave" id="type_of_leave" value="{{$division_form['type_of_leave']}}" disabled>
-
-            </input>
-        </div>
-
-
-        <div class="form-group col-3">
-            <label for="requested_by" class="form-label">Date</label>
-            <input type="date" class="form-control" id="date" name="date" value="{{$division_form['date']}}" disabled>
-        </div>
 
         <div class="form-group col-3">
             <label for="requested_by" class="form-label">No. Of Working Days</label>
             <input type="text" class="form-control" id="num_working_days" name="num_working_days" value="{{$division_form['num_working_days']}}" disabled>
         </div>
 
-        <div class="form-group col-3">
-            <label for="requested_by" class="form-label">Inclusive Dates</label>
-            <input type="text" class="form-control" id="inclusive_dates" name="inclusive_dates" value="{{$division_form['inclusive_dates']}}" disabled>
+        <div class="form-group col-4">
+            <label for="requested_by" class="form-label">Inclusive Date</label>
+            <input type="text" class="form-control" id="startdate" name="startdate" value="{{$division_form['start_date']}}" disabled>
+        </div>
+
+        <div class="form-group" id="preposition">
+            <label for="requested_by" class="form-label">to</label>
+        </div>
+
+        <div class="form-group col-4" id="align">
+            <label for="requested_by" class="form-label"></label>
+            <input type="text" class="form-control" id="enddate" name="enddate" value="{{$division_form['end_date']}}" disabled>
+        </div>
+
+    </div>
+
+    <!-- new row -->
+
+    <div class="row">
+
+        <div class="form-group col-8">
+            <label for="requested_by" class="form-label">Type of Leave</label>
+            <input class="select2 form-control" name="type_of_leave" id="type_of_leave" value="{{$division_form['type_of_leave']}}" disabled>
+        </div>
+
+        <div class="form-group col-4">
+            <label for="requested_by" class="form-label">Date</label>
+            <input type="date" class="form-control" id="date" name="date" value="{{$division_form['date']}}" disabled>
         </div>
     </div>
 
@@ -262,10 +285,14 @@
 
     <div class="w-100">
         <div class="float-right">
-            <button type="button" id="approve" class="btn btn-primary">Approve</button>
-            <button type="button" id="reject" class="btn btn-danger">Reject</button>
+            <form action="/headHR/{{$id}}" data-id="{{$id}}" id="approve_form" method="POST">
+                @METHOD('PUT')
+                <button type="submit" id="approve" value="Approved" class="btn btn-success">Approve</button>
+                <button type="submit" id="reject" value="Rejected" class="btn btn-danger">Reject</button>
+            </form>
         </div>
     </div>
+
 
 </div>
 
@@ -275,151 +302,177 @@
 
 
 <script>
-    $(document).ready(function() {
-
-
-        //radio button for commutation
-        if ("{{$division_form['commutation']}}" == $('#radio11').val()) {
-            $("#radio11").prop("checked", true);
-        } else {
-            $("#radio12").prop("checked", true);
-        }
-
-        // select2 for type of leave
-
-
-        let vacation_form = $($('.leaveOption div')[0]);
-        let sick_form = $($('.leaveOption div')[3]);
-        let study_form = $($('.leaveOption div')[7]);
-        let other = $($('.leaveOption div')[10]);
-
-        //vacation
-        let radio1 = $($('.details')[0]);
-        let radio2 = $($('.details')[1]);
-
-        //sick
-        let radio3 = $($('.details')[2]);
-        let radio4 = $($('.details')[3]);
-        let radio5 = $($('.details')[4]);
-
-        //study
-        let radio6 = $($('.details')[5]);
-        let radio7 = $($('.details')[6]);
-
-        //other
-        let radio8 = $($('.details')[7]);
-        let radio9 = $($('.details')[8]);
-
-
-        function clearType() {
-            vacation_form.css('display', 'none')
-            sick_form.css('display', 'none')
-            study_form.css('display', 'none')
-            other.css('display', 'none')
-        }
-
-
-        switch (@json($division_form -> leaveType)) {
-            // Vacation
-            case '1':
-                clearType()
-                vacation_form.css('display', 'block');
-                (@json($division_form -> details) == radio1.val()) ? radio1.prop('checked', true): radio2.prop('checked', true);
-                break;
-
-                //walang laman
-            case '2':
-            case '4':
-            case '5':
-            case '6':
-            case '7':
-            case '9':
-            case '10':
-            case '11':
-            case '12':
-            case '13':
-                clearType()
-                break;
-
-                //Sick
-            case '3':
-                clearType()
-                sick_form.css('display', 'block');
-                (@json($division_form -> details) == radio3.val()) ? radio3.prop('checked', true)
-                : (@json($division_form -> details) == radio4.val()) ? radio4.prop('checked', true) 
-                :radio5.prop('checked', true);
-                break;
-
-                //study 
-            case '8':
-                clearType()
-                study_form.css('display', 'block');
-                (@json($division_form -> details) == radio6.val()) ? radio6.prop('checked', true): radio7.prop('checked', true);
-                break;
-
-            case '14':
-                clearType()
-                other.css('display', 'block')
-                    (@json($division_form -> details) == radio8.val()) ? radio8.prop('checked', true) : radio9.prop('checked', true);
-                break;
-
-        }
-    });
-
-
-    //sweet alert for submit
+         //sweet alert for approve and reject
+    //ayos na
     let errorMessages = '';
-    $("#submitForm").on("submit", function(e) {
-        e.preventDefault();
-        let formData = new FormData($('#submitForm')[0]);
-        Swal.fire({
-            title: "Are you sure?",
-            text: 'You want to submit this application?',
-            icon: "warning",
-            showCancelButton: true,
-            confirmButtonText: "Confirm",
-            cancelButtonText: "Cancel"
-        }).then((result) => {
-            if (result.isConfirmed) {
-                $.ajax({
-                    url: "/leaveform",
-                    method: "POST",
-                    processData: false,
-                    contentType: false,
-                    cache: false,
-                    data: formData,
-                    success: function(response) {
-                        if (response.success) {
-                            Swal.fire({
-                                title: 'Success!',
-                                text: 'You can now view and print your leave form. Wait to notify in your email to be approved.',
-                                icon: 'success',
-                                confirmButtonText: 'Okay'
-                            }).then((result) => {
-                                if (result.isConfirmed) {
-                                    window.location.href = "/leaveform/";
+
+    var form = document.getElementById('approve_form');
+    var buttons = form.querySelectorAll('button[type="submit"]');
+
+    buttons.forEach(function(button) {
+        button.addEventListener('click', function(e) {
+            var status = button.value;
+            let formData = new FormData($('#approve_form')[0]);
+
+            if (status == "Approved") {
+                e.preventDefault();
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'Are you sure?',
+                    text: "You want to approve this application?",
+                    showCancelButton: true,
+                    confirmButtonText: "Yes",
+                    cancelButtonColor: '#d33',
+                    cancelButtonText: "Cancel",
+
+
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        formData.append('status', status);
+                        $.ajax({
+                            url: '/headHR/' + $('#approve_form').attr("data-id"),
+                            method: "POST",
+                            processData: false,
+                            contentType: false,
+                            cache: false,
+                            data: formData,
+                            headers: {
+                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                            },
+                            success: function(response) {
+                                if (response.success) {
+                                    Swal.fire({
+                                        icon: 'success',
+                                        title: 'Approve',
+                                        text: "The user applicaiton has been approve!",
+                                        confirmButtonColor: '#228B22',
+                                        confirmButtonText: "confirm",   
+                                    }).then((result) => {
+                                        if (result.isConfirmed) {
+                                            window.location.href = "/headHR/";
+                                        }
+                                    })
+                                } else {
+                                    for (let i = 0; i < response.errors.length; i++) {
+                                        errorMessages += "-" + response.errors[i] + "\n";
+                                    }
+                                    Swal.fire({
+                                        html: '<pre>' + errorMessages + '</pre>',
+                                        customClass: {
+                                            popup: 'format-pre'
+                                        },
+                                        title: 'Error!',
+                                        icon: 'error',
+                                        confirmButtonText: 'Okay'
+                                    })
+                                    errorMessages = "";
                                 }
-                            })
-                        } else {
-                            for (let i = 0; i < response.errors.length; i++) {
-                                errorMessages += "-" + response.errors[i] + "\n";
                             }
-                            Swal.fire({
-                                html: '<pre>' + errorMessages + '</pre>',
-                                customClass: {
-                                    popup: 'format-pre'
-                                },
-                                title: 'Error!',
-                                icon: 'error',
-                                confirmButtonText: 'Okay'
-                            })
-                            errorMessages = "";
-                        }
+                        });
+                    } else {
+                        Swal.fire({
+                            title: 'Are you sure?',
+                            text: "You want to cancel it?",
+                            icon: 'question',
+                            confirmButtonText: "confirm",
+                        })
                     }
-                }); //AJAX
+                });
+            } else if (status == "Rejected") {
+                e.preventDefault();
+                Swal.fire({
+                    title: 'Are you sure?',
+                    text:'Do you want to reject this application?',
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonText: "confirm",
+                    cancelButtonColor: '#d33',
+                    cancelButtonText: "cancel",
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        Swal.fire({
+                            title: 'Are you sure?',
+                            text: 'state the reason:',
+                            icon: 'warning',
+                            showCancelButton: true,
+                            confirmButtonText: "confirm",
+                            cancelButtonColor: '#d33',
+                            cancelButtonText: "cancel",
+                            input: "text",
+                            inputValidator: (value) => {
+                                if (!value) {
+                                    return "Please state the reason.";
+                                }
+                            }
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+                                let reason = result.value;
+                                formData.append('status', status);
+                                formData.append('reason', reason);
+                                $.ajax({
+                                    url: '/headHR/' + $('#approve_form').attr("data-id"),
+                                    method: "POST",
+                                    processData: false,
+                                    contentType: false,
+                                    cache: false,
+                                    data: formData,
+                                    headers: {
+                                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                                    },
+                                    success: function(response) {
+                                        if (response.success) {
+                                            Swal.fire({
+                                                title: '',
+                                                icon: 'warning',
+                                                showCancelButton: true,
+                                                confirmButtonText: "confirm",
+                                            }).then((result) => {
+                                                if (result.isConfirmed) {
+                                                    window.location.href = "/headHR/";
+                                                }
+                                            })
+                                        } else {
+                                            for (let i = 0; i < response.errors.length; i++) {
+                                                errorMessages += "-" + response.errors[i] + "\n";
+                                            }
+                                            Swal.fire({
+                                                html: '<pre>' + errorMessages + '</pre>',
+                                                customClass: {
+                                                    popup: 'format-pre'
+                                                },
+                                                title: 'Error!',
+                                                icon: 'error',
+                                                confirmButtonText: 'Okay'
+                                            })
+                                            errorMessages = "";
+                                        }
+                                    }
+
+                                });
+                            } else {
+                                Swal.fire({
+                                    title: 'Are you sure?',
+                                    text: 'Do you want to cancel it?',
+                                    icon: 'question ',
+                                    showCancelButton: true,
+                                    confirmButtonText: "Yes",
+                                })
+                            }
+                        });
+                    } else {
+                        Swal.fire({
+                            title: 'Are you sure?',
+                            text: 'Do you want to cancel it?',
+                            icon: 'question',
+                            confirmButtonText: "Yes",
+                        })
+                    }
+                });
+
             }
-        });
-    });
+        })
+    })
+
 </script>
 
 @endsection

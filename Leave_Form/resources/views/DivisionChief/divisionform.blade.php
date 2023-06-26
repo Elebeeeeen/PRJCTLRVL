@@ -36,6 +36,15 @@
     .divider {
         padding-left: 100px;
     }
+
+    #preposition {
+        margin: 8px 10px 0px 10px;
+        padding-top: 32px;
+    }
+
+    #align {
+        padding-top: 8px;
+    }
 </style>
 
 <form action="/divisionchief" id="submitForm" method="POST">
@@ -126,32 +135,48 @@
         <div class="row">
 
             <div class="form-group col-3">
-                <label for="requested_by" class="form-label">Type of Leave</label>
-                <span id="requiredStyle"> *</span>
-                <select class="select2 form-control" name="type_of_leave" id="type_of_leave"></select>
-            </div>
-
-            <div class="form-group col-3">
-                <label for="requested_by" class="form-label">Date</label>
-                <span id="requiredStyle"> *</span>
-                <input type="date" class="form-control" id="date" name="date">
-            </div>
-
-            <div class="form-group col-3">
                 <label for="requested_by" class="form-label">No. Of Working Days</label>
                 <span id="requiredStyle"> *</span>
                 <input type="text" class="form-control" placeholder="Ex: (1) One day" id="num_working_days" name="num_working_days">
             </div>
 
-            <div class="form-group col-3">
+            <div class="form-group col-4">
                 <label for="requested_by" class="form-label">Inclusive Date</label>
                 <span id="requiredStyle"> *</span>
-                <input type="text" class="form-control" placeholder="Ex: April 26,2023" id="inclusive_dates" name="inclusive_dates">
+                <input type="date" class="form-control" id="startdate" name="startdate">
+            </div>
+
+            <div class="form-group" id="preposition">
+                <label for="requested_by" class="form-label">to</label>
+
+            </div>
+
+            <div class="form-group col-4" id="align">
+                <label for="requested_by" class="form-label"></label>
+                <input type="date" class="form-control" id="enddate" name="enddate">
             </div>
 
         </div>
 
-        <!-- end of fourth row -->
+        <!-- new row -->
+
+        <div class="row">
+
+            <div class="form-group col-8">
+                <label for="requested_by" class="form-label">Type of Leave</label>
+                <span id="requiredStyle"> *</span>
+                <select class="select2 form-control" name="type_of_leave" id="type_of_leave"></select>
+            </div>
+
+            <div class="form-group col-4">
+                <label for="requested_by" class="form-label">Date</label>
+                <span id="requiredStyle"> *</span>
+                <input type="date" class="form-control" id="date" name="date">
+            </div>
+        </div>
+
+
+    <!-- end of fourth row -->
 
 
         <!-- start of fifth row (pop-up) -->

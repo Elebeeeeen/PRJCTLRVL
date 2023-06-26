@@ -1,5 +1,6 @@
 @role('main')
-<p>Employee</p>
+
+<p>employee 1</p>
 
 <li class="nav-item">
     <a href="/leaveform/create" class="nav-link {{ Request::is('leaveform/create') ? 'active' : '' }}">
@@ -15,26 +16,9 @@
     </a>
 </li>
 
-<p> hr </p>
 
-<li class="nav-item">
-    <a href="/humanresource" class="nav-link {{ Request::is('humanresource') ? 'active' : '' }}">
-        <i class="nav-icon fas fa-home"></i>
-        <p>Home</p>
-    </a>
-</li>
+<p>division chief 2</p>
 
-
-<div class="sidenav">
-    <a class="dropdown-btn nav-link"><i class="nav-icon far fa-edit"></i> For Approve <i class="fa fa-caret-down"></i>
-        <div class="dropdown-container">
-            <a href="/accountapplication">Account</a>
-            <a href="/leaveapplication">Leave Application (Employee)</a>
-            <a href="/leaveApplicationDivisionChief">Leave Application (Division)</a>
-        </div>
-</div>
-
-<p>Division chief</p>
 <li class="nav-item">
     <a href="/divisionchief" class="nav-link {{ Request::is('divisionchief') ? 'active' : '' }}">
         <i class="nav-icon fas fa-home"></i>
@@ -61,13 +45,13 @@
 <div class="sidenav">
     <a class="dropdown-btn nav-link"><i class="nav-icon far fa-edit"></i> For Approve <i class="fa fa-caret-down"></i>
         <div class="dropdown-container">
-            <a href="/leaveapplication">Leave Application</a>
+            <a href="/divemplist">Leave Application</a>
         </div>
 
 </div>
 
 
-<p>director</p>
+<p>director 3</p>
 
 <li class="nav-item">
     <a href="/director" class="nav-link {{ Request::is('director') ? 'active' : '' }}">
@@ -85,7 +69,31 @@
         </div>
 </div>
 
-<p>Head HR</p>
+
+
+<p>hr 4</p>
+
+
+<li class="nav-item">
+    <a href="/humanresource" class="nav-link {{ Request::is('humanresource') ? 'active' : '' }}">
+        <i class="nav-icon fas fa-home"></i>
+        <p>Home</p>
+    </a>
+</li>
+
+
+<div class="sidenav">
+    <a class="dropdown-btn nav-link"><i class="nav-icon far fa-edit"></i> For Approve <i class="fa fa-caret-down"></i>
+        <div class="dropdown-container">
+            <a href="/accountapplication">Account</a>
+            <a href="/leaveapplication">Leave Application (Employee)</a>
+            <a href="/leaveApplicationDivisionChief">Leave Application (Division)</a>
+        </div>
+</div>
+
+
+<p>head 5</p>
+
 
 <li class="nav-item">
     <a href="/headHR" class="nav-link {{ Request::is('headHR') ? 'active' : '' }}">
@@ -102,6 +110,7 @@
             <a href="/leaveapplicationHead1">Leave Application (Division)</a>
         </div>
 </div>
+
 
 @endrole
 

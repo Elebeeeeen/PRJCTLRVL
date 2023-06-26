@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\DivisionChief;
 use App\Models\Employees;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 
 
@@ -16,8 +19,8 @@ class DCController extends Controller
 
     public function index()
     {
-        $count = Employees::count();
-
+        //para ito sa form yung lalabas kung ilang pending form pa ba ang meron
+        $count = Employees::where('Status', 'Pending')->count();
         return view('DivisionChief.form', compact(['count']));
     }
 
@@ -36,7 +39,8 @@ class DCController extends Controller
         // return view('DivisionChief.form');
     }
 
-    public function index3(){
+    public function index3()
+    {
         $list = new Employees();
         $leave_form  = $list->leaveType(Employees::where('status', 'Pending')->get());
 
@@ -90,9 +94,14 @@ class DCController extends Controller
 
         ], $message_error);
 
+        $firstInclusiveDate = $request->startdate;
+        $startInclusiveDate = Carbon::createFromFormat('Y-m-d', $firstInclusiveDate)->format('F j, Y');
+        $secondInclusiveDate = $request->enddate;
+        $endInclusiveDate = Carbon::createFromFormat('Y-m-d', $secondInclusiveDate)->format('F j, Y');
+
         if ($validator->passes()) {
 
-            if($request->specification1 != null){
+            if ($request->specification1 != null) {
                 $lf_employee = DivisionChief::create([
                     'office' => $request->office,
                     'last_name' => $request->last_name,
@@ -105,14 +114,16 @@ class DCController extends Controller
                     'type_of_leave' => $request->type_of_leave,
                     'date' => $request->date,
                     'num_working_days' => $request->num_working_days,
-                    'inclusive_dates' => $request->inclusive_dates,
+                    'start_date' => $startInclusiveDate,
+                    'end_date' =>  $endInclusiveDate,
+                    // 'inclusive_dates' => $request->inclusive_dates,
                     'details' => $request->details,
                     'specification' => $request->specification1,
                     'commutation' => $request->commutation,
                     'approver' => $request->approver,
                     'status' => 'Pending'
                 ]);
-            }else if ($request->specification2 != null){
+            } else if ($request->specification2 != null) {
                 $lf_employee = DivisionChief::create([
                     'office' => $request->office,
                     'last_name' => $request->last_name,
@@ -125,14 +136,16 @@ class DCController extends Controller
                     'type_of_leave' => $request->type_of_leave,
                     'date' => $request->date,
                     'num_working_days' => $request->num_working_days,
-                    'inclusive_dates' => $request->inclusive_dates,
+                    'start_date' => $startInclusiveDate,
+                    'end_date' =>  $endInclusiveDate,
+                    // 'inclusive_dates' => $request->inclusive_dates,
                     'details' => $request->details,
                     'specification' => $request->specification2,
                     'commutation' => $request->commutation,
                     'approver' => $request->approver,
                     'status' => 'Pending'
                 ]);
-            }else{
+            } else {
                 $lf_employee = DivisionChief::create([
                     'office' => $request->office,
                     'last_name' => $request->last_name,
@@ -145,7 +158,9 @@ class DCController extends Controller
                     'type_of_leave' => $request->type_of_leave,
                     'date' => $request->date,
                     'num_working_days' => $request->num_working_days,
-                    'inclusive_dates' => $request->inclusive_dates,
+                    'start_date' => $startInclusiveDate,
+                    'end_date' =>  $endInclusiveDate,
+                    // 'inclusive_dates' => $request->inclusive_dates,
                     'details' => $request->details,
                     'commutation' => $request->commutation,
                     'approver' => $request->approver,
@@ -163,7 +178,8 @@ class DCController extends Controller
      */
     public function show(string $id)
     {
-        //viewing the inserted data's through tables using view. 
+        // $lf_employee = Employees::find($id);
+        // return view('DivisionChief.view', compact(['lf_employee']));
 
         $division_form = DivisionChief::find($id);
 
@@ -183,46 +199,45 @@ class DCController extends Controller
      * Show the form for editing the specified resource.
      */
 
-    public function show2(string $id)
-    {
-        // $lf_employee = Employees::find($id);
-        // return view('DivisionChief.view', compact(['lf_employee']));
+    // public function show2(string $id)
+    // {
+    //     // $lf_employee = Employees::find($id);
+    //     // return view('DivisionChief.view', compact(['lf_employee']));
 
-        $lf_employees = DivisionChief::find($id);
+    //     $lf_employee = Employees::find($id);
 
-        //new class
-        $typeleave = new DivisionChief();
+    //     //new class
+    //     $typeleave = new Employees();
 
-        //assign sa ibang property bago mag palit ng value
-        $lf_employees->leaveType = $lf_employees->type_of_leave;
+    //     //assign sa ibang property bago mag palit ng value
+    //     $lf_employee->leaveType = $lf_employee->type_of_leave;
 
-        //getting the object and its property para mapalabas yung laman ng array
+    //     //getting the object and its property para mapalabas yung laman ng array
 
-        $lf_employees->type_of_leave = $typeleave->getLeaveType($lf_employees->type_of_leave);
+    //     $lf_employee->type_of_leave = $typeleave->getLeaveType($lf_employee->type_of_leave);
 
-        return view('DivisionChief.leave', compact(['lf_employees']));
-        
-    }
+    //     return view('DivisionChief.view', compact(['lf_employee', 'id']));
+    // }
 
     public function show3(string $id)
     {
+        $lf_employee = Employees::find($id);
 
+        //new class
+        $typeleave = new Employees();
+
+        //assign sa ibang property bago mag palit ng value
+        $lf_employee->leaveType = $lf_employee->type_of_leave;
+
+        //getting the object and its property para mapalabas yung laman ng array
+
+        $lf_employee->type_of_leave = $typeleave->getLeaveType($lf_employee->type_of_leave);
+
+        return view('DivisionChief.view', compact(['lf_employee', 'id']));
     }
     public function edit(string $id)
     {
-        $lf_employee = Employees::find($id);
-    
-        //new class
-        $typeleave = new Employees();
-    
-        //assign sa ibang property bago mag palit ng value
-        $lf_employee->leaveType = $lf_employee->type_of_leave;
-    
-        //getting the object and its property para mapalabas yung laman ng array
-    
-        $lf_employee->type_of_leave = $typeleave->getLeaveType($lf_employee->type_of_leave);
-    
-        return view('DivisionChief.view', compact(['lf_employee', 'id']));
+        //
     }
 
     /**
@@ -230,22 +245,43 @@ class DCController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        // dd($request);
         $lf_employee = Employees::find($id);
         $status = $request->status;
 
-        if($status == "Approved by DC"){
+        if ($status == "Approved by DC") {
             $lf_employee->status = $request->status;
             $lf_employee->save();
 
             return response()->json(["success" => true, "message" => "Successfully approved!"]);
-        }else if($status == "Rejected by DC"){
+        } else if ($status == "Rejected by DC") {
+            $email = $lf_employee->email;
+
+            $data = [
+                'reason' => $request->reason,
+                'employee' => $lf_employee,
+                'firstname' => Auth::user()->first_name,
+                'lastname' => Auth::user()->last_name,
+                'mi' => Auth::user()->middle_initial,
+                'position'=> Auth::user()->position,
+            ];
+
+            Mail::send('mail.reject', $data, function ($message) use ($data, $email) {
+                $message->to($email);
+                $message->subject('Disapproving Your Leave Application');
+                $message->from(Auth::user()->email, 'Division Chief');
+            });
+
+
             $lf_employee->status = $request->status;
             $lf_employee->save();
 
             return response()->json(["success" => true, "message" => "Successfully rejected!"]);
         }
+
+
     }
+
+
 
     /**
      * Remove the specified resource from storage.

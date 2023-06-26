@@ -52,7 +52,7 @@
                 <td>
 
                     <div class="btn-group" id="btnGroup">
-                        <a href="/divisionchief/{{$leavelist['id']}}/edit" type="button" class="btn btn-primary"> View </a>
+                        <a href="/viewemplist/{{$leavelist['id']}}" type="button" class="btn btn-primary"> View </a>
                     </div>
 
 
@@ -63,6 +63,7 @@
     </table>
 
 </div>
+
 
 
 <script>

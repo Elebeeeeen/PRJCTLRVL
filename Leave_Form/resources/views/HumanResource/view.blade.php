@@ -39,6 +39,16 @@
     .divider {
         padding-left: 100px;
     }
+
+    #preposition {
+        margin: 8px 10px 0px 10px;
+        padding-top: 32px;
+    }
+
+    #align {
+        padding-top: 18px;
+    }
+
 </style>
 
 
@@ -109,35 +119,45 @@
     </div>
 
     <!-- fourth row -->
-    <div class="row">
-        <div class="form-group col-3">
-            <label for="requested_by" class="form-label">Type of Leave</label>
-            <span id="requiredStyle"> *</span>
-            <input class="select2 form-control" name="type_of_leave" id="type_of_leave" value="{{$lf_employees['type_of_leave']}}" disabled>
 
-            </input>
+    <div class="row">
+
+        <div class="form-group col-3">
+            <label for="requested_by" class="form-label">No. Of Working Days</label>
+            <input type="text" class="form-control" id="num_working_days" name="num_working_days" value="{{$lf_employee['num_working_days']}}" disabled>
         </div>
 
+        <div class="form-group col-4">
+            <label for="requested_by" class="form-label">Inclusive Date</label>
+            <input type="text" class="form-control" id="startdate" name="startdate" value="{{$lf_employee['start_date']}}" disabled>
+        </div>
 
-        <div class="form-group col-3">
+        <div class="form-group" id="preposition">
+            <label for="requested_by" class="form-label">to</label>
+        </div>
+
+        <div class="form-group col-4" id="align">
+            <label for="requested_by" class="form-label"></label>
+            <input type="text" class="form-control" id="enddate" name="enddate" value="{{$lf_employee['end_date']}}" disabled>
+        </div>
+
+    </div>
+
+    <!-- new row -->
+
+    <div class="row">
+
+        <div class="form-group col-8">
+            <label for="requested_by" class="form-label">Type of Leave</label>
+            <input class="select2 form-control" name="type_of_leave" id="type_of_leave" value="{{$lf_employee['type_of_leave']}}" disabled>
+        </div>
+
+        <div class="form-group col-4">
             <label for="requested_by" class="form-label">Date</label>
             <span id="requiredStyle"> *</span>
             <input type="date" class="form-control" id="date" name="date" value="{{$lf_employees['date']}}" disabled>
         </div>
-
-        <div class="form-group col-3">
-            <label for="requested_by" class="form-label">No. Of Working Days</label>
-            <span id="requiredStyle"> *</span>
-            <input type="text" class="form-control" id="num_working_days" name="num_working_days" value="{{$lf_employees['num_working_days']}}" disabled>
-        </div>
-
-        <div class="form-group col-3">
-            <label for="requested_by" class="form-label">Inclusive Dates</label>
-            <span id="requiredStyle"> *</span>
-            <input type="text" class="form-control" id="inclusive_dates" name="inclusive_dates" value="{{$lf_employees['inclusive_dates']}}" disabled>
-        </div>
     </div>
-
 
 
     <!-- fifth row (pop-up) -->
@@ -276,10 +296,10 @@
     <!--button-->
     <div class="w-100">
         <div class="float-right">
-            <form action="/humanresource/{{$lf_employees['id']}}" data-id="{{$lf_employees['id']}}" id="approve_form" method="POST">
+            <form action="/humanresource/{{$id}}" data-id="{{$id}}" id="approve_form" method="POST">
                 @METHOD('PUT')
-                <button type="submit" id="approve" value="Approve by HR" class="btn btn-primary">Approve</button>
-                <button type="submit" id="reject" value="Reject by HR" class="btn btn-danger">Reject</button>
+                <button type="submit" id="approve" value="Approved by HR" class="btn btn-success">Approve</button>
+                <button type="submit" id="reject" value="Rejected by HR" class="btn btn-danger">Reject</button>
             </form>
         </div>
     </div>
@@ -379,62 +399,10 @@
         }
     });
 
-
-    //sweet alert for submit
+    //sweet alert for approve and reject
+    //ayos na
     let errorMessages = '';
-    $("#submitForm").on("submit", function(e) {
-        e.preventDefault();
-        let formData = new FormData($('#submitForm')[0]);
-        Swal.fire({
-            title: "Are you sure?",
-            text: 'You want to submit this application?',
-            icon: "warning",
-            showCancelButton: true,
-            confirmButtonText: "Confirm",
-            cancelButtonText: "Cancel"
-        }).then((result) => {
-            if (result.isConfirmed) {
-                $.ajax({
-                    url: "/leaveform",
-                    method: "POST",
-                    processData: false,
-                    contentType: false,
-                    cache: false,
-                    data: formData,
-                    success: function(response) {
-                        if (response.success) {
-                            Swal.fire({
-                                title: 'Success!',
-                                text: 'You can now view and print your leave form. Wait to notify in your email to be approved.',
-                                icon: 'success',
-                                confirmButtonText: 'Okay'
-                            }).then((result) => {
-                                if (result.isConfirmed) {
-                                    window.location.href = "/leaveform/";
-                                }
-                            })
-                        } else {
-                            for (let i = 0; i < response.errors.length; i++) {
-                                errorMessages += "-" + response.errors[i] + "\n";
-                            }
-                            Swal.fire({
-                                html: '<pre>' + errorMessages + '</pre>',
-                                customClass: {
-                                    popup: 'format-pre'
-                                },
-                                title: 'Error!',
-                                icon: 'error',
-                                confirmButtonText: 'Okay'
-                            })
-                            errorMessages = "";
-                        }
-                    }
-                }); //AJAX
-            }
-        });
-    });
 
-    let errorMessages = '';
     var form = document.getElementById('approve_form');
     var buttons = form.querySelectorAll('button[type="submit"]');
 
@@ -443,7 +411,7 @@
             var status = button.value;
             let formData = new FormData($('#approve_form')[0]);
 
-            if (status == "Approve by HR") {
+            if (status == "Approved by HR") {
                 e.preventDefault();
                 Swal.fire({
                     icon: 'warning',
@@ -451,6 +419,7 @@
                     text: "You want to approve this application?",
                     showCancelButton: true,
                     confirmButtonText: "Yes",
+                    cancelButtonColor: '#d33',
                     cancelButtonText: "Cancel",
 
 
@@ -473,11 +442,11 @@
                                         icon: 'success',
                                         title: 'Approve',
                                         text: "The user applicaiton has been approve!",
-                                        showCancelButton: true,
-                                        confirmButtonText: "confirm",
+                                        confirmButtonColor: '#228B22',
+                                        confirmButtonText: "confirm",   
                                     }).then((result) => {
                                         if (result.isConfirmed) {
-                                            window.location.href = "/humanresource";
+                                            window.location.href = "/humanresource/";
                                         }
                                     })
                                 } else {
@@ -499,20 +468,22 @@
                         });
                     } else {
                         Swal.fire({
-                            title: 'Are you sure you want to cancel it?',
-                            icon: 'info',
-                            showCancelButton: true,
+                            title: 'Are you sure?',
+                            text: "You want to cancel it?",
+                            icon: 'question',
                             confirmButtonText: "confirm",
                         })
                     }
                 });
-            } else if (status == "Reject by HR") {
+            } else if (status == "Rejected by HR") {
                 e.preventDefault();
                 Swal.fire({
-                    title: 'Are you sure you want to reject?',
+                    title: 'Are you sure?',
+                    text:'Do you want to reject this application?',
                     icon: 'warning',
                     showCancelButton: true,
                     confirmButtonText: "confirm",
+                    cancelButtonColor: '#d33',
                     cancelButtonText: "cancel",
                 }).then((result) => {
                     if (result.isConfirmed) {
@@ -522,11 +493,12 @@
                             icon: 'warning',
                             showCancelButton: true,
                             confirmButtonText: "confirm",
+                            cancelButtonColor: '#d33',
                             cancelButtonText: "cancel",
                             input: "text",
                             inputValidator: (value) => {
                                 if (!value) {
-                                    return "please state the reason.";
+                                    return "Please state the reason.";
                                 }
                             }
                         }).then((result) => {
@@ -534,6 +506,17 @@
                                 let reason = result.value;
                                 formData.append('status', status);
                                 formData.append('reason', reason);
+                                Swal.fire({
+                                    title: 'Now Loading',
+                                    html: '<b> Please wait... </b>',
+                                    timer: 15000,
+                                    didOpen: () => {
+                                        Swal.showLoading()
+                                    },
+                                    willClose: () => {
+                                        clearInterval(timerInterval)
+                                    }
+                                })
                                 $.ajax({
                                     url: '/humanresource/' + $('#approve_form').attr("data-id"),
                                     method: "POST",
@@ -553,7 +536,7 @@
                                                 confirmButtonText: "confirm",
                                             }).then((result) => {
                                                 if (result.isConfirmed) {
-                                                    window.location.href = "/humanresource";
+                                                    window.location.href = "/humanresource/";
                                                 }
                                             })
                                         } else {
@@ -576,8 +559,9 @@
                                 });
                             } else {
                                 Swal.fire({
-                                    title: 'Are you sure you want to cancel it?',
-                                    icon: 'warning',
+                                    title: 'Are you sure?',
+                                    text: 'Do you want to cancel it?',
+                                    icon: 'question ',
                                     showCancelButton: true,
                                     confirmButtonText: "Yes",
                                 })
@@ -585,9 +569,9 @@
                         });
                     } else {
                         Swal.fire({
-                            title: 'Are you sure want to cancel it?',
-                            icon: 'warning',
-                            showCancelButton: true,
+                            title: 'Are you sure?',
+                            text: 'Do you want to cancel it?',
+                            icon: 'question',
                             confirmButtonText: "Yes",
                         })
                     }

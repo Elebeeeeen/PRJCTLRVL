@@ -39,6 +39,15 @@
     .divider {
         padding-left: 100px;
     }
+    
+    #preposition {
+        margin: 8px 10px 0px 10px;
+        padding-top: 32px;
+    }
+
+    #align {
+        padding-top: 18px;
+    }
 </style>
 
 
@@ -102,28 +111,42 @@
     </div>
 
     <!-- fourth row -->
+
     <div class="row">
-        <div class="form-group col-3">
-            <label for="requested_by" class="form-label">Type of Leave</label>
-            <input class="select2 form-control" name="type_of_leave" id="type_of_leave" value="{{$division_form['type_of_leave']}}" disabled>
-
-            </input>
-        </div>
-
-
-        <div class="form-group col-3">
-            <label for="requested_by" class="form-label">Date</label>
-            <input type="date" class="form-control" id="date" name="date" value="{{$division_form['date']}}" disabled>
-        </div>
 
         <div class="form-group col-3">
             <label for="requested_by" class="form-label">No. Of Working Days</label>
             <input type="text" class="form-control" id="num_working_days" name="num_working_days" value="{{$division_form['num_working_days']}}" disabled>
         </div>
 
-        <div class="form-group col-3">
-            <label for="requested_by" class="form-label">Inclusive Dates</label>
-            <input type="text" class="form-control" id="inclusive_dates" name="inclusive_dates" value="{{$division_form['inclusive_dates']}}" disabled>
+        <div class="form-group col-4">
+            <label for="requested_by" class="form-label">Inclusive Date</label>
+            <input type="text" class="form-control" id="startdate" name="startdate" value="{{$division_form['start_date']}}" disabled>
+        </div>
+
+        <div class="form-group" id="preposition">
+            <label for="requested_by" class="form-label">to</label>
+        </div>
+
+        <div class="form-group col-4" id="align">
+            <label for="requested_by" class="form-label"></label>
+            <input type="text" class="form-control" id="enddate" name="enddate" value="{{$division_form['end_date']}}" disabled>
+        </div>
+
+    </div>
+
+    <!-- new row -->
+
+    <div class="row">
+
+        <div class="form-group col-8">
+            <label for="requested_by" class="form-label">Type of Leave</label>
+            <input class="select2 form-control" name="type_of_leave" id="type_of_leave" value="{{$division_form['type_of_leave']}}" disabled>
+        </div>
+
+        <div class="form-group col-4">
+            <label for="requested_by" class="form-label">Date</label>
+            <input type="date" class="form-control" id="date" name="date" value="{{$division_form['date']}}" disabled>
         </div>
     </div>
 

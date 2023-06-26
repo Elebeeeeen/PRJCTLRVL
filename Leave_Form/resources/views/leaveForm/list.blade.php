@@ -47,7 +47,7 @@
                 <td>{{$leavelist['last_name']}}</td>
                 <td>{{$leavelist['first_name']}}</td>
                 <td>{{$leavelist['middle_initial']}}</td>
-                <td>Pending</td>
+                <td>{{$leavelist['status']}}</td>
                 <td>{{$leavelist['type_of_leave']}}</td>
                 <td>
 

@@ -8,6 +8,8 @@ use App\Models\registerUser;
 use App\Models\DivisionChief;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 class HRController extends Controller
 {
@@ -17,13 +19,14 @@ class HRController extends Controller
     public function index()
     {
         $count = Employees::where('Status', 'Approved by Director')->count();
-        $count2 = registerUser::where('verified', 'false')->count();
+        $count2 = DivisionChief::where('Status', 'Approved by Director')->count();
+        // $count3 = registerUser::where('verified', 'false')->count();
         //displaying the page
         return view('HumanResource.form', compact(['count', 'count2']));
     }
 
 
-// linking to the employees leave applciation
+    // linking to the employees leave applciation
 
     public function index2()
     {
@@ -41,7 +44,7 @@ class HRController extends Controller
     }
 
 
-//linking to the registered account of the users
+    //linking to the registered account of the users
 
     public function index3()
     
@@ -53,7 +56,7 @@ class HRController extends Controller
     }
 
 
-// linking to the division chief leave application
+    // linking to the division chief leave application
 
     public function index4()
     {
@@ -91,13 +94,15 @@ class HRController extends Controller
 
         //new class
         $typeleave = new Employees();
-        
+    
+        //assign sa ibang property bago mag palit ng value
         $lf_employees->leaveType = $lf_employees->type_of_leave;
-
+    
         //getting the object and its property para mapalabas yung laman ng array
+    
         $lf_employees->type_of_leave = $typeleave->getLeaveType($lf_employees->type_of_leave);
-
-        return view('HumanResource.view', compact(['lf_employees']));
+    
+        return view('HumanResource.view', compact(['lf_employee', 'id']));
     }
 
     public function show2(string $id)
@@ -107,7 +112,7 @@ class HRController extends Controller
         //showing the inputed data's in accounts form 
 
         $application_form = registerUser::find($id);
-        return view('HumanResource.viewaccount', compact(['application_form','id']));
+        return view('HumanResource.viewaccount', compact(['application_form']));
     }
     /**
      * Show the form for editing the specified resource.
@@ -122,23 +127,71 @@ class HRController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $application_form = Employees::find($id);
+        $lf_employee = Employees::find($id);
         $status = $request->status;
-//for accept and reject button
-        if ($status == "Approve by HR") {
+
+        if ($status == "Approved by HR") {
             
-            $application_form->status = $request->status;
-            $application_form->save();
+            $lf_employee->status = $request->status;
+            $lf_employee->save();
+    
 
-            return response()->json(["success" => true, "message" => "Successfully Approve!"]);
-        } else if ($status == "Reject by HR") {
-            $application_form->status = $request->status;
-            $application_form->save();
+            return response()->json(["success" => true, "message" => "Successfully approved!"]);
+        } else if ($status == "Rejected by HR") {
+            $email = $lf_employee->email;
 
-            return response()->json(["success" => true, "message" => "Successfully Reject!"]);
+            $data = [
+                'reason' => $request->reason,
+                'employee' => $lf_employee,
+                'firstname' => Auth::user()->first_name,
+                'lastname' => Auth::user()->last_name,
+                'mi' => Auth::user()->middle_initial,
+                'position'=> Auth::user()->position,
+            ];
+            Mail::send('mail.reject', $data, function ($message) use ($data, $email) {
+                $message->to($email);
+                $message->subject('Disapproving Your Leave Application');
+                $message->from(Auth::user()->email, 'Human Resource');
+            });
+
+            $lf_employee->status = $request->status;
+            $lf_employee->save();
+
+            return response()->json(["success" => true, "message" => "Successfully rejected!"]);
         }
     }
 
+
+    public function update2(Request $request, string $id)
+    {
+        $directors_form = DivisionChief::find($id);
+        $status = $request->status;
+
+        if ($status == "Approved by HR") {
+            $directors_form->status = $request->status;
+            $directors_form->save();
+
+            return response()->json(["success" => true, "message" => "Successfully approved!"]);
+        } else if ($status == "Rejected by HR") {
+            $email = $directors_form->email;
+
+            $data = [
+                'reason' => $request->reason,
+            ];
+            Mail::send('mail.reject', $data, function ($message) use ($data, $email) {
+                $message->to($email);
+                $message->subject('Disapproving Your Leave Application');
+                $message->from(Auth::user()->email, 'Human Resource');
+            });
+
+
+
+            $directors_form->status = $request->status;
+            $directors_form->save();
+
+            return response()->json(["success" => true, "message" => "Successfully rejected!"]);
+        }
+    }
     /**
      * Remove the specified resource from storage.
      */
