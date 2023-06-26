@@ -1,15 +1,24 @@
 <x-laravel-ui-adminlte::adminlte-layout>
-
+<style>
+        .login-box-msg {
+            font-size: 30px ;
+        }
+        .img{
+            height: 100px;
+            padding-left: 110px;
+        }
+    </style>
 
     <body class="hold-transition register-page">
         <div class="register-box">
             <div class="register-logo">
-                <a href="{{ url('/home') }}"><b>{{ config('app.name') }}</b></a>
+                <!-- <a href="{{ url('/home') }}"><b>{{ config('app.name') }}</b></a> -->
             </div>
 
 
             <div class="card">
                 <div class="card-body register-card-body">
+                    <img src="images/logo.png" class="img">
                     <p class="login-box-msg">Registration Form</p>
 
                     <form method="post" action="{{ route('register') }}" autocomplete="off">
@@ -79,7 +88,7 @@
                                 @enderror
                             </div>
 
-                            
+
                             <div class="input-group mb-3">
                                 <input type="email" name="email" value="{{ old('email') }}" class="form-control @error('email') is-invalid @enderror" placeholder="E-mail">
 
