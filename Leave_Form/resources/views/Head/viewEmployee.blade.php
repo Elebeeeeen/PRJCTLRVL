@@ -63,23 +63,23 @@
     <div class="row">
         <div class="form-group col-3">
             <label for="requested_by" class="form-label">Office</label>
-            <input type="text" class="form-control" id="office" name="office" value="{{$lf_employee['office']}}" disabled>
+            <input type="text" class="form-control" id="office" name="office" value="{{$lf_employees['office']}}" disabled>
 
         </div>
 
         <div class="form-group col-4">
             <label for="requested_by" class="form-label">Last Name</label>
-            <input type="text" class="form-control" id="last_name" name="last_name" value="{{$lf_employee['last_name']}}" disabled>
+            <input type="text" class="form-control" id="last_name" name="last_name" value="{{$lf_employees['last_name']}}" disabled>
         </div>
 
         <div class="form-group col-4">
             <label for="requested_by" class="form-label">First Name</label>
-            <input type="text" class="form-control" id="first_name" name="first_name" value="{{$lf_employee['first_name']}}" disabled>
+            <input type="text" class="form-control" id="first_name" name="first_name" value="{{$lf_employees['first_name']}}" disabled>
         </div>
 
         <div class="form-group col-1">
             <label for="requested_by" class="form-label">M.I.</label>
-            <input type="text" class="form-control" id="middle_initial" name="middle_initial" value="{{$lf_employee['middle_initial']}}" disabled>
+            <input type="text" class="form-control" id="middle_initial" name="middle_initial" value="{{$lf_employees['middle_initial']}}" disabled>
         </div>
     </div>
 
@@ -88,17 +88,17 @@
     <div class="row">
         <div class="form-group col-4">
             <label for="requested_by" class="form-label">Employee Number</label>
-            <input type="text" class="form-control" id="employee_number" name="employee_number" value="{{$lf_employee['employee_number']}}" disabled>
+            <input type="text" class="form-control" id="employee_number" name="employee_number" value="{{$lf_employees['employee_number']}}" disabled>
         </div>
 
         <div class="form-group col-4">
             <label for="requested_by" class="form-label">Position</label>
-            <input type="text" class="form-control" id="position" name="position" value="{{$lf_employee['position']}}" disabled>
+            <input type="text" class="form-control" id="position" name="position" value="{{$lf_employees['position']}}" disabled>
         </div>
 
         <div class="form-group col-4">
             <label for="requested_by" class="form-label">Salary</label>
-            <input type="text" class="form-control" id="salary" name="salary" value="{{$lf_employee['salary']}}" disabled>
+            <input type="text" class="form-control" id="salary" name="salary" value="{{$lf_employees['salary']}}" disabled>
         </div>
     </div>
 
@@ -106,7 +106,7 @@
     <div class="row">
         <div class="form-group col-12">
             <label for="requested_by" class="form-label">E-mail</label>
-            <input type="text" class="form-control" id="email" name="email" value="{{$lf_employee['email']}}" disabled>
+            <input type="text" class="form-control" id="email" name="email" value="{{$lf_employees['email']}}" disabled>
         </div>
     </div>
 
@@ -116,12 +116,12 @@
 
         <div class="form-group col-3">
             <label for="requested_by" class="form-label">No. Of Working Days</label>
-            <input type="text" class="form-control" id="num_working_days" name="num_working_days" value="{{$lf_employee['num_working_days']}}" disabled>
+            <input type="text" class="form-control" id="num_working_days" name="num_working_days" value="{{$lf_employees['num_working_days']}}" disabled>
         </div>
 
         <div class="form-group col-4">
             <label for="requested_by" class="form-label">Inclusive Date</label>
-            <input type="text" class="form-control" id="startdate" name="startdate" value="{{$lf_employee['start_date']}}" disabled>
+            <input type="text" class="form-control" id="startdate" name="startdate" value="{{$lf_employees['start_date']}}" disabled>
         </div>
 
         <div class="form-group" id="preposition">
@@ -130,7 +130,7 @@
 
         <div class="form-group col-4" id="align">
             <label for="requested_by" class="form-label"></label>
-            <input type="text" class="form-control" id="enddate" name="enddate" value="{{$lf_employee['end_date']}}" disabled>
+            <input type="text" class="form-control" id="enddate" name="enddate" value="{{$lf_employees['end_date']}}" disabled>
         </div>
 
     </div>
@@ -141,12 +141,12 @@
 
         <div class="form-group col-8">
             <label for="requested_by" class="form-label">Type of Leave</label>
-            <input class="select2 form-control" name="type_of_leave" id="type_of_leave" value="{{$lf_employee['type_of_leave']}}" disabled>
+            <input class="select2 form-control" name="type_of_leave" id="type_of_leave" value="{{$lf_employees['type_of_leave']}}" disabled>
         </div>
 
         <div class="form-group col-4">
             <label for="requested_by" class="form-label">Date</label>
-            <input type="date" class="form-control" id="date" name="date" value="{{$lf_employee['date']}}" disabled>
+            <input type="date" class="form-control" id="date" name="date" value="{{$lf_employees['date']}}" disabled>
         </div>
     </div>
 
@@ -174,7 +174,7 @@
                     <input type="radio" id="radio" class="details" name="details" value="Within Aborad" disabled>
                     <label for="requested_by" class="form-label">Within Abroad</label>
 
-                    <input type="text" placeholder="Specify" class="form-control" id="specification" name="specification" value="{{$lf_employee['specification']}}" style="width: 100%" disabled>
+                    <input type="text" placeholder="Specify" class="form-control" id="specification" name="specification" value="{{$lf_employees['specification']}}" style="width: 100%" disabled>
                 </div>
             </div>
             <!-- end of vacation leave -->
@@ -200,7 +200,7 @@
                     <input type="radio" id="radio5" class="details" name="details" value="In case Leave Benefits for Women" disabled>
                     <label for="requested_by" class="form-label">In case Leave Benefits for Women</label>
 
-                    <input type="text" placeholder="Specify" class="form-control" id="specification" name="specification" value="{{$lf_employee['specification']}}" style="width: 100%" disabled>
+                    <input type="text" placeholder="Specify" class="form-control" id="specification" name="specification" value="{{$lf_employees['specification']}}" style="width: 100%" disabled>
                 </div>
 
             </div>
@@ -280,7 +280,7 @@
     <div class="row">
         <div class="form-group col-12">
             <label for="requested_by" class="form-label">Approver</label>
-            <input type="text" class="form-control" id="approver" name="approver" value="{{$lf_employee['approver']}}">
+            <input type="text" class="form-control" id="approver" name="approver" value="{{$lf_employees['approver']}}">
         </div>
     </div>
     <!-- end of seventh row -->
@@ -309,7 +309,7 @@
 
 
         //radio button for commutation
-        if ("{{$lf_employee['commutation']}}" == $('#radio11').val()) {
+        if ("{{$lf_employees['commutation']}}" == $('#radio11').val()) {
             $("#radio11").prop("checked", true);
         } else {
             $("#radio12").prop("checked", true);
@@ -349,12 +349,12 @@
         }
 
 
-        switch (@json($lf_employee -> leaveType)) {
+        switch (@json($lf_employees -> leaveType)) {
             // Vacation
             case '1':
                 clearType()
                 vacation_form.css('display', 'block');
-                (@json($lf_employee -> details) == radio1.val()) ? radio1.prop('checked', true): radio2.prop('checked', true);
+                (@json($lf_employees -> details) == radio1.val()) ? radio1.prop('checked', true): radio2.prop('checked', true);
                 break;
 
                 //walang laman
@@ -375,8 +375,8 @@
             case '3':
                 clearType()
                 sick_form.css('display', 'block');
-                (@json($lf_employee -> details) == radio3.val()) ? radio3.prop('checked', true)
-                : (@json($lf_employee -> details) == radio4.val()) ? radio4.prop('checked', true)
+                (@json($lf_employees -> details) == radio3.val()) ? radio3.prop('checked', true)
+                : (@json($lf_employees -> details) == radio4.val()) ? radio4.prop('checked', true)
                 : radio5.prop('checked', true);
                 break;
 
@@ -384,13 +384,13 @@
             case '8':
                 clearType()
                 study_form.css('display', 'block');
-                (@json($lf_employee -> details) == radio6.val()) ? radio6.prop('checked', true): radio7.prop('checked', true);
+                (@json($lf_employees -> details) == radio6.val()) ? radio6.prop('checked', true): radio7.prop('checked', true);
                 break;
 
             case '14':
                 clearType()
                 other.css('display', 'block')
-                (@json($lf_employee -> details) == radio8.val()) ? radio8.prop('checked', true): radio9.prop('checked', true);
+                (@json($lf_employees -> details) == radio8.val()) ? radio8.prop('checked', true): radio9.prop('checked', true);
                 break;
 
         }

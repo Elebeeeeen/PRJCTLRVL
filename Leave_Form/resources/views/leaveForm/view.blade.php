@@ -123,12 +123,12 @@
 
         <div class="form-group col-3">
             <label for="requested_by" class="form-label">No. Of Working Days</label>
-            <input type="text" class="form-control" id="num_working_days" name="num_working_days" value="{{$lf_employee['num_working_days']}}" disabled>
+            <input type="text" class="form-control" id="num_working_days" name="num_working_days" value="{{$lf_employees['num_working_days']}}" disabled>
         </div>
 
         <div class="form-group col-4">
             <label for="requested_by" class="form-label">Inclusive Date</label>
-            <input type="text" class="form-control" id="startdate" name="startdate" value="{{$lf_employee['start_date']}}" disabled>
+            <input type="text" class="form-control" id="startdate" name="startdate" value="{{$lf_employees['start_date']}}" disabled>
         </div>
 
         <div class="form-group" id="preposition">
@@ -137,7 +137,7 @@
 
         <div class="form-group col-4" id="align">
             <label for="requested_by" class="form-label"></label>
-            <input type="text" class="form-control" id="enddate" name="enddate" value="{{$lf_employee['end_date']}}" disabled>
+            <input type="text" class="form-control" id="enddate" name="enddate" value="{{$lf_employees['end_date']}}" disabled>
         </div>
 
     </div>
@@ -148,12 +148,12 @@
 
         <div class="form-group col-8">
             <label for="requested_by" class="form-label">Type of Leave</label>
-            <input class="select2 form-control" name="type_of_leave" id="type_of_leave" value="{{$lf_employee['type_of_leave']}}" disabled>
+            <input class="select2 form-control" name="type_of_leave" id="type_of_leave" value="{{$lf_employees['type_of_leave']}}" disabled>
         </div>
 
         <div class="form-group col-4">
             <label for="requested_by" class="form-label">Date</label>
-            <input type="date" class="form-control" id="date" name="date" value="{{$lf_employee['date']}}" disabled>
+            <input type="date" class="form-control" id="date" name="date" value="{{$lf_employees['date']}}" disabled>
         </div>
     </div>
     <!-- <div class="row">
@@ -182,9 +182,9 @@
                 <label for="requested_by" class="form-label">Inclusive Date</label>
                 <span id="requiredStyle"> *</span>
 
-                <input type="text" class="form-control" id="startdate" name="startdate" value="{{$lf_employee['start_date']}}" disabled>
+                <input type="text" class="form-control" id="startdate" name="startdate" value="{{$lf_employees['start_date']}}" disabled>
                 <p>to</p>
-                <input type="text" class="form-control" id="enddate" name="enddate" value="{{$lf_employee['end_date']}}" disabled>
+                <input type="text" class="form-control" id="enddate" name="enddate" value="{{$lf_employees['end_date']}}" disabled>
 
             </div>
 
@@ -416,7 +416,7 @@
             case '14':
                 clearType()
                 other.css('display', 'block')
-                    (@json($lf_employee -> details) == radio8.val()) ? radio8.prop('checked', true) : radio9.prop('checked', true);
+                    (@json($lf_employees -> details) == radio8.val()) ? radio8.prop('checked', true) : radio9.prop('checked', true);
                 break;
 
         }

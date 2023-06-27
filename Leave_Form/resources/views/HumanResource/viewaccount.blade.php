@@ -98,18 +98,27 @@
 
     </div>
 
-    <br>
+    <form action="/humanresource/{{$id}}" data-id="{{$id}}" id="approve_form" method="POST">
+        <div class="row">
+            <div class="form-group col-3">
+                <label for="requested_by" class="form-label">Username</label>
+                <input type="text" class="form-control" id="username" name="username">
+                <label for="requested_by" class="form-label">Password</label>
+                <input type="text" class="form-control" id="password" name="password">
+            </div>
 
-    <!--button-->
+        </div>
+
+        <br>
+
+        <!--button-->
         <div class="w-100">
             <div class="float-right">
-                <form action="/humanresource/{{$id}}" data-id={{$id}} id="approve_form" method="POST">
-                    @METHOD('PUT')
-                    <button type="submit" id="approve" value="Approve by HR" class="btn btn-primary">Approve</button>
-                    <button type="submit" id="reject" value="Reject by HR" class="btn btn-danger">Reject</button>
-            </form>
+                <button type="submit" id="approve" value="Approve by HR" class="btn btn-primary">Approve</button>
+                <button type="submit" id="reject" value="Reject by HR" class="btn btn-danger">Reject</button>
+            </div>
         </div>
-    </div>
+    </form>
 </div>
 
 <script>
@@ -127,7 +136,7 @@
                 Swal.fire({
                     icon: 'warning',
                     title: 'Are you sure?',
-                    text:"You want to approve this application?",
+                    text: "You want to approve this application?",
                     showCancelButton: true,
                     confirmButtonText: "Yes",
                     cancelButtonText: "Cancel",
@@ -151,7 +160,7 @@
                                     Swal.fire({
                                         icon: 'success',
                                         title: 'Approve',
-                                        text:"The user applicaiton has been approve!",
+                                        text: "The user applicaiton has been approve!",
                                         showCancelButton: true,
                                         confirmButtonText: "confirm",
                                     }).then((result) => {
@@ -188,7 +197,7 @@
             } else if (status == "Reject by HR") {
                 e.preventDefault();
                 Swal.fire({
-                    title:'Are you sure you want to reject?',
+                    title: 'Are you sure you want to reject?',
                     icon: 'warning',
                     showCancelButton: true,
                     confirmButtonText: "confirm",
@@ -275,7 +284,6 @@
             }
         })
     })
-
 </script>
 
 @endsection

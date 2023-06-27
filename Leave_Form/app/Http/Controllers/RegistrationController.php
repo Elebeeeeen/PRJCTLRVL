@@ -3,13 +3,14 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
-class RegisterController extends Controller
+class RegistrationController extends Controller
 {
     /*
     |--------------------------------------------------------------------------
@@ -49,7 +50,6 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
-
         return Validator::make($data, [
             'employee_number' => ['required', 'integer', 'max:9999999','unique:users'],
             'last_name' => ['required', 'string', 'max:25',],
@@ -59,8 +59,6 @@ class RegisterController extends Controller
             'office' => ['required', 'string', 'max:25'],
             'position' => ['required', 'string', 'max:50'],
             'salary' => ['required','integer','max:999999'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
-
         ]);
     }
 
@@ -82,9 +80,14 @@ class RegisterController extends Controller
             'office' => $data['office'],
             'position' => $data['position'],
             'salary' => $data['salary'],
-            'password' => Hash::make($data['password']),
             'verified' => 'false',
 
         ]);
+    }
+
+    public function index()
+    {
+        return view('register.registration');
+        dd('hkhk');
     }
 }

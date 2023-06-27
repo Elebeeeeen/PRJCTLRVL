@@ -59,7 +59,8 @@
                         <a href="{{ route('password.request') }}">I forgot my password</a>
                     </p>
                     <p class="mb-0">
-                        <a href="{{ route('register') }}" class="text-center">Register a new account</a>
+                        <a href="/registration" class="text-center">Register a new account</a>
+                    
                     </p>
                 </div>
                 <!-- /.login-card-body -->

@@ -64,19 +64,19 @@ class HeadController extends Controller
      */
     public function show(string $id)
     {
-        $lf_employee = Employees::find($id);
+        $lf_employees = Employees::find($id);
 
         //new class
         $typeleave = new Employees();
 
         //assign sa ibang property bago mag palit ng value
-        $lf_employee->leaveType = $lf_employee->type_of_leave;
+        $lf_employees->leaveType = $lf_employees->type_of_leave;
 
         //getting the object and its property para mapalabas yung laman ng array
 
-        $lf_employee->type_of_leave = $typeleave->getLeaveType($lf_employee->type_of_leave);
+        $lf_employees->type_of_leave = $typeleave->getLeaveType($lf_employees->type_of_leave);
 
-        return view('Head.viewEmployee', compact(['lf_employee', 'id']));
+        return view('Head.viewEmployee', compact(['lf_employees', 'id']));
     }
 
     public function show2(string $id)
@@ -141,13 +141,13 @@ class HeadController extends Controller
 
     public function update2(Request $request, string $id)
     {
-        $lf_employee = Employees::find($id);
+        $lf_employees = Employees::find($id);
         $status = $request->status;
-        $email = $lf_employee->email;
+        $email = $lf_employees->email;
 
         if ($status == "Approved") {
             $data = [
-                'employee' => $lf_employee,
+                'employee' => $lf_employees,
                 'firstname' => Auth::user()->first_name,
                 'lastname' => Auth::user()->last_name,
                 'mi' => Auth::user()->middle_initial,
@@ -160,15 +160,15 @@ class HeadController extends Controller
                 $message->from(Auth::user()->email, 'Head Officer');
             });
 
-            $lf_employee->status = $request->status;
-            $lf_employee->save();
+            $lf_employees->status = $request->status;
+            $lf_employees->save();
 
             return response()->json(["success" => true, "message" => "Successfully approved!"]);
         } else if ($status == "Rejected") {
 
             $data = [
                 'reason' => $request->reason,
-                'employee' => $lf_employee,
+                'employee' => $lf_employees,
                 'firstname' => Auth::user()->first_name,
                 'lastname' => Auth::user()->last_name,
                 'mi' => Auth::user()->middle_initial,
@@ -180,8 +180,8 @@ class HeadController extends Controller
                 $message->from(Auth::user()->email, 'Head Officer');
             });
 
-            $lf_employee->status = $request->status;
-            $lf_employee->save();
+            $lf_employees->status = $request->status;
+            $lf_employees->save();
 
             return response()->json(["success" => true, "message" => "Successfully rejected!"]);
         }

@@ -91,7 +91,7 @@ class EmployeeController extends Controller
 
 
             if($request->specification1 != null){
-                $lf_employee = Employees::create([
+                $lf_employees = Employees::create([
                     'office' => $request->office,
                     'last_name' => $request->last_name,
                     'first_name' => $request->first_name,
@@ -113,7 +113,7 @@ class EmployeeController extends Controller
                     'status' => $status,
                 ]);
             }else if ($request->specification2 != null){
-                $lf_employee = Employees::create([
+                $lf_employees = Employees::create([
                     'office' => $request->office,
                     'last_name' => $request->last_name,
                     'first_name' => $request->first_name,
@@ -135,7 +135,7 @@ class EmployeeController extends Controller
                     'status' => $status,
                 ]);
             }else{
-                $lf_employee = Employees::create([
+                $lf_employees = Employees::create([
                     'office' => $request->office,
                     'last_name' => $request->last_name,
                     'first_name' => $request->first_name,
@@ -156,7 +156,7 @@ class EmployeeController extends Controller
                     'status' => $status,
                 ]);
             }
-            return response()->json([$lf_employee, "success" => true, 'message' => 'Successfully added']);
+            return response()->json([$lf_employees, "success" => true, 'message' => 'Successfully added']);
         } else {
             return response()->json(["status" => false, "errors" => $validator->errors()->all()]);
         }

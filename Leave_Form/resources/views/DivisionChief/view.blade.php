@@ -115,12 +115,12 @@
 
         <div class="form-group col-3">
             <label for="requested_by" class="form-label">No. Of Working Days</label>
-            <input type="text" class="form-control" id="num_working_days" name="num_working_days" value="{{$lf_employee['num_working_days']}}" disabled>
+            <input type="text" class="form-control" id="num_working_days" name="num_working_days" value="{{$lf_employees['num_working_days']}}" disabled>
         </div>
 
         <div class="form-group col-4">
             <label for="requested_by" class="form-label">Inclusive Date</label>
-            <input type="text" class="form-control" id="startdate" name="startdate" value="{{$lf_employee['start_date']}}" disabled>
+            <input type="text" class="form-control" id="startdate" name="startdate" value="{{$lf_employees['start_date']}}" disabled>
         </div>
 
         <div class="form-group" id="preposition">
@@ -129,7 +129,7 @@
 
         <div class="form-group col-4" id="align">
             <label for="requested_by" class="form-label"></label>
-            <input type="text" class="form-control" id="enddate" name="enddate" value="{{$lf_employee['end_date']}}" disabled>
+            <input type="text" class="form-control" id="enddate" name="enddate" value="{{$lf_employees['end_date']}}" disabled>
         </div>
 
     </div>
@@ -210,7 +210,7 @@
                     <input type="radio" id="radio5" class="details" name="details" value="In case Leave Benefits for Women" disabled>
                     <label for="requested_by" class="form-label">In case Leave Benefits for Women</label>
 
-                    <input type="text" class="form-control" id="specification" name="specification" value="{{$lf_employee['specification']}}" style="width: 1050px" disabled>
+                    <input type="text" class="form-control" id="specification" name="specification" value="{{$lf_employees['specification']}}" style="width: 1050px" disabled>
                 </div>
 
             </div>
@@ -292,7 +292,7 @@
     <div class="row">
         <div class="form-group col-12">
             <label for="requested_by" class="form-label">Approver</label>
-            <input type="text" class="form-control" id="approver" name="approver" value="{{$lf_employee['approver']}}">
+            <input type="text" class="form-control" id="approver" name="approver" value="{{$lf_employees['approver']}}">
         </div>
     </div>
     <!-- end of seventh row -->
@@ -387,8 +387,8 @@
             case '3':
                 clearType()
                 sick_form.css('display', 'block');
-                (@json($lf_employee -> details) == radio3.val()) ? radio3.prop('checked', true)
-                : (@json($lf_employee -> details) == radio4.val()) ? radio4.prop('checked', true) 
+                (@json($lf_employees -> details) == radio3.val()) ? radio3.prop('checked', true)
+                : (@json($lf_employees -> details) == radio4.val()) ? radio4.prop('checked', true) 
                 : radio5.prop('checked', true);
                 break;
 

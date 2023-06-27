@@ -60,28 +60,28 @@ class DirController extends Controller
     {
 
 
-        $lf_employee = Employees::find($id);
+        $lf_employees = Employees::find($id);
         //new class
         $typeleave = new Employees();
         
-        $lf_employee->leaveType = $lf_employee->type_of_leave;
+        $lf_employees->leaveType = $lf_employees->type_of_leave;
 
         //getting the object and its property para mapalabas yung laman ng array
-        $lf_employee->type_of_leave = $typeleave->getLeaveType($lf_employee->type_of_leave);
+        $lf_employees->type_of_leave = $typeleave->getLeaveType($lf_employees->type_of_leave);
 
-        return view('Director.viewEmployee', compact(['lf_employee', 'id']));
+        return view('Director.viewEmployee', compact(['lf_employees', 'id']));
 
-        // $lf_employee = Employees::find($id);
+        // $lf_employees = Employees::find($id);
 
         // //new class
         // $typeleave = new Employees();
         
-        // $lf_employee->leaveType = $lf_employee->type_of_leave;
+        // $lf_employees->leaveType = $lf_employees->type_of_leave;
 
         // //getting the object and its property para mapalabas yung laman ng array
-        // $lf_employee->type_of_leave = $typeleave->getLeaveType($lf_employee->type_of_leave);
+        // $lf_employees->type_of_leave = $typeleave->getLeaveType($lf_employees->type_of_leave);
 
-        // return view('Director.viewEmployee', compact(['lf_employee', 'íd']));
+        // return view('Director.viewEmployee', compact(['lf_employees', 'íd']));
     }
 
     public function show2(string $id)
@@ -153,20 +153,20 @@ class DirController extends Controller
 
     public function update2(Request $request, string $id)
     {
-        $lf_employee = Employees::find($id);
+        $lf_employees = Employees::find($id);
         $status = $request->status;
 
         if($status == "Approved by Director"){
-            $lf_employee->status = $request->status;
-            $lf_employee->save();
+            $lf_employees->status = $request->status;
+            $lf_employees->save();
 
             return response()->json(["success" => true, "message" => "Successfully approved!"]);
         }else if($status == "Rejected by Director"){
-            $email = $lf_employee->email;
+            $email = $lf_employees->email;
 
             $data = [
                 'reason' => $request->reason,
-                'employee' => $lf_employee,
+                'employee' => $lf_employees,
                 'firstname' => Auth::user()->first_name,
                 'lastname' => Auth::user()->last_name,
                 'mi' => Auth::user()->middle_initial,
@@ -180,8 +180,8 @@ class DirController extends Controller
             });
 
 
-            $lf_employee->status = $request->status;
-            $lf_employee->save();
+            $lf_employees->status = $request->status;
+            $lf_employees->save();
 
             return response()->json(["success" => true, "message" => "Successfully rejected!"]);
         }

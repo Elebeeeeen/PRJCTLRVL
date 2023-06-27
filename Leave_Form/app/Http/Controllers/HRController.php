@@ -7,8 +7,11 @@ use App\Models\Employees;
 use App\Models\registerUser;
 use App\Models\DivisionChief;
 use App\Models\User;
+use App\Models\regUser;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 
 class HRController extends Controller
@@ -37,21 +40,21 @@ class HRController extends Controller
 
         return view('HumanResource.leaveEmployee', compact(['leave_form']));
 
-        // $lf_employee = Employees::get();
+        // $lf_employees = Employees::get();
         // $lf_division = DirectorChief::get();
 
-        // return view('HumanResource.leaveEmployee', compact(['lf_employee', 'lf_division']));
+        // return view('HumanResource.leaveEmployee', compact(['lf_employees', 'lf_division']));
     }
 
 
     //linking to the registered account of the users
 
     public function index3()
-    
+
     {
         //getting the registered account to view the page of account in hr's page
 
-        $application_form = User::get();
+        $application_form = regUser::get();
         return view('HumanResource.account', compact(['application_form']));
     }
 
@@ -78,9 +81,42 @@ class HRController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request, string $id)
     {
-        //
+        $registered_user = regUser::find($id);
+        $status = $request->status;
+        if($status == "Approve by HR"){
+            $registered_user->status = $status;
+            
+            User::create([
+                'employee_number' => $registered_user->employee_number,
+                'status' => "Approve",
+                'last_name' => $registered_user->last_name,
+                'middle_initial' => $registered_user->middle_initial,
+                'first_name' => $registered_user->first_name,
+                'email' => $registered_user->email,
+                'office' => $registered_user->office,
+                'position' => $registered_user->position,
+                'salary' => $registered_user->salary,
+                'username' => $request->username,
+                'password' => Hash::make($request->password),
+                'verified' => 'false',
+            ]);
+            
+            $registered_user->save();
+            
+            
+            // Mail here
+
+            return response()->json(["success" => true, "message" => "Successfully approved!"]);
+        }else if($status == "Reject by HR"){
+            $registered_user->status = $status;
+            $registered_user->save();
+            
+            // Mail here
+            
+            return response()->json(["success" => true, "message" => "Successfully rejected!"]);
+        }
     }
 
     /**
@@ -90,63 +126,62 @@ class HRController extends Controller
     {
         //showing the inputed data's in leave form 
 
-        $lf_employees = Employees::find($id);
+        $lf_employeess = Employees::find($id);
 
         //new class
         $typeleave = new Employees();
-    
+
         //assign sa ibang property bago mag palit ng value
-        $lf_employees->leaveType = $lf_employees->type_of_leave;
-    
+        $lf_employeess->leaveType = $lf_employeess->type_of_leave;
+
         //getting the object and its property para mapalabas yung laman ng array
-    
-        $lf_employees->type_of_leave = $typeleave->getLeaveType($lf_employees->type_of_leave);
-    
-        return view('HumanResource.view', compact(['lf_employee', 'id']));
+
+        $lf_employeess->type_of_leave = $typeleave->getLeaveType($lf_employeess->type_of_leave);
+
+        return view('HumanResource.view', compact(['lf_employees', 'id']));
     }
 
     public function show2(string $id)
-    
+
     {
 
         //showing the inputed data's in accounts form 
 
-        $application_form = registerUser::find($id);
-        return view('HumanResource.viewaccount', compact(['application_form']));
+        $application_form = regUser::find($id);
+        return view('HumanResource.viewaccount', compact(['application_form', 'id']));
     }
     /**
      * Show the form for editing the specified resource.
      */
     public function edit(string $id)
     {
-        
-}
+    }
 
     /**
      * Update the specified resource in storage.
      */
     public function update(Request $request, string $id)
     {
-        $lf_employee = Employees::find($id);
+        $lf_employees = Employees::find($id);
         $status = $request->status;
 
         if ($status == "Approved by HR") {
-            
-            $lf_employee->status = $request->status;
-            $lf_employee->save();
-    
+
+            $lf_employees->status = $request->status;
+            $lf_employees->save();
+
 
             return response()->json(["success" => true, "message" => "Successfully approved!"]);
         } else if ($status == "Rejected by HR") {
-            $email = $lf_employee->email;
+            $email = $lf_employees->email;
 
             $data = [
                 'reason' => $request->reason,
-                'employee' => $lf_employee,
+                'employee' => $lf_employees,
                 'firstname' => Auth::user()->first_name,
                 'lastname' => Auth::user()->last_name,
                 'mi' => Auth::user()->middle_initial,
-                'position'=> Auth::user()->position,
+                'position' => Auth::user()->position,
             ];
             Mail::send('mail.reject', $data, function ($message) use ($data, $email) {
                 $message->to($email);
@@ -154,8 +189,8 @@ class HRController extends Controller
                 $message->from(Auth::user()->email, 'Human Resource');
             });
 
-            $lf_employee->status = $request->status;
-            $lf_employee->save();
+            $lf_employees->status = $request->status;
+            $lf_employees->save();
 
             return response()->json(["success" => true, "message" => "Successfully rejected!"]);
         }

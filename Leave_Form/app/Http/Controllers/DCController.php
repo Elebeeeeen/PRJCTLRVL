@@ -102,7 +102,7 @@ class DCController extends Controller
         if ($validator->passes()) {
 
             if ($request->specification1 != null) {
-                $lf_employee = DivisionChief::create([
+                $lf_employees = DivisionChief::create([
                     'office' => $request->office,
                     'last_name' => $request->last_name,
                     'first_name' => $request->first_name,
@@ -124,7 +124,7 @@ class DCController extends Controller
                     'status' => 'Pending'
                 ]);
             } else if ($request->specification2 != null) {
-                $lf_employee = DivisionChief::create([
+                $lf_employees = DivisionChief::create([
                     'office' => $request->office,
                     'last_name' => $request->last_name,
                     'first_name' => $request->first_name,
@@ -146,7 +146,7 @@ class DCController extends Controller
                     'status' => 'Pending'
                 ]);
             } else {
-                $lf_employee = DivisionChief::create([
+                $lf_employees = DivisionChief::create([
                     'office' => $request->office,
                     'last_name' => $request->last_name,
                     'first_name' => $request->first_name,
@@ -221,19 +221,19 @@ class DCController extends Controller
 
     public function show3(string $id)
     {
-        $lf_employee = Employees::find($id);
+        $lf_employees = Employees::find($id);
 
         //new class
         $typeleave = new Employees();
 
         //assign sa ibang property bago mag palit ng value
-        $lf_employee->leaveType = $lf_employee->type_of_leave;
+        $lf_employees->leaveType = $lf_employees->type_of_leave;
 
         //getting the object and its property para mapalabas yung laman ng array
 
-        $lf_employee->type_of_leave = $typeleave->getLeaveType($lf_employee->type_of_leave);
+        $lf_employees->type_of_leave = $typeleave->getLeaveType($lf_employees->type_of_leave);
 
-        return view('DivisionChief.view', compact(['lf_employee', 'id']));
+        return view('DivisionChief.view', compact(['lf_employees', 'id']));
     }
     public function edit(string $id)
     {
@@ -245,20 +245,20 @@ class DCController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $lf_employee = Employees::find($id);
+        $lf_employees = Employees::find($id);
         $status = $request->status;
 
         if ($status == "Approved by DC") {
-            $lf_employee->status = $request->status;
-            $lf_employee->save();
+            $lf_employees->status = $request->status;
+            $lf_employees->save();
 
             return response()->json(["success" => true, "message" => "Successfully approved!"]);
         } else if ($status == "Rejected by DC") {
-            $email = $lf_employee->email;
+            $email = $lf_employees->email;
 
             $data = [
                 'reason' => $request->reason,
-                'employee' => $lf_employee,
+                'employee' => $lf_employees,
                 'firstname' => Auth::user()->first_name,
                 'lastname' => Auth::user()->last_name,
                 'mi' => Auth::user()->middle_initial,
@@ -272,8 +272,8 @@ class DCController extends Controller
             });
 
 
-            $lf_employee->status = $request->status;
-            $lf_employee->save();
+            $lf_employees->status = $request->status;
+            $lf_employees->save();
 
             return response()->json(["success" => true, "message" => "Successfully rejected!"]);
         }
