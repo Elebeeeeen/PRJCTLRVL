@@ -73,6 +73,7 @@
             <input type="text" class="form-control" id="middle_initial" name="middle_initial" value="{{$lf_employee['middle_initial']}}" disabled>
         </div>
     </div>
+    <!--end first row -->
 
 
     <!-- second row -->
@@ -98,9 +99,9 @@
             <input type="text" class="form-control" id="salary" name="salary" value="{{$lf_employee['salary']}}" disabled>
         </div>
     </div>
+    <!--end second row -->
 
-    <!-- fourth row -->
-
+    <!-- third row -->
     <div class="row">
 
         <div class="form-group col-4">
@@ -121,9 +122,10 @@
         </div>
 
     </div>
+    <!--end third row -->
 
-    <!-- new row -->
 
+    <!-- fourth row -->
     <div class="row">
 
         <div class="form-group col-8">
@@ -136,6 +138,7 @@
             <input type="date" class="form-control" id="date" name="date" value="{{$lf_employee['date']}}" disabled>
         </div>
     </div>
+    <!--end fourth row -->
 
 
 
