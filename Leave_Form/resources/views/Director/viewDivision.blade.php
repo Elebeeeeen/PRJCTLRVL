@@ -36,14 +36,6 @@
         justify-content: center;
     }
 
-    .divider {
-        padding-left: 100px;
-    }
-    #preposition {
-        margin: 8px 10px 0px 10px;
-        padding-top: 32px;
-    }
-
     #align {
         padding-top: 18px;
     }
@@ -84,18 +76,24 @@
 
 
     <!-- second row -->
+
+    <div class="form-group col-3">
+        <label for="requested_by" class="form-label">E-mail</label>
+        <input type="text" class="form-control" id="email" name="email" value="{{$division_form['email']}}" disabled>
+    </div>
+
     <div class="row">
-        <div class="form-group col-4">
+        <div class="form-group col-3">
             <label for="requested_by" class="form-label">Employee Number</label>
             <input type="text" class="form-control" id="employee_number" name="employee_number" value="{{$division_form['employee_number']}}" disabled>
         </div>
 
-        <div class="form-group col-4">
+        <div class="form-group col-3">
             <label for="requested_by" class="form-label">Position</label>
             <input type="text" class="form-control" id="position" name="position" value="{{$division_form['position']}}" disabled>
         </div>
 
-        <div class="form-group col-4">
+        <div class="form-group col-3">
             <label for="requested_by" class="form-label">Salary</label>
             <input type="text" class="form-control" id="salary" name="salary" value="{{$division_form['salary']}}" disabled>
         </div>
@@ -103,49 +101,40 @@
 
     <!-- third row -->
     <div class="row">
-        <div class="form-group col-12">
-            <label for="requested_by" class="form-label">E-mail</label>
-            <input type="text" class="form-control" id="email" name="email" value="{{$division_form['email']}}" disabled>
+
+        <div class="form-group col-4">
+            <label for="requested_by" class="form-label">No. Of Working Days</label>
+            <input type="text" class="form-control" id="num_working_days" name="num_working_days" value="{{$division_form['num_working_days']}}" disabled>
         </div>
+
+        <div class="form-group col-4">
+            <label for="requested_by" class="form-label">Inclusive Date</label>
+            <span>(start)</span>
+            <input type="text" class="form-control" id="startdate" name="startdate" value="{{$division_form['start_date']}}" disabled>
+        </div>
+
+        <div class="form-group col-4" id="align">
+            <label for="requested_by" class="form-label"></label>
+            <span>(end)</span>
+            <input type="text" class="form-control" id="enddate" name="enddate" value="{{$division_form['end_date']}}" disabled>
+        </div>
+
     </div>
+
+    <!-- new row -->
 
     <div class="row">
 
-<div class="form-group col-3">
-    <label for="requested_by" class="form-label">No. Of Working Days</label>
-    <input type="text" class="form-control" id="num_working_days" name="num_working_days" value="{{$division_form['num_working_days']}}" disabled>
-</div>
+        <div class="form-group col-8">
+            <label for="requested_by" class="form-label">Type of Leave</label>
+            <input class="select2 form-control" name="type_of_leave" id="type_of_leave" value="{{$division_form['type_of_leave']}}" disabled>
+        </div>
 
-<div class="form-group col-4">
-    <label for="requested_by" class="form-label">Inclusive Date</label>
-    <input type="text" class="form-control" id="startdate" name="startdate" value="{{$division_form['start_date']}}" disabled>
-</div>
-
-<div class="form-group" id="preposition">
-    <label for="requested_by" class="form-label">to</label>
-</div>
-
-<div class="form-group col-4" id="align">
-    <label for="requested_by" class="form-label"></label>
-    <input type="text" class="form-control" id="enddate" name="enddate" value="{{$division_form['end_date']}}" disabled>
-</div>
-
-</div>
-
-<!-- new row -->
-
-<div class="row">
-
-<div class="form-group col-8">
-    <label for="requested_by" class="form-label">Type of Leave</label>
-    <input class="select2 form-control" name="type_of_leave" id="type_of_leave" value="{{$division_form['type_of_leave']}}" disabled>
-</div>
-
-<div class="form-group col-4">
-    <label for="requested_by" class="form-label">Date</label>
-    <input type="date" class="form-control" id="date" name="date" value="{{$division_form['date']}}" disabled>
-</div>
-</div>
+        <div class="form-group col-4">
+            <label for="requested_by" class="form-label">Date</label>
+            <input type="date" class="form-control" id="date" name="date" value="{{$division_form['date']}}" disabled>
+        </div>
+    </div>
 
 
 
@@ -280,9 +269,9 @@
     </div>
     <!-- end of seventh row -->
 
-   <!--button-->
+    <!--button-->
 
-   <div class="w-100">
+    <div class="w-100">
         <div class="float-right">
             <form action="/director/{{$id}}" data-id="{{$id}}" id="approve_form" method="POST">
                 @METHOD('PUT')
@@ -310,13 +299,13 @@
             $("#radio12").prop("checked", true);
         }
 
-        // select2 for type of leave
-
-
+        // Calling new variable to determine array accordingly (type of leave)
         let vacation_form = $($('.leaveOption div')[0]);
         let sick_form = $($('.leaveOption div')[3]);
         let study_form = $($('.leaveOption div')[7]);
         let other = $($('.leaveOption div')[10]);
+
+        //Viewing the radio button
 
         //vacation
         let radio1 = $($('.details')[0]);
@@ -335,7 +324,7 @@
         let radio8 = $($('.details')[7]);
         let radio9 = $($('.details')[8]);
 
-
+        //Displaying the leave of type
         function clearType() {
             vacation_form.css('display', 'none')
             sick_form.css('display', 'none')
@@ -343,7 +332,7 @@
             other.css('display', 'none')
         }
 
-
+        //using switch case to call the new variable in array and applying the radio button to be viewed
         switch (@json($division_form -> leaveType)) {
             // Vacation
             case '1':
@@ -352,7 +341,6 @@
                 (@json($division_form -> details) == radio1.val()) ? radio1.prop('checked', true): radio2.prop('checked', true);
                 break;
 
-                //walang laman
             case '2':
             case '4':
             case '5':
@@ -372,7 +360,7 @@
                 sick_form.css('display', 'block');
                 (@json($division_form -> details) == radio3.val()) ? radio3.prop('checked', true)
                 : (@json($division_form -> details) == radio4.val()) ? radio4.prop('checked', true) 
-                :radio5.prop('checked', true);
+                : radio5.prop('checked', true);
                 break;
 
                 //study 
@@ -393,10 +381,12 @@
 
 
     //sweet alert for approve and reject
-    //ayos na
     let errorMessages = '';
 
+    //getting id of the form for button
     var form = document.getElementById('approve_form');
+
+    //querying the usage of button
     var buttons = form.querySelectorAll('button[type="submit"]');
 
     buttons.forEach(function(button) {
@@ -523,9 +513,9 @@
                                     success: function(response) {
                                         if (response.success) {
                                             Swal.fire({
-                                                title: '',
-                                                icon: 'warning',
-                                                showCancelButton: true,
+                                                title: 'Rejected!',
+                                                icon: 'success',
+                                                text: 'This form is now rejected. E-mail has been sent to the Division chief.',
                                                 confirmButtonText: "confirm",
                                             }).then((result) => {
                                                 if (result.isConfirmed) {
@@ -550,14 +540,6 @@
                                     }
 
                                 });
-                            } else {
-                                Swal.fire({
-                                    icon: 'question',
-                                    title: 'Are you sure?',
-                                    text: 'Do you want to cancel it?',
-                                    showCancelButton: true,
-                                    confirmButtonText: "Yes",
-                                })
                             }
                         });
                     } else {

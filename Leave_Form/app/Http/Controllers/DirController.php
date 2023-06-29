@@ -13,6 +13,8 @@ class DirController extends Controller
     /**
      * Display a listing of the resource.
      */
+
+    //All created leave forms are counted throught it status in the file (form) in the Director
     public function index()
     {
 
@@ -22,6 +24,9 @@ class DirController extends Controller
         return view('Director.form', compact(['count', 'count2']));
     }
 
+
+
+    //All created leave forms by the employee can be seen through its status in the file (Director/leaveemployee) in the Director
     public function index2()
     {
         $list = new Employees();
@@ -30,6 +35,9 @@ class DirController extends Controller
         return view('Director.leaveemployee', compact(['leave_form']));
     }
 
+
+
+    //All created leave forms by the division can be seen through its status in the file (Director/leaveDivisionChief) in the Director
     public function index3()
     {
         $list = new DivisionChief();
@@ -59,51 +67,40 @@ class DirController extends Controller
     public function show(string $id)
     {
 
-
+        //Getting the Employee through its id
         $lf_employee = Employees::find($id);
-        //new class
+
+        //Creating a new class for the type of leave
         $typeleave = new Employees();
-        
+
+        //Assign a different property before changing the value
         $lf_employee->leaveType = $lf_employee->type_of_leave;
 
-        //getting the object and its property para mapalabas yung laman ng array
+        //Getting the object and its property further to see of all arrays
         $lf_employee->type_of_leave = $typeleave->getLeaveType($lf_employee->type_of_leave);
 
         return view('Director.viewEmployee', compact(['lf_employee', 'id']));
-
-        // $lf_employee = Employees::find($id);
-
-        // //new class
-        // $typeleave = new Employees();
-        
-        // $lf_employee->leaveType = $lf_employee->type_of_leave;
-
-        // //getting the object and its property para mapalabas yung laman ng array
-        // $lf_employee->type_of_leave = $typeleave->getLeaveType($lf_employee->type_of_leave);
-
-        // return view('Director.viewEmployee', compact(['lf_employee', 'íd']));
     }
 
     public function show2(string $id)
     {
         //viewing the inserted data's through tables using view. 
-
+        //Getting the Division Chief through its id
         $division_form = DivisionChief::find($id);
 
-        //new class
+        //Creating a new class for the type of leave
         $typeleave = new DivisionChief();
 
-        //assign sa ibang property bago mag palit ng value
+        //Assign a different property before changing the value
         $division_form->leaveType = $division_form->type_of_leave;
 
-        //getting the object and its property para mapalabas yung laman ng array
-
+        //Getting the object and its property further to see of all arrays
         $division_form->type_of_leave = $typeleave->getLeaveType($division_form->type_of_leave);
 
         return view('Director.viewDivision', compact(['division_form', 'id']));
     }
 
-    
+
 
     /**
      * Show the form for editing the specified resource.
@@ -116,17 +113,20 @@ class DirController extends Controller
     /**
      * Update the specified resource in storage.
      */
+
+    //Seeing the progress or status of the applied leave form by the Division Chiefs
+    //Adding a email
     public function update(Request $request, string $id)
     {
         $division_form = DivisionChief::find($id);
         $status = $request->status;
 
-        if($status == "Approved by Director"){
+        if ($status == "Approved by Director") {
             $division_form->status = $request->status;
             $division_form->save();
 
             return response()->json(["success" => true, "message" => "Successfully approved!"]);
-        }else if($status == "Rejected by Director"){
+        } else if ($status == "Rejected by Director") {
             $email = $division_form->email;
 
             $data = [
@@ -135,7 +135,7 @@ class DirController extends Controller
                 'firstname' => Auth::user()->first_name,
                 'lastname' => Auth::user()->last_name,
                 'mi' => Auth::user()->middle_initial,
-                'position'=> Auth::user()->position,
+                'position' => Auth::user()->position,
             ];
             Mail::send('mail.reject', $data, function ($message) use ($data, $email) {
                 $message->to($email);
@@ -151,17 +151,20 @@ class DirController extends Controller
         }
     }
 
+
+    //Seeing the progress or status of the applied leave form by the employees
+    //Adding a email
     public function update2(Request $request, string $id)
     {
         $lf_employee = Employees::find($id);
         $status = $request->status;
 
-        if($status == "Approved by Director"){
+        if ($status == "Approved by Director") {
             $lf_employee->status = $request->status;
             $lf_employee->save();
 
             return response()->json(["success" => true, "message" => "Successfully approved!"]);
-        }else if($status == "Rejected by Director"){
+        } else if ($status == "Rejected by Director") {
             $email = $lf_employee->email;
 
             $data = [
@@ -170,7 +173,7 @@ class DirController extends Controller
                 'firstname' => Auth::user()->first_name,
                 'lastname' => Auth::user()->last_name,
                 'mi' => Auth::user()->middle_initial,
-                'position'=> Auth::user()->position,
+                'position' => Auth::user()->position,
             ];
 
             Mail::send('mail.reject', $data, function ($message) use ($data, $email) {
@@ -186,7 +189,7 @@ class DirController extends Controller
             return response()->json(["success" => true, "message" => "Successfully rejected!"]);
         }
     }
-    
+
 
     /**
      * Remove the specified resource from storage.

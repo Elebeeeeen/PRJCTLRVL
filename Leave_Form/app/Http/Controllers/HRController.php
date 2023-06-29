@@ -15,6 +15,10 @@ class HRController extends Controller
     /**
      * Display a listing of the resource.
      */
+
+
+
+    //All created leave forms are counted throught it status in the file (form) in the Human Resource 
     public function index()
     {
         $count = Employees::where('Status', 'Approved by Director')->count();
@@ -26,7 +30,7 @@ class HRController extends Controller
 
 
     // linking to the employees leave applciation
-
+    //All created leave forms by the employee can be seen through its status in the file (HumanResource/leaveEmployee) in the Human Resources
     public function index2()
     {
         // displaying the type of leave connecting the the model(employees)
@@ -35,11 +39,6 @@ class HRController extends Controller
         $leave_form  = $list->leaveType(Employees::where('status', 'Approved by Director')->get());
 
         return view('HumanResource.leaveEmployee', compact(['leave_form']));
-
-        // $lf_employee = Employees::get();
-        // $lf_division = DirectorChief::get();
-
-        // return view('HumanResource.leaveEmployee', compact(['lf_employee', 'lf_division']));
     }
 
 
@@ -55,10 +54,11 @@ class HRController extends Controller
 
 
     // linking to the division chief leave application
+    //All created leave forms by the employee can be seen through its status in the file (HumanResource/leaveEmployee) in the Human Resources
 
     public function index4()
     {
-        // displaying the type of leave connecting the the model(employees)
+        // displaying the type of leave connecting the the model(Division Chief)
 
         $list = new DivisionChief();
         $directors_form  = $list->leaveType(DivisionChief::get());
@@ -87,28 +87,24 @@ class HRController extends Controller
     public function show(string $id)
     {
         //showing the inputed data's in leave form 
-
-
+        //Getting the Employee through its id
         $lf_employee = Employees::find($id);
-    
-        //new class
+
+        //Creating a new class for the type of leave
         $typeleave = new Employees();
-    
-        //assign sa ibang property bago mag palit ng value
+
+        //Assign a different property before changing the value
         $lf_employee->leaveType = $lf_employee->type_of_leave;
-    
-        //getting the object and its property para mapalabas yung laman ng array
-    
+
+        //Getting the object and its property further to see of all arrays
         $lf_employee->type_of_leave = $typeleave->getLeaveType($lf_employee->type_of_leave);
-    
+
         return view('HumanResource.view', compact(['lf_employee', 'id']));
     }
 
+    //showing the inputed data's in accounts form 
     public function show2(string $id)
     {
-
-        //showing the inputed data's in accounts form 
-
         $application_form = registerUser::find($id);
         return view('HumanResource.viewaccount', compact(['application_form']));
     }
@@ -116,21 +112,19 @@ class HRController extends Controller
 
     public function show3(string $id)
     {
-        //showing the inputed data's in leave form 
-
-
+        //viewing the inserted data's through tables using view. 
+        //Getting the Division Chief through its id
         $directors_form = DivisionChief::find($id);
-    
-        //new class
-        $typeleave = new Employees();
-    
-        //assign sa ibang property bago mag palit ng value
+
+        //Creating a new class for the type of leave
+        $typeleave = new DivisionChief(); // employee dati tong model
+
+        //Assign a different property before changing the value
         $directors_form->leaveType = $directors_form->type_of_leave;
-    
-        //getting the object and its property para mapalabas yung laman ng array
-    
+
+        //Getting the object and its property further to see of all arrays
         $directors_form->type_of_leave = $typeleave->getLeaveType($directors_form->type_of_leave);
-    
+
         return view('HumanResource.viewDivision', compact(['directors_form', 'id']));
     }
     /**
@@ -144,16 +138,20 @@ class HRController extends Controller
     /**
      * Update the specified resource in storage.
      */
+
+
+    //Seeing the progress or status of the applied leave form by the Employees
+    //Adding a email
     public function update(Request $request, string $id)
     {
         $lf_employee = Employees::find($id);
         $status = $request->status;
 
         if ($status == "Approved by HR") {
-            
+
             $lf_employee->status = $request->status;
             $lf_employee->save();
-    
+
 
             return response()->json(["success" => true, "message" => "Successfully approved!"]);
         } else if ($status == "Rejected by HR") {
@@ -165,7 +163,7 @@ class HRController extends Controller
                 'firstname' => Auth::user()->first_name,
                 'lastname' => Auth::user()->last_name,
                 'mi' => Auth::user()->middle_initial,
-                'position'=> Auth::user()->position,
+                'position' => Auth::user()->position,
             ];
             Mail::send('mail.reject', $data, function ($message) use ($data, $email) {
                 $message->to($email);
@@ -181,6 +179,9 @@ class HRController extends Controller
     }
 
 
+
+    //Seeing the progress or status of the applied leave form by the Division Chiefs
+    //Adding a email
     public function update2(Request $request, string $id)
     {
         $directors_form = DivisionChief::find($id);
@@ -220,6 +221,7 @@ class HRController extends Controller
     }
 
     // additional function to read the arrays to the employee model
+    //Creating new function to call the leavelist funtion in the model
     public function leaveList()
     {
 

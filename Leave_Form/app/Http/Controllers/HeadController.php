@@ -13,6 +13,9 @@ class HeadController extends Controller
     /**
      * Display a listing of the resource.
      */
+
+
+    //All created leave forms are counted throught it status in the file (form) in the Head
     public function index()
     {
         $count = Employees::where('Status', 'Approved by HR')->count();
@@ -20,6 +23,9 @@ class HeadController extends Controller
         return view('Head.form', compact(['count', 'count2']));
     }
 
+
+
+    //All created leave forms by the employee can be seen through its status in the file (head/leaveEmployee) in the Head
     public function index2()
     {
 
@@ -27,14 +33,10 @@ class HeadController extends Controller
         $leave_form  = $list->leaveType(Employees::where('status', 'Approved by HR')->get());
 
         return view('Head.leaveEmployee', compact(['leave_form']));
-
-        // $list = new Employees();
-        // $leave_form  = $list->leaveType(Employees::get());
-
-        // return view('Head.leaveEmployee', compact(['leave_form']));
     }
 
 
+    //Displaying the page of the leave list of the division chief
     public function index3()
     {
         $list = new DivisionChief();
@@ -64,16 +66,17 @@ class HeadController extends Controller
      */
     public function show(string $id)
     {
+
+        //Getting the Employee through its id
         $lf_employee = Employees::find($id);
 
         //new class
         $typeleave = new Employees();
 
-        //assign sa ibang property bago mag palit ng value
+        //Assign a different property before changing the value
         $lf_employee->leaveType = $lf_employee->type_of_leave;
 
-        //getting the object and its property para mapalabas yung laman ng array
-
+        //Getting the object and its property further to see of all arrays
         $lf_employee->type_of_leave = $typeleave->getLeaveType($lf_employee->type_of_leave);
 
         return view('Head.viewEmployee', compact(['lf_employee', 'id']));
@@ -82,17 +85,16 @@ class HeadController extends Controller
     public function show2(string $id)
     {
         //viewing the inserted data's through tables using view. 
-
+        //Getting the Division Chief through its id
         $division_form = DivisionChief::find($id);
 
-        //new class
+        //Creating a new class for the type of leave
         $typeleave = new DivisionChief();
 
-        //assign sa ibang property bago mag palit ng value
+        //Assign a different property before changing the value
         $division_form->leaveType = $division_form->type_of_leave;
 
-        //getting the object and its property para mapalabas yung laman ng array
-
+        //Getting the object and its property further to see of all arrays
         $division_form->type_of_leave = $typeleave->getLeaveType($division_form->type_of_leave);
 
         return view('Head.viewDivision', compact(['division_form', 'id']));
@@ -108,6 +110,9 @@ class HeadController extends Controller
     /**
      * Update the specified resource in storage.
      */
+
+    //Seeing the progress or status of the applied leave form by the Division Chiefs
+    //Adding a email
     public function update(Request $request, string $id)
     {
         $division_form = DivisionChief::find($id);
@@ -139,6 +144,9 @@ class HeadController extends Controller
         }
     }
 
+
+    //Seeing the progress or status of the applied leave form by the employees
+    //Adding a email
     public function update2(Request $request, string $id)
     {
         $lf_employee = Employees::find($id);
@@ -151,9 +159,9 @@ class HeadController extends Controller
                 'firstname' => Auth::user()->first_name,
                 'lastname' => Auth::user()->last_name,
                 'mi' => Auth::user()->middle_initial,
-                'position'=> Auth::user()->position,
+                'position' => Auth::user()->position,
             ];
-            
+
             Mail::send('mail.approve', $data, function ($message) use ($email) {
                 $message->to($email);
                 $message->subject('Your Leave Application Has Been Approved.');
@@ -172,7 +180,7 @@ class HeadController extends Controller
                 'firstname' => Auth::user()->first_name,
                 'lastname' => Auth::user()->last_name,
                 'mi' => Auth::user()->middle_initial,
-                'position'=> Auth::user()->position,
+                'position' => Auth::user()->position,
             ];
             Mail::send('mail.reject', $data, function ($message) use ($data, $email) {
                 $message->to($email);

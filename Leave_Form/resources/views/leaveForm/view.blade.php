@@ -35,15 +35,6 @@
         justify-content: center;
     }
 
-    .divider {
-        padding-left: 100px;
-    }
-
-    #preposition {
-        margin: 8px 10px 0px 10px;
-        padding-top: 32px;
-    }
-
     #align {
         padding-top: 18px;
     }
@@ -85,50 +76,48 @@
 
     <!-- second row -->
     <div class="row">
-        <div class="form-group col-4">
+        
+        <div class="form-group col-3">
+            <label for="requested_by" class="form-label">E-mail</label>
+            <input type="text" class="form-control" id="email" name="email" value="{{$lf_employee['email']}}" disabled>
+        </div>
+
+        <div class="form-group col-3">
             <label for="requested_by" class="form-label">Employee Number</label>
             <input type="text" class="form-control" id="employee_number" name="employee_number" value="{{$lf_employee['employee_number']}}" disabled>
         </div>
 
-        <div class="form-group col-4">
+        <div class="form-group col-3">
             <label for="requested_by" class="form-label">Position</label>
             <input type="text" class="form-control" id="position" name="position" value="{{$lf_employee['position']}}" disabled>
         </div>
 
-        <div class="form-group col-4">
+        <div class="form-group col-3">
             <label for="requested_by" class="form-label">Salary</label>
             <input type="text" class="form-control" id="salary" name="salary" value="{{$lf_employee['salary']}}" disabled>
         </div>
     </div>
 
     <!-- third row -->
-    <div class="row">
-        <div class="form-group col-12">
-            <label for="requested_by" class="form-label">E-mail</label>
-            <input type="text" class="form-control" id="email" name="email" value="{{$lf_employee['email']}}" disabled>
-        </div>
-    </div>
 
     <!-- fourth row -->
 
     <div class="row">
 
-        <div class="form-group col-3">
+        <div class="form-group col-4">
             <label for="requested_by" class="form-label">No. Of Working Days</label>
             <input type="text" class="form-control" id="num_working_days" name="num_working_days" value="{{$lf_employee['num_working_days']}}" disabled>
         </div>
 
         <div class="form-group col-4">
             <label for="requested_by" class="form-label">Inclusive Date</label>
+            <span>(start)</span>
             <input type="text" class="form-control" id="startdate" name="startdate" value="{{$lf_employee['start_date']}}" disabled>
-        </div>
-
-        <div class="form-group" id="preposition">
-            <label for="requested_by" class="form-label">to</label>
         </div>
 
         <div class="form-group col-4" id="align">
             <label for="requested_by" class="form-label"></label>
+            <span>(end)</span>
             <input type="text" class="form-control" id="enddate" name="enddate" value="{{$lf_employee['end_date']}}" disabled>
         </div>
 
@@ -148,38 +137,6 @@
             <input type="date" class="form-control" id="date" name="date" value="{{$lf_employee['date']}}" disabled>
         </div>
     </div>
-    <!-- <div class="row">
-        <div class="form-group col-3">
-            <label for="requested_by" class="form-label">Type of Leave</label>
-            <input class="select2 form-control" name="type_of_leave" id="type_of_leave" value="{{$lf_employee['type_of_leave']}}" disabled>
-
-            </input>
-        </div>
-
-
-        <div class="form-group col-3">
-            <label for="requested_by" class="form-label">Date</label>
-            <input type="date" class="form-control" id="date" name="date" value="{{$lf_employee['date']}}" disabled>
-        </div>
-
-        <div class="form-group col-3">
-            <label for="requested_by" class="form-label">No. Of Working Days</label>
-            <input type="text" class="form-control" id="num_working_days" name="num_working_days" value="{{$lf_employee['num_working_days']}}" disabled>
-        </div>
-
-        <div class="form-group col-2">
-                <label for="requested_by" class="form-label">Inclusive Date</label>
-                <span id="requiredStyle"> *</span>
-
-                <input type="text" class="form-control" id="startdate" name="startdate" value="{{$lf_employee['start_date']}}" disabled>
-                <p>to</p>
-                <input type="text" class="form-control" id="enddate" name="enddate" value="{{$lf_employee['end_date']}}" disabled>
-
-            </div>
-
-    </div> -->
-
-
 
     <!-- fifth row (pop-up) -->
     <div class="row">
@@ -192,12 +149,12 @@
                 <label for="requested_by" class="form-label"> Additional Info </label>
                 <span id="requiredStyle"> *</span>
 
-                <div class="form-group col-12" id="same1">
+                <div id="same1">
                     <input type="radio" id="radio3" class="details" name="details" value="Within the Philippines" disabled>
                     <label for="requested_by" class="form-label">Within the Philippines</label>
                 </div>
 
-                <div class="form-group col-12" id="same2">
+                <div id="same2">
                     <input type="radio" id="radio5" class="details" name="details" value="Within Aborad" disabled>
                     <label for="requested_by" class="form-label">Within Aborad</label>
 
@@ -214,17 +171,17 @@
                 <label for="requested_by" class="form-label"> Additional Info </label>
                 <span id="requiredStyle"> *</span>
 
-                <div class="form-group col-12" id="same1">
+                <div id="same1">
                     <input type="radio" id="radio3" class="details" name="details" value="In Hospital" disabled>
                     <label for="requested_by" class="form-label">In Hospital</label>
                 </div>
 
-                <div class="form-group col-12" id="same2">
+                <div id="same2">
                     <input type="radio" id="radio4" class="details" name="details" value="Out Patient" disabled>
                     <label for="requested_by" class="form-label">Out Patient</label>
                 </div>
 
-                <div class="form-group col-12" id="same3">
+                <div id="same3">
                     <input type="radio" id="radio5" class="details" name="details" value="In case Leave Benefits for Women" disabled>
                     <label for="requested_by" class="form-label">In case Leave Benefits for Women</label>
 
@@ -241,12 +198,12 @@
                 <label for="requested_by" class="form-label"> Additional Info </label>
                 <span id="requiredStyle"> *</span>
 
-                <div class="form-group col-12" id="same1">
+                <div id="same1">
                     <input type="radio" id="radio6" class="details" name="details" value="masters" disabled>
                     <label for="requested_by" class="form-label">Completion of Masters Degree</label>
                 </div>
 
-                <div class="form-group col-12" id="same2">
+                <div id="same2">
                     <input type="radio" id="radio7" class="details" name="details" value="barBoard" disabled>
                     <label for="requested_by" class="form-label">BAR/Board Examination Review</label>
                 </div>
@@ -260,12 +217,12 @@
                 <label for="requested_by" class="form-label"> Additional Info </label>
                 <span id="requiredStyle"> *</span>
 
-                <div class="form-group col-12" id="same1">
+                <div id="same1">
                     <input type="radio" id="radio8" class="details" name="details" value="monetization" disabled>
                     <label for="requested_by" class="form-label">Monetization of leave Credits</label>
                 </div>
 
-                <div class="form-group col-12" id="same2">
+                <div id="same2">
                     <input type="radio" id="radio9" class="details" name="details" value="terminal" disabled>
                     <label for="requested_by" class="form-label">Terminal Leave</label>
                 </div>
@@ -332,14 +289,14 @@
             $("#radio12").prop("checked", true);
         }
 
-        // select2 for type of leave
-
-
+         // Calling new variable to determine array accordingly (type of leave)
         let vacation_form = $($('.leaveOption div')[0]);
         let sick_form = $($('.leaveOption div')[3]);
         let study_form = $($('.leaveOption div')[7]);
         let other = $($('.leaveOption div')[10]);
 
+        //Viewing the radio button
+       
         //vacation
         let radio1 = $($('.details')[0]);
         let radio2 = $($('.details')[1]);
@@ -358,6 +315,7 @@
         let radio9 = $($('.details')[8]);
 
 
+        //Displaying the leave of type
         function clearType() {
             vacation_form.css('display', 'none')
             sick_form.css('display', 'none')
@@ -365,8 +323,9 @@
             other.css('display', 'none')
         }
 
-
+        //using switch case to call the new variable in array and applying the radio button to be viewed
         switch (@json($lf_employee -> leaveType)) {
+
             // Vacation
             case '1':
                 clearType()
@@ -414,7 +373,7 @@
     });
 
 
-    //sweet alert for submit
+   //submitting the form 
     let errorMessages = '';
     $("#submitForm").on("submit", function(e) {
         e.preventDefault();

@@ -187,17 +187,17 @@
 
 
                 <!-- vacation leave 0 -->
-                <div class="border form-group col-12" style="display:none">
+                <div class="form-group col-12" style="display:none">
 
                     <label for="requested_by" class="form-label"> Additional Info </label>
                     <span id="requiredStyle"> *</span>
 
-                    <div class="form-group col-12" id="same1">
+                    <div id="same1">
                         <input type="radio" id="radio1" name="details" value="Within the Philippines">
                         <label for="requested_by" class="form-label">Within the Philippines</label>
                     </div>
 
-                    <div class="form-group col-12" id="same2">
+                    <div id="same2">
                         <input type="radio" id="radio2" name="details" value="Within the Philippines">
                         <label for="requested_by" class="form-label">Within Abroad</label>
 
@@ -209,22 +209,22 @@
 
                 <!-- sick leave 3 -->
 
-                <div class="border form-group col-12" style="display:none">
+                <div class="form-group col-12" style="display:none">
 
                     <label for="requested_by" class="form-label"> Additional Info </label>
                     <span id="requiredStyle"> *</span>
 
-                    <div class="form-group col-12" id="same1">
+                    <div id="same1">
                         <input type="radio" id="radio1" name="details" value="In Hospital">
                         <label for="requested_by" class="form-label">In Hospital</label>
                     </div>
 
-                    <div class="form-group col-12" id="same2">
+                    <div id="same2">
                         <input type="radio" id="radio2" name="details" value="Out Patient">
                         <label for="requested_by" class="form-label">Out Patient</label>
                     </div>
 
-                    <div class="form-group col-12" id="same3">
+                    <div id="same3">
                         <input type="radio" id="radio3" name="details" value="In case Leave Benefits for Women">
                         <label for="requested_by" class="form-label">In case Leave Benefits for Women</label>
 
@@ -235,17 +235,17 @@
                 <!-- end of sick leave -->
 
                 <!-- study leave 7 -->
-                <div class="border form-group col-12" style="display:none">
+                <div class="form-group col-12" style="display:none">
 
                     <label for="requested_by" class="form-label"> Additional Info </label>
                     <span id="requiredStyle"> *</span>
 
-                    <div class="form-group col-12" id="same1">
+                    <div id="same1">
                         <input type="radio" id="radio1" name="details" value="masters">
                         <label for="requested_by" class="form-label">Completion of Masters Degree</label>
                     </div>
 
-                    <div class="form-group col-12" id="same2">
+                    <div id="same2">
                         <input type="radio" id="radio2" name="details" value="barBoard">
                         <label for="requested_by" class="form-label">BAR/Board Examination Review</label>
                     </div>
@@ -261,12 +261,12 @@
                     <label for="requested_by" class="form-label"> Additional Info </label>
                     <span id="requiredStyle"> *</span>
 
-                    <div class="form-group col-12" id="same1">
+                    <div id="same1">
                         <input type="radio" id="radio1" name="details" value="masters">
                         <label for="requested_by" class="form-label">Completion of Masters Degree</label>
                     </div>
 
-                    <div class="form-group col-12" id="same2">
+                    <div id="same2">
                         <input type="radio" id="radio2" name="details" value="barBoard">
                         <label for="requested_by" class="form-label">BAR/Board Examination Review</label>
                     </div>
@@ -276,17 +276,17 @@
 
 
                 <!-- others 10 -->
-                <div class="border form-group col-12" style="display:none">
+                <div class="form-group col-12" style="display:none">
 
                     <label for="requested_by" class="form-label"> Additional Info </label>
                     <span id="requiredStyle"> *</span>
 
-                    <div class="form-group col-12" id="same1">
+                    <div id="same1">
                         <input type="radio" id="radio1" name="details" value="monetization">
                         <label for="requested_by" class="form-label">Monetization of leave Credits</label>
                     </div>
 
-                    <div class="form-group col-12" id="same2">
+                    <div id="same2">
                         <input type="radio" id="radio2" name="details" value="terminal">
                         <label for="requested_by" class="form-label">Terminal Leave</label>
                     </div>

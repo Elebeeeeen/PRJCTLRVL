@@ -186,10 +186,3 @@
         });
     }
 </script>
-
-<!-- <li class="nav-item">
-    <a href="/humanresource" class="nav-link {{ Request::is('humanresource') ? 'active' : '' }}">
-        <i class="nav-icon fas fa-home"></i>
-        <p>Leave Application</p>
-    </a>
-</li> -->

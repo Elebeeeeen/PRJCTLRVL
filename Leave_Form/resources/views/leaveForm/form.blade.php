@@ -32,15 +32,6 @@
         justify-content: center;
     }
 
-    .divider {
-        padding-left: 100px;
-    }
-
-    #preposition {
-        margin: 8px 10px 0px 10px;
-        padding-top: 32px;
-    }
-
     #align {
         padding-top: 8px;
     }
@@ -93,20 +84,28 @@
 
         <div class="row">
 
-            <div class="form-group col-4">
+
+            <div class="form-group col-3">
+                <label for="requested_by" class="form-label">E-mail</label>
+                <span id="requiredStyle"> *</span>
+                <input type="text" class="form-control" placeholder="Ex: juandelacruz@gmail.com" id="email" name="email" value="{{ Auth::user()->email}}" readonly>
+            </div>
+
+
+            <div class="form-group col-3">
                 <label for="requested_by" class="form-label">Employee Number</label>
                 <span id="requiredStyle"> *</span>
                 <input type="text" class="form-control" placeholder="Ex: 1001" id="employee_number" name="employee_number" value="{{ Auth::user()->employee_number}}" readonly>
             </div>
 
 
-            <div class="form-group col-4">
+            <div class="form-group col-3">
                 <label for="requested_by" class="form-label">Position</label>
                 <span id="requiredStyle"> *</span>
                 <input type="text" class="form-control" placeholder="Ex: Employee" id="position" name="position" value="{{ Auth::user()->position}}" readonly>
             </div>
 
-            <div class="form-group col-4">
+            <div class="form-group col-3">
                 <label for="requested_by" class="form-label">Salary</label>
                 <span id="requiredStyle"> *</span>
                 <input type="text" class="form-control" placeholder="Ex: ₱10,000" id="salary" name="salary" value="{{ Auth::user()->salary}}" readonly>
@@ -120,20 +119,8 @@
         <!-- start of third row -->
 
         <div class="row">
-            <div class="form-group col-12">
-                <label for="requested_by" class="form-label">E-mail</label>
-                <span id="requiredStyle"> *</span>
-                <input type="text" class="form-control" placeholder="Ex: juandelacruz@gmail.com" id="email" name="email" value="{{ Auth::user()->email}}" readonly>
-            </div>
-        </div>
 
-        <!-- end of third row -->
-
-        <!-- start of fourth row -->
-
-        <div class="row">
-
-            <div class="form-group col-3">
+            <div class="form-group col-4">
                 <label for="requested_by" class="form-label">No. Of Working Days</label>
                 <span id="requiredStyle"> *</span>
                 <input type="text" class="form-control" placeholder="Ex: (1) One day" id="num_working_days" name="num_working_days">
@@ -142,17 +129,14 @@
             <div class="form-group col-4">
                 <label for="requested_by" class="form-label">Inclusive Date</label>
                 <span id="requiredStyle"> *</span>
-                <input type="date" class="form-control" id="startdate" name="startdate">
-            </div>
-
-            <div class="form-group" id="preposition">
-                <label for="requested_by" class="form-label">to</label>
-
+                <span>(start)</span>
+                <input type="date" class="form-control" id="startdate" name="startdate" required>
             </div>
 
             <div class="form-group col-4" id="align">
                 <label for="requested_by" class="form-label"></label>
-                <input type="date" class="form-control" id="enddate" name="enddate">
+                <span>(end)</span>
+                <input type="date" class="form-control" id="enddate" name="enddate" required>
             </div>
 
         </div>
@@ -175,181 +159,159 @@
         </div>
 
 
-    <!-- end of fourth row -->
+        <!-- end of third row -->
 
 
-    <!-- start of fifth row (pop-up) -->
+        <!-- start of fifth row (pop-up) -->
 
-    <div class="row">
+        <div class="row">
 
-        <div class="leaveOption">
-
-
-            <!-- vacation leave 0 -->
-            <div class=" form-group col-12" style="display:none">
-
-                <label for="requested_by" class="form-label"> Additional Info </label>
-                <span id="requiredStyle"> *</span>
-
-                <div class="form-group col-12" id="same1">
-                    <input type="radio" id="radio1" name="details" value="Within the Philippines">
-                    <label for="requested_by" class="form-label">Within the Philippines</label>
-                </div>
-
-                <div class="form-group col-12" id="same2">
-                    <input type="radio" id="radio2" name="details" value="Within Abroad">
-                    <label for="requested_by" class="form-label">Within Abroad</label>
-
-                    <input type="text" placeholder="Specify" class="form-control" id="specification" name="specification1" style="width: 1050px">
-                </div>
-            </div>
-            <!-- end of vacation leave -->
+            <div class="leaveOption">
 
 
-            <!-- sick leave 3 -->
-
-            <div class="form-group col-12" style="display:none">
-
-                <label for="requested_by" class="form-label"> Additional Info </label>
-                <span id="requiredStyle"> *</span>
-
-                <div class="form-group col-12" id="same1">
-                    <input type="radio" id="radio1" name="details" value="In Hospital">
-                    <label for="requested_by" class="form-label">In Hospital</label>
-                </div>
-
-                <div class="form-group col-12" id="same2">
-                    <input type="radio" id="radio2" name="details" value="Out Patient">
-                    <label for="requested_by" class="form-label">Out Patient</label>
-                </div>
-
-                <div class="form-group col-12" id="same3">
-                    <input type="radio" id="radio3" name="details" value="In case Leave Benefits for Women">
-                    <label for="requested_by" class="form-label">In case Leave Benefits for Women</label>
-
-                    <input type="text" placeholder="Specify" class="form-control" id="specification" name="specification2" style="width: 1050px">
-                </div>
-
-            </div>
-            <!-- end of sick leave -->
-
-            <!-- study leave 7 -->
-            <div class="form-group col-12" style="display:none">
-
-                <label for="requested_by" class="form-label"> Additional Info </label>
-                <span id="requiredStyle"> *</span>
-
-                <div class="form-group col-12" id="same1">
-                    <input type="radio" id="radio1" name="details" value="masters">
-                    <label for="requested_by" class="form-label">Completion of Masters Degree</label>
-                </div>
-
-                <div class="form-group col-12" id="same2">
-                    <input type="radio" id="radio2" name="details" value="barBoard">
-                    <label for="requested_by" class="form-label">BAR/Board Examination Review</label>
-                </div>
-
-            </div>
-            <!-- end of study leave -->
-
-
-
-            <!-- study leave 7 -->
-            <!-- <div class="form-group col-12" style="display:none">
+                <!-- vacation leave 0 -->
+                <div class=" form-group col-12" style="display:none">
 
                     <label for="requested_by" class="form-label"> Additional Info </label>
                     <span id="requiredStyle"> *</span>
 
-                    <div class="form-group col-12" id="same1">
+                    <div id="same1">
+                        <input type="radio" id="radio1" name="details" value="Within the Philippines">
+                        <label for="requested_by" class="form-label">Within the Philippines</label>
+                    </div>
+
+                    <div id="same2">
+                        <input type="radio" id="radio2" name="details" value="Within Abroad">
+                        <label for="requested_by" class="form-label">Within Abroad</label>
+
+                        <input type="text" placeholder="Specify" class="form-control" id="specification" name="specification1" style="width: 1050px">
+                    </div>
+                </div>
+                <!-- end of vacation leave -->
+
+
+                <!-- sick leave 3 -->
+
+                <div class="form-group col-12" style="display:none">
+
+                    <label for="requested_by" class="form-label"> Additional Info </label>
+                    <span id="requiredStyle"> *</span>
+
+                    <div id="same1">
+                        <input type="radio" id="radio1" name="details" value="In Hospital">
+                        <label for="requested_by" class="form-label">In Hospital</label>
+                    </div>
+
+                    <div id="same2">
+                        <input type="radio" id="radio2" name="details" value="Out Patient">
+                        <label for="requested_by" class="form-label">Out Patient</label>
+                    </div>
+
+                    <div  id="same3">
+                        <input type="radio" id="radio3" name="details" value="In case Leave Benefits for Women">
+                        <label for="requested_by" class="form-label">In case Leave Benefits for Women</label>
+
+                        <input type="text" placeholder="Specify" class="form-control" id="specification" name="specification2" style="width: 1050px">
+                    </div>
+
+                </div>
+                <!-- end of sick leave -->
+
+                <!-- study leave 7 -->
+                <div class="form-group col-12" style="display:none">
+
+                    <label for="requested_by" class="form-label"> Additional Info </label>
+                    <span id="requiredStyle"> *</span>
+
+                    <div id="same1">
                         <input type="radio" id="radio1" name="details" value="masters">
                         <label for="requested_by" class="form-label">Completion of Masters Degree</label>
                     </div>
 
-                    <div class="form-group col-12" id="same2">
+                    <div id="same2">
                         <input type="radio" id="radio2" name="details" value="barBoard">
                         <label for="requested_by" class="form-label">BAR/Board Examination Review</label>
                     </div>
 
-                </div> -->
-            <!-- end of study leave -->
-
-
-            <!-- others 10 -->
-            <div class="form-group col-12" style="display:none">
-
-                <label for="requested_by" class="form-label"> Additional Info </label>
-                <span id="requiredStyle"> *</span>
-
-                <div class="form-group col-12" id="same1">
-                    <input type="radio" id="radio1" name="details" value="monetization">
-                    <label for="requested_by" class="form-label">Monetization of leave Credits</label>
                 </div>
+                <!-- end of study leave -->
 
-                <div class="form-group col-12" id="same2">
-                    <input type="radio" id="radio2" name="details" value="terminal">
-                    <label for="requested_by" class="form-label">Terminal Leave</label>
+                <!-- others 10 -->
+                <div class="form-group col-12" style="display:none">
+
+                    <label for="requested_by" class="form-label"> Additional Info </label>
+                    <span id="requiredStyle"> *</span>
+
+                    <div id="same1">
+                        <input type="radio" id="radio1" name="details" value="monetization">
+                        <label for="requested_by" class="form-label">Monetization of leave Credits</label>
+                    </div>
+
+                    <div id="same2">
+                        <input type="radio" id="radio2" name="details" value="terminal">
+                        <label for="requested_by" class="form-label">Terminal Leave</label>
+                    </div>
+
                 </div>
+                <!-- end of others -->
+
+
 
             </div>
-            <!-- end of others -->
-
-
 
         </div>
 
-    </div>
-
-    <!-- end of fifth row -->
+        <!-- end of fifth row -->
 
 
 
-    <!-- start of sixth row -->
-    <div class="row">
+        <!-- start of sixth row -->
+        <div class="row">
 
-        <div class="border">
+            <div class="border">
+                <div class="form-group col-12">
+                    <label for="requested_by" class="form-label">Commutation</label>
+                    <span id="requiredStyle"> *</span>
+
+                    <div class="forCheckbox">
+                        <div class="form-group col-3" id="same1">
+                            <input type="radio" id="radio11" name="commutation" value="Requested">
+                            <label for="requested_by" class="form-label"> Requested</label>
+                        </div>
+
+                        <div class="form-group col-3" id="same1">
+                            <input type="radio" id="radio12" name="commutation" value="Not Requested">
+                            <label for="requested_by" class="form-label">Not Requested</label>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- end of sixth row -->
+
+        <br>
+
+        <!-- start of seventh row -->
+        <div class="row">
             <div class="form-group col-12">
-                <label for="requested_by" class="form-label">Commutation</label>
+                <label for="requested_by" class="form-label">Approver</label>
                 <span id="requiredStyle"> *</span>
-
-                <div class="forCheckbox">
-                    <div class="form-group col-3" id="same1">
-                        <input type="radio" id="radio11" name="commutation" value="Requested">
-                        <label for="requested_by" class="form-label"> Requested</label>
-                    </div>
-
-                    <div class="form-group col-3" id="same1">
-                        <input type="radio" id="radio12" name="commutation" value="Not Requested">
-                        <label for="requested_by" class="form-label">Not Requested</label>
-                    </div>
-
-                </div>
+                <input type="text" class="form-control" placeholder="Ex: Approver" id="approver" name="approver">
             </div>
         </div>
+        <!-- end of seventh row -->
 
-    </div>
 
-    <!-- end of sixth row -->
 
-    <br>
-
-    <!-- start of seventh row -->
-    <div class="row">
-        <div class="form-group col-12">
-            <label for="requested_by" class="form-label">Approver</label>
-            <span id="requiredStyle"> *</span>
-            <input type="text" class="form-control" placeholder="Ex: Approver" id="approver" name="approver">
+        <!--just button-->
+        <div class="w-100">
+            <div class="float-right">
+                <button type="submit" id="submitForm" class="btn btn-primary">Submit</button>
+            </div>
         </div>
-    </div>
-    <!-- end of seventh row -->
-
-
-
-    <!--just button-->
-    <div class="w-100">
-        <div class="float-right">
-            <button type="submit" id="submitForm" class="btn btn-primary">Submit</button>
-        </div>
-    </div>
 
     </div>
 </form>
@@ -358,11 +320,13 @@
 <script>
     $(document).ready(function() {
 
+        // Calling new variable to determine array accordingly (type of leave)
         let vacation_form = $($('.leaveOption div')[0]);
         let sick_form = $($('.leaveOption div')[3]);
         let study_form = $($('.leaveOption div')[7]);
         let other = $($('.leaveOption div')[13]);
 
+        //Displaying the leave of type
         function clearType() {
             vacation_form.css('display', 'none')
             sick_form.css('display', 'none')
@@ -370,6 +334,8 @@
             other.css('display', 'none')
         }
 
+
+        //Select 2
         $('#type_of_leave').select2({
 
             width: '100%',
@@ -383,6 +349,8 @@
                 }
             }
 
+
+            //using switch case to call the new variable in array
         }).on('change', function() {
             switch (this.value) {
                 // Vacation
@@ -391,7 +359,7 @@
                     vacation_form.css('display', 'block')
                     break;
 
-                    //walang laman
+        
                 case '2':
                 case '4':
                 case '5':
@@ -425,6 +393,8 @@
             }
         });
     });
+
+    //submitting the form 
 
     let errorMessages = '';
     $("#submitForm").on("submit", function(e) {
@@ -480,9 +450,5 @@
     });
 </script>
 
-
-
-
-<!-- malinis na po ito -->
 
 @endsection

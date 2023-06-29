@@ -36,15 +36,6 @@
         justify-content: center;
     }
 
-    .divider {
-        padding-left: 100px;
-    }
-
-    #preposition {
-        margin: 8px 10px 0px 10px;
-        padding-top: 32px;
-    }
-
     #align {
         padding-top: 18px;
     }
@@ -121,15 +112,13 @@
 
         <div class="form-group col-4">
             <label for="requested_by" class="form-label">Inclusive Date</label>
+            <span>(start)</span>
             <input type="text" class="form-control" id="startdate" name="startdate" value="{{$division_form['start_date']}}" disabled>
-        </div>
-
-        <div class="form-group" id="preposition">
-            <label for="requested_by" class="form-label">to</label>
         </div>
 
         <div class="form-group col-4" id="align">
             <label for="requested_by" class="form-label"></label>
+            <span>(end)</span>
             <input type="text" class="form-control" id="enddate" name="enddate" value="{{$division_form['end_date']}}" disabled>
         </div>
 
@@ -155,7 +144,7 @@
     <!-- fifth row (pop-up) -->
     <div class="row">
 
-        <div class="border leaveOption">
+        <div class="leaveOption">
 
             <!-- vacation leave 0 -->
             <div class="form-group col-12" style="display:none">
@@ -163,16 +152,16 @@
                 <label for="requested_by" class="form-label"> Additional Info </label>
                 <span id="requiredStyle"> *</span>
 
-                <div class="form-group col-12" id="same1">
+                <div id="same1">
                     <input type="radio" id="radio" class="details" name="details" value="Within the Philippines" disabled>
                     <label for="requested_by" class="form-label">Within the Philippines</label>
                 </div>
 
-                <div class="form-group col-12" id="same2">
+                <div id="same2">
                     <input type="radio" id="radio" class="details" name="details" value="Within Aborad" disabled>
                     <label for="requested_by" class="form-label">Within Abroad</label>
 
-                    <input type="text" class="form-control" id="specification" name="specification" value="{{$division_form['specification']}}" style="width: 100%" disabled>
+                    <input type="text" class="form-control" id="specification" name="specification" value="{{$division_form['specification']}}" style="width: 1050px" disabled>
                 </div>
             </div>
             <!-- end of vacation leave -->
@@ -184,21 +173,21 @@
                 <label for="requested_by" class="form-label"> Additional Info </label>
                 <span id="requiredStyle"> *</span>
 
-                <div class="form-group col-12" id="same1">
+                <div id="same1">
                     <input type="radio" id="radio3" class="details" name="details" value="In Hospital" disabled>
                     <label for="requested_by" class="form-label">In Hospital</label>
                 </div>
 
-                <div class="form-group col-12" id="same2">
+                <div id="same2">
                     <input type="radio" id="radio4" class="details" name="details" value="Out Patient" disabled>
                     <label for="requested_by" class="form-label">Out Patient</label>
                 </div>
 
-                <div class="form-group col-12" id="same3">
+                <div id="same3">
                     <input type="radio" id="radio5" class="details" name="details" value="In case Leave Benefits for Women" disabled>
                     <label for="requested_by" class="form-label">In case Leave Benefits for Women</label>
 
-                    <input type="text" class="form-control" id="specification" name="specification" value="{{$division_form['specification']}}" style="width: 100%" disabled>
+                    <input type="text" class="form-control" id="specification" name="specification" value="{{$division_form['specification']}}" style="width: 1050px" disabled>
                 </div>
 
             </div>
@@ -211,12 +200,12 @@
                 <label for="requested_by" class="form-label"> Additional Info </label>
                 <span id="requiredStyle"> *</span>
 
-                <div class="form-group col-12" id="same1">
+                <div id="same1">
                     <input type="radio" id="radio6" class="details" name="details" value="masters" disabled>
                     <label for="requested_by" class="form-label">Completion of Masters Degree</label>
                 </div>
 
-                <div class="form-group col-12" id="same2">
+                <div id="same2">
                     <input type="radio" id="radio7" class="details" name="details" value="barBoard" disabled>
                     <label for="requested_by" class="form-label">BAR/Board Examination Review</label>
                 </div>
@@ -230,12 +219,12 @@
                 <label for="requested_by" class="form-label"> Additional Info </label>
                 <span id="requiredStyle"> *</span>
 
-                <div class="form-group col-12" id="same1">
+                <div id="same1">
                     <input type="radio" id="radio8" class="details" name="details" value="monetization" disabled>
                     <label for="requested_by" class="form-label">Monetization of leave Credits</label>
                 </div>
 
-                <div class="form-group col-12" id="same2">
+                <div id="same2">
                     <input type="radio" id="radio9" class="details" name="details" value="terminal" disabled>
                     <label for="requested_by" class="form-label">Terminal Leave</label>
                 </div>
@@ -302,11 +291,13 @@
 
 
 <script>
-         //sweet alert for approve and reject
-    //ayos na
+    //sweet alert for approve and reject
     let errorMessages = '';
 
+    //getting id of the form for button
     var form = document.getElementById('approve_form');
+
+    //querying the usage of button
     var buttons = form.querySelectorAll('button[type="submit"]');
 
     buttons.forEach(function(button) {
@@ -422,9 +413,9 @@
                                     success: function(response) {
                                         if (response.success) {
                                             Swal.fire({
-                                                title: '',
-                                                icon: 'warning',
-                                                showCancelButton: true,
+                                                title: 'Rejected!',
+                                                icon: 'success',
+                                                text: 'This form is now rejected. E-mail has been sent to the Division Chief.',
                                                 confirmButtonText: "confirm",
                                             }).then((result) => {
                                                 if (result.isConfirmed) {
@@ -449,15 +440,7 @@
                                     }
 
                                 });
-                            } else {
-                                Swal.fire({
-                                    title: 'Are you sure?',
-                                    text: 'Do you want to cancel it?',
-                                    icon: 'question ',
-                                    showCancelButton: true,
-                                    confirmButtonText: "Yes",
-                                })
-                            }
+                            } 
                         });
                     } else {
                         Swal.fire({

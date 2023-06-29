@@ -14,42 +14,35 @@ class EmployeeController extends Controller
     /**
      * Display a listing of the resource.
      */
+
+
+    //Displaying the page of the leave list of the employee
     public function index()
     {
-        //
-        // $leave_form = Employees::get();
-        
+
         $list = new Employees();
         $leave_form  = $list->leaveType(Employees::get());
 
         return view('leaveForm.list', compact(['leave_form']));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
+
+    // showing the form leave form of the employee
     public function create()
     {
 
         return view('leaveForm.form');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
 
-     // Validator in submitting a leave form
-
-     
-
+    //storing the inputs of the users (Director Chief)
     public function store(Request $request)
     {
+        //Creating a validator 
         $message_error = [
 
             'num_working_days.required' => 'Please Indicate Your Number Working Days',
             'type_of_leave.required' => 'Please Indicate Your Type of Leave',
-            'start_date.required' => 'Please Indicate the Starting Date',
-            'end_date.required' => 'Please Indicate the End Date',
             'date.required' => 'Please Indicate Your Date',
             'inclusive_dates.required' => 'Please Indicate Your Inclusive Dates',
             'commutation.required' => 'Please Indicate Your Commutation',
@@ -61,8 +54,6 @@ class EmployeeController extends Controller
         $validator = Validator::make($request->all(), [
 
             'num_working_days' => 'required|numeric|max:10',
-            'start_date' => 'required',
-            'end_date' => 'required',
             'type_of_leave' => 'required',
             'date' => 'required',
             'commutation' => 'required',
@@ -74,15 +65,15 @@ class EmployeeController extends Controller
 
             $status = 'Pending';
 
-        // for the inclusive dates
-        
+            // converting the format of the date (inclusive date)
+
             $firstInclusiveDate = $request->startdate;
             $startInclusiveDate = Carbon::createFromFormat('Y-m-d', $firstInclusiveDate)->format('F j, Y');
             $secondInclusiveDate = $request->enddate;
             $endInclusiveDate = Carbon::createFromFormat('Y-m-d', $secondInclusiveDate)->format('F j, Y');
 
 
-            if($request->specification1 != null){
+            if ($request->specification1 != null) {
                 $lf_employee = Employees::create([
                     'office' => $request->office,
                     'last_name' => $request->last_name,
@@ -95,16 +86,15 @@ class EmployeeController extends Controller
                     'type_of_leave' => $request->type_of_leave,
                     'date' => $request->date,
                     'num_working_days' => $request->num_working_days,
-                    // 'inclusive_dates' => $request->inclusive_dates,
                     'start_date' => $startInclusiveDate,
-                    'end_date'=>  $endInclusiveDate,
+                    'end_date' =>  $endInclusiveDate,
                     'details' => $request->details,
                     'specification' => $request->specification1,
                     'commutation' => $request->commutation,
                     'approver' => $request->approver,
                     'status' => $status,
                 ]);
-            }else if ($request->specification2 != null){
+            } else if ($request->specification2 != null) {
                 $lf_employee = Employees::create([
                     'office' => $request->office,
                     'last_name' => $request->last_name,
@@ -118,15 +108,14 @@ class EmployeeController extends Controller
                     'date' => $request->date,
                     'num_working_days' => $request->num_working_days,
                     'start_date' => $startInclusiveDate,
-                    'end_date'=>  $endInclusiveDate,
-                    // 'inclusive_dates' => $request->inclusive_dates,
+                    'end_date' =>  $endInclusiveDate,
                     'details' => $request->details,
                     'specification' => $request->specification2,
                     'commutation' => $request->commutation,
                     'approver' => $request->approver,
                     'status' => $status,
                 ]);
-            }else{
+            } else {
                 $lf_employee = Employees::create([
                     'office' => $request->office,
                     'last_name' => $request->last_name,
@@ -140,8 +129,7 @@ class EmployeeController extends Controller
                     'date' => $request->date,
                     'num_working_days' => $request->num_working_days,
                     'start_date' => $startInclusiveDate,
-                    'end_date'=>  $endInclusiveDate,
-                    // 'inclusive_dates' => $request->inclusive_dates,
+                    'end_date' =>  $endInclusiveDate,
                     'details' => $request->details,
                     'commutation' => $request->commutation,
                     'approver' => $request->approver,
@@ -161,22 +149,19 @@ class EmployeeController extends Controller
     {
 
         //viewing the inserted data's through tables using view. 
-
+        //Getting the Employee through its id
         $lf_employee = Employees::find($id);
 
-        //new class
+        //Creating a new class for the type of leave
         $typeleave = new Employees();
 
-        //assign sa ibang property bago mag palit ng value
+        //Assign a different property before changing the value
         $lf_employee->leaveType = $lf_employee->type_of_leave;
 
-        //getting the object and its property para mapalabas yung laman ng array
-
+        //Getting the object and its property further to see of all arrays
         $lf_employee->type_of_leave = $typeleave->getLeaveType($lf_employee->type_of_leave);
 
         return view('leaveform.view', compact(['lf_employee']));
-        
-
     }
 
 
@@ -205,8 +190,10 @@ class EmployeeController extends Controller
     }
 
     // additional function to read the arrays to the employee model
-    public function leaveList(){
-         
+    //Creating new function to call the leavelist funtion in the model
+    public function leaveList()
+    {
+
         $list = new Employees();
         return $list->leaveList();
     }

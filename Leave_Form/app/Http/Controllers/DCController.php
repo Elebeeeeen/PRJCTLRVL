@@ -17,88 +17,91 @@ class DCController extends Controller
      * Display a listing of the resource.
      */
 
+
+
+    //All created leave forms are counted throught it status in the file (form) in the Division Chief
     public function index()
     {
-        //para ito sa form yung lalabas kung ilang pending form pa ba ang meron
+
         $count = Employees::where('Status', 'Pending')->count();
         return view('DivisionChief.form', compact(['count']));
     }
 
 
-    //displaing the page of the leave list of the division chief
+
+    //Displaying the page of the leave list of the division chief
     public function index2()
     {
-        //displaying the page
-
 
         $list = new DivisionChief();
         $division_form  = $list->leaveType(DivisionChief::get());
 
         return view('DivisionChief.listdivision', compact(['division_form']));
-
-        // return view('DivisionChief.form');
     }
 
+
+
+    //All created leave forms by the employee can be seen through its status in the file (DivisionChief/listemployee) in the Division Chief
     public function index3()
     {
+
         $list = new Employees();
         $leave_form  = $list->leaveType(Employees::where('status', 'Pending')->get());
 
         return view('DivisionChief.listemployee', compact(['leave_form']));
     }
 
+
+
+    //Displaying the application of leave by the Division Chief
     public function create()
     {
-        //
+
         return view('DivisionChief.divisionform');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
+
+
+    //storing the inputs of the users (Director Chief)
     public function store(Request $request)
     {
-        $message_error = [
-            'office.required' => 'Please state your Department Office',
-            'last_name.required' => 'Please indicate your Last Name',
-            'first_name.required' => 'Please indicate your First Name',
-            'middle_initial.required' => 'Please indicate your Middle Initial',
-            'employee_number.required' => 'Please indicate your Employee Number',
-            'position.required' => 'Please indicate your Position',
-            'employee_number.required' => 'Please indicate your Employee Number',
-            'salary.required' => 'Please indicate your Salary',
-            'email.required' => 'Please indicate your E-mail',
-            'type_of_leave.required' => 'Please indicate your Type of Leave',
-            'date.required' => 'Please indicate your Date',
-            'num_working_days.required' => 'Please indicate your Number Working Days',
-            'inclusive_dates.required' => 'Please indicate your Inclusive Dates',
-            'approver.required' => 'Please indicate your Approver',
-            'commutation.required' => 'Please indicate your Commutation',
 
+
+        //creating a validator 
+        $message_error = [
+
+             'num_working_days.required' => 'Please Indicate Your Number Working Days',
+            'type_of_leave.required' => 'Please Indicate Your Type of Leave',
+            'start_date.required' => 'Please Indicate the Starting Date',
+            'end_date.required' => 'Please Indicate the End Date',
+            'date.required' => 'Please Indicate Your Date',
+            'inclusive_dates.required' => 'Please Indicate Your Inclusive Dates',
+            'commutation.required' => 'Please Indicate Your Commutation',
+            'approver.required' => 'Please Indicate Your Approver',
 
         ];
 
         $validator = Validator::make($request->all(), [
-            'office' => 'required|max:25',
-            'last_name' => 'required|max:25',
-            'first_name' => 'required|max:25',
-            'middle_initial' => 'required|max:1',
-            'employee_number' => 'required|numeric|max:99999',
-            'salary' => 'required|numeric|max:999999',
-            'email' => 'required',
+            'num_working_days' => 'required|numeric|max:10',
+            'start_date' => 'required',
+            'end_date' => 'required',
             'type_of_leave' => 'required',
             'date' => 'required',
-            'num_working_days' => 'required|numeric',
-            'approver' => 'required',
             'commutation' => 'required',
+            'approver' => 'required',
 
         ], $message_error);
 
+
+
+        // converting the format of the date (inclusive date)
         $firstInclusiveDate = $request->startdate;
         $startInclusiveDate = Carbon::createFromFormat('Y-m-d', $firstInclusiveDate)->format('F j, Y');
         $secondInclusiveDate = $request->enddate;
         $endInclusiveDate = Carbon::createFromFormat('Y-m-d', $secondInclusiveDate)->format('F j, Y');
 
+
+        //Applying the validator of the created form in Division Chief
         if ($validator->passes()) {
 
             if ($request->specification1 != null) {
@@ -116,7 +119,6 @@ class DCController extends Controller
                     'num_working_days' => $request->num_working_days,
                     'start_date' => $startInclusiveDate,
                     'end_date' =>  $endInclusiveDate,
-                    // 'inclusive_dates' => $request->inclusive_dates,
                     'details' => $request->details,
                     'specification' => $request->specification1,
                     'commutation' => $request->commutation,
@@ -138,7 +140,6 @@ class DCController extends Controller
                     'num_working_days' => $request->num_working_days,
                     'start_date' => $startInclusiveDate,
                     'end_date' =>  $endInclusiveDate,
-                    // 'inclusive_dates' => $request->inclusive_dates,
                     'details' => $request->details,
                     'specification' => $request->specification2,
                     'commutation' => $request->commutation,
@@ -160,7 +161,6 @@ class DCController extends Controller
                     'num_working_days' => $request->num_working_days,
                     'start_date' => $startInclusiveDate,
                     'end_date' =>  $endInclusiveDate,
-                    // 'inclusive_dates' => $request->inclusive_dates,
                     'details' => $request->details,
                     'commutation' => $request->commutation,
                     'approver' => $request->approver,
@@ -176,73 +176,57 @@ class DCController extends Controller
     /**
      * Display the specified resource.
      */
+
+
     public function show(string $id)
     {
-        // $lf_employee = Employees::find($id);
-        // return view('DivisionChief.view', compact(['lf_employee']));
-
+        //Getting the Division Chief through its id
         $division_form = DivisionChief::find($id);
 
-        //new class
+        //Creating a new class for the type of leave
         $typeleave = new DivisionChief();
 
-        //assign sa ibang property bago mag palit ng value
+        //Assign a different property before changing the value
         $division_form->leaveType = $division_form->type_of_leave;
 
-        //getting the object and its property para mapalabas yung laman ng array
-
+        //Getting the object and its property further to see of all arrays
         $division_form->type_of_leave = $typeleave->getLeaveType($division_form->type_of_leave);
 
         return view('DivisionChief.leave', compact(['division_form']));
     }
-    /**
-     * Show the form for editing the specified resource.
-     */
 
-    // public function show2(string $id)
-    // {
-    //     // $lf_employee = Employees::find($id);
-    //     // return view('DivisionChief.view', compact(['lf_employee']));
-
-    //     $lf_employee = Employees::find($id);
-
-    //     //new class
-    //     $typeleave = new Employees();
-
-    //     //assign sa ibang property bago mag palit ng value
-    //     $lf_employee->leaveType = $lf_employee->type_of_leave;
-
-    //     //getting the object and its property para mapalabas yung laman ng array
-
-    //     $lf_employee->type_of_leave = $typeleave->getLeaveType($lf_employee->type_of_leave);
-
-    //     return view('DivisionChief.view', compact(['lf_employee', 'id']));
-    // }
 
     public function show3(string $id)
     {
+        //Getting the Employee through its id
         $lf_employee = Employees::find($id);
 
-        //new class
+        //Creating a new class for the type of leave
         $typeleave = new Employees();
 
-        //assign sa ibang property bago mag palit ng value
+        //Assign a different property before changing the value
         $lf_employee->leaveType = $lf_employee->type_of_leave;
 
-        //getting the object and its property para mapalabas yung laman ng array
-
+        //Getting the object and its property further to see of all arrays
         $lf_employee->type_of_leave = $typeleave->getLeaveType($lf_employee->type_of_leave);
 
         return view('DivisionChief.view', compact(['lf_employee', 'id']));
     }
+
+
     public function edit(string $id)
     {
         //
     }
 
+
+
     /**
      * Update the specified resource in storage.
      */
+
+    //Seeing the progress or status of the applied leave form by the employees
+    //Adding a email
     public function update(Request $request, string $id)
     {
         $lf_employee = Employees::find($id);
@@ -262,7 +246,7 @@ class DCController extends Controller
                 'firstname' => Auth::user()->first_name,
                 'lastname' => Auth::user()->last_name,
                 'mi' => Auth::user()->middle_initial,
-                'position'=> Auth::user()->position,
+                'position' => Auth::user()->position,
             ];
 
             Mail::send('mail.reject', $data, function ($message) use ($data, $email) {
@@ -277,20 +261,15 @@ class DCController extends Controller
 
             return response()->json(["success" => true, "message" => "Successfully rejected!"]);
         }
-
-
     }
 
 
-
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(string $id)
     {
         //
     }
 
+    //Creating new function to call the leavelist funtion in the model
     public function leaveList()
     {
 

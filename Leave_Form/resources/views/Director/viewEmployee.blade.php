@@ -36,19 +36,9 @@
         justify-content: center;
     }
 
-    .divider {
-        padding-left: 100px;
-    }
-
-    #preposition {
-        margin: 8px 10px 0px 10px;
-        padding-top: 32px;
-    }
-
     #align {
         padding-top: 18px;
     }
-    
 </style>
 
 
@@ -87,17 +77,23 @@
 
     <!-- second row -->
     <div class="row">
-        <div class="form-group col-4">
+
+        <div class="form-group col-3">
+            <label for="requested_by" class="form-label">E-mail</label>
+            <input type="text" class="form-control" id="email" name="email" value="{{$lf_employee['email']}}" disabled>
+        </div>
+
+        <div class="form-group col-3">
             <label for="requested_by" class="form-label">Employee Number</label>
             <input type="text" class="form-control" id="employee_number" name="employee_number" value="{{$lf_employee['employee_number']}}" disabled>
         </div>
 
-        <div class="form-group col-4">
+        <div class="form-group col-3">
             <label for="requested_by" class="form-label">Position</label>
             <input type="text" class="form-control" id="position" name="position" value="{{$lf_employee['position']}}" disabled>
         </div>
 
-        <div class="form-group col-4">
+        <div class="form-group col-3">
             <label for="requested_by" class="form-label">Salary</label>
             <input type="text" class="form-control" id="salary" name="salary" value="{{$lf_employee['salary']}}" disabled>
         </div>
@@ -105,56 +101,48 @@
 
     <!-- third row -->
     <div class="row">
-        <div class="form-group col-12">
-            <label for="requested_by" class="form-label">E-mail</label>
-            <input type="text" class="form-control" id="email" name="email" value="{{$lf_employee['email']}}" disabled>
+
+        <div class="form-group col-4">
+            <label for="requested_by" class="form-label">No. Of Working Days</label>
+            <input type="text" class="form-control" id="num_working_days" name="num_working_days" value="{{$lf_employee['num_working_days']}}" disabled>
         </div>
+
+        <div class="form-group col-4">
+            <label for="requested_by" class="form-label">Inclusive Date</label>
+            <span>(start)</span>
+            <input type="text" class="form-control" id="startdate" name="startdate" value="{{$lf_employee['start_date']}}" disabled>
+        </div>
+
+
+        <div class="form-group col-4" id="align">
+            <label for="requested_by" class="form-label"></label>
+            <span>(end)</span>
+            <input type="text" class="form-control" id="enddate" name="enddate" value="{{$lf_employee['end_date']}}" disabled>
+        </div>
+
     </div>
+
+    <!-- new row -->
 
     <div class="row">
 
-<div class="form-group col-3">
-    <label for="requested_by" class="form-label">No. Of Working Days</label>
-    <input type="text" class="form-control" id="num_working_days" name="num_working_days" value="{{$lf_employee['num_working_days']}}" disabled>
-</div>
+        <div class="form-group col-8">
+            <label for="requested_by" class="form-label">Type of Leave</label>
+            <input class="select2 form-control" name="type_of_leave" id="type_of_leave" value="{{$lf_employee['type_of_leave']}}" disabled>
+        </div>
 
-<div class="form-group col-4">
-    <label for="requested_by" class="form-label">Inclusive Date</label>
-    <input type="text" class="form-control" id="startdate" name="startdate" value="{{$lf_employee['start_date']}}" disabled>
-</div>
-
-<div class="form-group" id="preposition">
-    <label for="requested_by" class="form-label">to</label>
-</div>
-
-<div class="form-group col-4" id="align">
-    <label for="requested_by" class="form-label"></label>
-    <input type="text" class="form-control" id="enddate" name="enddate" value="{{$lf_employee['end_date']}}" disabled>
-</div>
-
-</div>
-
-<!-- new row -->
-
-<div class="row">
-
-<div class="form-group col-8">
-    <label for="requested_by" class="form-label">Type of Leave</label>
-    <input class="select2 form-control" name="type_of_leave" id="type_of_leave" value="{{$lf_employee['type_of_leave']}}" disabled>
-</div>
-
-<div class="form-group col-4">
-    <label for="requested_by" class="form-label">Date</label>
-    <input type="date" class="form-control" id="date" name="date" value="{{$lf_employee['date']}}" disabled>
-</div>
-</div>
+        <div class="form-group col-4">
+            <label for="requested_by" class="form-label">Date</label>
+            <input type="date" class="form-control" id="date" name="date" value="{{$lf_employee['date']}}" disabled>
+        </div>
+    </div>
 
 
 
     <!-- fifth row (pop-up) -->
     <div class="row">
 
-        <div class="border leaveOption">
+        <div class="leaveOption">
 
             <!-- vacation leave 0 -->
             <div class="form-group col-12" style="display:none">
@@ -162,16 +150,16 @@
                 <label for="requested_by" class="form-label"> Additional Info </label>
                 <span id="requiredStyle"> *</span>
 
-                <div class="form-group col-12" id="same1">
+                <div id="same1">
                     <input type="radio" id="radio" class="details" name="details" value="Within the Philippines" disabled>
                     <label for="requested_by" class="form-label">Within the Philippines</label>
                 </div>
 
-                <div class="form-group col-12" id="same2">
+                <div id="same2">
                     <input type="radio" id="radio" class="details" name="details" value="Within Aborad" disabled>
                     <label for="requested_by" class="form-label">Within Abroad</label>
 
-                    <input type="text" placeholder="Specify" class="form-control" id="specification" name="specification" value="{{$lf_employee['specification']}}" style="width: 100%" disabled>
+                    <input type="text" placeholder="Specify" class="form-control" id="specification" name="specification" value="{{$lf_employee['specification']}}" style="width: 1050px" disabled>
                 </div>
             </div>
             <!-- end of vacation leave -->
@@ -183,7 +171,7 @@
                 <label for="requested_by" class="form-label"> Additional Info </label>
                 <span id="requiredStyle"> *</span>
 
-                <div class="form-group col-12" id="same1">
+                <div id="same1">
                     <input type="radio" id="radio3" class="details" name="details" value="In Hospital" disabled>
                     <label for="requested_by" class="form-label">In Hospital</label>
                 </div>
@@ -313,13 +301,13 @@
             $("#radio12").prop("checked", true);
         }
 
-        // select2 for type of leave
-
-
+        // Calling new variable to determine array accordingly (type of leave)
         let vacation_form = $($('.leaveOption div')[0]);
         let sick_form = $($('.leaveOption div')[3]);
         let study_form = $($('.leaveOption div')[7]);
         let other = $($('.leaveOption div')[10]);
+
+        //Viewing the radio button
 
         //vacation
         let radio1 = $($('.details')[0]);
@@ -338,7 +326,7 @@
         let radio8 = $($('.details')[7]);
         let radio9 = $($('.details')[8]);
 
-
+        //Displaying the leave of type
         function clearType() {
             vacation_form.css('display', 'none')
             sick_form.css('display', 'none')
@@ -346,7 +334,7 @@
             other.css('display', 'none')
         }
 
-
+        //using switch case to call the new variable in array and applying the radio button to be viewed
         switch (@json($lf_employee -> leaveType)) {
             // Vacation
             case '1':
@@ -395,11 +383,13 @@
     });
 
 
-   //sweet alert for approve and reject
-    //ayos na
+    //sweet alert for approve and reject
     let errorMessages = '';
 
+    //getting id of the form for button
     var form = document.getElementById('approve_form');
+    
+    //querying the usage of button
     var buttons = form.querySelectorAll('button[type="submit"]');
 
     buttons.forEach(function(button) {
@@ -526,9 +516,9 @@
                                     success: function(response) {
                                         if (response.success) {
                                             Swal.fire({
-                                                title: '',
-                                                icon: 'warning',
-                                                showCancelButton: true,
+                                                title: 'Rejected!',
+                                                icon: 'success',
+                                                text: 'This form is now rejected. E-mail has been sent to the Employee.',
                                                 confirmButtonText: "confirm",
                                             }).then((result) => {
                                                 if (result.isConfirmed) {
@@ -553,14 +543,6 @@
                                     }
 
                                 });
-                            } else {
-                                Swal.fire({
-                                    icon: 'question',
-                                    title: 'Are you sure?',
-                                    text: 'Do you want to cancel it?',
-                                    showCancelButton: true,
-                                    confirmButtonText: "Yes",
-                                })
                             }
                         });
                     } else {
