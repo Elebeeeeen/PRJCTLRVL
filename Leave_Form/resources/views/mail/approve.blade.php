@@ -1,5 +1,7 @@
 <p>Hi Mr/Ms. {{$employee['first_name']}} {{$employee['last_name']}},</p>
 
+<br>
+
 <p>I would like to inform you that your application of leave has been Approved.</p>
 
 <br>
@@ -16,5 +18,5 @@
 
 
 
-<p>---------- Subject Message ---------</p>
+<p>---------- Forwarded message ---------</p>
 <p>Subject: Approving Leave Application</p>

@@ -11,7 +11,7 @@
 <li class="nav-item">
     <a href="/leaveform" class="nav-link {{ Request::is('leaveform') ? 'active' : '' }}">
         <i class="nav-icon fas fa-folder-open"></i>
-        <p>List of Leave Applications</p>
+        <p>List of Leave Application</p>
     </a>
 </li>
 
@@ -34,9 +34,9 @@
 <div class="sidenav">
     <a class="dropdown-btn nav-link"><i class="nav-icon far fa-edit"></i> For Approve <i class="fa fa-caret-down"></i>
         <div class="dropdown-container">
-            <a href="/accountapplication">Accounts</a>
-            <a href="/leaveapplication">Leave Applications (Employee)</a>
-            <a href="/leaveApplicationDivisionChief">Leave Applications (Division)</a>
+            <a href="/accountapplication">Account</a>
+            <a href="/leaveapplication">Leave Application (Employee)</a>
+            <a href="/leaveApplicationDivisionChief">Leave Application (Division)</a>
         </div>
 </div>
 
@@ -69,7 +69,7 @@
 <li class="nav-item">
     <a href="/divisionlist" class="nav-link {{ Request::is('divisionlist') ? 'active' : '' }}">
         <i class="nav-icon fas fa-folder-open"></i>
-        <p>List of Leave Applications</p>
+        <p>List of Leave Application</p>
     </a>
 </li>
 
@@ -98,8 +98,8 @@
 <div class="sidenav">
     <a class="dropdown-btn nav-link"><i class="nav-icon far fa-edit"></i> For Approve <i class="fa fa-caret-down"></i>
         <div class="dropdown-container">
-            <a href="/leaveapplicationDir">Leave Applications (Employee)</a>
-            <a href="/leaveApplicationDivisionChief1">Leave Applications (Division)</a>
+            <a href="/leaveapplicationDir">Leave Application (Employee)</a>
+            <a href="/leaveApplicationDivisionChief1">Leave Application (Division)</a>
         </div>
 </div>
 

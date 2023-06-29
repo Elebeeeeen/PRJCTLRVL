@@ -11,9 +11,8 @@
 </style>
 
 <!-- dashboards -->
-
 <form class="row">
-    <div class="col-lg-4 col-4">
+    <div class="col-lg-12 col-12">
         <div class="small-box bg-success">
             <div class="inner">
                 <h3 class="number_pending">0</h3>
@@ -24,9 +23,11 @@
             </div>
         </div>
     </div>
+</form>
 
-        
-    <div class="col-lg-4 col-4">
+
+<form class="row">
+    <div class="col-lg-6 col-6">
         <div class="small-box bg-info">
             <div class="inner">
                 <h3 class="number_pending">{{$count2}}</h3>
@@ -39,7 +40,7 @@
     </div>
 
 
-    <div class="col-lg-4 col-4">
+    <div class="col-lg-6 col-6">
         <div class="small-box bg-warning">
             <div class="inner">
                 <h3 class="number_pending">{{$count}}</h3>

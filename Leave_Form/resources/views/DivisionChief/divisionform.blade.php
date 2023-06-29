@@ -33,6 +33,14 @@
         justify-content: center;
     }
 
+    .divider {
+        padding-left: 100px;
+    }
+
+    #preposition {
+        margin: 8px 10px 0px 10px;
+        padding-top: 32px;
+    }
 
     #align {
         padding-top: 8px;
@@ -86,27 +94,20 @@
 
         <div class="row">
 
-            <div class="form-group col-3">
-                <label for="requested_by" class="form-label">E-mail</label>
-                <span id="requiredStyle"> *</span>
-                <input type="text" class="form-control" placeholder="Ex: juandelacruz@gmail.com" id="email" name="email" value="{{ Auth::user()->email}}" readonly>
-            </div>
-
-
-            <div class="form-group col-3">
+            <div class="form-group col-4">
                 <label for="requested_by" class="form-label">Employee Number</label>
                 <span id="requiredStyle"> *</span>
                 <input type="text" class="form-control" placeholder="Ex: 1001" id="employee_number" name="employee_number" value="{{ Auth::user()->employee_number}}" readonly>
             </div>
 
 
-            <div class="form-group col-3">
+            <div class="form-group col-4">
                 <label for="requested_by" class="form-label">Position</label>
                 <span id="requiredStyle"> *</span>
                 <input type="text" class="form-control" placeholder="Ex: Employee" id="position" name="position" value="{{ Auth::user()->position}}" readonly>
             </div>
 
-            <div class="form-group col-3">
+            <div class="form-group col-4">
                 <label for="requested_by" class="form-label">Salary</label>
                 <span id="requiredStyle"> *</span>
                 <input type="text" class="form-control" placeholder="Ex: ₱10,000" id="salary" name="salary" value="{{ Auth::user()->salary}}" readonly>
@@ -120,8 +121,20 @@
         <!-- start of third row -->
 
         <div class="row">
+            <div class="form-group col-12">
+                <label for="requested_by" class="form-label">E-mail</label>
+                <span id="requiredStyle"> *</span>
+                <input type="text" class="form-control" placeholder="Ex: juandelacruz@gmail.com" id="email" name="email" value="{{ Auth::user()->email}}" readonly>
+            </div>
+        </div>
 
-            <div class="form-group col-4">
+        <!-- end of third row -->
+
+        <!-- start of fourth row -->
+
+        <div class="row">
+
+            <div class="form-group col-3">
                 <label for="requested_by" class="form-label">No. Of Working Days</label>
                 <span id="requiredStyle"> *</span>
                 <input type="text" class="form-control" placeholder="Ex: (1) One day" id="num_working_days" name="num_working_days">
@@ -130,21 +143,22 @@
             <div class="form-group col-4">
                 <label for="requested_by" class="form-label">Inclusive Date</label>
                 <span id="requiredStyle"> *</span>
-                <span> (start)</span>
                 <input type="date" class="form-control" id="startdate" name="startdate">
+            </div>
+
+            <div class="form-group" id="preposition">
+                <label for="requested_by" class="form-label">to</label>
+
             </div>
 
             <div class="form-group col-4" id="align">
                 <label for="requested_by" class="form-label"></label>
-                <span> (end)</span>
                 <input type="date" class="form-control" id="enddate" name="enddate">
             </div>
 
         </div>
 
-        <!-- end of third row -->
-
-        <!-- fourth row -->
+        <!-- new row -->
 
         <div class="row">
 
@@ -173,7 +187,7 @@
 
 
                 <!-- vacation leave 0 -->
-                <div style="display:none">
+                <div class="border form-group col-12" style="display:none">
 
                     <label for="requested_by" class="form-label"> Additional Info </label>
                     <span id="requiredStyle"> *</span>
@@ -187,7 +201,7 @@
                         <input type="radio" id="radio2" name="details" value="Within the Philippines">
                         <label for="requested_by" class="form-label">Within Abroad</label>
 
-                        <input type="text" placeholder="Specify" class="form-control" id="specification"name="specification1" style="width: 1820px">
+                        <input type="text" placeholder="Specify" class="form-control" id="specification"name="specification1" style="width: 1020px">
                     </div>
                 </div>
                 <!-- end of vacation leave -->
@@ -195,7 +209,7 @@
 
                 <!-- sick leave 3 -->
 
-                <div style="display:none">
+                <div class="border form-group col-12" style="display:none">
 
                     <label for="requested_by" class="form-label"> Additional Info </label>
                     <span id="requiredStyle"> *</span>
@@ -214,14 +228,14 @@
                         <input type="radio" id="radio3" name="details" value="In case Leave Benefits for Women">
                         <label for="requested_by" class="form-label">In case Leave Benefits for Women</label>
 
-                        <input type="text" placeholder="Specify" class="form-control" id="specification" name="specification2"  style="width: 1820px">
+                        <input type="text" placeholder="Specify" class="form-control" id="specification" name="specification2" style="width: 1020px">
                     </div>
 
                 </div>
                 <!-- end of sick leave -->
 
                 <!-- study leave 7 -->
-                <div style="display:none">
+                <div class="border form-group col-12" style="display:none">
 
                     <label for="requested_by" class="form-label"> Additional Info </label>
                     <span id="requiredStyle"> *</span>
@@ -242,7 +256,7 @@
 
 
                 <!-- study leave 7 -->
-                <div style="display:none">
+                <div class="border form-group col-12" style="display:none">
 
                     <label for="requested_by" class="form-label"> Additional Info </label>
                     <span id="requiredStyle"> *</span>
@@ -262,7 +276,7 @@
 
 
                 <!-- others 10 -->
-                <div style="display:none">
+                <div class="border form-group col-12" style="display:none">
 
                     <label for="requested_by" class="form-label"> Additional Info </label>
                     <span id="requiredStyle"> *</span>

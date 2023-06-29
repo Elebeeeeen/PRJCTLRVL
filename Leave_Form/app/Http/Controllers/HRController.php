@@ -61,7 +61,7 @@ class HRController extends Controller
         // displaying the type of leave connecting the the model(employees)
 
         $list = new DivisionChief();
-        $directors_form  = $list->leaveType(DivisionChief::where('status', 'Approved by Director')->get());
+        $directors_form  = $list->leaveType(DivisionChief::get());
 
         return view('HumanResource.leaveDivisionChief', compact(['directors_form']));
     }

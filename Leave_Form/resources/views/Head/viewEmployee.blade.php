@@ -36,10 +36,18 @@
         justify-content: center;
     }
 
+    .divider {
+        padding-left: 100px;
+    }
+
+    #preposition {
+        margin: 8px 10px 0px 10px;
+        padding-top: 32px;
+    }
+
     #align {
         padding-top: 18px;
     }
-    
 </style>
 
 
@@ -102,42 +110,47 @@
         </div>
     </div>
 
+    <!-- fourth row -->
+
     <div class="row">
 
-<div class="form-group col-4">
-    <label for="requested_by" class="form-label">No. Of Working Days</label>
-    <input type="text" class="form-control" id="num_working_days" name="num_working_days" value="{{$lf_employee['num_working_days']}}" disabled>
-</div>
+        <div class="form-group col-3">
+            <label for="requested_by" class="form-label">No. Of Working Days</label>
+            <input type="text" class="form-control" id="num_working_days" name="num_working_days" value="{{$lf_employee['num_working_days']}}" disabled>
+        </div>
 
-<div class="form-group col-4">
-    <label for="requested_by" class="form-label">Inclusive Date</label>
-    <span>(start)</span>
-    <input type="text" class="form-control" id="startdate" name="startdate" value="{{$lf_employee['start_date']}}" disabled>
-</div>
+        <div class="form-group col-4">
+            <label for="requested_by" class="form-label">Inclusive Date</label>
+            <input type="text" class="form-control" id="startdate" name="startdate" value="{{$lf_employee['start_date']}}" disabled>
+        </div>
+
+        <div class="form-group" id="preposition">
+            <label for="requested_by" class="form-label">to</label>
+        </div>
+
+        <div class="form-group col-4" id="align">
+            <label for="requested_by" class="form-label"></label>
+            <input type="text" class="form-control" id="enddate" name="enddate" value="{{$lf_employee['end_date']}}" disabled>
+        </div>
+
+    </div>
+
+    <!-- new row -->
+
+    <div class="row">
+
+        <div class="form-group col-8">
+            <label for="requested_by" class="form-label">Type of Leave</label>
+            <input class="select2 form-control" name="type_of_leave" id="type_of_leave" value="{{$lf_employee['type_of_leave']}}" disabled>
+        </div>
+
+        <div class="form-group col-4">
+            <label for="requested_by" class="form-label">Date</label>
+            <input type="date" class="form-control" id="date" name="date" value="{{$lf_employee['date']}}" disabled>
+        </div>
+    </div>
 
 
-<div class="form-group col-4" id="align">
-    <label for="requested_by" class="form-label"></label>
-    <span>(end)</span>
-    <input type="text" class="form-control" id="enddate" name="enddate" value="{{$lf_employee['end_date']}}" disabled>
-</div>
-
-</div>
-
-<!-- new row -->
-
-<div class="row">
-
-<div class="form-group col-8">
-    <label for="requested_by" class="form-label">Type of Leave</label>
-    <input class="select2 form-control" name="type_of_leave" id="type_of_leave" value="{{$lf_employee['type_of_leave']}}" disabled>
-</div>
-
-<div class="form-group col-4">
-    <label for="requested_by" class="form-label">Date</label>
-    <input type="date" class="form-control" id="date" name="date" value="{{$lf_employee['date']}}" disabled>
-</div>
-</div>
 
 
 
@@ -286,6 +299,10 @@
     </div>
 
 </div>
+
+
+
+
 
 <script>
     $(document).ready(function() {
