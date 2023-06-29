@@ -1,5 +1,9 @@
 <x-laravel-ui-adminlte::adminlte-layout>
 
+<head>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    </head>
 
     <body class="hold-transition register-page">
         <div class="register-box">
@@ -12,7 +16,7 @@
                 <div class="card-body register-card-body">
                     <p class="login-box-msg">Registration Form</p>
 
-                    <form method="post" action="{{ route('register') }}" autocomplete="off">
+                    <form method="post" action="{{ route('register') }}" id="register_form" autocomplete="off">
                         @csrf
 
                         <!-- first row -->
@@ -137,28 +141,6 @@
                                 @enderror
                             </div>
 
-                            <div class="input-group mb-3">
-                                <input type="password" name="password" class="form-control @error('password') is-invalid @enderror" placeholder="Password">
-                                <div class="input-group-append">
-                                    <div class="input-group-text"><span class="fas fa-lock"></span>
-                                    </div>
-                                </div>
-
-                                @error('password')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
-                            </div>
-
-
-                            <div class="input-group mb-3">
-                                <input type="password" name="password_confirmation" class="form-control" placeholder="Retype password">
-                                <div class="input-group-append">
-                                    <div class="input-group-text"><span class="fas fa-lock"></span>
-                                    </div>
-                                </div>
-                            </div>
 
                         </div>
 
@@ -173,7 +155,7 @@
                             </div>
                             <!-- /.col -->
                             <div class="col-4">
-                                <button type="submit" class="btn btn-primary btn-block">Register</button>
+                                <button type="submit" id="register_form" class="btn btn-primary btn-block">Register</button>
                             </div>
                         </div>
                     </form>
@@ -186,6 +168,39 @@
             <!-- /.form-box -->
         </div>
         <!-- /.register-box -->
+
+        <script>
+            $(document).ready(function() {
+                $("#register_form").submit(function(e) {
+                    e.preventDefault();
+                    let formData = new FormData($('#register_form')[0]);
+                    $.ajax({
+                        url: "/register",
+                        method: "POST",
+                        processData: false,
+                        contentType: false,
+                        cache: false,
+                        data: formData,
+                        success: function(response) {
+                            Swal.fire({
+                                title: 'Success!',
+                                text: 'Successfuly submited a account aplicaiton. Wait to notify in your email to be approved.',
+                                icon: 'success',
+                                confirmButtonText: 'Okay'
+                            }).then((result) => {
+                                if (result.isConfirmed) {
+                                    window.location.href = "/login";
+                                }
+                            })
+                        },
+                        error: function() {
+                            console.log("no");
+                        }
+                    }); //AJAX
+                });
+            })
+        </script>
+
     </body>
 
 </x-laravel-ui-adminlte::adminlte-layout>

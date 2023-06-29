@@ -114,8 +114,10 @@
         <!--button-->
         <div class="w-100">
             <div class="float-right">
-                <button type="submit" id="approve" value="Approve by HR" class="btn btn-primary">Approve</button>
-                <button type="submit" id="reject" value="Reject by HR" class="btn btn-danger">Reject</button>
+            <form action="/AccountHR/{{$id}}" data-id="{{$id}}" id="approve_form" method="POST">
+                @METHOD('POST')
+                <button type="submit" id="approve" value="Approved by HR" class="btn btn-primary">Approve</button>
+                <button type="submit" id="reject" value="Rejected by HR" class="btn btn-danger">Reject</button>
             </div>
         </div>
     </form>
@@ -131,7 +133,7 @@
             var status = button.value;
             let formData = new FormData($('#approve_form')[0]);
 
-            if (status == "Approve by HR") {
+            if (status == "Approved by HR") {
                 e.preventDefault();
                 Swal.fire({
                     icon: 'warning',
@@ -146,7 +148,7 @@
                     if (result.isConfirmed) {
                         formData.append('status', status);
                         $.ajax({
-                            url: '/humanresource/' + $('#approve_form').attr("data-id"),
+                            url: '/AccountHR/' + $('#approve_form').attr("data-id"),
                             method: "POST",
                             processData: false,
                             contentType: false,
@@ -159,8 +161,8 @@
                                 if (response.success) {
                                     Swal.fire({
                                         icon: 'success',
-                                        title: 'Approve',
-                                        text: "The user applicaiton has been approve!",
+                                        title: 'Success',
+                                        text: 'The Account has been approved',
                                         showCancelButton: true,
                                         confirmButtonText: "confirm",
                                     }).then((result) => {
@@ -169,19 +171,29 @@
                                         }
                                     })
                                 } else {
-                                    for (let i = 0; i < response.errors.length; i++) {
-                                        errorMessages += "-" + response.errors[i] + "\n";
-                                    }
                                     Swal.fire({
-                                        html: '<pre>' + errorMessages + '</pre>',
-                                        customClass: {
-                                            popup: 'format-pre'
-                                        },
-                                        title: 'Error!',
-                                        icon: 'error',
-                                        confirmButtonText: 'Okay'
+                                        icon: 'warning',
+                                        title: 'Hello',
+                                        text: response,
+                                        confirmButtonText: "Ok",
+                                    }).then((result) => {
+                                        if (result.isConfirmed) {
+                                            e.preventDefault();
+                                        }
                                     })
-                                    errorMessages = "";
+                                    // for (let i = 0; i < response.errors.length; i++) {
+                                    //     errorMessages += "-" + response.errors[i] + "\n";
+                                    // }
+                                    // Swal.fire({
+                                    //     html: '<pre>' + errorMessages + '</pre>',
+                                    //     customClass: {
+                                    //         popup: 'format-pre'
+                                    //     },
+                                    //     title: 'Error!',
+                                    //     icon: 'error',
+                                    //     confirmButtonText: 'Okay'
+                                    // })
+                                    // errorMessages = "";
                                 }
                             }
                         });
@@ -194,7 +206,7 @@
                         })
                     }
                 });
-            } else if (status == "Reject by HR") {
+            } else if (status == "Rejected by HR") {
                 e.preventDefault();
                 Swal.fire({
                     title: 'Are you sure you want to reject?',
@@ -206,7 +218,7 @@
                     if (result.isConfirmed) {
                         Swal.fire({
                             title: 'Are you sure?',
-                            text: 'state the reason:',
+                            text: 'State the reason:',
                             icon: 'warning',
                             showCancelButton: true,
                             confirmButtonText: "confirm",
@@ -223,7 +235,7 @@
                                 formData.append('status', status);
                                 formData.append('reason', reason);
                                 $.ajax({
-                                    url: '/humanresource/' + $('#approve_form').attr("data-id"),
+                                    url: '/AccountHR/' + $('#approve_form').attr("data-id"),
                                     method: "POST",
                                     processData: false,
                                     contentType: false,

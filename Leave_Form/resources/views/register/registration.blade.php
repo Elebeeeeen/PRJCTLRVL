@@ -183,13 +183,13 @@
                         success: function(response) {
                             Swal.fire({
                                 title: 'Success!',
-                                text: 'You can now view and print your leave form. Wait to notify in your email to be approved.',
+                                text: response,
                                 icon: 'success',
                                 confirmButtonText: 'Okay'
                             }).then((result) => {
-                                if (result.isConfirmed) {
-                                    window.location.href = "/login";
-                                }
+                                // if (result.isConfirmed) {
+                                //     window.location.href = "/login";
+                                // }
                             })
                         },
                         error: function() {

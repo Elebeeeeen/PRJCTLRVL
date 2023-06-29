@@ -35,18 +35,31 @@ class RegistrationsController extends Controller
 
     protected function create(Request $data)
     {
-        regUser::create([
-            'employee_number' => $data->employee_number,
-            'last_name' => $data->last_name,
-            'middle_initial' => $data->middle_initial,
-            'first_name' => $data->first_name,
-            'email' => $data->email,
-            'office' => $data->office,
-            'position' => $data->position,
-            'salary' => $data->salary,
-            'status' => 'Pending'
-        ]);
+       
 
-        return response()->json(["success" => true]);
+        $verified_email =regUser::where('email',$data->email)->count();
+        $verify_email =User::where('email',$data->email)->count();
+        
+        if ($verified_email == 1 || $verify_email == 1) {
+            return response()-> json("Same email");
+        }else {
+           
+            regUser::create([
+                'employee_number' => $data->employee_number,
+                'last_name' => $data->last_name,
+                'middle_initial' => $data->middle_initial,
+                'first_name' => $data->first_name,
+                'email' => $data->email,
+                'office' => $data->office,
+                'position' => $data->position,
+                'salary' => $data->salary,
+                'status' => 'Pending'
+            ]);
+        }
+
+        // dd($verified_email);
+
+
+        // return response()->json(["success" => true]);
     }
 }
