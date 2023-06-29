@@ -11,7 +11,7 @@
 <li class="nav-item">
     <a href="/leaveform" class="nav-link {{ Request::is('leaveform') ? 'active' : '' }}">
         <i class="nav-icon fas fa-folder-open"></i>
-        <p>List of Leave Application</p>
+        <p>List of Leave Applications</p>
     </a>
 </li>
 
@@ -35,8 +35,8 @@
     <a class="dropdown-btn nav-link"><i class="nav-icon far fa-edit"></i> For Approve <i class="fa fa-caret-down"></i>
         <div class="dropdown-container">
             <a href="/accountapplication">Account</a>
-            <a href="/leaveapplication">Leave Application (Employee)</a>
-            <a href="/leaveApplicationDivisionChief">Leave Application (Division)</a>
+            <a href="/leaveapplication">Leave Applications (Employee)</a>
+            <a href="/leaveApplicationDivisionChief">Leave Applications (Division)</a>
         </div>
 </div>
 
@@ -69,14 +69,14 @@
 <li class="nav-item">
     <a href="/divisionlist" class="nav-link {{ Request::is('divisionlist') ? 'active' : '' }}">
         <i class="nav-icon fas fa-folder-open"></i>
-        <p>List of Leave Application</p>
+        <p>List of Leave Applications</p>
     </a>
 </li>
 
 <div class="sidenav">
     <a class="dropdown-btn nav-link"><i class="nav-icon far fa-edit"></i> For Approve <i class="fa fa-caret-down"></i>
         <div class="dropdown-container">
-            <a href="/divemplist">Leave Application</a>
+            <a href="/divemplist">Leave Applications</a>
         </div>
 
 </div>
@@ -98,7 +98,7 @@
 <div class="sidenav">
     <a class="dropdown-btn nav-link"><i class="nav-icon far fa-edit"></i> For Approve <i class="fa fa-caret-down"></i>
         <div class="dropdown-container">
-            <a href="/leaveapplicationDir">Leave Application (Employee)</a>
+            <a href="/leaveapplicationDir">Leave Applications (Employee)</a>
             <a href="/leaveApplicationDivisionChief1">Leave Application (Division)</a>
         </div>
 </div>
@@ -122,8 +122,8 @@
 <div class="sidenav">
     <a class="dropdown-btn nav-link"><i class="nav-icon far fa-edit"></i> For Approve <i class="fa fa-caret-down"></i>
         <div class="dropdown-container">
-            <a href="/leaveapplicationHead">Leave Application (Employee)</a>
-            <a href="/leaveapplicationHead1">Leave Application (Division)</a>
+            <a href="/leaveapplicationHead">Leave Applications (Employee)</a>
+            <a href="/leaveapplicationHead1">Leave Applications (Division)</a>
         </div>
 </div>
 
