@@ -48,8 +48,6 @@ class EmployeeController extends Controller
 
             'num_working_days.required' => 'Please Indicate Your Number Working Days',
             'type_of_leave.required' => 'Please Indicate Your Type of Leave',
-            'start_date.required' => 'Please Indicate the Starting Date',
-            'end_date.required' => 'Please Indicate the End Date',
             'date.required' => 'Please Indicate Your Date',
             'inclusive_dates.required' => 'Please Indicate Your Inclusive Dates',
             'commutation.required' => 'Please Indicate Your Commutation',
@@ -61,8 +59,6 @@ class EmployeeController extends Controller
         $validator = Validator::make($request->all(), [
 
             'num_working_days' => 'required|numeric|max:10',
-            'start_date' => 'required',
-            'end_date' => 'required',
             'type_of_leave' => 'required',
             'date' => 'required',
             'commutation' => 'required',
@@ -95,7 +91,6 @@ class EmployeeController extends Controller
                     'type_of_leave' => $request->type_of_leave,
                     'date' => $request->date,
                     'num_working_days' => $request->num_working_days,
-                    // 'inclusive_dates' => $request->inclusive_dates,
                     'start_date' => $startInclusiveDate,
                     'end_date'=>  $endInclusiveDate,
                     'details' => $request->details,
@@ -119,7 +114,6 @@ class EmployeeController extends Controller
                     'num_working_days' => $request->num_working_days,
                     'start_date' => $startInclusiveDate,
                     'end_date'=>  $endInclusiveDate,
-                    // 'inclusive_dates' => $request->inclusive_dates,
                     'details' => $request->details,
                     'specification' => $request->specification2,
                     'commutation' => $request->commutation,
@@ -141,7 +135,6 @@ class EmployeeController extends Controller
                     'num_working_days' => $request->num_working_days,
                     'start_date' => $startInclusiveDate,
                     'end_date'=>  $endInclusiveDate,
-                    // 'inclusive_dates' => $request->inclusive_dates,
                     'details' => $request->details,
                     'commutation' => $request->commutation,
                     'approver' => $request->approver,

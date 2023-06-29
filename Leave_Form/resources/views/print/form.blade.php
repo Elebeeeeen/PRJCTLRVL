@@ -498,7 +498,7 @@
     <table class="eight-table">
         <tbody>
             <tr>
-                <td class=details-leave" colspan="3">
+                <td class="details-leave" colspan="3">
                     <p class="leave-type">7.C APPROVED FOR:</p>
                     <p class="add-approve"> _________________ days with pay</p>
                     <p class="add-approve"> _________________ days without pay</p>
@@ -628,7 +628,7 @@
                             <i>Proof of employee’s resignation or retirement or separation from the service.</i></strong></p>
 
                     <p><strong>15. Adoption Leave</strong><br>
-                        <li>• Application for adoption leave shall be filed with an authenticated copy of the Pre-Adoptive Placement Authority issued by the Department of Social Welfare and Development (DSWD).</li>
+                        <li>Application for adoption leave shall be filed with an authenticated copy of the Pre-Adoptive Placement Authority issued by the Department of Social Welfare and Development (DSWD).</li>
                     </p>
                     <br>
                     <br>

@@ -35,14 +35,6 @@
         justify-content: center;
     }
 
-    .divider {
-        padding-left: 100px;
-    }
-
-    #preposition {
-        margin: 8px 10px 0px 10px;
-        padding-top: 32px;
-    }
 
     #align {
         padding-top: 18px;
@@ -85,50 +77,47 @@
 
     <!-- second row -->
     <div class="row">
-        <div class="form-group col-4">
+
+        <div class="form-group col-3">
+            <label for="requested_by" class="form-label">E-mail</label>
+            <input type="text" class="form-control" id="email" name="email" value="{{$lf_employee['email']}}" disabled>
+        </div>
+
+        <div class="form-group col-3">
             <label for="requested_by" class="form-label">Employee Number</label>
             <input type="text" class="form-control" id="employee_number" name="employee_number" value="{{$lf_employee['employee_number']}}" disabled>
         </div>
 
-        <div class="form-group col-4">
+        <div class="form-group col-3">
             <label for="requested_by" class="form-label">Position</label>
             <input type="text" class="form-control" id="position" name="position" value="{{$lf_employee['position']}}" disabled>
         </div>
 
-        <div class="form-group col-4">
+        <div class="form-group col-3">
             <label for="requested_by" class="form-label">Salary</label>
             <input type="text" class="form-control" id="salary" name="salary" value="{{$lf_employee['salary']}}" disabled>
         </div>
     </div>
 
     <!-- third row -->
-    <div class="row">
-        <div class="form-group col-12">
-            <label for="requested_by" class="form-label">E-mail</label>
-            <input type="text" class="form-control" id="email" name="email" value="{{$lf_employee['email']}}" disabled>
-        </div>
-    </div>
-
-    <!-- fourth row -->
 
     <div class="row">
 
-        <div class="form-group col-3">
+        <div class="form-group col-4">
             <label for="requested_by" class="form-label">No. Of Working Days</label>
             <input type="text" class="form-control" id="num_working_days" name="num_working_days" value="{{$lf_employee['num_working_days']}}" disabled>
         </div>
 
         <div class="form-group col-4">
             <label for="requested_by" class="form-label">Inclusive Date</label>
+            <span> (start)</span>
             <input type="text" class="form-control" id="startdate" name="startdate" value="{{$lf_employee['start_date']}}" disabled>
         </div>
 
-        <div class="form-group" id="preposition">
-            <label for="requested_by" class="form-label">to</label>
-        </div>
 
         <div class="form-group col-4" id="align">
             <label for="requested_by" class="form-label"></label>
+            <span> (end)</span>
             <input type="text" class="form-control" id="enddate" name="enddate" value="{{$lf_employee['end_date']}}" disabled>
         </div>
 
@@ -171,7 +160,7 @@
                     <input type="radio" id="radio5" class="details" name="details" value="Within Aborad" disabled>
                     <label for="requested_by" class="form-label">Within Aborad</label>
 
-                    <input type="text" class="form-control" id="specification" name="specification" value="{{$lf_employee['specification']}}" style="width: 1050px" disabled>
+                    <input type="text" class="form-control" id="specification" name="specification" value="{{$lf_employee['specification']}}" style="width: 1805px" disabled>
                 </div>
 
             </div>
@@ -198,7 +187,7 @@
                     <input type="radio" id="radio5" class="details" name="details" value="In case Leave Benefits for Women" disabled>
                     <label for="requested_by" class="form-label">In case Leave Benefits for Women</label>
 
-                    <input type="text" class="form-control" id="specification" name="specification" value="{{$lf_employee['specification']}}" style="width: 1050px" disabled>
+                    <input type="text" class="form-control" id="specification" name="specification" value="{{$lf_employee['specification']}}"style="width: 1805px" disabled>
                 </div>
 
             </div>
