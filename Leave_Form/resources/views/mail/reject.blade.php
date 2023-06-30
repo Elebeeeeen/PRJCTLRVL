@@ -20,5 +20,5 @@
 
 
 
-<p>---------- Forwarded message ---------</p>
+<p>---------- Subject message ---------</p>
 <p>Subject: Disapproving Leave Application</p>

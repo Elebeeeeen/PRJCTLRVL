@@ -2,7 +2,7 @@
 
 <br>
 
-<p>I would like to inform you that your application of leave has been Approved.</p>
+<p>I would like to inform you that your application of leave has been<strong style="font-style: italic"> Approved.</strong></p>
 
 <br>
 
@@ -18,5 +18,5 @@
 
 
 
-<p>---------- Forwarded message ---------</p>
+<p>---------- Subject message ---------</p>
 <p>Subject: Approving Leave Application</p>

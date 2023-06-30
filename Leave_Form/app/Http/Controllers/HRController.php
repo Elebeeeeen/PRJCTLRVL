@@ -61,7 +61,7 @@ class HRController extends Controller
         // displaying the type of leave connecting the the model(Division Chief)
 
         $list = new DivisionChief();
-        $directors_form  = $list->leaveType(DivisionChief::get());
+        $directors_form  = $list->leaveType(DivisionChief::where('status', 'Approved by Director')->get());
 
         return view('HumanResource.leaveDivisionChief', compact(['directors_form']));
     }
@@ -197,6 +197,11 @@ class HRController extends Controller
 
             $data = [
                 'reason' => $request->reason,
+                'employee' => $directors_form,
+                'firstname' => Auth::user()->first_name,
+                'lastname' => Auth::user()->last_name,
+                'mi' => Auth::user()->middle_initial,
+                'position' => Auth::user()->position,
             ];
             Mail::send('mail.reject', $data, function ($message) use ($data, $email) {
                 $message->to($email);

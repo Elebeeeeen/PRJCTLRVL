@@ -141,13 +141,13 @@
                 <label for="requested_by" class="form-label">Inclusive Date</label>
                 <span id="requiredStyle"> *</span>
                 <span>(start)</span>
-                <input type="date" class="form-control" id="startdate" name="startdate">
+                <input type="date" class="form-control" id="startdate" name="startdate" required>
             </div>
 
             <div class="form-group col-4" id="align">
                 <label for="requested_by" class="form-label"></label>
                 <span>(end)</span>
-                <input type="date" class="form-control" id="enddate" name="enddate">
+                <input type="date" class="form-control" id="enddate" name="enddate" required>
             </div>
 
         </div>
@@ -195,7 +195,7 @@
                         <input type="radio" id="radio2" name="details" value="Within the Philippines">
                         <label for="requested_by" class="form-label">Within Abroad</label>
 
-                        <input type="text" placeholder="Specify" class="form-control" id="specification" name="specification1" style="width: 1020px">
+                        <input type="text" placeholder="Specify" class="form-control" id="specification" name="specification1" style="width: 1600px">
                     </div>
                 </div>
                 <!-- end of vacation leave -->
@@ -222,7 +222,7 @@
                         <input type="radio" id="radio3" name="details" value="In case Leave Benefits for Women">
                         <label for="requested_by" class="form-label">In case Leave Benefits for Women</label>
 
-                        <input type="text" placeholder="Specify" class="form-control" id="specification" name="specification2" style="width: 1020px">
+                        <input type="text" placeholder="Specify" class="form-control" id="specification" name="specification2" style="width: 1600px">
                     </div>
 
                 </div>

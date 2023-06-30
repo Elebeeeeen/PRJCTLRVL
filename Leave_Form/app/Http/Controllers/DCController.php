@@ -70,10 +70,8 @@ class DCController extends Controller
         //creating a validator 
         $message_error = [
 
-             'num_working_days.required' => 'Please Indicate Your Number Working Days',
+            'num_working_days.required' => 'Please Indicate Your Number Working Days',
             'type_of_leave.required' => 'Please Indicate Your Type of Leave',
-            'start_date.required' => 'Please Indicate the Starting Date',
-            'end_date.required' => 'Please Indicate the End Date',
             'date.required' => 'Please Indicate Your Date',
             'inclusive_dates.required' => 'Please Indicate Your Inclusive Dates',
             'commutation.required' => 'Please Indicate Your Commutation',
@@ -83,8 +81,6 @@ class DCController extends Controller
 
         $validator = Validator::make($request->all(), [
             'num_working_days' => 'required|numeric|max:10',
-            'start_date' => 'required',
-            'end_date' => 'required',
             'type_of_leave' => 'required',
             'date' => 'required',
             'commutation' => 'required',

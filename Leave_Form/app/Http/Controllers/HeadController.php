@@ -40,7 +40,7 @@ class HeadController extends Controller
     public function index3()
     {
         $list = new DivisionChief();
-        $directors_form  = $list->leaveType(DivisionChief::get());
+        $directors_form  = $list->leaveType(DivisionChief::where('status', 'Approved by HR')->get());
 
         return view('Head.leaveDivision', compact(['directors_form']));
     }
@@ -115,19 +115,39 @@ class HeadController extends Controller
     //Adding a email
     public function update(Request $request, string $id)
     {
+
         $division_form = DivisionChief::find($id);
         $status = $request->status;
+        $email = $division_form->email;
 
         if ($status == "Approved") {
+            $data = [
+                'employee' => $division_form,
+                'firstname' => Auth::user()->first_name,
+                'lastname' => Auth::user()->last_name,
+                'mi' => Auth::user()->middle_initial,
+                'position' => Auth::user()->position,
+            ];
+
+            Mail::send('mail.approve', $data, function ($message) use ($email) {
+                $message->to($email);
+                $message->subject('Your Leave Application Has Been Approved.');
+                $message->from(Auth::user()->email, 'Head Officer');
+            });
+
             $division_form->status = $request->status;
             $division_form->save();
 
             return response()->json(["success" => true, "message" => "Successfully approved!"]);
         } else if ($status == "Rejected") {
-            $email = $division_form->email;
 
             $data = [
                 'reason' => $request->reason,
+                'employee' => $division_form,
+                'firstname' => Auth::user()->first_name,
+                'lastname' => Auth::user()->last_name,
+                'mi' => Auth::user()->middle_initial,
+                'position' => Auth::user()->position,
             ];
             Mail::send('mail.reject', $data, function ($message) use ($data, $email) {
                 $message->to($email);
@@ -135,13 +155,38 @@ class HeadController extends Controller
                 $message->from(Auth::user()->email, 'Head Officer');
             });
 
-
-
             $division_form->status = $request->status;
             $division_form->save();
 
             return response()->json(["success" => true, "message" => "Successfully rejected!"]);
         }
+        // $division_form = DivisionChief::find($id);
+        // $status = $request->status;
+
+        // if ($status == "Approved") {
+        //     $division_form->status = $request->status;
+        //     $division_form->save();
+
+        //     return response()->json(["success" => true, "message" => "Successfully approved!"]);
+        // } else if ($status == "Rejected") {
+        //     $email = $division_form->email;
+
+        //     $data = [
+        //         'reason' => $request->reason,
+        //     ];
+        //     Mail::send('mail.reject', $data, function ($message) use ($data, $email) {
+        //         $message->to($email);
+        //         $message->subject('Disapproving Your Leave Application');
+        //         $message->from(Auth::user()->email, 'Head Officer');
+        //     });
+
+
+
+        //     $division_form->status = $request->status;
+        //     $division_form->save();
+
+        //     return response()->json(["success" => true, "message" => "Successfully rejected!"]);
+        // }
     }
 
 

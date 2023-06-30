@@ -41,7 +41,7 @@ class DirController extends Controller
     public function index3()
     {
         $list = new DivisionChief();
-        $directors_form  = $list->leaveType(DivisionChief::get());
+        $directors_form  = $list->leaveType(DivisionChief::where('status', 'Pending')->get());
 
         return view('Director.leaveDivisionChief', compact(['directors_form']));
     }

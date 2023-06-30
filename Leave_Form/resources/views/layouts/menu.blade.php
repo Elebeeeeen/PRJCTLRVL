@@ -35,8 +35,8 @@
     <a class="dropdown-btn nav-link"><i class="nav-icon far fa-edit"></i> For Approve <i class="fa fa-caret-down"></i>
         <div class="dropdown-container">
             <a href="/accountapplication">Account</a>
-            <a href="/leaveapplication">Leave Applications (Employee)</a>
-            <a href="/leaveApplicationDivisionChief">Leave Applications (Division)</a>
+            <a href="/leaveapplication" style="font-size:15px">Leave Applications (Employee)</a>
+            <a href="/leaveApplicationDivisionChief" style="font-size:15px">Leave Applications (Division)</a>
         </div>
 </div>
 
@@ -98,8 +98,8 @@
 <div class="sidenav">
     <a class="dropdown-btn nav-link"><i class="nav-icon far fa-edit"></i> For Approve <i class="fa fa-caret-down"></i>
         <div class="dropdown-container">
-            <a href="/leaveapplicationDir">Leave Applications (Employee)</a>
-            <a href="/leaveApplicationDivisionChief1">Leave Application (Division)</a>
+            <a href="/leaveapplicationDir" style="font-size:15px">Leave Applications (Employee)</a>
+            <a href="/leaveApplicationDivisionChief1" style="font-size:15px">Leave Application (Division)</a>
         </div>
 </div>
 
@@ -122,8 +122,8 @@
 <div class="sidenav">
     <a class="dropdown-btn nav-link"><i class="nav-icon far fa-edit"></i> For Approve <i class="fa fa-caret-down"></i>
         <div class="dropdown-container">
-            <a href="/leaveapplicationHead">Leave Applications (Employee)</a>
-            <a href="/leaveapplicationHead1">Leave Applications (Division)</a>
+            <a href="/leaveapplicationHead" style="font-size:15px">Leave Applications (Employee)</a>
+            <a href="/leaveapplicationHead1" style="font-size:15px">Leave Applications (Division)</a>
         </div>
 </div>
 

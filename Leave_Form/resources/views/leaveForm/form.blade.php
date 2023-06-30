@@ -184,7 +184,7 @@
                         <input type="radio" id="radio2" name="details" value="Within Abroad">
                         <label for="requested_by" class="form-label">Within Abroad</label>
 
-                        <input type="text" placeholder="Specify" class="form-control" id="specification" name="specification1" style="width: 1050px">
+                        <input type="text" placeholder="Specify" class="form-control" id="specification" name="specification1" style="width: 1600px">
                     </div>
                 </div>
                 <!-- end of vacation leave -->
@@ -211,7 +211,7 @@
                         <input type="radio" id="radio3" name="details" value="In case Leave Benefits for Women">
                         <label for="requested_by" class="form-label">In case Leave Benefits for Women</label>
 
-                        <input type="text" placeholder="Specify" class="form-control" id="specification" name="specification2" style="width: 1050px">
+                        <input type="text" placeholder="Specify" class="form-control" id="specification" name="specification2" style="width: 1600px">
                     </div>
 
                 </div>

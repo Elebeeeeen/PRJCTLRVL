@@ -25,7 +25,7 @@
 
     <!-- header -->
     <div class="header">
-        <h3> List of Leave Application </h3>
+        <h3> List of Leave Applications </h3>
     </div>
 
     <table class="table table-striped table-bordered table-mm" id="user_table">

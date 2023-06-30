@@ -77,35 +77,34 @@
 
     <!-- second row -->
     <div class="row">
-        <div class="form-group col-4">
+
+        <div class="form-group col-3">
+            <label for="requested_by" class="form-label">E-mail</label>
+            <input type="text" class="form-control" id="email" name="email" value="{{$division_form['email']}}" disabled>
+        </div>
+
+        <div class="form-group col-3">
             <label for="requested_by" class="form-label">Employee Number</label>
             <input type="text" class="form-control" id="employee_number" name="employee_number" value="{{$division_form['employee_number']}}" disabled>
         </div>
 
-        <div class="form-group col-4">
+        <div class="form-group col-3">
             <label for="requested_by" class="form-label">Position</label>
             <input type="text" class="form-control" id="position" name="position" value="{{$division_form['position']}}" disabled>
         </div>
 
-        <div class="form-group col-4">
+        <div class="form-group col-3">
             <label for="requested_by" class="form-label">Salary</label>
             <input type="text" class="form-control" id="salary" name="salary" value="{{$division_form['salary']}}" disabled>
         </div>
     </div>
 
-    <!-- third row -->
-    <div class="row">
-        <div class="form-group col-12">
-            <label for="requested_by" class="form-label">E-mail</label>
-            <input type="text" class="form-control" id="email" name="email" value="{{$division_form['email']}}" disabled>
-        </div>
-    </div>
 
     <!-- fourth row -->
 
     <div class="row">
 
-        <div class="form-group col-3">
+        <div class="form-group col-4">
             <label for="requested_by" class="form-label">No. Of Working Days</label>
             <input type="text" class="form-control" id="num_working_days" name="num_working_days" value="{{$division_form['num_working_days']}}" disabled>
         </div>
@@ -161,7 +160,7 @@
                     <input type="radio" id="radio" class="details" name="details" value="Within Aborad" disabled>
                     <label for="requested_by" class="form-label">Within Abroad</label>
 
-                    <input type="text" class="form-control" id="specification" name="specification" value="{{$division_form['specification']}}" style="width: 1050px" disabled>
+                    <input type="text" class="form-control" id="specification" name="specification" value="{{$division_form['specification']}}" style="width: 1600px" disabled>
                 </div>
             </div>
             <!-- end of vacation leave -->
@@ -187,7 +186,7 @@
                     <input type="radio" id="radio5" class="details" name="details" value="In case Leave Benefits for Women" disabled>
                     <label for="requested_by" class="form-label">In case Leave Benefits for Women</label>
 
-                    <input type="text" class="form-control" id="specification" name="specification" value="{{$division_form['specification']}}" style="width: 1050px" disabled>
+                    <input type="text" class="form-control" id="specification" name="specification" value="{{$division_form['specification']}}" style="width: 1600px" disabled>
                 </div>
 
             </div>
@@ -291,6 +290,99 @@
 
 
 <script>
+    $(document).ready(function() {
+
+
+        //radio button for commutation
+        if ("{{$division_form['commutation']}}" == $('#radio11').val()) {
+            $("#radio11").prop("checked", true);
+        } else {
+            $("#radio12").prop("checked", true);
+        }
+
+        // Calling new variable to determine array accordingly (type of leave)
+        let vacation_form = $($('.leaveOption div')[0]);
+        let sick_form = $($('.leaveOption div')[3]);
+        let study_form = $($('.leaveOption div')[7]);
+        let other = $($('.leaveOption div')[10]);
+
+        //Viewing the radio button
+
+        //vacation
+        let radio1 = $($('.details')[0]);
+        let radio2 = $($('.details')[1]);
+
+        //sick
+        let radio3 = $($('.details')[2]);
+        let radio4 = $($('.details')[3]);
+        let radio5 = $($('.details')[4]);
+
+        //study
+        let radio6 = $($('.details')[5]);
+        let radio7 = $($('.details')[6]);
+
+        //other
+        let radio8 = $($('.details')[7]);
+        let radio9 = $($('.details')[8]);
+
+        //Displaying the leave of type
+        function clearType() {
+
+            vacation_form.css('display', 'none')
+            sick_form.css('display', 'none')
+            study_form.css('display', 'none')
+            other.css('display', 'none')
+
+        } //clearType
+
+
+        switch (@json($division_form -> leaveType)) {
+            // Vacation
+            case '1':
+                clearType()
+                vacation_form.css('display', 'block');
+                (@json($division_form -> details) == radio1.val()) ? radio1.prop('checked', true): radio2.prop('checked', true);
+                break;
+
+                //walang laman
+            case '2':
+            case '4':
+            case '5':
+            case '6':
+            case '7':
+            case '9':
+            case '10':
+            case '11':
+            case '12':
+            case '13':
+                clearType()
+                break;
+
+                //Sick
+            case '3':
+                clearType()
+                sick_form.css('display', 'block');
+                (@json($division_form -> details) == radio3.val()) ? radio3.prop('checked', true)
+                : (@json($division_form -> details) == radio4.val()) ? radio4.prop('checked', true) 
+                : radio5.prop('checked', true);
+                break;
+
+                //study 
+            case '8':
+                clearType()
+                study_form.css('display', 'block');
+                (@json($division_form -> details) == radio6.val()) ? radio6.prop('checked', true): radio7.prop('checked', true);
+                break;
+
+            case '14':
+                clearType()
+                other.css('display', 'block')
+                    (@json($division_form -> details) == radio8.val()) ? radio8.prop('checked', true) : radio9.prop('checked', true);
+                break;
+
+        }
+    });
+
     //sweet alert for approve and reject
     let errorMessages = '';
 
@@ -320,6 +412,17 @@
                 }).then((result) => {
                     if (result.isConfirmed) {
                         formData.append('status', status);
+                        Swal.fire({
+                                    title: 'Now Loading',
+                                    html: '<b> Please wait... </b>',
+                                    timer: 15000,
+                                    didOpen: () => {
+                                        Swal.showLoading()
+                                    },
+                                    willClose: () => {
+                                        clearInterval(timerInterval)
+                                    }
+                                })
                         $.ajax({
                             url: '/headHR/' + $('#approve_form').attr("data-id"),
                             method: "POST",
@@ -337,7 +440,7 @@
                                         title: 'Approve',
                                         text: "The user applicaiton has been approve!",
                                         confirmButtonColor: '#228B22',
-                                        confirmButtonText: "confirm",   
+                                        confirmButtonText: "confirm",
                                     }).then((result) => {
                                         if (result.isConfirmed) {
                                             window.location.href = "/headHR/";
@@ -373,7 +476,7 @@
                 e.preventDefault();
                 Swal.fire({
                     title: 'Are you sure?',
-                    text:'Do you want to reject this application?',
+                    text: 'Do you want to reject this application?',
                     icon: 'warning',
                     showCancelButton: true,
                     confirmButtonText: "confirm",
@@ -400,6 +503,17 @@
                                 let reason = result.value;
                                 formData.append('status', status);
                                 formData.append('reason', reason);
+                                Swal.fire({
+                                    title: 'Now Loading',
+                                    html: '<b> Please wait... </b>',
+                                    timer: 15000,
+                                    didOpen: () => {
+                                        Swal.showLoading()
+                                    },
+                                    willClose: () => {
+                                        clearInterval(timerInterval)
+                                    }
+                                })
                                 $.ajax({
                                     url: '/headHR/' + $('#approve_form').attr("data-id"),
                                     method: "POST",
@@ -440,7 +554,7 @@
                                     }
 
                                 });
-                            } 
+                            }
                         });
                     } else {
                         Swal.fire({
@@ -455,7 +569,6 @@
             }
         })
     })
-
 </script>
 
 @endsection
