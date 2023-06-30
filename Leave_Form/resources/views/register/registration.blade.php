@@ -1,15 +1,6 @@
 <x-laravel-ui-adminlte::adminlte-layout>
-<style>
-        .login-box-msg {
-            font-size: 30px ;
-        }
-        .img{
-            height: 100px;
-            padding-left: 110px;
-        }
-    </style>
 
-<head>
+    <head>
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     </head>
@@ -17,34 +8,27 @@
     <body class="hold-transition register-page">
         <div class="register-box">
             <div class="register-logo">
-                <!-- <a href="{{ url('/home') }}"><b>{{ config('app.name') }}</b></a> -->
+                <a href="{{ url('/home') }}"><b>{{ config('app.name') }}</b></a>
             </div>
 
 
             <div class="card">
                 <div class="card-body register-card-body">
-                    <img src="images/logo.png" class="img">
                     <p class="login-box-msg">Registration Form</p>
 
-                    <form method="post" action="{{ route('register') }}" id="register_form" autocomplete="off">
-                        @csrf
+                    <form method="POST" action="/registration" id="register_form" autocomplete="off">
+                        @CSRF
 
                         <!-- first row -->
 
                         <div class="row">
                             <div class="input-group mb-3">
-                                <input type="text" name="employee_number" class="form-control @error('employee_number') is-invalid @enderror" value="{{ old('employee_number') }}" placeholder="Emp No.">
+                                <input type="text" name="employee_number" class="form-control" value="{{ old('employee_number') }}" placeholder="Emp No.">
 
                                 <div class="input-group-append">
                                     <div class="input-group-text"><span class="fas fa-address-card"></span>
                                     </div>
                                 </div>
-
-                                @error('employee_number')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
                             </div>
 
                             <div class="input-group mb-3">
@@ -151,7 +135,6 @@
                                 @enderror
                             </div>
 
-
                         </div>
 
                         <div class="row">
@@ -185,7 +168,7 @@
                     e.preventDefault();
                     let formData = new FormData($('#register_form')[0]);
                     $.ajax({
-                        url: "/register",
+                        url: "/registration",
                         method: "POST",
                         processData: false,
                         contentType: false,
@@ -194,13 +177,27 @@
                         success: function(response) {
                             Swal.fire({
                                 title: 'Success!',
-                                text: 'Successfuly submited a account aplicaiton. Wait to notify in your email to be approved.',
+                                text: response,
                                 icon: 'success',
                                 confirmButtonText: 'Okay'
                             }).then((result) => {
                                 if (result.isConfirmed) {
                                     window.location.href = "/login";
-                                }
+                                }else {
+                            for (let i = 0; i < response.errors.length; i++) {
+                                errorMessages += "-" + response.errors[i] + "\n";
+                            }
+                            Swal.fire({
+                                html: '<pre>' + errorMessages + '</pre>',
+                                customClass: {
+                                    popup: 'format-pre'
+                                },
+                                title: 'Error!',
+                                icon: 'error',
+                                confirmButtonText: 'Okay'
+                            })
+                            errorMessages = "";
+                        }
                             })
                         },
                         error: function() {

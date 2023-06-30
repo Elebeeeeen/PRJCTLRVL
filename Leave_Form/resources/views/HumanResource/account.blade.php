@@ -44,11 +44,12 @@
         <tbody>
             <tr>
                 @foreach($application_form as $applicationForm)
+                @if($applicationForm['status'] == "Pending")
                 <td>{{$applicationForm['employee_number']}}</td>
                 <td>{{$applicationForm['first_name']}}</td>
                 <td>{{$applicationForm['middle_initial']}}</td>
                 <td>{{$applicationForm['last_name']}}</td>
-                <td>Pending</td>
+                <td>{{$applicationForm['status']}}</td>
                 <td>
 
                     <div class="btn-group" id="btnGroup">
@@ -56,8 +57,9 @@
                     </div>
 
                 </td>
+                @endif
+                @endforeach
             </tr>
-            @endforeach
         </tbody>
     </table>
 </div>

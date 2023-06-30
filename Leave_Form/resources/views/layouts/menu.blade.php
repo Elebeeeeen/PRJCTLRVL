@@ -1,6 +1,5 @@
 
 <!-- for employee-->
-@role('employee')
 <li class="nav-item">
     <a href="/leaveform/create" class="nav-link {{ Request::is('leaveform/create') ? 'active' : '' }}">
         <i class="nav-icon fas fa-file "></i>
@@ -15,7 +14,6 @@
     </a>
 </li>
 
-@endrole
 
 
 

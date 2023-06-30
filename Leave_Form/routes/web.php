@@ -18,6 +18,9 @@ Route::get('/', function () {
     return view('auth.login');
 });
 
+Route::get('/registration',[App\Http\Controllers\RegistrationsController::class, "index"]);
+Route::post('/registration',[App\Http\Controllers\RegistrationsController::class, "create"]);
+
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::resource('/leaveform', App\Http\Controllers\EmployeeController::class);
 
@@ -30,11 +33,14 @@ Route::resource('/humanresource', App\Http\Controllers\HRController::class);
 Route::get('/leaveapplication', [App\Http\Controllers\HRController::class, 'index2'])->name('index2');
 Route::get('/leaveApplicationDivisionChief', [App\Http\Controllers\HRController::class, 'index4']);
 Route::get('/leavelist', [App\Http\Controllers\EmployeeController::class, 'leavelist']);
+Route::post('/humanresource/{id}', [App\Http\Controllers\HRController::class, 'store']);
 
 Route::get('/accountapplication', [App\Http\Controllers\HRController::class, 'index3'])->name('index3');
 Route::get('/viewaccount/{id}', [App\Http\Controllers\HRController::class, 'show2'])->name('show2');
 Route::get('/viewdivision/{id}', [App\Http\Controllers\HRController::class, 'show3']);
 Route::put('/employeeHR/{id}', [App\Http\Controllers\HRController::class, 'update2']);
+Route::post('/AccountHR/{id}', [App\Http\Controllers\HRController::class, 'update3']);
+
 
 //division chief
 Route::resource('/divisionchief', App\Http\Controllers\DCController::class);
