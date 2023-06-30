@@ -1,4 +1,4 @@
-<p>Hi Mr/Ms. {{$employee['first_name']}} {{$employee['last_name']}},</p>
+<p>Hi Mr/Ms. {{$employees['first_name']}} {{$employees['last_name']}},</p>
 
 <br>
 

@@ -23,18 +23,12 @@
 
                         <div class="row">
                             <div class="input-group mb-3">
-                                <input type="text" name="employee_number" class="form-control @error('employee_number') is-invalid @enderror" value="{{ old('employee_number') }}" placeholder="Emp No.">
+                                <input type="text" name="employee_number" class="form-control" value="{{ old('employee_number') }}" placeholder="Emp No.">
 
                                 <div class="input-group-append">
                                     <div class="input-group-text"><span class="fas fa-address-card"></span>
                                     </div>
                                 </div>
-
-                                @error('employee_number')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
                             </div>
 
                             <div class="input-group mb-3">
@@ -187,9 +181,23 @@
                                 icon: 'success',
                                 confirmButtonText: 'Okay'
                             }).then((result) => {
-                                // if (result.isConfirmed) {
-                                //     window.location.href = "/login";
-                                // }
+                                if (result.isConfirmed) {
+                                    window.location.href = "/login";
+                                }else {
+                            for (let i = 0; i < response.errors.length; i++) {
+                                errorMessages += "-" + response.errors[i] + "\n";
+                            }
+                            Swal.fire({
+                                html: '<pre>' + errorMessages + '</pre>',
+                                customClass: {
+                                    popup: 'format-pre'
+                                },
+                                title: 'Error!',
+                                icon: 'error',
+                                confirmButtonText: 'Okay'
+                            })
+                            errorMessages = "";
+                        }
                             })
                         },
                         error: function() {

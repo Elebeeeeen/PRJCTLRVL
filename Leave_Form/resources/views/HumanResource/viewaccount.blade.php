@@ -114,13 +114,13 @@
         <!--button-->
         <div class="w-100">
             <div class="float-right">
-            <form action="/AccountHR/{{$id}}" data-id="{{$id}}" id="approve_form" method="POST">
                 @METHOD('POST')
                 <button type="submit" id="approve" value="Approved by HR" class="btn btn-primary">Approve</button>
                 <button type="submit" id="reject" value="Rejected by HR" class="btn btn-danger">Reject</button>
             </div>
         </div>
     </form>
+
 </div>
 
 <script>
@@ -148,7 +148,7 @@
                     if (result.isConfirmed) {
                         formData.append('status', status);
                         $.ajax({
-                            url: '/AccountHR/' + $('#approve_form').attr("data-id"),
+                            url: '/humanresource/' + $('#approve_form').attr("data-id"),
                             method: "POST",
                             processData: false,
                             contentType: false,
@@ -162,14 +162,29 @@
                                     Swal.fire({
                                         icon: 'success',
                                         title: 'Success',
-                                        text: 'The Account has been approved',
-                                        showCancelButton: true,
+                                        text: response.message,
                                         confirmButtonText: "confirm",
                                     }).then((result) => {
                                         if (result.isConfirmed) {
-                                            window.location.href = "/humanresource";
+                                            // window.location.href = "/humanresource";
+                                            if (result.isConfirmed) {
+                                                formData.append('status', status);
+                                                $.ajax({
+                                                    url: '/AccountHR/' + response.id,
+
+                                                    method: "POST",
+                                                    processData: false,
+                                                    contentType: false,
+                                                    cache: false,
+                                                    data: formData,
+                                                    headers: {
+                                                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                                                    },
+                                                });
+                                            }
                                         }
                                     })
+                                    // alert(response.id);
                                 } else {
                                     Swal.fire({
                                         icon: 'warning',
@@ -181,19 +196,19 @@
                                             e.preventDefault();
                                         }
                                     })
-                                    // for (let i = 0; i < response.errors.length; i++) {
-                                    //     errorMessages += "-" + response.errors[i] + "\n";
-                                    // }
-                                    // Swal.fire({
-                                    //     html: '<pre>' + errorMessages + '</pre>',
-                                    //     customClass: {
-                                    //         popup: 'format-pre'
-                                    //     },
-                                    //     title: 'Error!',
-                                    //     icon: 'error',
-                                    //     confirmButtonText: 'Okay'
-                                    // })
-                                    // errorMessages = "";
+                                    for (let i = 0; i < response.errors.length; i++) {
+                                        errorMessages += "-" + response.errors[i] + "\n";
+                                    }
+                                    Swal.fire({
+                                        html: '<pre>' + errorMessages + '</pre>',
+                                        customClass: {
+                                            popup: 'format-pre'
+                                        },
+                                        title: 'Error!',
+                                        icon: 'error',
+                                        confirmButtonText: 'Okay'
+                                    })
+                                    errorMessages = "";
                                 }
                             }
                         });
