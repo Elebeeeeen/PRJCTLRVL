@@ -284,8 +284,8 @@
         <div class="float-right">
             <form action="/humanresource/{{$id}}" data-id="{{$id}}" id="approve_form" method="POST">
                 @METHOD('PUT')
-                <button type="submit" id="approve" value="Approved by HR" class="btn btn-success">Approve</button>
-                <button type="submit" id="reject" value="Rejected by HR" class="btn btn-danger">Reject</button>
+                <button type="submit" id="approve" value="Approved by HR" class="btn btn-success">Verify</button>
+                <!-- <button type="submit" id="reject" value="Rejected by HR" class="btn btn-danger">Reject</button> -->
             </form>
         </div>
     </div>
@@ -404,7 +404,7 @@
                 Swal.fire({
                     icon: 'warning',
                     title: 'Are you sure?',
-                    text: "You want to approve this application?",
+                    text: "You want to verify this application?",
                     showCancelButton: true,
                     confirmButtonText: "Yes",
                     cancelButtonColor: '#d33',

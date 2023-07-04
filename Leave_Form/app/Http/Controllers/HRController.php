@@ -203,35 +203,27 @@ class HRController extends Controller
     {
         $lf_employee = Employees::find($id);
         $status = $request->status;
+        $email = $lf_employee->email;
 
         if ($status == "Approved by HR") {
-
-            $lf_employee->status = $request->status;
-            $lf_employee->save();
-
-
-            return response()->json(["success" => true, "message" => "Successfully approved!"]);
-        } else if ($status == "Rejected by HR") {
-            $email = $lf_employee->email;
-
             $data = [
-                'reason' => $request->reason,
-                'employees' => $lf_employee,
+                'employee' => $lf_employee,
                 'firstname' => Auth::user()->first_name,
                 'lastname' => Auth::user()->last_name,
                 'mi' => Auth::user()->middle_initial,
                 'position' => Auth::user()->position,
             ];
-            Mail::send('mail.reject', $data, function ($message) use ($data, $email) {
+
+            Mail::send('mail.verified', $data, function ($message) use ($email) {
                 $message->to($email);
-                $message->subject('Disapproving Your Leave Application');
-                $message->from(Auth::user()->email, 'Human Resource');
+                $message->subject('Your Leave Application Has Been Verified by the HR.');
+                $message->from(Auth::user()->email, 'Head Officer');
             });
 
             $lf_employee->status = $request->status;
             $lf_employee->save();
 
-            return response()->json(["success" => true, "message" => "Successfully rejected!"]);
+            return response()->json(["success" => true, "message" => "Successfully approved!"]);
         }
     }
 
