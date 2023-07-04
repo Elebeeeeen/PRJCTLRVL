@@ -54,26 +54,26 @@
         <div class="form-group col-3">
             <label for="requested_by" class="form-label">Office</label>
             <span id="requiredStyle"> *</span>
-            <input type="text" class="form-control" id="office" name="office" value="{{$lf_employees['office']}}" disabled>
+            <input type="text" class="form-control" id="office" name="office" value="{{$lf_employee['office']}}" disabled>
 
         </div>
 
         <div class="form-group col-4">
             <label for="requested_by" class="form-label">Last Name</label>
             <span id="requiredStyle"> *</span>
-            <input type="text" class="form-control" id="last_name" name="last_name" value="{{$lf_employees['last_name']}}" disabled>
+            <input type="text" class="form-control" id="last_name" name="last_name" value="{{$lf_employee['last_name']}}" disabled>
         </div>
 
         <div class="form-group col-4">
             <label for="requested_by" class="form-label">First Name</label>
             <span id="requiredStyle"> *</span>
-            <input type="text" class="form-control" id="first_name" name="first_name" value="{{$lf_employees['first_name']}}" disabled>
+            <input type="text" class="form-control" id="first_name" name="first_name" value="{{$lf_employee['first_name']}}" disabled>
         </div>
 
         <div class="form-group col-1">
             <label for="requested_by" class="form-label">M.I.</label>
             <span id="requiredStyle"> *</span>
-            <input type="text" class="form-control" id="middle_initial" name="middle_initial" value="{{$lf_employees['middle_initial']}}" disabled>
+            <input type="text" class="form-control" id="middle_initial" name="middle_initial" value="{{$lf_employee['middle_initial']}}" disabled>
         </div>
     </div>
 
@@ -89,19 +89,19 @@
         <div class="form-group col-3">
             <label for="requested_by" class="form-label">Employee Number</label>
             <span id="requiredStyle"> *</span>
-            <input type="text" class="form-control" id="employee_number" name="employee_number" value="{{$lf_employees['employee_number']}}" disabled>
+            <input type="text" class="form-control" id="employee_number" name="employee_number" value="{{$lf_employee['employee_number']}}" disabled>
         </div>
 
         <div class="form-group col-3">
             <label for="requested_by" class="form-label">Position</label>
             <span id="requiredStyle"> *</span>
-            <input type="text" class="form-control" id="position" name="position" value="{{$lf_employees['position']}}" disabled>
+            <input type="text" class="form-control" id="position" name="position" value="{{$lf_employee['position']}}" disabled>
         </div>
 
         <div class="form-group col-3">
             <label for="requested_by" class="form-label">Salary</label>
             <span id="requiredStyle"> *</span>
-            <input type="text" class="form-control" id="salary" name="salary" value="{{$lf_employees['salary']}}" disabled>
+            <input type="text" class="form-control" id="salary" name="salary" value="{{$lf_employee['salary']}}" disabled>
         </div>
     </div>
 
@@ -113,7 +113,7 @@
 
         <div class="form-group col-4">
             <label for="requested_by" class="form-label">No. Of Working Days</label>
-            <input type="text" class="form-control" id="num_working_days" name="num_working_days" value="{{$lf_employees['num_working_days']}}" disabled>
+            <input type="text" class="form-control" id="num_working_days" name="num_working_days" value="{{$lf_employee['num_working_days']}}" disabled>
         </div>
 
         <div class="form-group col-4">
@@ -136,12 +136,12 @@
 
         <div class="form-group col-8">
             <label for="requested_by" class="form-label">Type of Leave</label>
-            <input class="select2 form-control" name="type_of_leave" id="type_of_leave" value="{{$lf_employees['type_of_leave']}}" disabled>
+            <input class="select2 form-control" name="type_of_leave" id="type_of_leave" value="{{$lf_employee['type_of_leave']}}" disabled>
         </div>
 
         <div class="form-group col-4">
-            <label for="requested_by" class="form-label">Date</label>
-            <input type="date" class="form-control" id="date" name="date" value="{{$lf_employees['date']}}" disabled>
+            <label for="requested_by" class="form-label">Date of Filing</label>
+            <input type="date" class="form-control" id="date" name="date" value="{{$lf_employee['date']}}" disabled>
         </div>
     </div>
 
@@ -268,9 +268,9 @@
     </div>
 
 
-            <div class="form-group col-6">
+            <div class="form-group col-12">
                 <label for="requested_by" class="form-label">Approver</label>
-                <input type="text" class="form-control" id="approver" name="approver" value="{{$lf_employees['approver']}}">
+                <input type="text" class="form-control" id="approver" name="approver" value="{{$lf_employee['approver']}}">
             </div>
         </div>
     </div>
@@ -288,7 +288,7 @@
 
 
         //radio button for commutation
-        if ("{{$lf_employees['commutation']}}" == $('#radio11').val()) {
+        if ("{{$lf_employee['commutation']}}" == $('#radio11').val()) {
             $("#radio11").prop("checked", true);
         } else {
             $("#radio12").prop("checked", true);
@@ -335,7 +335,7 @@
             case '1':
                 clearType()
                 vacation_form.css('display', 'block');
-                (@json($lf_employees -> details) == radio1.val()) ? radio1.prop('checked', true): radio2.prop('checked', true);
+                (@json($lf_employee -> details) == radio1.val()) ? radio1.prop('checked', true): radio2.prop('checked', true);
                 break;
 
                 //walang laman
@@ -356,8 +356,8 @@
             case '3':
                 clearType()
                 sick_form.css('display', 'block');
-                (@json($lf_employees -> details) == radio3.val()) ? radio3.prop('checked', true)
-                : (@json($lf_employees -> details) == radio4.val()) ? radio4.prop('checked', true)
+                (@json($lf_employee -> details) == radio3.val()) ? radio3.prop('checked', true)
+                : (@json($lf_employee -> details) == radio4.val()) ? radio4.prop('checked', true)
                 : radio5.prop('checked', true);
                 break;
 
@@ -365,13 +365,13 @@
             case '8':
                 clearType()
                 study_form.css('display', 'block');
-                (@json($lf_employees -> details) == radio6.val()) ? radio6.prop('checked', true): radio7.prop('checked', true);
+                (@json($lf_employee -> details) == radio6.val()) ? radio6.prop('checked', true): radio7.prop('checked', true);
                 break;
 
             case '14':
                 clearType()
                 other.css('display', 'block')
-                    (@json($lf_employees -> details) == radio8.val()) ? radio8.prop('checked', true) : radio9.prop('checked', true);
+                    (@json($lf_employee -> details) == radio8.val()) ? radio8.prop('checked', true) : radio9.prop('checked', true);
                 break;
 
         }

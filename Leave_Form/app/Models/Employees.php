@@ -10,7 +10,7 @@ class Employees extends Model
     use HasFactory;
 
     // connecting to the database named lf_employee
-    protected $table = 'lf_employees';
+    protected $table = 'lf_employee';
 
 
     //collecting/locate the id's in the database 
@@ -35,7 +35,9 @@ class Employees extends Model
         'approver',
         'details',
         'specification',
-        'status'
+        'status',
+        'start_date',
+        'end_date'
     ];
 
 

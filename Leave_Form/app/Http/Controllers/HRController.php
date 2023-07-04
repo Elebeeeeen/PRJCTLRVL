@@ -27,9 +27,10 @@ class HRController extends Controller
     {
         $count = Employees::where('Status', 'Approved by Director')->count();
         $count2 = DivisionChief::where('Status', 'Approved by Director')->count();
-        // $count3 = registerUser::where('verified', 'false')->count();
+        $count3 = regUser::where('status', 'pending')->count();
+
         //displaying the page
-        return view('HumanResource.form', compact(['count', 'count2']));
+        return view('HumanResource.form', compact(['count', 'count2', 'count3']));
     }
 
 
@@ -157,8 +158,8 @@ class HRController extends Controller
     public function show2(string $id)
 
     {
-        $application_form = registerUser::find($id);
-        return view('HumanResource.viewaccount', compact(['application_form']));
+        $application_form = regUser::find($id);
+        return view('HumanResource.viewaccount', compact(['application_form', 'id']));
     }
 
 
@@ -278,16 +279,16 @@ class HRController extends Controller
     public function update3(Request $request, string $id)
     {
 
-        $lf_employees = regUser::find($id);
+        $lf_employee = regUser::find($id);
         $status = $request->status;
         if ($status == "Approved by HR") {
-            $lf_employees->status = $request->status;
-            $lf_employees->save();
+            $lf_employee->status = $request->status;
+            $lf_employee->save();
 
-            $email = $lf_employees->email;
+            $email = $lf_employee->email;
 
             $data = [
-                'employees' => $lf_employees,
+                'employees' => $lf_employee,
                 'firstname' => Auth::user()->first_name,
                 'lastname' => Auth::user()->last_name,
                 'mi' => Auth::user()->middle_initial,
@@ -302,11 +303,11 @@ class HRController extends Controller
 
             return response()->json(["success" => true, "message" => "Successfully approved!"]);
         } else if ($status == "Rejected by HR") {
-            $email = $lf_employees->email;
+            $email = $lf_employee->email;
 
             $data = [
                 'reason' => $request->reason,
-                'employees' => $lf_employees,
+                'employee' => $lf_employee,
                 'firstname' => Auth::user()->first_name,
                 'lastname' => Auth::user()->last_name,
                 'mi' => Auth::user()->middle_initial,
@@ -319,8 +320,8 @@ class HRController extends Controller
             });
 
 
-            $lf_employees->status = $request->status;
-            $lf_employees->save();
+            $lf_employee->status = $request->status;
+            $lf_employee->save();
 
             return response()->json(["success" => true, "message" => "Successfully rejected!"]);
         }

@@ -78,7 +78,7 @@ class HeadController extends Controller
         //Getting the object and its property further to see of all arrays
         $lf_employee->type_of_leave = $typeleave->getLeaveType($lf_employee->type_of_leave);
 
-        return view('Head.viewEmployee', compact(['lf_employees', 'id']));
+        return view('Head.viewEmployee', compact(['lf_employee', 'id']));
     }
 
     public function show2(string $id)
@@ -166,13 +166,13 @@ class HeadController extends Controller
     //Adding a email
     public function update2(Request $request, string $id)
     {
-        $lf_employees = Employees::find($id);
+        $lf_employee = Employees::find($id);
         $status = $request->status;
-        $email = $lf_employees->email;
+        $email = $lf_employee->email;
 
         if ($status == "Approved") {
             $data = [
-                'employee' => $lf_employees,
+                'employee' => $lf_employee,
                 'firstname' => Auth::user()->first_name,
                 'lastname' => Auth::user()->last_name,
                 'mi' => Auth::user()->middle_initial,
@@ -185,15 +185,15 @@ class HeadController extends Controller
                 $message->from(Auth::user()->email, 'Head Officer');
             });
 
-            $lf_employees->status = $request->status;
-            $lf_employees->save();
+            $lf_employee->status = $request->status;
+            $lf_employee->save();
 
             return response()->json(["success" => true, "message" => "Successfully approved!"]);
         } else if ($status == "Rejected") {
 
             $data = [
                 'reason' => $request->reason,
-                'employee' => $lf_employees,
+                'employee' => $lf_employee,
                 'firstname' => Auth::user()->first_name,
                 'lastname' => Auth::user()->last_name,
                 'mi' => Auth::user()->middle_initial,
@@ -205,8 +205,8 @@ class HeadController extends Controller
                 $message->from(Auth::user()->email, 'Head Officer');
             });
 
-            $lf_employees->status = $request->status;
-            $lf_employees->save();
+            $lf_employee->status = $request->status;
+            $lf_employee->save();
 
             return response()->json(["success" => true, "message" => "Successfully rejected!"]);
         }

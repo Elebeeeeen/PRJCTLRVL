@@ -103,7 +103,7 @@
 
     </div>
 
-    <form action="/humanresource/{{$id}}" data-id="{{$id}}" id="approve_form" method="POST">
+    <form action="/humanresource" data-id="{{$id}}" id="approve_form" method="POST">
         <div class="row">
             <div class="form-group col-3">
                 <label for="requested_by" class="form-label">Username</label>
@@ -171,7 +171,7 @@
                                         confirmButtonText: "confirm",
                                     }).then((result) => {
                                         if (result.isConfirmed) {
-                                            // window.location.href = "/humanresource";
+                                            window.location.href = "/humanresource";
                                             if (result.isConfirmed) {
                                                 formData.append('status', status);
                                                 $.ajax({

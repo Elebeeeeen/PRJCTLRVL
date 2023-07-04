@@ -21,7 +21,7 @@
             <div class="card">
                 <div class="card-body login-card-body">
                     <img src="images/logo.png" class="img">
-                    <p class="login-box-msg">Online Leave Filling System</p>
+                    <p class="login-box-msg">Online Leave Filing System</p>
 
                     <form method="post" action="{{ url('/login') }}">
                         @csrf
@@ -52,7 +52,6 @@
                         <div class="row">
                             <div class="col-8">
                                 <div class="icheck-primary">
-                                    <a href="{{ route('register') }}" class="text-center">Register a new account</a>
                                 </div>
                             </div>
 

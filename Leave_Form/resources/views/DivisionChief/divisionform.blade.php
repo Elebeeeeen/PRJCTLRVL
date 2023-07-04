@@ -163,7 +163,7 @@
             </div>
 
             <div class="form-group col-4">
-                <label for="requested_by" class="form-label">Date</label>
+                <label for="requested_by" class="form-label">Date of Filing</label>
                 <span id="requiredStyle"> *</span>
                 <input type="date" class="form-control" id="date" name="date">
             </div>

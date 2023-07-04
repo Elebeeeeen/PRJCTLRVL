@@ -35,8 +35,8 @@ Route::get('/leaveApplicationDivisionChief', [App\Http\Controllers\HRController:
 Route::get('/leavelist', [App\Http\Controllers\EmployeeController::class, 'leavelist']);
 Route::post('/humanresource/{id}', [App\Http\Controllers\HRController::class, 'store']);
 
-Route::get('/accountapplication', [App\Http\Controllers\HRController::class, 'index3'])->name('index3');
-Route::get('/viewaccount/{id}', [App\Http\Controllers\HRController::class, 'show2'])->name('show2');
+Route::get('/accountapplication', [App\Http\Controllers\HRController::class, 'index3']);
+Route::get('/viewaccount/{id}', [App\Http\Controllers\HRController::class, 'show2']);
 Route::get('/viewdivision/{id}', [App\Http\Controllers\HRController::class, 'show3']);
 Route::put('/employeeHR/{id}', [App\Http\Controllers\HRController::class, 'update2']);
 Route::post('/AccountHR/{id}', [App\Http\Controllers\HRController::class, 'update3']);
