@@ -21,10 +21,9 @@ class EmployeeController extends Controller
     {
 
         $list = new Employees();
-        $employee_leave  = $list->leaveType(Employees::get());
-        $division_leave  = $list->leaveType(Employees::where('position', 'Division Chief')->get());
+        $leave_form  = $list->leaveType(Employees::get());
 
-        return view('leaveForm.list', compact(['employee_leave', 'division_leave']));
+        return view('leaveForm.list', compact(['leave_form']));
     }
 
 
