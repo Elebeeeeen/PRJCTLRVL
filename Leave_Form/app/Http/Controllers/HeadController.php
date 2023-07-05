@@ -128,9 +128,9 @@ class HeadController extends Controller
                 'position' => Auth::user()->position,
             ];
 
-            Mail::send('mail.approve', $data, function ($message) use ($email) {
+            Mail::send('mail.verified', $data, function ($message) use ($email) {
                 $message->to($email);
-                $message->subject('Your Leave Application Has Been Approved.');
+                $message->subject('Your Leave Application Has Been Verified by Head Officer.');
                 $message->from(Auth::user()->email, 'Head Officer');
             });
 
