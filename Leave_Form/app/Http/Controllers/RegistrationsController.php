@@ -27,6 +27,7 @@ class RegistrationsController extends Controller
             'last_name.required' => 'Please indicate your Last Name',
             'first_name.required' => 'Please indicate your First Name',
             'middle_initial.required' => 'Please indicate your Middle Initial',
+            'username.required' => 'Please indicate your specified username',
             'email.required' => 'Please indicate your E-mail',
             'office.required' => 'Please state your Department Office',
             'position.required' => 'Please indicate your Position',
@@ -42,6 +43,7 @@ class RegistrationsController extends Controller
                 'first_name' => ['required', 'string', 'max:25',],
                 'middle_initial' => ['required', 'string', 'max:25'],
                 'email' => ['required', 'string', 'email', 'max:50', 'unique:users'],
+                'username' => ['required', 'string', 'max:18', 'unique:users'],
                 'office' => ['required', 'string', 'max:25'],
                 'position' => ['required', 'string', 'max:50'],
                 'salary' => ['required', 'integer', 'max:999999'],
@@ -56,6 +58,7 @@ class RegistrationsController extends Controller
             $users->last_name = $request->last_name;
             $users->first_name = $request->first_name;
             $users->middle_initial = $request->middle_initial;
+            $users->username = $request->username;
             $users->email = $request->email;
             $users->office = $request->office;
             $users->position = $request->position;
@@ -85,6 +88,7 @@ class RegistrationsController extends Controller
                 'last_name' => $data->last_name,
                 'middle_initial' => $data->middle_initial,
                 'first_name' => $data->first_name,
+                'username' => $data->username,
                 'email' => $data->email,
                 'office' => $data->office,
                 'position' => $data->position,
@@ -98,4 +102,28 @@ class RegistrationsController extends Controller
 
         return response()->json(["success" => true]);
     }
+
+    
+    // try mo to pero di pa to gumagama
+
+
+
+
+    // public function validateTerms (Request $request){
+    //     $rules = [ 
+    //         'terms' => 'accepted',
+    //     ];
+
+    //     $messages =[
+    //         'terms.accepted' => 'you must accept the terms and conditions.'
+    //     ];
+
+    //     $validator = Validator::make($request->all(), $rules, $messages);
+
+    //     if($validator->fails()){
+    //         return redirect()->back()
+    //         ->withErrors($validator)
+    //         ->withInput();
+    //     }
+    // }
 }

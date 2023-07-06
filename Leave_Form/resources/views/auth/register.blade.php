@@ -110,6 +110,21 @@
                             </div>
 
                             <div class="input-group mb-3">
+                                <input type="text" name="username" class="form-control @error('username') is-invalid @enderror" value="{{ old('username') }}" placeholder="Username">
+                                <div class="input-group-append">
+                                    <div class="input-group-text"><span class="fas fa-building"></span>
+                                    </div>
+                                </div>
+
+                                @error('username')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                            </div>
+
+
+                            <div class="input-group mb-3">
                                 <input type="text" name="office" class="form-control @error('office') is-invalid @enderror" value="{{ old('office') }}" placeholder="Office">
                                 <div class="input-group-append">
                                     <div class="input-group-text"><span class="fas fa-building"></span>

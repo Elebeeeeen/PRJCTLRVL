@@ -20,6 +20,7 @@ class regUser extends Model
         'last_name',
         'middle_initial',
         'first_name',
+        'username',
         'email',
         'office',
         'position',

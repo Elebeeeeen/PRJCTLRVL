@@ -77,6 +77,21 @@
                                 @enderror
                             </div>
 
+                            <div class="input-group mb-3">
+                                <input type="text" name="username" class="form-control @error('username') is-invalid @enderror" value="{{ old('username') }}" placeholder="Username" maxlength="18">
+
+                                <div class="input-group-append">
+                                    <div class="input-group-text"><span class="fas fa-user"></span>
+                                    </div>
+                                </div>
+
+                                @error('username')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                            </div>
+
 
                             <div class="input-group mb-3">
                                 <input type="email" name="email" value="{{ old('email') }}" class="form-control @error('email') is-invalid @enderror" placeholder="E-mail">
@@ -146,6 +161,8 @@
                                     </label>
                                 </div>
                             </div>
+
+                            
                             <!-- /.col -->
                             <div class="col-4">
                                 <button type="submit" id="register_form" class="btn btn-primary btn-block">Register</button>
