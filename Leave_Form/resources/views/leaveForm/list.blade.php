@@ -42,6 +42,7 @@
         <tbody>
             <tr>
                 @foreach($leave_form as $leavelist)
+                @if($leavelist['position'] == Auth::user()->position)
                 <td>{{$leavelist['employee_number']}}</td>
                 <td>{{$leavelist['last_name']}}</td>
                 <td>{{$leavelist['position']}}</td>
@@ -65,6 +66,7 @@
 
                 </td>
             </tr>
+            @endif
             @endforeach
         </tbody>
     </table>
