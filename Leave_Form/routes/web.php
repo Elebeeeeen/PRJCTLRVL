@@ -39,7 +39,7 @@ Route::get('/accountapplication', [App\Http\Controllers\HRController::class, 'in
 Route::get('/viewaccount/{id}', [App\Http\Controllers\HRController::class, 'show2']);
 Route::get('/viewdivision/{id}', [App\Http\Controllers\HRController::class, 'show3']);
 Route::put('/employeeHR/{id}', [App\Http\Controllers\HRController::class, 'update2']);
-Route::post('/AccountHR/{id}', [App\Http\Controllers\HRController::class, 'update3']);
+Route::put('/AccountHR/{id}', [App\Http\Controllers\HRController::class, 'update3']);
 
 
 //division chief

@@ -103,7 +103,7 @@
 
     </div>
 
-    <form action="/humanresource" data-id="{{$id}}" id="approve_form" method="POST">
+    <form action="/AccountHR/{{$id}}" data-id="{{$id}}" id="approve_form" method="POST">
         <div class="row">
             <div class="form-group col-3">
                 <label for="requested_by" class="form-label">Username</label>
@@ -119,7 +119,7 @@
         <!--button-->
         <div class="w-100">
             <div class="float-right">
-                @METHOD('POST')
+                @METHOD('PUT')
                 <button type="submit" id="approve" value="Approved by HR" class="btn btn-primary">Approve</button>
                 <button type="submit" id="reject" value="Rejected by HR" class="btn btn-danger">Reject</button>
             </div>
@@ -153,7 +153,7 @@
                     if (result.isConfirmed) {
                         formData.append('status', status);
                         $.ajax({
-                            url: '/humanresource/' + $('#approve_form').attr("data-id"),
+                            url: '/AccountHR/' + $('#approve_form').attr("data-id"),
                             method: "POST",
                             processData: false,
                             contentType: false,

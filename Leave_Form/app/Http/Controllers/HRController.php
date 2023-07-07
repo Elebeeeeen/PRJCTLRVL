@@ -280,7 +280,7 @@ class HRController extends Controller
             $email = $lf_employee->email;
 
             $data = [
-                'employees' => $lf_employee,
+                'employee' => $lf_employee,
                 'firstname' => Auth::user()->first_name,
                 'lastname' => Auth::user()->last_name,
                 'mi' => Auth::user()->middle_initial,
