@@ -194,7 +194,7 @@
                         success: function(response) {
                             Swal.fire({
                                 title: 'Success!',
-                                text: response,
+                                text: 'Wait for your approval of your account.',
                                 icon: 'success',
                                 confirmButtonText: 'Okay'
                             }).then((result) => {

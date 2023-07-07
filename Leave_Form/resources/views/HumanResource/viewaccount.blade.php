@@ -84,7 +84,7 @@
             <label for="requested_by" class="form-label">Salary</label>
             <input type="text" class="form-control" id="salary" name="salary" value="{{$application_form['salary']}}" disabled>
         </div>
-        
+
         <div class="form-group col-4">
             <label for="requested_by" class="form-label">Position</label>
             <input type="text" class="form-control" id="position" name="position" value="{{$application_form['position']}}" disabled>
@@ -152,6 +152,17 @@
                 }).then((result) => {
                     if (result.isConfirmed) {
                         formData.append('status', status);
+                        Swal.fire({
+                            title: 'Now Loading',
+                            html: '<b> Please wait... </b>',
+                            timer: 15000,
+                            didOpen: () => {
+                                Swal.showLoading()
+                            },
+                            willClose: () => {
+                                clearInterval(timerInterval)
+                            }
+                        })
                         $.ajax({
                             url: '/AccountHR/' + $('#approve_form').attr("data-id"),
                             method: "POST",
@@ -254,6 +265,17 @@
                                 let reason = result.value;
                                 formData.append('status', status);
                                 formData.append('reason', reason);
+                                Swal.fire({
+                                    title: 'Now Loading',
+                                    html: '<b> Please wait... </b>',
+                                    timer: 15000,
+                                    didOpen: () => {
+                                        Swal.showLoading()
+                                    },
+                                    willClose: () => {
+                                        clearInterval(timerInterval)
+                                    }
+                                })
                                 $.ajax({
                                     url: '/AccountHR/' + $('#approve_form').attr("data-id"),
                                     method: "POST",
