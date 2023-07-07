@@ -2,7 +2,6 @@
 
 @section('content')
 
-<!-- design for this page -->
 <style>
     .header {
         background-color: #00B0F0;
@@ -27,7 +26,6 @@
     <!-- header -->
     <div class="header">
         <h3> Pending Account Application</h3>
-
     </div>
 
     <table class="table table-striped table-bordered table-mm" id="user_table">
@@ -35,8 +33,8 @@
             <tr>
                 <th>Emp. No.</th>
                 <th>Last Name</th>
-                <th>M.I.</th>
                 <th>First Name</th>
+                <th>M.I.</th>
                 <th>Status</th>
                 <th>Action</th>
             </tr>
@@ -46,9 +44,9 @@
                 @foreach($application_form as $applicationForm)
                 @if($applicationForm['status'] == "Pending")
                 <td>{{$applicationForm['employee_number']}}</td>
+                <td>{{$applicationForm['last_name']}}</td>
                 <td>{{$applicationForm['first_name']}}</td>
                 <td>{{$applicationForm['middle_initial']}}</td>
-                <td>{{$applicationForm['last_name']}}</td>
                 <td>{{$applicationForm['status']}}</td>
                 <td>
 
@@ -57,9 +55,9 @@
                     </div>
 
                 </td>
-                @endif
-                @endforeach
             </tr>
+            @endif
+            @endforeach
         </tbody>
     </table>
 </div>
