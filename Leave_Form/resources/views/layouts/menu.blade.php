@@ -2,18 +2,42 @@
 <!-- for employee-->
 @role('employee')
 <li class="nav-item">
-    <a href="/employeeCreateForm" class="nav-link {{ Request::is('leaveform/create') ? 'active' : '' }}">
+    <a href="/employeeCreateForm" class="nav-link {{ Request::is('employeeCreateForm') ? 'active' : '' }}">
         <i class="nav-icon fas fa-file "></i>
         <p>Leave Form</p>
     </a>
 </li>
 
 <li class="nav-item">
-    <a href="/employeeCreatedForm" class="nav-link {{ Request::is('leaveform') ? 'active' : '' }}">
+    <a href="/employeeCreatedForm" class="nav-link {{ Request::is('employeeCreatedForm') ? 'active' : '' }}">
         <i class="nav-icon fas fa-folder-open"></i>
         <p>List of Leave Applications</p>
     </a>
 </li>
+@endrole
+
+@role('division_chief')
+<li class="nav-item">
+    <a href="/employeeCreateForm" class="nav-link {{ Request::is('employeeCreateForm') ? 'active' : '' }}">
+        <i class="nav-icon fas fa-file "></i>
+        <p>Leave Form</p>
+    </a>
+</li>
+
+<li class="nav-item">
+    <a href="/employeeCreatedForm" class="nav-link {{ Request::is('employeeCreatedForm') ? 'active' : '' }}">
+        <i class="nav-icon fas fa-folder-open"></i>
+        <p>List of Leave Applications</p>
+    </a>
+</li>
+
+<li class="nav-item">
+    <a href="/gumanaka" class="nav-link {{ Request::is('gumanaka') ? 'active' : '' }}">
+        <i class="nav-icon fas fa-folder-open"></i>
+        <p>List of Leave Applications</p>
+    </a>
+</li>
+
 @endrole
 
 
@@ -48,7 +72,7 @@
 
 
 <!-- for division chief -->
-@role('division_chief')
+<!-- @role('division_chief')
 
 <li class="nav-item">
     <a href="/divisionchief" class="nav-link {{ Request::is('divisionchief') ? 'active' : '' }}">
@@ -58,7 +82,7 @@
 </li>
 
 <li class="nav-item">
-    <!--<a href="/leaveform/create" class="nav-link {{ Request::is('leaveform/create') ? 'active' : '' }}"> -->
+
     <a href="/divisionchief/create" class="nav-link {{ Request::is('divisionchief/create') ? 'active' : '' }}">
         <i class="nav-icon fas fa-file "></i>
         <p>Leave Form</p>
@@ -79,7 +103,7 @@
             <a href="/divemplist">Leave Applications</a>
         </div>
 
-</div>
+</div> -->
 
 @endrole
 

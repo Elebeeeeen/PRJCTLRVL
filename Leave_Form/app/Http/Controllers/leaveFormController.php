@@ -163,6 +163,27 @@ class leaveFormController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
+
+     //for director chief approval
+    public function gumanaka (string $id){
+
+        //viewing the inserted data's through tables using view. 
+        //Getting the Employee through its id
+        $lf_employee = Employees::find($id);
+
+        //Creating a new class for the type of leave
+        $typeleave = new Employees();
+
+        //Assign a different property before changing the value
+        $lf_employee->leaveType = $lf_employee->type_of_leave;
+
+        //Getting the object and its property further to see of all arrays
+        $lf_employee->type_of_leave = $typeleave->getLeaveType($lf_employee->type_of_leave);
+
+        return view('employees.approval', compact(['lf_employee']));
+    }
+
+
     public function edit(string $id)
     {
         //

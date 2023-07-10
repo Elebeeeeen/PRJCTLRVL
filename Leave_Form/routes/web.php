@@ -80,5 +80,7 @@ Route::get('/employeeCreatedForm', [App\Http\Controllers\leaveFormController::cl
 //viewing the inputed data of the employee 
 Route::get('/employeeCreatedForm/{id}', [App\Http\Controllers\leaveFormController::class, 'viewEmployees']);
 
+//for division chief, approving the employees leave form
+Route::get('/gumanakaplease', [App\Http\Controllers\leaveFormController::class, 'gumanaka']);
 
 Auth::routes();
