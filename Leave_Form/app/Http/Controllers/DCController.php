@@ -46,7 +46,7 @@ class DCController extends Controller
     {
 
         $list = new Employees();
-        $leave_form  = $list->leaveType(Employees::where('status', 'Pending')->get());
+        $leave_form  = $list->leaveType(Employees::where('position', 'Employee')->get());
 
         return view('DivisionChief.listemployee', compact(['leave_form']));
     }
