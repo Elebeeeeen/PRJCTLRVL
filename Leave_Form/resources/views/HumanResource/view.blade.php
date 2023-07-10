@@ -40,7 +40,6 @@
     #align {
         padding-top: 18px;
     }
-
 </style>
 
 
@@ -390,7 +389,7 @@
 
     //getting id of the form for button
     var form = document.getElementById('approve_form');
-    
+
     //querying the usage of button
     var buttons = form.querySelectorAll('button[type="submit"]');
 
@@ -407,6 +406,7 @@
                     text: "You want to verify this application?",
                     showCancelButton: true,
                     confirmButtonText: "Yes",
+                    confirmButtonColor: '#228B22',
                     cancelButtonColor: '#d33',
                     cancelButtonText: "Cancel",
 
@@ -414,6 +414,17 @@
                 }).then((result) => {
                     if (result.isConfirmed) {
                         formData.append('status', status);
+                        Swal.fire({
+                            title: 'Now Loading',
+                            html: '<b> Please wait... </b>',
+                            timer: 15000,
+                            didOpen: () => {
+                                Swal.showLoading()
+                            },
+                            willClose: () => {
+                                clearInterval(timerInterval)
+                            }
+                        })
                         $.ajax({
                             url: '/humanresource/' + $('#approve_form').attr("data-id"),
                             method: "POST",
@@ -431,7 +442,7 @@
                                         title: 'Approve',
                                         text: "The user applicaiton has been approve!",
                                         confirmButtonColor: '#228B22',
-                                        confirmButtonText: "confirm",   
+                                        confirmButtonText: "confirm",
                                     }).then((result) => {
                                         if (result.isConfirmed) {
                                             window.location.href = "/humanresource/";
@@ -467,7 +478,7 @@
                 e.preventDefault();
                 Swal.fire({
                     title: 'Are you sure?',
-                    text:'Do you want to reject this application?',
+                    text: 'Do you want to reject this application?',
                     icon: 'warning',
                     showCancelButton: true,
                     confirmButtonText: "confirm",
@@ -553,6 +564,7 @@
                             text: 'Do you want to cancel it?',
                             icon: 'question',
                             confirmButtonText: "Yes",
+                            
                         })
                     }
                 });
