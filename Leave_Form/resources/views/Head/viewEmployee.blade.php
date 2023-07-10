@@ -267,7 +267,7 @@
     <div class="row">
         <div class="form-group col-12">
             <label for="requested_by" class="form-label">Approver</label>
-            <input type="text" class="form-control" id="approver" name="approver" value="{{$lf_employee['approver']}}">
+            <input type="text" class="form-control" id="approver" name="approver" value="{{$lf_employee['approver']}}" disabled>
         </div>
     </div>
     <!-- end of seventh row -->
@@ -279,8 +279,7 @@
         <div class="float-right">
             <form action="/employeeHead/{{$id}}" data-id="{{$id}}" id="approve_form" method="POST">
                 @METHOD('PUT')
-                <button type="submit" id="approve" value="Approved" class="btn btn-success">Approve</button>
-                <button type="submit" id="reject" value="Rejected" class="btn btn-danger">Reject</button>
+                <button type="submit" id="approve" value="Approved" class="btn btn-success">Verify</button>
             </form>
         </div>
     </div>
@@ -404,9 +403,10 @@
                 Swal.fire({
                     icon: 'warning',
                     title: 'Are you sure?',
-                    text: "You want to approve this application?",
+                    text: "You want to verify this application?",
                     showCancelButton: true,
                     confirmButtonText: "Yes",
+                    confirmButtonColor: '#228B22',
                     cancelButtonColor: '#d33',
                     cancelButtonText: "Cancel",
 
@@ -439,8 +439,8 @@
                                 if (response.success) {
                                     Swal.fire({
                                         icon: 'success',
-                                        title: 'Approve',
-                                        text: "This application has been approve!",
+                                        title: 'Verified',
+                                        text: "This application has been Verified!",
                                         confirmButtonColor: '#228B22',
                                         confirmButtonText: "confirm",   
                                     }).then((result) => {
