@@ -2,14 +2,14 @@
 <!-- for employee-->
 @role('employee')
 <li class="nav-item">
-    <a href="/leaveform/create" class="nav-link {{ Request::is('leaveform/create') ? 'active' : '' }}">
+    <a href="/employeeCreateForm" class="nav-link {{ Request::is('leaveform/create') ? 'active' : '' }}">
         <i class="nav-icon fas fa-file "></i>
         <p>Leave Form</p>
     </a>
 </li>
 
 <li class="nav-item">
-    <a href="/leaveform" class="nav-link {{ Request::is('leaveform') ? 'active' : '' }}">
+    <a href="/employeeCreatedForm" class="nav-link {{ Request::is('leaveform') ? 'active' : '' }}">
         <i class="nav-icon fas fa-folder-open"></i>
         <p>List of Leave Applications</p>
     </a>

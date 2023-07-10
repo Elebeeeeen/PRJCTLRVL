@@ -51,7 +51,7 @@
                 <td>
 
                     <div class="btn-group" id="btnGroup">
-                        <a href="/leaveform/{{$leavelist['id']}}" type="button" class="btn btn-primary"> View </a>
+                        <a href="/employeeCreatedForm/{{$leavelist['id']}}" type="button" class="btn btn-primary"> View </a>
                     </div>
 
 

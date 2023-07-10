@@ -66,5 +66,19 @@ Route::get('/viewLeaveAppEmployeeHead/{id}', [App\Http\Controllers\HeadControlle
 Route::get('/viewLeaveAppEmployeeHead1/{id}', [App\Http\Controllers\HeadController::class, 'show2']);
 Route::put('/employeeHead/{id}', [App\Http\Controllers\HeadController::class, 'update2']);
 
+//new route para malinis ang lahat ng kasamaan
+
+//Creating a form of the employee
+Route::get('/employeeCreateForm', [App\Http\Controllers\leaveFormController::class, 'createLeaveForm']);
+
+//storing a form of the employee
+Route::post('/employeeCreateForm', [App\Http\Controllers\leaveFormController::class, 'storeLeaveForm']);
+
+//showing  the table of the created form
+Route::get('/employeeCreatedForm', [App\Http\Controllers\leaveFormController::class, 'tableEmployee']);
+
+//viewing the inputed data of the employee 
+Route::get('/employeeCreatedForm/{id}', [App\Http\Controllers\leaveFormController::class, 'viewEmployees']);
+
 
 Auth::routes();
