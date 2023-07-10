@@ -1,8 +1,18 @@
+
+<p>Subject: Verified of Your Leave Application</p>
+
 <p>Hi Mr/Ms. {{$employee['first_name']}} {{$employee['last_name']}},</p>
 
 <br>
 
-<p>I would like to inform you that your application of leave has been<strong style="font-style: italic"> verified.</strong></p>
+<p>I am writing to inform you that your leave application has been <strong style="font-style: italic">VERIFIED</strong>
+<br> by our {{$position}}.
+<br> We understand the importance of work-life balance and acknowledge the significance of taking time off to rejuvenate and attend to personal matters. After careful consideration of your leave request, we are pleased to grant you the requested leave for the specified duration.
+</p>
+<br>
+<p>During your absence, we kindly request that you ensure all pending tasks are properly delegated or completed, and that any necessary handover is provided to your team members. This will help maintain a smooth workflow and ensure minimal disruption to ongoing projects.
+If you have any questions or require further assistance regarding your leave, please feel free to contact the HR department, and they will be happy to assist you.
+We wish you a restful and fulfilling time during your leave. Take this opportunity to recharge and return refreshed, as we look forward to your continued dedication and contributions upon your return.</p>
 
 <br>
 
@@ -14,9 +24,31 @@
 <p> Best Regards,
     <br>{{$firstname}} {{$mi}}. {{$lastname}}
     <br>{{$position}}
+    <br>Department of Finance
 </p>
 
 
 
 <p>---------- Subject message ---------</p>
 <p>Subject: Approving Leave Application</p>
+
+
+<!-- 
+Subject: Approval of Your Leave Application
+Dear [Employee's Name],
+I hope this email finds you well. I am writing to inform you that your leave application has been approved.
+We understand the importance of work-life balance and acknowledge the significance of taking time off to rejuvenate and attend to personal matters. After careful consideration of your leave request, we are pleased to grant you the requested leave for the specified duration.
+Please note the following details regarding your approved leave:
+
+Leave Start Date: [Start Date]
+Leave End Date: [End Date]
+Total Leave Days: [Number of Days]
+
+During your absence, we kindly request that you ensure all pending tasks are properly delegated or completed, and that any necessary handover is provided to your team members. This will help maintain a smooth workflow and ensure minimal disruption to ongoing projects.
+If you have any questions or require further assistance regarding your leave, please feel free to contact the HR department, and they will be happy to assist you.
+We wish you a restful and fulfilling time during your leave. Take this opportunity to recharge and return refreshed, as we look forward to your continued dedication and contributions upon your return.
+Best regards,
+[Your Name]
+[Your Title/Position]
+[Company/Organization Name]
+[Contact Information] -->
