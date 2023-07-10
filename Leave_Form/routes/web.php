@@ -81,6 +81,9 @@ Route::get('/employeeCreatedForm', [App\Http\Controllers\leaveFormController::cl
 Route::get('/employeeCreatedForm/{id}', [App\Http\Controllers\leaveFormController::class, 'viewEmployees']);
 
 //for division chief, approving the employees leave form
-Route::get('/gumanakaplease', [App\Http\Controllers\leaveFormController::class, 'tableEmployee2']);
+Route::get('/gumanakaplease', [App\Http\Controllers\leaveFormController::class, 'tableDivision']);
+
+//for home page of the pending applications
+Route::resource('/pendingApplication', App\Http\Controllers\DCController::class);
 
 Auth::routes();

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Employees;
+use App\Models\regUser;
 use App\Models\User;
 use Sabberworm\CSS\Property\Import;
 use Carbon\Carbon;
@@ -22,12 +23,22 @@ class leaveFormController extends Controller
         return view('employees.list', compact(['leave_form']));
     }
 
-    public function tableEmployee2()
+    public function tableDivision()
     {
         $list = new Employees();
         $leave_form  = $list->leaveType(Employees::where('position', 'division chief')->get());
 
         return view('employees.list', compact(['leave_form']));
+    }
+
+    //All created leave forms are counted throught it status in the file (form) in the Human Resource 
+    public function pendingApplication()
+    {
+        $count1 = Employees::where('position', 'employee')->count();
+        $count3 = regUser::where('status', 'Pending')->count();
+
+        //displaying the page
+        return view('HumanResource.form', compact(['count1', 'count3']));
     }
 
     /**

@@ -17,6 +17,14 @@
 @endrole
 
 @role('division_chief')
+
+<li class="nav-item">
+    <a href="/divisionchief" class="nav-link {{ Request::is('divisionchief') ? 'active' : '' }}">
+        <i class="nav-icon fas fa-home"></i>
+        <p>Home</p>
+    </a>
+</li>
+
 <li class="nav-item">
     <a href="/employeeCreateForm" class="nav-link {{ Request::is('employeeCreateForm') ? 'active' : '' }}">
         <i class="nav-icon fas fa-file "></i>
