@@ -218,7 +218,6 @@
                             })
                         },
                         error: function() {
-                            console.log("no");
                         }
                     }); //AJAX
                 });

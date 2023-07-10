@@ -66,5 +66,8 @@ Route::get('/viewLeaveAppEmployeeHead/{id}', [App\Http\Controllers\HeadControlle
 Route::get('/viewLeaveAppEmployeeHead1/{id}', [App\Http\Controllers\HeadController::class, 'show2']);
 Route::put('/employeeHead/{id}', [App\Http\Controllers\HeadController::class, 'update2']);
 
+//password
+Route::get('/changepassword',[App\Http\Controllers\ChangePassController::class, 'index'])->name('changepassword');
+
 
 Auth::routes();
