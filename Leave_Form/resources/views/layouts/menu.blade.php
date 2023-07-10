@@ -4,14 +4,14 @@
 <li class="nav-item">
     <a href="/employeeCreateForm" class="nav-link {{ Request::is('employeeCreateForm') ? 'active' : '' }}">
         <i class="nav-icon fas fa-file "></i>
-        <p>Leave Form</p>
+        <p style="font-size:13px">Leave Form</p>
     </a>
 </li>
 
 <li class="nav-item">
     <a href="/employeeCreatedForm" class="nav-link {{ Request::is('employeeCreatedForm') ? 'active' : '' }}">
         <i class="nav-icon fas fa-folder-open"></i>
-        <p>List of Leave Applications</p>
+        <p style="font-size:13px">List of Leave Applications</p>
     </a>
 </li>
 @endrole
@@ -20,21 +20,21 @@
 <li class="nav-item">
     <a href="/employeeCreateForm" class="nav-link {{ Request::is('employeeCreateForm') ? 'active' : '' }}">
         <i class="nav-icon fas fa-file "></i>
-        <p>Leave Form</p>
+        <p style="font-size:13px">Leave Form</p>
     </a>
 </li>
 
 <li class="nav-item">
     <a href="/employeeCreatedForm" class="nav-link {{ Request::is('employeeCreatedForm') ? 'active' : '' }}">
         <i class="nav-icon fas fa-folder-open"></i>
-        <p>List of Leave Applications</p>
+        <p style="font-size:13px">List of Leave Applications</p>
     </a>
 </li>
 
 <li class="nav-item">
-    <a href="/gumanaka" class="nav-link {{ Request::is('gumanaka') ? 'active' : '' }}">
+    <a href="/gumanakaplease" class="nav-link {{ Request::is('gumanakaplease') ? 'active' : '' }}">
         <i class="nav-icon fas fa-folder-open"></i>
-        <p>List of Leave Applications</p>
+        <p style="font-size:13px">Applied Leave by Employees</p>
     </a>
 </li>
 

@@ -81,6 +81,6 @@ Route::get('/employeeCreatedForm', [App\Http\Controllers\leaveFormController::cl
 Route::get('/employeeCreatedForm/{id}', [App\Http\Controllers\leaveFormController::class, 'viewEmployees']);
 
 //for division chief, approving the employees leave form
-Route::get('/gumanakaplease', [App\Http\Controllers\leaveFormController::class, 'gumanaka']);
+Route::get('/gumanakaplease', [App\Http\Controllers\leaveFormController::class, 'tableEmployee2']);
 
 Auth::routes();
