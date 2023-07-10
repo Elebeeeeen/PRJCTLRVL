@@ -425,7 +425,7 @@
                                 confirmButtonText: 'Okay'
                             }).then((result) => {
                                 if (result.isConfirmed) {
-                                    window.location.href = "/leaveform/";
+                                    window.location.href = "/employeeCreatedForm/";
                                 }
                             })
                         } else {
