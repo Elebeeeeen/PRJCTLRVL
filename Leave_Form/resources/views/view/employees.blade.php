@@ -430,6 +430,17 @@
                 }).then((result) => {
                     if (result.isConfirmed) {
                         formData.append('status', status);
+                        Swal.fire({
+                                    title: 'Now Loading',
+                                    html: '<b> Please wait... </b>',
+                                    timer: 15000,
+                                    didOpen: () => {
+                                        Swal.showLoading()
+                                    },
+                                    willClose: () => {
+                                        clearInterval(timerInterval)
+                                    }
+                                })
                         $.ajax({
                             url: '/approvingApplicationDC/' + $('#approve_form').attr("data-id"),
                             method: "POST",
