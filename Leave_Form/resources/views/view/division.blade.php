@@ -40,7 +40,7 @@
     }
 </style>
 
-@role('division_chief')
+
 <div class="card">
 
     <!-- header -->
@@ -270,7 +270,7 @@
 
             <div class="form-group col-12">
                 <label for="requested_by" class="form-label">Approver</label>
-                <input type="text" class="form-control" id="approver" name="approver" value="{{$lf_employee['approver']}}">
+                <input type="text" class="form-control" id="approver" name="approver" value="{{$lf_employee['approver']}}" disabled>
             </div>
         </div>
     </div>
@@ -279,7 +279,6 @@
 
 </div>
 
-@endrole
 
 
 

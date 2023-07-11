@@ -14,7 +14,8 @@
         margin-bottom: 10px;
     }
 
-    #btnGroup, #print_form {
+    #btnGroup,
+    #print_form {
         width: 90px;
         justify-content: center;
     }
@@ -50,7 +51,7 @@
                 <td>
 
                     <div class="btn-group" id="btnGroup">
-                        <a href="/employeeCreatedForm/{{$leavelist['id']}}" type="button" class="btn btn-primary"> View </a>
+                        <a href="/approvalApplication/{{$leavelist['id']}}" type="button" class="btn btn-primary">View</a>
                     </div>
 
 
@@ -117,7 +118,6 @@
         "autoWidth": false,
         "responsive": true
     });
-
 </script>
 
 @endsection

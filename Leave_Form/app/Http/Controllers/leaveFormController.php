@@ -22,7 +22,7 @@ class leaveFormController extends Controller
         $list = new Employees();
         $leave_form  = $list->leaveType(Employees::where('position', 'employee')->get());
 
-        return view('employees.list', compact(['leave_form']));
+        return view('table.employeeList', compact(['leave_form']));
     }
 
     public function tableDivision()
@@ -30,7 +30,7 @@ class leaveFormController extends Controller
         $list = new Employees();
         $leave_form  = $list->leaveType(Employees::where('position', 'division chief')->get());
 
-        return view('employees.list', compact(['leave_form']));
+        return view('table.divisionList', compact(['leave_form']));
     }
 
     //di pa to ayos yung sa home
@@ -43,7 +43,7 @@ class leaveFormController extends Controller
         $count3 = regUser::where('status', 'Pending')->count();
 
         //displaying the page
-        return view('employees.home', compact(['count1', 'count2', 'count3']));
+        return view('home.pendingApplication', compact(['count1', 'count2', 'count3']));
     }
 
     /**
@@ -51,7 +51,7 @@ class leaveFormController extends Controller
      */
     public function createLeaveForm()
     {
-        return view('employees.create');
+        return view('create.leaveApplication');
     }
 
     /**
@@ -181,7 +181,25 @@ class leaveFormController extends Controller
         //Getting the object and its property further to see of all arrays
         $lf_employee->type_of_leave = $typeleave->getLeaveType($lf_employee->type_of_leave);
 
-        return view('employees.view', compact(['lf_employee']));
+        return view('view.employees', compact(['lf_employee', 'id']));
+    }
+
+    public function viewDivision(string $id)
+    {
+        //viewing the inserted data's through tables using view. 
+        //Getting the Employee through its id
+        $lf_employee = Employees::find($id);
+
+        //Creating a new class for the type of leave
+        $typeleave = new Employees();
+
+        //Assign a different property before changing the value
+        $lf_employee->leaveType = $lf_employee->type_of_leave;
+
+        //Getting the object and its property further to see of all arrays
+        $lf_employee->type_of_leave = $typeleave->getLeaveType($lf_employee->type_of_leave);
+
+        return view('view.division', compact(['lf_employee']));
     }
 
     /**
