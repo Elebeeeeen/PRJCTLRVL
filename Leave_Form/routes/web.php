@@ -86,10 +86,13 @@ Route::get('/divisionCreatedForm', [App\Http\Controllers\leaveFormController::cl
 //for home page of the pending applications
 Route::get('/pendingApplication', [App\Http\Controllers\leaveFormController::class, 'pendingApplication']);
 
-//for viewing the approval form to the employee by the division chief
+// //for viewing the approval form to the employee by the division chief
 Route::get('/approvalApplication/{id}', [App\Http\Controllers\leaveFormController::class, 'viewEmployees']);
 
 //for viewing division application
 Route::get('/viewApplication/{id}', [App\Http\Controllers\leaveFormController::class, 'viewDivision']);
+
+//for email approving the application of the employee by the division chief
+Route::put('/approvingApplicationDC/{id}', [App\Http\Controllers\leaveFormController::class, 'emailDivisionChief']);
 
 Auth::routes();

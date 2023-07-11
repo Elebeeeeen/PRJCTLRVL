@@ -45,7 +45,7 @@
 
     <!-- header -->
     <div class="header">
-        <h3> Leave Form </h3>
+        <h3> Leave Form (division chief view)</h3>
     </div>
 
 
@@ -374,61 +374,6 @@
                 break;
 
         }
-    });
-
-
-   //submitting the form 
-    let errorMessages = '';
-    $("#submitForm").on("submit", function(e) {
-        e.preventDefault();
-        let formData = new FormData($('#submitForm')[0]);
-        Swal.fire({
-            title: "Are you sure?",
-            text: 'You want to submit this application?',
-            icon: "warning",
-            showCancelButton: true,
-            confirmButtonText: "Confirm",
-            cancelButtonText: "Cancel"
-        }).then((result) => {
-            if (result.isConfirmed) {
-                $.ajax({
-                    url: "/leaveform",
-                    method: "POST",
-                    processData: false,
-                    contentType: false,
-                    cache: false,
-                    data: formData,
-                    success: function(response) {
-                        if (response.success) {
-                            Swal.fire({
-                                title: 'Success!',
-                                text: 'You can now view and print your leave form. Wait to notify in your email to be approved.',
-                                icon: 'success',
-                                confirmButtonText: 'Okay'
-                            }).then((result) => {
-                                if (result.isConfirmed) {
-                                    window.location.href = "/leaveform/";
-                                }
-                            })
-                        } else {
-                            for (let i = 0; i < response.errors.length; i++) {
-                                errorMessages += "-" + response.errors[i] + "\n";
-                            }
-                            Swal.fire({
-                                html: '<pre>' + errorMessages + '</pre>',
-                                customClass: {
-                                    popup: 'format-pre'
-                                },
-                                title: 'Error!',
-                                icon: 'error',
-                                confirmButtonText: 'Okay'
-                            })
-                            errorMessages = "";
-                        }
-                    }
-                }); //AJAX
-            }
-        });
     });
 </script>
 @endsection

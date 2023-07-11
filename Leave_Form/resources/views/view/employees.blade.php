@@ -46,7 +46,7 @@
 
     <!-- header -->
     <div class="header">
-        <h3> Leave Form </h3>
+        <h3> Leave Form (leave application employee sa view)</h3>
     </div>
 
 
@@ -293,9 +293,9 @@
     <!--button-->
     <div class="w-100">
         <div class="float-right">
-            <form action="/approvalApplication/{{$id}}" data-id="{{$id}}" id="approve_form" method="POST">
+            <form action="/approvingApplicationDC/{{$id}}" data-id="{{$id}}" id="approve_form" method="POST">
                 @METHOD('PUT')
-                <button type="submit" id="approve" value="Approved by DC" class="btn btn-success">Approve</button>
+                <button type="submit" id="approve" value="Approved by DC" class="btn btn-success">khjhj</button>
                 <button type="submit" id="reject" value="Rejected by DC" class="btn btn-danger">Reject</button>
             </form>
         </div>
@@ -431,7 +431,7 @@
                     if (result.isConfirmed) {
                         formData.append('status', status);
                         $.ajax({
-                            url: '/divisionchief/' + $('#approve_form').attr("data-id"),
+                            url: '/approvingApplicationDC/' + $('#approve_form').attr("data-id"),
                             method: "POST",
                             processData: false,
                             contentType: false,
@@ -450,7 +450,7 @@
                                         confirmButtonText: "confirm",
                                     }).then((result) => {
                                         if (result.isConfirmed) {
-                                            window.location.href = "/divisionchief/";
+                                            window.location.href = "/employeeCreatedForm/";
                                         }
                                     })
                                 } else {

@@ -20,7 +20,7 @@ class leaveFormController extends Controller
     public function tableEmployee()
     {
         $list = new Employees();
-        $leave_form  = $list->leaveType(Employees::where('position', 'employee')->get());
+        $leave_form  = $list->leaveType(Employees::where('position', 'employee')->where('status', 'Pending')->get());
 
         return view('table.employeeList', compact(['leave_form']));
     }
@@ -215,17 +215,33 @@ class leaveFormController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function viewingApplication(Request $request, string $id)
+    public function emailDivisionChief(Request $request, string $id)
     {
         $lf_employee = Employees::find($id);
         $status = $request->status;
+        $email = $lf_employee->email;
+        
+        if ($status == "Approved by DC") {
 
-        if ($status == "Approved by Director") {
+            $data = [
+                'employee' => $lf_employee,
+                'firstname' => Auth::user()->first_name,
+                'lastname' => Auth::user()->last_name,
+                'mi' => Auth::user()->middle_initial,
+                'position' => Auth::user()->position,
+            ];
+
+            Mail::send('mail.verified', $data, function ($message) use ($email) {
+                $message->to($email);
+                $message->subject('Your Leave Application Has Been Verified by Head Officer.');
+                $message->from(Auth::user()->email, 'Head Officer');
+            });
+
             $lf_employee->status = $request->status;
             $lf_employee->save();
 
             return response()->json(["success" => true, "message" => "Successfully approved!"]);
-        } else if ($status == "Rejected by Director") {
+        } else if ($status == "Rejected by DC") {
             $email = $lf_employee->email;
 
             $data = [
