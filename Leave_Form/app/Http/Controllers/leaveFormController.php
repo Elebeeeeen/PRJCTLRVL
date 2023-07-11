@@ -8,6 +8,8 @@ use App\Models\regUser;
 use App\Models\User;
 use Sabberworm\CSS\Property\Import;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 
 class leaveFormController extends Controller
@@ -31,14 +33,17 @@ class leaveFormController extends Controller
         return view('employees.list', compact(['leave_form']));
     }
 
+    //di pa to ayos yung sa home
     //All created leave forms are counted throught it status in the file (form) in the Human Resource 
     public function pendingApplication()
     {
+        //di pato gumagana
         $count1 = Employees::where('position', 'employee')->count();
+        $count2 = Employees::where('position', 'division chief')->count();
         $count3 = regUser::where('status', 'Pending')->count();
 
         //displaying the page
-        return view('HumanResource.form', compact(['count1', 'count3']));
+        return view('employees.home', compact(['count1', 'count2', 'count3']));
     }
 
     /**
@@ -192,10 +197,42 @@ class leaveFormController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function viewingApplication(Request $request, string $id)
     {
-        //
+        $lf_employee = Employees::find($id);
+        $status = $request->status;
+
+        if ($status == "Approved by Director") {
+            $lf_employee->status = $request->status;
+            $lf_employee->save();
+
+            return response()->json(["success" => true, "message" => "Successfully approved!"]);
+        } else if ($status == "Rejected by Director") {
+            $email = $lf_employee->email;
+
+            $data = [
+                'reason' => $request->reason,
+                'employee' => $lf_employee,
+                'firstname' => Auth::user()->first_name,
+                'lastname' => Auth::user()->last_name,
+                'mi' => Auth::user()->middle_initial,
+                'position' => Auth::user()->position,
+            ];
+
+            Mail::send('mail.reject', $data, function ($message) use ($data, $email) {
+                $message->to($email);
+                $message->subject('Disapproving Your Leave Application');
+                $message->from(Auth::user()->email, 'Division Chief');
+            });
+
+
+            $lf_employee->status = $request->status;
+            $lf_employee->save();
+
+            return response()->json(["success" => true, "message" => "Successfully rejected!"]);
+        }
     }
+
 
     /**
      * Remove the specified resource from storage.

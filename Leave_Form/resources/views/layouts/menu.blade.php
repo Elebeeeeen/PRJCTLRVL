@@ -19,7 +19,7 @@
 @role('division_chief')
 
 <li class="nav-item">
-    <a href="/divisionchief" class="nav-link {{ Request::is('divisionchief') ? 'active' : '' }}">
+    <a href="/pendingApplication" class="nav-link {{ Request::is('pendingApplication') ? 'active' : '' }}">
         <i class="nav-icon fas fa-home"></i>
         <p>Home</p>
     </a>
@@ -33,14 +33,14 @@
 </li>
 
 <li class="nav-item">
-    <a href="/employeeCreatedForm" class="nav-link {{ Request::is('employeeCreatedForm') ? 'active' : '' }}">
+    <a href="/divisionCreatedForm" class="nav-link {{ Request::is('divisionCreatedForm') ? 'active' : '' }}">
         <i class="nav-icon fas fa-folder-open"></i>
         <p style="font-size:13px">List of Leave Applications</p>
     </a>
 </li>
 
 <li class="nav-item">
-    <a href="/gumanakaplease" class="nav-link {{ Request::is('gumanakaplease') ? 'active' : '' }}">
+    <a href="/employeeCreatedForm" class="nav-link {{ Request::is('employeeCreatedForm') ? 'active' : '' }}">
         <i class="nav-icon fas fa-folder-open"></i>
         <p style="font-size:13px">Applied Leave by Employees</p>
     </a>

@@ -81,9 +81,12 @@ Route::get('/employeeCreatedForm', [App\Http\Controllers\leaveFormController::cl
 Route::get('/employeeCreatedForm/{id}', [App\Http\Controllers\leaveFormController::class, 'viewEmployees']);
 
 //for division chief, approving the employees leave form
-Route::get('/gumanakaplease', [App\Http\Controllers\leaveFormController::class, 'tableDivision']);
+Route::get('/divisionCreatedForm', [App\Http\Controllers\leaveFormController::class, 'tableDivision']);
 
 //for home page of the pending applications
-Route::resource('/pendingApplication', App\Http\Controllers\DCController::class);
+Route::get('/pendingApplication', [App\Http\Controllers\leaveFormController::class, 'pendingApplication']);
+
+//for viewing approval application
+Route::put('/approvalApplication/{id}', [App\Http\Controllers\DirController::class, 'viewingApplication']);
 
 Auth::routes();

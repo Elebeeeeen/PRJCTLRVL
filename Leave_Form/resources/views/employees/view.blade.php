@@ -40,7 +40,7 @@
     }
 </style>
 
-
+@role('division_chief')
 <div class="card">
 
     <!-- header -->
@@ -279,7 +279,7 @@
 
 </div>
 
-
+@endrole
 
 
 

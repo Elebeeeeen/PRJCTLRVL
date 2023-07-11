@@ -13,17 +13,18 @@
 
 @role('division_chief')
 <!-- dashboards -->
-    <div class="col-lg-12 col-12">
-        <div class="small-box bg-warning">
-            <div class="inner">
-                <h3 class="number_pending">{{$count1}}</h3>
-                <p class="text">Pending Leave Form/s</p>
-            </div>
-            <div class="icon">
-                <i class="fas fa-file"></i>
-            </div>
+<div class="col-lg-12 col-12">
+    <div class="small-box bg-warning">
+        <div class="inner">
+            <h3 class="number_pending">{{$count1}}</h3>
+            <p class="text">Pending Leavdsdse Form/s</p>
+        </div>
+        <div class="icon">
+            <i class="fas fa-file"></i>
         </div>
     </div>
+</div>
+@endrole
 </form>
 
 @endsection
