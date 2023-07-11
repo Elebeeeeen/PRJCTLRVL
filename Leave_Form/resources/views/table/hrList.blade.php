@@ -26,7 +26,7 @@
 
     <!-- header -->
     <div class="header">
-        <h3> List of Leave Applications </h3>
+        <h3> List of Approved Leave Applications </h3>
     </div>
 
     <table class="table table-striped table-bordered table-mm" id="user_table">
@@ -40,10 +40,10 @@
                 <th>Action</th>
             </tr>
         </thead>
-        @role('division_chief')
         <tbody>
             <tr>
                 @foreach($leave_form as $leavelist)
+                @if($leavelist['status'] == "Approved by DC" || $leavelist['status'] == "Approved by Director")
                 <td>{{$leavelist['employee_number']}}</td>
                 <td>{{$leavelist['last_name']}}</td>
                 <td>{{$leavelist['position']}}</td>
@@ -52,35 +52,7 @@
                 <td>
 
                     <div class="btn-group" id="btnGroup">
-                        <a href="/viewApplicationDir/{{$leavelist['id']}}" type="button" class="btn btn-primary"> View</a>
-                    </div>
-
-
-                    <div class="btn-group" id="btnGroup">
-                        <form action="/printform/{{$leavelist['id']}}" id="print_form" data-product-id="{{$leavelist['id']}}" method="POST">
-                            @CSRF
-                            <button type="submit" class="btn btn-success" id="print_form">Print </button>
-                        </form>
-                    </div>
-                </td>
-            </tr>
-            @endforeach
-        </tbody>
-        @endrole
-
-        @role('director')
-        <tbody>
-            <tr>
-                @foreach($leave_form as $leavelist)
-                <td>{{$leavelist['employee_number']}}</td>
-                <td>{{$leavelist['last_name']}}</td>
-                <td>{{$leavelist['position']}}</td>
-                <td>{{$leavelist['status']}}</td>
-                <td>{{$leavelist['type_of_leave']}}</td>
-                <td>
-
-                    <div class="btn-group" id="btnGroup">
-                        <a href="/viewApplicationDir/{{$leavelist['id']}}" type="button" class="btn btn-primary"> View </a>
+                        <a href="/viewApplicationHR/{{$leavelist['id']}}" type="button" class="btn btn-primary">View</a>
                     </div>
 
 
@@ -91,12 +63,13 @@
                         </form>
                     </div>
 
+
+
                 </td>
             </tr>
+            @endif
             @endforeach
         </tbody>
-        @endrole
-
     </table>
 
 

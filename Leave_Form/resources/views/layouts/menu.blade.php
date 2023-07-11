@@ -21,7 +21,7 @@
 <li class="nav-item">
     <a href="/pendingApplication" class="nav-link {{ Request::is('pendingApplication') ? 'active' : '' }}">
         <i class="nav-icon fas fa-home"></i>
-        <p>Home</p>
+        <p style="font-size:13px">Home</p>
     </a>
 </li>
 
@@ -48,7 +48,28 @@
 
 @endrole
 
+<!-- for director -->
 
+@role('director')
+
+<li class="nav-item">
+    <a href="/pendingApplication" class="nav-link {{ Request::is('pendingApplication') ? 'active' : '' }}">
+        <i class="nav-icon fas fa-home"></i>
+        <p style="font-size:13px">Home</p>
+    </a>
+</li>
+
+
+<li class="nav-item">
+    <a href="/approvalApplicationDir" class="nav-link {{ Request::is('approvalApplicationDir') ? 'active' : '' }}">
+        <i class="nav-icon fas fa-folder-open"></i>
+        <p style="font-size:13px">Applied Leave by Division Chief</p>
+    </a>
+</li>
+
+
+
+@endrole
 
 
 <!-- for hr -->
@@ -56,88 +77,25 @@
 @role('h_r')
 
 <li class="nav-item">
-    <a href="/humanresource" class="nav-link {{ Request::is('humanresource') ? 'active' : '' }}">
+    <a href="/pendingApplication" class="nav-link {{ Request::is('pendingApplication') ? 'active' : '' }}">
         <i class="nav-icon fas fa-home"></i>
-        <p>Home</p>
-    </a>
-</li>
-
-
-<div class="sidenav">
-    <a class="dropdown-btn nav-link"><i class="nav-icon far fa-edit"></i> For Approve <i class="fa fa-caret-down"></i>
-        <div class="dropdown-container">
-            <a href="/accountapplication">Account</a>
-            <a href="/leaveapplication" style="font-size:15px">Leave Applications (Employee)</a>
-            <a href="/leaveApplicationDivisionChief" style="font-size:15px">Leave Applications (Division)</a>
-        </div>
-</div>
-
-
-
-@endrole
-
-
-
-
-<!-- for division chief -->
-<!-- @role('division_chief')
-
-<li class="nav-item">
-    <a href="/divisionchief" class="nav-link {{ Request::is('divisionchief') ? 'active' : '' }}">
-        <i class="nav-icon fas fa-home"></i>
-        <p>Home</p>
-    </a>
-</li>
-
-<li class="nav-item">
-
-    <a href="/divisionchief/create" class="nav-link {{ Request::is('divisionchief/create') ? 'active' : '' }}">
-        <i class="nav-icon fas fa-file "></i>
-        <p>Leave Form</p>
+        <p style="font-size:13px">Home</p>
     </a>
 </li>
 
 
 <li class="nav-item">
-    <a href="/divisionlist" class="nav-link {{ Request::is('divisionlist') ? 'active' : '' }}">
+    <a href="/approvalApplicationHR" class="nav-link {{ Request::is('approvalApplicationHR') ? 'active' : '' }}">
         <i class="nav-icon fas fa-folder-open"></i>
-        <p>List of Leave Applications</p>
-    </a>
-</li>
-
-<div class="sidenav">
-    <a class="dropdown-btn nav-link"><i class="nav-icon far fa-edit"></i> For Approve <i class="fa fa-caret-down"></i>
-        <div class="dropdown-container">
-            <a href="/divemplist">Leave Applications</a>
-        </div>
-
-</div> -->
-
-@endrole
-
-<!-- for director -->
-
-@role('director')
-
-<li class="nav-item">
-    <a href="/director" class="nav-link {{ Request::is('director') ? 'active' : '' }}">
-        <i class="nav-icon fas fa-home"></i>
-        <p>Home</p>
+        <p style="font-size:13px">Approved Leave Application</p>
     </a>
 </li>
 
 
-<div class="sidenav">
-    <a class="dropdown-btn nav-link"><i class="nav-icon far fa-edit"></i> For Approve <i class="fa fa-caret-down"></i>
-        <div class="dropdown-container">
-            <a href="/leaveapplicationDir" style="font-size:15px">Leave Applications (Employee)</a>
-            <a href="/leaveApplicationDivisionChief1" style="font-size:15px">Leave Application (Division)</a>
-        </div>
-</div>
-
-
 
 @endrole
+
+
 
 <!-- for head HR -->
 

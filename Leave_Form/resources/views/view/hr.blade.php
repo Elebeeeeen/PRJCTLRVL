@@ -22,6 +22,7 @@
 
     .border {
         width: 99%;
+        height: auto;
         border: 5px;
         padding: 10px;
         border-radius: 5px;
@@ -46,7 +47,7 @@
 
     <!-- header -->
     <div class="header">
-        <h3> Leave Form (leave application employee sa view)</h3>
+        <h3> Leave Form </h3>
     </div>
 
 
@@ -54,6 +55,7 @@
     <div class="row">
         <div class="form-group col-3">
             <label for="requested_by" class="form-label">Office</label>
+            <span id="requiredStyle"> *</span>
             <input type="text" class="form-control" id="office" name="office" value="{{$lf_employee['office']}}" disabled>
 
         </div>
@@ -65,15 +67,16 @@
 
         <div class="form-group col-4">
             <label for="requested_by" class="form-label">First Name</label>
+            <span id="requiredStyle"> *</span>
             <input type="text" class="form-control" id="first_name" name="first_name" value="{{$lf_employee['first_name']}}" disabled>
         </div>
 
         <div class="form-group col-1">
             <label for="requested_by" class="form-label">M.I.</label>
+            <span id="requiredStyle"> *</span>
             <input type="text" class="form-control" id="middle_initial" name="middle_initial" value="{{$lf_employee['middle_initial']}}" disabled>
         </div>
     </div>
-    <!--end first row -->
 
 
     <!-- second row -->
@@ -86,20 +89,22 @@
 
         <div class="form-group col-3">
             <label for="requested_by" class="form-label">Employee Number</label>
+            <span id="requiredStyle"> *</span>
             <input type="text" class="form-control" id="employee_number" name="employee_number" value="{{$lf_employee['employee_number']}}" disabled>
         </div>
 
         <div class="form-group col-3">
             <label for="requested_by" class="form-label">Position</label>
+            <span id="requiredStyle"> *</span>
             <input type="text" class="form-control" id="position" name="position" value="{{$lf_employee['position']}}" disabled>
         </div>
 
         <div class="form-group col-3">
             <label for="requested_by" class="form-label">Salary</label>
+            <span id="requiredStyle"> *</span>
             <input type="text" class="form-control" id="salary" name="salary" value="{{$lf_employee['salary']}}" disabled>
         </div>
     </div>
-    <!--end second row -->
 
     <!-- third row -->
     <div class="row">
@@ -122,42 +127,28 @@
         </div>
 
     </div>
-    <!--end third row -->
 
+    <!-- new row -->
 
-    <!-- fourth row -->
     <div class="row">
 
         <div class="form-group col-8">
             <label for="requested_by" class="form-label">Type of Leave</label>
             <input class="select2 form-control" name="type_of_leave" id="type_of_leave" value="{{$lf_employee['type_of_leave']}}" disabled>
-
-            </input>
         </div>
 
         <div class="form-group col-4">
             <label for="requested_by" class="form-label">Date of Filing</label>
+            <span id="requiredStyle"> *</span>
             <input type="date" class="form-control" id="date" name="date" value="{{$lf_employee['date']}}" disabled>
         </div>
-
-        <div class="form-group col-3">
-            <label for="requested_by" class="form-label">No. Of Working Days</label>
-            <input type="text" class="form-control" id="num_working_days" name="num_working_days" value="{{$lf_employee['num_working_days']}}" disabled>
-        </div>
-
-        <div class="form-group col-3">
-            <label for="requested_by" class="form-label">Inclusive Dates</label>
-            <input type="text" class="form-control" id="inclusive_dates" name="inclusive_dates" value="{{$lf_employee['inclusive_dates']}}" disabled>
-        </div>
     </div>
-    <!--end fourth row -->
-
 
 
     <!-- fifth row (pop-up) -->
     <div class="row">
 
-        <div class=" leaveOption">
+        <div class="leaveOption">
 
             <!-- vacation leave 0 -->
             <div class="form-group col-12" style="display:none">
@@ -166,17 +157,16 @@
                 <span id="requiredStyle"> *</span>
 
                 <div id="same1">
-                    <input type="radio" id="radio3" class="details" name="details" value="Within the Philippines" disabled>
+                    <input type="radio" id="radio" class="details" name="details" value="Within the Philippines" disabled>
                     <label for="requested_by" class="form-label">Within the Philippines</label>
                 </div>
 
                 <div id="same2">
-                    <input type="radio" id="radio5" class="details" name="details" value="Within Aborad" disabled>
-                    <label for="requested_by" class="form-label">Within Aborad</label>
+                    <input type="radio" id="radio" class="details" name="details" value="Within Aborad" disabled>
+                    <label for="requested_by" class="form-label">Within Abroad</label>
 
-                    <input type="text" class="form-control" id="specification" name="specification" value="{{$lf_employee['specification']}}"  style="width: 1600px" disabled>
+                    <input type="text" placeholder="Specify" class="form-control" id="specification" name="specification" value="{{$lf_employee['specification']}}" style="width: 1600px" disabled>
                 </div>
-
             </div>
             <!-- end of vacation leave -->
 
@@ -201,7 +191,7 @@
                     <input type="radio" id="radio5" class="details" name="details" value="In case Leave Benefits for Women" disabled>
                     <label for="requested_by" class="form-label">In case Leave Benefits for Women</label>
 
-                    <input type="text" class="form-control" id="specification" name="specification" value="{{$lf_employee['specification']}}"  style="width: 1600px" disabled>
+                    <input type="text" placeholder="Specify" class="form-control" id="specification" name="specification" value="{{$lf_employee['specification']}}" style="width: 1600px" disabled>
                 </div>
 
             </div>
@@ -235,12 +225,10 @@
 
                 <div id="same1">
                     <input type="radio" id="radio8" class="details" name="details" value="monetization" disabled>
-                    <input type="radio" id="radio8" class="details" name="details" value="monetization" disabled>
                     <label for="requested_by" class="form-label">Monetization of leave Credits</label>
                 </div>
 
                 <div id="same2">
-                    <input type="radio" id="radio9" class="details" name="details" value="terminal" disabled>
                     <input type="radio" id="radio9" class="details" name="details" value="terminal" disabled>
                     <label for="requested_by" class="form-label">Terminal Leave</label>
                 </div>
@@ -283,7 +271,7 @@
     <div class="row">
         <div class="form-group col-12">
             <label for="requested_by" class="form-label">Approver</label>
-            <input type="text" class="form-control" id="approver" name="approver" value="{{$lf_employee['approver']}}" disabled>
+            <input type="text" class="form-control" id="approver" name="approver" value="{{$lf_employee['approver']}}">
         </div>
     </div>
     <!-- end of seventh row -->
@@ -293,18 +281,14 @@
     <!--button-->
     <div class="w-100">
         <div class="float-right">
-            <form action="/approvingApplicationDC/{{$id}}" data-id="{{$id}}" id="approve_form" method="POST">
+            <form action="/verifyingApplication/{{$id}}" data-id="{{$id}}" id="approve_form" method="POST">
                 @METHOD('PUT')
-                <button type="submit" id="approve" value="Approved by DC" class="btn btn-success">Approve</button>
-                <button type="submit" id="reject" value="Rejected by DC" class="btn btn-danger">Reject</button>
+                <button type="submit" id="approve" value="Verified by HR" class="btn btn-success">Verify</button>
             </form>
         </div>
     </div>
 
 </div>
-
-
-
 
 
 <script>
@@ -345,16 +329,15 @@
 
         //Displaying the leave of type
         function clearType() {
-
             vacation_form.css('display', 'none')
             sick_form.css('display', 'none')
             study_form.css('display', 'none')
             other.css('display', 'none')
+        }
 
-        }//clearType
-
-         //using switch case to call the new variable in array and applying the radio button to be viewed
+        //using switch case to call the new variable in array and applying the radio button to be viewed
         switch (@json($lf_employee -> leaveType)) {
+
             // Vacation
             case '1':
                 clearType()
@@ -400,7 +383,6 @@
         }
     });
 
-
     //sweet alert for approve and reject
     let errorMessages = '';
 
@@ -415,14 +397,15 @@
             var status = button.value;
             let formData = new FormData($('#approve_form')[0]);
 
-            if (status == "Approved by DC") {
+            if (status == "Verified by HR") {
                 e.preventDefault();
                 Swal.fire({
                     icon: 'warning',
                     title: 'Are you sure?',
-                    text: "You want to approve this application?",
+                    text: "You want to verify this application?",
                     showCancelButton: true,
                     confirmButtonText: "Yes",
+                    confirmButtonColor: '#228B22',
                     cancelButtonColor: '#d33',
                     cancelButtonText: "Cancel",
 
@@ -431,18 +414,18 @@
                     if (result.isConfirmed) {
                         formData.append('status', status);
                         Swal.fire({
-                                    title: 'Now Loading',
-                                    html: '<b> Please wait... </b>',
-                                    timer: 15000,
-                                    didOpen: () => {
-                                        Swal.showLoading()
-                                    },
-                                    willClose: () => {
-                                        clearInterval(timerInterval)
-                                    }
-                                })
+                            title: 'Now Loading',
+                            html: '<b> Please wait... </b>',
+                            timer: 15000,
+                            didOpen: () => {
+                                Swal.showLoading()
+                            },
+                            willClose: () => {
+                                clearInterval(timerInterval)
+                            }
+                        })
                         $.ajax({
-                            url: '/approvingApplicationDC/' + $('#approve_form').attr("data-id"),
+                            url: '/verifyingApplication/' + $('#approve_form').attr("data-id"),
                             method: "POST",
                             processData: false,
                             contentType: false,
@@ -461,7 +444,7 @@
                                         confirmButtonText: "confirm",
                                     }).then((result) => {
                                         if (result.isConfirmed) {
-                                            window.location.href = "/employeeCreatedForm/";
+                                            window.location.href = "/approvalApplicationHR/";
                                         }
                                     })
                                 } else {
@@ -490,101 +473,7 @@
                         })
                     }
                 });
-            } else if (status == "Rejected by DC") {
-                e.preventDefault();
-                Swal.fire({
-                    title: 'Are you sure?',
-                    text: 'Do you want to reject this application?',
-                    icon: 'warning',
-                    showCancelButton: true,
-                    confirmButtonText: "confirm",
-                    cancelButtonColor: '#d33',
-                    cancelButtonText: "cancel",
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        Swal.fire({
-                            title: 'Are you sure?',
-                            text: 'state the reason:',
-                            icon: 'warning',
-                            showCancelButton: true,
-                            confirmButtonText: "confirm",
-                            cancelButtonColor: '#d33',
-                            cancelButtonText: "cancel",
-                            input: "text",
-                            inputValidator: (value) => {
-                                if (!value) {
-                                    return "Please state the reason.";
-                                }
-                            }
-                        }).then((result) => {
-                            if (result.isConfirmed) {
-                                let reason = result.value;
-                                formData.append('status', status);
-                                formData.append('reason', reason);
-                                Swal.fire({
-                                    title: 'Now Loading',
-                                    html: '<b> Please wait... </b>',
-                                    timer: 15000,
-                                    didOpen: () => {
-                                        Swal.showLoading()
-                                    },
-                                    willClose: () => {
-                                        clearInterval(timerInterval)
-                                    }
-                                })
-                                $.ajax({
-                                    url: '/divisionchief/' + $('#approve_form').attr("data-id"),
-                                    method: "POST",
-                                    processData: false,
-                                    contentType: false,
-                                    cache: false,
-                                    data: formData,
-                                    headers: {
-                                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                                    },
-                                    success: function(response) {
-                                        if (response.success) {
-                                            Swal.fire({
-                                                title: 'Rejected!',
-                                                icon: 'success',
-                                                text: 'This form is now rejected. E-mail has been sent to the Employee.',
-                                                confirmButtonText: "confirm",
-                                            }).then((result) => {
-                                                if (result.isConfirmed) {
-                                                    window.location.href = "/divisionchief/";
-                                                }
-                                            })
-                                        } else {
-                                            for (let i = 0; i < response.errors.length; i++) {
-                                                errorMessages += "-" + response.errors[i] + "\n";
-                                            }
-                                            Swal.fire({
-                                                html: '<pre>' + errorMessages + '</pre>',
-                                                customClass: {
-                                                    popup: 'format-pre'
-                                                },
-                                                title: 'Error!',
-                                                icon: 'error',
-                                                confirmButtonText: 'Okay'
-                                            })
-                                            errorMessages = "";
-                                        }
-                                    }
-
-                                });
-                            } 
-                        });
-                    } else {
-                        Swal.fire({
-                            title: 'Are you sure?',
-                            text: 'Do you want to cancel it?',
-                            icon: 'question',
-                            confirmButtonText: "Yes",
-                        })
-                    }
-                });
-
-            }
+            } 
         })
     })
 </script>

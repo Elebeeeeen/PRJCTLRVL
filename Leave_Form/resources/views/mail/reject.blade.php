@@ -3,7 +3,8 @@
 <br>
 
 
-<p>I hope this letter finds you well. I am writing to inform you that, after careful consideration and evaluation of your application, we regret to inform you that <strong style="font-style: italic">we are unable to accept your form/application for {{$reason}} </strong>
+<p>I hope this letter finds you well. I am writing to inform you that, after careful consideration and evaluation of your application, we regret to inform you that <strong style="font-style: italic">we are unable to accept your form/application for the reason of {{$reason}} . </strong>
+<br>
 <br>We appreciate your interest and the effort you put into completing the application. However, after a thorough review of all the submissions received, we have chosen candidates whose qualifications and experiences more closely align with our requirements.
 <br>We understand that this news may be disappointing, but we encourage you to remain determined and pursue opportunities to continue to work, has a aspirations and we wish you every success in your future endeavors.
 

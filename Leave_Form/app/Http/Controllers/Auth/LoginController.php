@@ -50,13 +50,13 @@ class LoginController extends Controller
             if ($laratrust->hasRole('employee', $user)) {
                 return redirect('/leaveform');
             } elseif ($laratrust->hasRole('division_chief', $user)) {
-                return redirect('/divisionchief');
+                return redirect('/pendingApplication');
             } elseif ($laratrust->hasRole('director', $user)) {
-                return redirect('/director');
+                return redirect('/pendingApplication');
             } elseif ($laratrust->hasRole('h_r', $user)) {
-                return redirect('/humanresource');
+                return redirect('/pendingApplication');
             } elseif ($laratrust->hasRole('head_officer', $user)) {
-                return redirect('/headHR');
+                return redirect('/pendingApplication');
             }
         }
 

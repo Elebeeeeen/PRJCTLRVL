@@ -43,10 +43,10 @@ Route::post("/printformDC/{id}", [App\Http\Controllers\PrintController::class, "
 
 
 //division chief
-// Route::resource('/divisionchief', App\Http\Controllers\DCController::class);
-// Route::get('/divisionlist', [App\Http\Controllers\DCController::class, 'index2']);
-// Route::get('/divemplist', [App\Http\Controllers\DCController::class, 'index3']);
-// Route::get('/viewemplist/{id}', [App\Http\Controllers\DCController::class, 'show3']);
+Route::resource('/divisionchief', App\Http\Controllers\DCController::class);
+Route::get('/divisionlist', [App\Http\Controllers\DCController::class, 'index2']);
+Route::get('/divemplist', [App\Http\Controllers\DCController::class, 'index3']);
+Route::get('/viewemplist/{id}', [App\Http\Controllers\DCController::class, 'show3']);
 
 //Director
 // Route::resource('/director', App\Http\Controllers\DirController::class);
@@ -93,6 +93,21 @@ Route::get('/approvalApplication/{id}', [App\Http\Controllers\leaveFormControlle
 Route::get('/viewApplication/{id}', [App\Http\Controllers\leaveFormController::class, 'viewDivision']);
 
 //for email approving the application of the employee by the division chief
-Route::put('/approvingApplicationDC/{id}', [App\Http\Controllers\leaveFormController::class, 'emailDivisionChief']);
+Route::put('/approvingApplicationDC/{id}', [App\Http\Controllers\leaveFormController::class, 'emailDC']);
+
+// //for viewing the approval form to the division by the director
+Route::get('/approvalApplicationDir', [App\Http\Controllers\leaveFormController::class, 'tableDirector']);
+
+//for viewing division application by the director
+Route::get('/viewApplicationDir/{id}', [App\Http\Controllers\leaveFormController::class, 'viewDirector']);
+
+// //for viewing all the approval form for the employee and division by the hr
+Route::get('/approvalApplicationHR', [App\Http\Controllers\leaveFormController::class, 'tableHR']);
+
+//for viewing all application by the HR
+Route::get('/viewApplicationHR/{id}', [App\Http\Controllers\leaveFormController::class, 'viewHR']);
+
+//for email approving the application of the employee by the division chief
+Route::put('/verifyingApplication/{id}', [App\Http\Controllers\leaveFormController::class, 'emailHR']);
 
 Auth::routes();
