@@ -281,9 +281,9 @@
     <!--button-->
     <div class="w-100">
         <div class="float-right">
-            <form action="/verifyingApplicationHR/{{$id}}" data-id="{{$id}}" id="approve_form" method="POST">
+            <form action="/verifyingApplicationHead/{{$id}}" data-id="{{$id}}" id="approve_form" method="POST">
                 @METHOD('PUT')
-                <button type="submit" id="approve" value="Verified by HR" class="btn btn-success">Verify</button>
+                <button type="submit" id="approve" value="Verified" class="btn btn-success">Verify</button>
             </form>
         </div>
     </div>
@@ -397,7 +397,7 @@
             var status = button.value;
             let formData = new FormData($('#approve_form')[0]);
 
-            if (status == "Verified by HR") {
+            if (status == "Verified") {
                 e.preventDefault();
                 Swal.fire({
                     icon: 'warning',
@@ -425,7 +425,7 @@
                             }
                         })
                         $.ajax({
-                            url: '/verifyingApplicationHR/' + $('#approve_form').attr("data-id"),
+                            url: '/verifyingApplicationHead/' + $('#approve_form').attr("data-id"),
                             method: "POST",
                             processData: false,
                             contentType: false,
@@ -444,7 +444,7 @@
                                         confirmButtonText: "confirm",
                                     }).then((result) => {
                                         if (result.isConfirmed) {
-                                            window.location.href = "/approvalApplicationHR/";
+                                            window.location.href = "/approvalApplicationHead/";
                                         }
                                     })
                                 } else {

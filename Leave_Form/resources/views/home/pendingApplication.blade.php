@@ -45,18 +45,45 @@
 
 @role('h_r')
 <!-- dashboards -->
-<div class="col-lg-12 col-12">
-    <div class="small-box bg-warning">
-        <div class="inner">
-            <h3 class="number_pending">{{$count3}}</h3>
-            <p class="text">Approved Leave Form</p>
-        </div>
-        <div class="icon">
-            <i class="fas fa-file"></i>
+<form class="row">
+    <div class="col-lg-6 col-6">
+        <div class="small-box bg-success">
+            <div class="inner">
+                <h3 class="number_pending">{{$count4}}</h3>
+                <p class="text">Pending Account/s</p>
+            </div>
+            <div class="icon">
+                <i class="fas fa-male"></i>
+            </div>
         </div>
     </div>
-</div>
-@endrole
+
+    <div class="col-lg-6 col-6">
+        <div class="small-box bg-warning">
+            <div class="inner">
+                <h3 class="number_pending">{{$count3}}</h3>
+                <p class="text">Approved Leave Form</p>
+            </div>
+            <div class="icon">
+                <i class="fas fa-file"></i>
+            </div>
+        </div>
+    </div>
 </form>
+@endrole
+
+@role('head_officer')
+<div class="col-lg-12 col-12">
+        <div class="small-box bg-warning">
+            <div class="inner">
+                <h3 class="number_pending">{{$count5}}</h3>
+                <p class="text">Approved Leave Form</p>
+            </div>
+            <div class="icon">
+                <i class="fas fa-file"></i>
+            </div>
+        </div>
+    </div>
+@endrole
 
 @endsection

@@ -49,20 +49,29 @@ class leaveFormController extends Controller
         return view('table.hrList', compact(['leave_form']));
     }
 
+    public function tableHead()
+    {
+        $list = new Employees();
+        $leave_form  = $list->leaveType(Employees::where('status', 'Verified by HR')->get());
+
+        return view('table.headList', compact(['leave_form']));
+    }
+
 
 
     //di pa to ayos yung sa home
     //All created leave forms are counted throught it status in the file (form) in the Human Resource 
     public function pendingApplication()
     {
-        //di pato gumagana
+
         $count1 = Employees::where('position', 'employee')->count();
         $count2 = Employees::where('position', 'division chief')->count();
-        $count3 = Employees::count();
+        $count3 = Employees::where('status', 'Approved by DC')->count() + Employees::where('status', 'Approved by Director')->count();
         $count4 = regUser::where('status', 'Pending')->count();
+        $count5 = Employees::where('status', 'Verified by HR')->count();
 
         //displaying the page
-        return view('home.pendingApplication', compact(['count1', 'count2', 'count3', 'count4']));
+        return view('home.pendingApplication', compact(['count1', 'count2', 'count3', 'count4', 'count5']));
     }
 
     /**
@@ -257,6 +266,24 @@ class leaveFormController extends Controller
 
         return view('view.hr', compact(['lf_employee', 'id']));
     }
+
+    public function viewHead(string $id)
+    {
+        //viewing the inserted data's through tables using view. 
+        //Getting the Employee through its id
+        $lf_employee = Employees::find($id);
+
+        //Creating a new class for the type of leave
+        $typeleave = new Employees();
+
+        //Assign a different property before changing the value
+        $lf_employee->leaveType = $lf_employee->type_of_leave;
+
+        //Getting the object and its property further to see of all arrays
+        $lf_employee->type_of_leave = $typeleave->getLeaveType($lf_employee->type_of_leave);
+
+        return view('view.head', compact(['lf_employee', 'id']));
+    }
     /**
      * Show the form for editing the specified resource.
      */
@@ -332,6 +359,34 @@ class leaveFormController extends Controller
         $email = $lf_employee->email;
 
         if ($status == "Verified by HR") {
+            $data = [
+                'employee' => $lf_employee,
+                'firstname' => Auth::user()->first_name,
+                'lastname' => Auth::user()->last_name,
+                'mi' => Auth::user()->middle_initial,
+                'position' => Auth::user()->position,
+            ];
+
+            Mail::send('mail.verified', $data, function ($message) use ($email) {
+                $message->to($email);
+                $message->subject('Your Leave Application Has Been Verified by the HR.');
+                $message->from(Auth::user()->email, 'Head Officer');
+            });
+
+            $lf_employee->status = $request->status;
+            $lf_employee->save();
+
+            return response()->json(["success" => true, "message" => "Successfully approved!"]);
+        }
+    }
+
+    public function emailHead(Request $request, string $id)
+    {
+        $lf_employee = Employees::find($id);
+        $status = $request->status;
+        $email = $lf_employee->email;
+
+        if ($status == "Verified") {
             $data = [
                 'employee' => $lf_employee,
                 'firstname' => Auth::user()->first_name,

@@ -95,27 +95,24 @@
 
 @endrole
 
-
-
 <!-- for head HR -->
 
 @role('head_officer')
 
 <li class="nav-item">
-    <a href="/headHR" class="nav-link {{ Request::is('headHR') ? 'active' : '' }}">
+    <a href="/pendingApplication" class="nav-link {{ Request::is('pendingApplication') ? 'active' : '' }}">
         <i class="nav-icon fas fa-home"></i>
         <p>Home</p>
     </a>
 </li>   
 
 
-<div class="sidenav">
-    <a class="dropdown-btn nav-link"><i class="nav-icon far fa-edit"></i> For Approve <i class="fa fa-caret-down"></i>
-        <div class="dropdown-container">
-            <a href="/leaveapplicationHead" style="font-size:15px">Leave Applications (Employee)</a>
-            <a href="/leaveapplicationHead1" style="font-size:15px">Leave Applications (Division)</a>
-        </div>
-</div>
+<li class="nav-item">
+    <a href="/approvalApplicationHead" class="nav-link {{ Request::is('approvalApplicationHR') ? 'active' : '' }}">
+        <i class="nav-icon fas fa-folder-open"></i>
+        <p style="font-size:13px">Approved Leave Application</p>
+    </a>
+</li>
 
 
 

@@ -108,6 +108,15 @@ Route::get('/approvalApplicationHR', [App\Http\Controllers\leaveFormController::
 Route::get('/viewApplicationHR/{id}', [App\Http\Controllers\leaveFormController::class, 'viewHR']);
 
 //for email approving the application of the employee by the division chief
-Route::put('/verifyingApplication/{id}', [App\Http\Controllers\leaveFormController::class, 'emailHR']);
+Route::put('/verifyingApplicationHR/{id}', [App\Http\Controllers\leaveFormController::class, 'emailHR']);
+
+// //for viewing all the approval form for the employee and division that verified by the hr and now it should verified by head
+Route::get('/approvalApplicationHead', [App\Http\Controllers\leaveFormController::class, 'tableHead']);
+
+//for viewing all verified application by the HO
+Route::get('/viewApplicationHead/{id}', [App\Http\Controllers\leaveFormController::class, 'viewHead']);
+
+//for email verifying the application of the employee and the division chief that is also verified by the hr
+Route::put('/verifyingApplicationHead/{id}', [App\Http\Controllers\leaveFormController::class, 'emailHead']);
 
 Auth::routes();
