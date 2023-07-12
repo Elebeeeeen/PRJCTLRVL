@@ -28,7 +28,7 @@ class leaveFormController extends Controller
     public function tableDivision()
     {
         $list = new Employees();
-        $leave_form  = $list->leaveType(Employees::where('position', 'division chief')->get());
+        $leave_form  = $list->leaveType(Employees::where('position', 'division chief')->where('status', 'Pending')->get());
 
         return view('table.divisionList', compact(['leave_form']));
     }
@@ -58,14 +58,14 @@ class leaveFormController extends Controller
     }
 
 
-
+    //may error samga counts especially sa employee,division,and director
     //di pa to ayos yung sa home
     //All created leave forms are counted throught it status in the file (form) in the Human Resource 
     public function pendingApplication()
     {
 
-        $count1 = Employees::where('position', 'employee')->count();
-        $count2 = Employees::where('position', 'division chief')->count();
+        $count1 = Employees::where('position', 'employee')->where('status', 'Pending')->count();
+        $count2 = Employees::where('position', 'division chief')->where('status', 'Pending')->count();
         $count3 = Employees::where('status', 'Approved by DC')->count() + Employees::where('status', 'Approved by Director')->count();
         $count4 = regUser::where('status', 'Pending')->count();
         $count5 = Employees::where('status', 'Verified by HR')->count();
