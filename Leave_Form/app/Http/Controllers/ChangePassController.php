@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 use Auth,Hash;
 use Validator;   
-use App\Models\User;
+ 
 class ChangePassController extends Controller
 {
     /**
@@ -32,7 +32,7 @@ class ChangePassController extends Controller
         ];
         $request->validate([
             'current_password' => 'required',
-            'password' => 'required|string|min:8|regex:/^.*(?=.{3,})(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[\d\x])(?=.*[!$#%]).*$/ |confirmed',
+            'password' => 'required',
             'password_confirmation' => 'required',
           ],$messageerror);
   
