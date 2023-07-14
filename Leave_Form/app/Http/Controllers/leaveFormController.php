@@ -49,6 +49,12 @@ class leaveFormController extends Controller
         return view('table.hrList', compact(['leave_form']));
     }
 
+    public function tableHRAcounts()
+    {
+        $application_form = regUser::get();
+        return view('table.account', compact(['application_form']));
+    }
+
     public function tableHead()
     {
         $list = new Employees();

@@ -122,4 +122,7 @@ Route::put('/verifyingApplicationHead/{id}', [App\Http\Controllers\leaveFormCont
 //all the leaves are indicated to the type of leave
 Route::get('/leavelist', [App\Http\Controllers\leaveFormController::class, 'leavelist']);
 
+//for accepting accounts
+Route::get('/acceptAccounts', [App\Http\Controllers\leaveFormController::class, 'tableHRAcounts']);
+
 Auth::routes();
