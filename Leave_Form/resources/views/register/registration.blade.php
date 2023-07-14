@@ -23,7 +23,7 @@
 
                         <div class="row">
                             <div class="input-group mb-3">
-                                <input type="text" name="employee_number" class="form-control" value="{{ old('employee_number') }}" placeholder="Emp No.">
+                                <input type="text" name="employee_number" class="form-control" value="{{ old('employee_number') }}" placeholder="Emp No." required>
 
                                 <div class="input-group-append">
                                     <div class="input-group-text"><span class="fas fa-address-card"></span>
@@ -32,7 +32,7 @@
                             </div>
 
                             <div class="input-group mb-3">
-                                <input type="text" name="last_name" class="form-control @error('last_name') is-invalid @enderror" value="{{ old('last_name') }}" placeholder="Last Name">
+                                <input type="text" name="last_name" class="form-control @error('last_name') is-invalid @enderror" value="{{ old('last_name') }}" placeholder="Last Name" required>
 
                                 <div class="input-group-append">
                                     <div class="input-group-text"><span class="fas fa-user"></span>
@@ -47,7 +47,7 @@
                             </div>
 
                             <div class="input-group mb-3">
-                                <input type="text" name="first_name" class="form-control @error('first_name') is-invalid @enderror" value="{{ old('first_name') }}" placeholder="First Name">
+                                <input type="text" name="first_name" class="form-control @error('first_name') is-invalid @enderror" value="{{ old('first_name') }}" placeholder="First Name" required>
 
                                 <div class="input-group-append">
                                     <div class="input-group-text"><span class="fas fa-user"></span>
@@ -63,7 +63,7 @@
 
 
                             <div class="input-group mb-3">
-                                <input type="text" name="middle_initial" class="form-control @error('middle_initial') is-invalid @enderror" value="{{ old('middle_initial') }}" placeholder="M.I." maxlength="3">
+                                <input type="text" name="middle_initial" class="form-control @error('middle_initial') is-invalid @enderror" value="{{ old('middle_initial') }}" placeholder="M.I." maxlength="3" required>
 
                                 <div class="input-group-append">
                                     <div class="input-group-text"><span class="fas fa-user"></span>
@@ -78,7 +78,7 @@
                             </div>
 
                             <div class="input-group mb-3">
-                                <input type="text" name="username" class="form-control @error('username') is-invalid @enderror" value="{{ old('username') }}" placeholder="Username" maxlength="18">
+                                <input type="text" name="username" class="form-control @error('username') is-invalid @enderror" value="{{ old('username') }}" placeholder="Username" maxlength="18" required>
 
                                 <div class="input-group-append">
                                     <div class="input-group-text"><span class="fas fa-user"></span>
@@ -94,7 +94,7 @@
 
 
                             <div class="input-group mb-3">
-                                <input type="email" name="email" value="{{ old('email') }}" class="form-control @error('email') is-invalid @enderror" placeholder="E-mail">
+                                <input type="email" name="email" value="{{ old('email') }}" class="form-control @error('email') is-invalid @enderror" placeholder="E-mail" required>
 
                                 <div class="input-group-append">
                                     <div class="input-group-text"><span class="fas fa-envelope"></span>
@@ -109,7 +109,7 @@
                             </div>
 
                             <div class="input-group mb-3">
-                                <input type="text" name="office" class="form-control @error('office') is-invalid @enderror" value="{{ old('office') }}" placeholder="Office">
+                                <input type="text" name="office" class="form-control @error('office') is-invalid @enderror" value="{{ old('office') }}" placeholder="Office" required>
                                 <div class="input-group-append">
                                     <div class="input-group-text"><span class="fas fa-building"></span>
                                     </div>
@@ -123,7 +123,7 @@
                             </div>
 
                             <div class="input-group mb-3">
-                                <input type="text" name="position" class="form-control @error('position') is-invalid @enderror" value="{{ old('position') }}" placeholder="Position">
+                                <input type="text" name="position" class="form-control @error('position') is-invalid @enderror" value="{{ old('position') }}" placeholder="Position" required>
                                 <div class="input-group-append">
                                     <div class="input-group-text"><span class="fas fa-building"></span>
                                     </div>
@@ -137,7 +137,7 @@
                             </div>
 
                             <div class="input-group mb-3">
-                                <input type="text" name="salary" class="form-control @error('salary') is-invalid @enderror" value="{{ old('salary') }}" placeholder="Salary">
+                                <input type="text" name="salary" class="form-control @error('salary') is-invalid @enderror" value="{{ old('salary') }}" placeholder="Salary" required>
                                 <div class="input-group-append">
                                     <div class="input-group-text"><span class="fas fa-money-bill"></span>
                                     </div>
@@ -155,7 +155,7 @@
                         <div class="row">
                             <div class="col-8">
                                 <div class="icheck-primary">
-                                    <input type="checkbox" id="agreeTerms" name="terms" value="agree">
+                                    <input type="checkbox" id="agreeTerms" name="terms" value="agree" required>
                                     <label for="agreeTerms">
                                         I agree to the <a href="#">terms</a>
                                     </label>

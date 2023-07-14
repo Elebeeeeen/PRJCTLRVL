@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use Auth,Hash;
-use Validator;    
+use Validator;   
+use App\Models\User;
 class ChangePassController extends Controller
 {
     /**
