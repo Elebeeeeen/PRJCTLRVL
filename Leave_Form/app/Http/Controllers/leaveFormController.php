@@ -381,7 +381,7 @@ class leaveFormController extends Controller
 
             Mail::send('mail.verified', $data, function ($message) use ($email) {
                 $message->to($email);
-                $message->subject('Your Leave Application Has Been Verified by Head Officer.');
+                $message->subject('Your Leave Application Has Been Approved by Division Chief.');
                 $message->from(Auth::user()->email, 'Head Officer');
             });
 
