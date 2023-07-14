@@ -120,7 +120,7 @@ class leaveFormController extends Controller
             $startInclusiveDate = Carbon::createFromFormat('Y-m-d', $firstInclusiveDate)->format('F j, Y');
             $secondInclusiveDate = $request->enddate;
             $endInclusiveDate = Carbon::createFromFormat('Y-m-d', $secondInclusiveDate)->format('F j, Y');
-
+            
 
             if ($request->specification1 != null) {
                 $lf_employee = Employees::create([
@@ -423,7 +423,6 @@ class leaveFormController extends Controller
     //Creating new function to call the leavelist funtion in the model
     public function leaveList()
     {
-
         $list = new Employees();
         return $list->leaveList();
     }

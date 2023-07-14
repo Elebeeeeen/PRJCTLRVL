@@ -119,4 +119,7 @@ Route::get('/viewApplicationHead/{id}', [App\Http\Controllers\leaveFormControlle
 //for email verifying the application of the employee and the division chief that is also verified by the hr
 Route::put('/verifyingApplicationHead/{id}', [App\Http\Controllers\leaveFormController::class, 'emailHead']);
 
+//all the leaves are indicated to the type of leave
+Route::get('/leavelist', [App\Http\Controllers\leaveFormController::class, 'leavelist']);
+
 Auth::routes();
