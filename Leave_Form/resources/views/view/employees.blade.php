@@ -46,7 +46,7 @@
 
     <!-- header -->
     <div class="header">
-        <h3> Leave Form (leave application employee sa view)</h3>
+        <h3> Leave Form</h3>
     </div>
 
 
@@ -291,6 +291,8 @@
     <br>
 
     <!--button-->
+
+    @role('division_chief')
     <div class="w-100">
         <div class="float-right">
             <form action="/approvingApplicationDC/{{$id}}" data-id="{{$id}}" id="approve_form" method="POST">
@@ -300,7 +302,7 @@
             </form>
         </div>
     </div>
-
+    @endrole
 </div>
 
 

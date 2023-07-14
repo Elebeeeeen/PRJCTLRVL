@@ -125,4 +125,11 @@ Route::get('/leavelist', [App\Http\Controllers\leaveFormController::class, 'leav
 //for accepting accounts
 Route::get('/acceptAccounts', [App\Http\Controllers\leaveFormController::class, 'tableHRAcounts']);
 
+//viewing the pending accounts of the employee
+Route::get('/viewAcceptAccounts/{id}', [App\Http\Controllers\leaveFormController::class, 'viewHRAccounts']);
+
+//after viewing sending emails to the applied accounts
+Route::post('/emailAccounts/{id}', [App\Http\Controllers\leaveFormController::class, 'emailHRAcounts']);
+
+
 Auth::routes();

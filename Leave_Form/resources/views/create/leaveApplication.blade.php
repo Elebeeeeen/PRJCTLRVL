@@ -44,7 +44,7 @@
 
         <!-- header -->
         <div class="header">
-            <h3> Leave Form (create folder)</h3>
+            <h3> Leave Form </h3>
         </div>
 
 
@@ -151,18 +151,12 @@
                 <select class="select2 form-control" name="type_of_leave" id="type_of_leave"></select>
             </div>
 
-
-            @foreach ($calendarDays as $day)
-            @if (!in_array($day->format('N'), [6, 7]))
+            
             <div class="form-group col-4">
                 <label for="requested_by" class="form-label">Date of Filing</label>
                 <span id="requiredStyle"> *</span>
                 <input type="date" class="form-control" id="date" name="date" value="{{ date('Y-m-d')}}">
             </div>
-            @endif
-            @endforeach
-
-
         </div>
 
 
@@ -214,7 +208,7 @@
                         <label for="requested_by" class="form-label">Out Patient</label>
                     </div>
 
-                    <div id="same3">
+                    <div  id="same3">
                         <input type="radio" id="radio3" name="details" value="In case Leave Benefits for Women">
                         <label for="requested_by" class="form-label">In case Leave Benefits for Women</label>
 
@@ -366,7 +360,7 @@
                     vacation_form.css('display', 'block')
                     break;
 
-
+        
                 case '2':
                 case '4':
                 case '5':

@@ -92,7 +92,7 @@
 </li>
 
 <li class="nav-item">
-    <a href="/approvalApplicationHR" class="nav-link {{ Request::is('approvalApplicationHR') ? 'active' : '' }}">
+    <a href="/acceptAccounts" class="nav-link {{ Request::is('acceptAccounts') ? 'active' : '' }}">
         <i class="nav-icon fas fa-folder-open"></i>
         <p style="font-size:13px">Pending Accounts</p>
     </a>

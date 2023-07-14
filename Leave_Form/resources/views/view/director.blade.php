@@ -291,6 +291,7 @@
     <br>
 
     <!--button-->
+    @role('director')
     <div class="w-100">
         <div class="float-right">
             <form action="/approvingApplicationDC/{{$id}}" data-id="{{$id}}" id="approve_form" method="POST">
@@ -300,6 +301,7 @@
             </form>
         </div>
     </div>
+    @endrole
 
 </div>
 

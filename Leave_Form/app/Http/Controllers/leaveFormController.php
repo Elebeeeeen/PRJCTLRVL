@@ -9,6 +9,7 @@ use App\Models\User;
 use Sabberworm\CSS\Property\Import;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 
@@ -52,8 +53,10 @@ class leaveFormController extends Controller
     public function tableHRAcounts()
     {
         $application_form = regUser::get();
-        return view('table.account', compact(['application_form']));
+        return view('table.accounts', compact(['application_form']));
     }
+
+    
 
     public function tableHead()
     {
@@ -197,6 +200,56 @@ class leaveFormController extends Controller
         }
     }
 
+    public function storeAccounts(Request $request, string $id)
+    {
+        // dd($id);
+        $registered_user = regUser::find($id);
+        $save = new User();
+        $save->username = $request->username;
+        $sample = User::find('username');
+        $status = $request->status;
+        if ($status == "Approved by HR") {
+            $registered_user->status = $status;
+
+            $verify_username = User::where('username', $request->username)->count();
+
+            if ($verify_username >= 1) {
+                return response()->json(["message" => "Same Username"]);
+            } else {
+                User::create([
+                    'employee_number' => $registered_user->employee_number,
+                    'status' => "Approve",
+                    'last_name' => $registered_user->last_name,
+                    'middle_initial' => $registered_user->middle_initial,
+                    'first_name' => $registered_user->first_name,
+                    'email' => $registered_user->email,
+                    'office' => $registered_user->office,
+                    'position' => $registered_user->position,
+                    'salary' => $registered_user->salary,
+                    'username' => $request->username,
+                    'password' => Hash::make($request->password),
+                    'verified' => 'false',
+
+                ]);
+                return response()->json(["success" => true, "id" => $id]);
+            }
+
+
+            $registered_user->save();
+
+
+            // Mail here
+
+            //  return response()->json(["success" => true, "message" => "Successfully approved!"]);
+        } else if ($status == "Rejected by HR") {
+            $registered_user->status = $status;
+            $registered_user->save();
+
+            // Mail here
+
+            return response()->json(["success" => true, "message" => "Successfully rejected!"]);
+        }
+    }
     /**
      * Display the specified resource.
      */
@@ -271,6 +324,13 @@ class leaveFormController extends Controller
         $lf_employee->type_of_leave = $typeleave->getLeaveType($lf_employee->type_of_leave);
 
         return view('view.hr', compact(['lf_employee', 'id']));
+    }
+
+    public function viewHRAccounts(string $id)
+
+    {
+        $application_form = regUser::find($id);
+        return view('view.employeeAcc', compact(['application_form', 'id']));
     }
 
     public function viewHead(string $id)
@@ -414,6 +474,57 @@ class leaveFormController extends Controller
         }
     }
 
+       // Approve
+       public function emailHRAcounts(Request $request, string $id)
+       {
+   
+           $lf_employee = regUser::find($id);
+           $status = $request->status;
+           if ($status == "Approved by HR") {
+               $lf_employee->status = $request->status;
+               $lf_employee->save();
+   
+               $email = $lf_employee->email;
+   
+               $data = [
+                   'employee' => $lf_employee,
+                   'firstname' => Auth::user()->first_name,
+                   'lastname' => Auth::user()->last_name,
+                   'mi' => Auth::user()->middle_initial,
+                   'position' => Auth::user()->position,
+               ];
+   
+               Mail::send('mail.approvedAcc', $data, function ($message) use ($data, $email) {
+                   $message->to($email);
+                   $message->subject('Approval of Your Application');
+                   $message->from(Auth::user()->email, 'Human Resource');
+               });
+   
+               return response()->json(["success" => true, "message" => "Successfully approved!"]);
+           } else if ($status == "Rejected by HR") {
+               $email = $lf_employee->email;
+   
+               $data = [
+                   'reason' => $request->reason,
+                   'employee' => $lf_employee,
+                   'firstname' => Auth::user()->first_name,
+                   'lastname' => Auth::user()->last_name,
+                   'mi' => Auth::user()->middle_initial,
+                   'position' => Auth::user()->position,
+               ];
+               Mail::send('mail.rejectAcc', $data, function ($message) use ($data, $email) {
+                   $message->to($email);
+                   $message->subject('Disapproving Your Application');
+                   $message->from(Auth::user()->email, 'Human Resource');
+               });
+   
+   
+               $lf_employee->status = $request->status;
+               $lf_employee->save();
+   
+               return response()->json(["success" => true, "message" => "Successfully rejected!"]);
+           }
+       }
     /**
      * Remove the specified resource from storage.
      */
