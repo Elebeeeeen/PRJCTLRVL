@@ -403,11 +403,8 @@
                     icon: 'warning',
                     title: 'Are you sure?',
                     text: "You want to verify this application?",
-                    showCancelButton: true,
                     confirmButtonText: "Yes",
                     confirmButtonColor: '#228B22',
-                    cancelButtonColor: '#d33',
-                    cancelButtonText: "Cancel",
 
 
                 }).then((result) => {
@@ -464,14 +461,7 @@
                                 }
                             }
                         });
-                    } else {
-                        Swal.fire({
-                            title: 'Are you sure?',
-                            text: "You want to cancel it?",
-                            icon: 'question',
-                            confirmButtonText: "confirm",
-                        })
-                    }
+                    } 
                 });
             } 
         })
