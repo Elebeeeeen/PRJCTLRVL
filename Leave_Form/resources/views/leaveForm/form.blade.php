@@ -130,7 +130,8 @@
                 <label for="requested_by" class="form-label">Inclusive Date</label>
                 <span id="requiredStyle"> *</span>
                 <span>(start)</span>
-                <input type="date" class="form-control" id="startdate" name="startdate" required>
+                <input type="text" class="form-control" id="datepicker">
+                <!-- <input type="date" class="form-control" id="startdate" name="startdate" required> -->
             </div>
 
             <div class="form-group col-4" id="align">
@@ -320,6 +321,8 @@
 <script>
     $(document).ready(function() {
 
+        $('#datepicker').datepicker();
+        
         // Calling new variable to determine array accordingly (type of leave)
         let vacation_form = $($('.leaveOption div')[0]);
         let sick_form = $($('.leaveOption div')[3]);

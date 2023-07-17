@@ -129,6 +129,14 @@
             <div class="form-group col-4">
                 <label for="requested_by" class="form-label">Inclusive Date</label>
                 <span id="requiredStyle"> *</span>
+
+                <input type="type" class="form-control" id="inclusive_date" name="startdate" required>
+
+            </div>
+
+            <!-- <div class="form-group col-4">
+                <label for="requested_by" class="form-label">Inclusive Date</label>
+                <span id="requiredStyle"> *</span>
                 <span>(start)</span>
                 <input type="date" class="form-control" id="startdate" name="startdate" required>
             </div>
@@ -137,7 +145,7 @@
                 <label for="requested_by" class="form-label"></label>
                 <span>(end)</span>
                 <input type="date" class="form-control" id="enddate" name="enddate" required>
-            </div>
+            </div> -->
 
         </div>
 
@@ -320,6 +328,8 @@
 
 <script>
     $(document).ready(function() {
+
+        // $('#inclusive_date').daterangepicker();
 
         // Calling new variable to determine array accordingly (type of leave)
         let vacation_form = $($('.leaveOption div')[0]);

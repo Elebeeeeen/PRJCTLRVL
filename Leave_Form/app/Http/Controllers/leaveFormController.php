@@ -22,7 +22,7 @@ class leaveFormController extends Controller
     {
         $list = new Employees();
         $leave_form  = $list->leaveType(Employees::where('position', 'employee')->where('status', 'Pending')->where('employee_number', Auth::user()->employee_number)->get());
-       
+
         return view('table.employeeList', compact(['leave_form']));
     }
 
@@ -56,7 +56,7 @@ class leaveFormController extends Controller
         return view('table.accounts', compact(['application_form']));
     }
 
-    
+
 
     public function tableHead()
     {
@@ -125,11 +125,29 @@ class leaveFormController extends Controller
 
             // converting the format of the date (inclusive date)
 
-            $firstInclusiveDate = $request->startdate;
-            $startInclusiveDate = Carbon::createFromFormat('Y-m-d', $firstInclusiveDate)->format('F j, Y');
-            $secondInclusiveDate = $request->enddate;
-            $endInclusiveDate = Carbon::createFromFormat('Y-m-d', $secondInclusiveDate)->format('F j, Y');
-            
+            // $firstInclusiveDate = $request->startdate;
+            // $startInclusiveDate = Carbon::createFromFormat('Y-m-d', $firstInclusiveDate)->format('F j, Y');
+            // $secondInclusiveDate = $request->enddate;
+            // $endInclusiveDate = Carbon::createFromFormat('Y-m-d', $secondInclusiveDate)->format('F j, Y');
+
+            // Retrieve the user input (start date and end date)
+            $start = $request->startdate;
+            $end = $request->enddate;
+
+            // Create Carbon instances from the user input
+            $startdate = Carbon::createFromFormat('Y-m-d', $start);
+            $enddate = Carbon::createFromFormat('Y-m-d', $end);
+
+            // Generate the date range using Carbon's `between()` method
+            $dateRange = [];
+            for ($date = $startdate; $date->lte($enddate); $date->addDay()) {
+                $dateRange[] = $date->format('Y-m-d');
+            }
+
+            // $dateRange now contains an array of dates within the specified range
+
+
+
 
             if ($request->specification1 != null) {
                 $lf_employee = Employees::create([
@@ -144,8 +162,8 @@ class leaveFormController extends Controller
                     'type_of_leave' => $request->type_of_leave,
                     'date' => $request->date,
                     'num_working_days' => $request->num_working_days,
-                    'start_date' => $startInclusiveDate,
-                    'end_date' =>  $endInclusiveDate,
+                    'start_date' => $startdate,
+                    'end_date' =>  $enddate,
                     'details' => $request->details,
                     'specification' => $request->specification1,
                     'commutation' => $request->commutation,
@@ -165,8 +183,8 @@ class leaveFormController extends Controller
                     'type_of_leave' => $request->type_of_leave,
                     'date' => $request->date,
                     'num_working_days' => $request->num_working_days,
-                    'start_date' => $startInclusiveDate,
-                    'end_date' =>  $endInclusiveDate,
+                    'start_date' => $startdate,
+                    'end_date' =>  $enddate,
                     'details' => $request->details,
                     'specification' => $request->specification2,
                     'commutation' => $request->commutation,
@@ -186,8 +204,8 @@ class leaveFormController extends Controller
                     'type_of_leave' => $request->type_of_leave,
                     'date' => $request->date,
                     'num_working_days' => $request->num_working_days,
-                    'start_date' => $startInclusiveDate,
-                    'end_date' =>  $endInclusiveDate,
+                    'start_date' => $startdate,
+                    'end_date' =>  $enddate,
                     'details' => $request->details,
                     'commutation' => $request->commutation,
                     'approver' => $request->approver,
@@ -268,7 +286,7 @@ class leaveFormController extends Controller
         //Getting the object and its property further to see of all arrays
         $lf_employee->type_of_leave = $typeleave->getLeaveType($lf_employee->type_of_leave);
 
-        return view('view.employees', compact(['lf_employee', 'id']));
+        return view('approval.dcLeaveApproval', compact(['lf_employee', 'id']));
     }
 
     public function viewDivision(string $id)
@@ -304,7 +322,7 @@ class leaveFormController extends Controller
         //Getting the object and its property further to see of all arrays
         $lf_employee->type_of_leave = $typeleave->getLeaveType($lf_employee->type_of_leave);
 
-        return view('view.director', compact(['lf_employee', 'id']));
+        return view('approval.dirLeaveApproval', compact(['lf_employee', 'id']));
     }
 
 
@@ -323,14 +341,14 @@ class leaveFormController extends Controller
         //Getting the object and its property further to see of all arrays
         $lf_employee->type_of_leave = $typeleave->getLeaveType($lf_employee->type_of_leave);
 
-        return view('view.hr', compact(['lf_employee', 'id']));
+        return view('verify.hrVerifyApplication', compact(['lf_employee', 'id']));
     }
 
     public function viewHRAccounts(string $id)
 
     {
         $application_form = regUser::find($id);
-        return view('view.employeeAcc', compact(['application_form', 'id']));
+        return view('approval.empAccountApproval', compact(['application_form', 'id']));
     }
 
     public function viewHead(string $id)
@@ -348,7 +366,7 @@ class leaveFormController extends Controller
         //Getting the object and its property further to see of all arrays
         $lf_employee->type_of_leave = $typeleave->getLeaveType($lf_employee->type_of_leave);
 
-        return view('view.head', compact(['lf_employee', 'id']));
+        return view('verify.headVerifyApplication', compact(['lf_employee', 'id']));
     }
     /**
      * Show the form for editing the specified resource.
@@ -416,7 +434,7 @@ class leaveFormController extends Controller
     }
 
 
-        //Seeing the progress or status of the applied leave form by the Employees
+    //Seeing the progress or status of the applied leave form by the Employees
     //Adding a email
     public function emailHR(Request $request, string $id)
     {
@@ -474,57 +492,57 @@ class leaveFormController extends Controller
         }
     }
 
-       // Approve
-       public function emailHRAcounts(Request $request, string $id)
-       {
-   
-           $lf_employee = regUser::find($id);
-           $status = $request->status;
-           if ($status == "Approved by HR") {
-               $lf_employee->status = $request->status;
-               $lf_employee->save();
-   
-               $email = $lf_employee->email;
-   
-               $data = [
-                   'employee' => $lf_employee,
-                   'firstname' => Auth::user()->first_name,
-                   'lastname' => Auth::user()->last_name,
-                   'mi' => Auth::user()->middle_initial,
-                   'position' => Auth::user()->position,
-               ];
-   
-               Mail::send('mail.approvedAcc', $data, function ($message) use ($data, $email) {
-                   $message->to($email);
-                   $message->subject('Approval of Your Application');
-                   $message->from(Auth::user()->email, 'Human Resource');
-               });
-   
-               return response()->json(["success" => true, "message" => "Successfully approved!"]);
-           } else if ($status == "Rejected by HR") {
-               $email = $lf_employee->email;
-   
-               $data = [
-                   'reason' => $request->reason,
-                   'employee' => $lf_employee,
-                   'firstname' => Auth::user()->first_name,
-                   'lastname' => Auth::user()->last_name,
-                   'mi' => Auth::user()->middle_initial,
-                   'position' => Auth::user()->position,
-               ];
-               Mail::send('mail.rejectAcc', $data, function ($message) use ($data, $email) {
-                   $message->to($email);
-                   $message->subject('Disapproving Your Application');
-                   $message->from(Auth::user()->email, 'Human Resource');
-               });
-   
-   
-               $lf_employee->status = $request->status;
-               $lf_employee->save();
-   
-               return response()->json(["success" => true, "message" => "Successfully rejected!"]);
-           }
-       }
+    // Approve
+    public function emailHRAcounts(Request $request, string $id)
+    {
+
+        $lf_employee = regUser::find($id);
+        $status = $request->status;
+        if ($status == "Approved by HR") {
+            $lf_employee->status = $request->status;
+            $lf_employee->save();
+
+            $email = $lf_employee->email;
+
+            $data = [
+                'employee' => $lf_employee,
+                'firstname' => Auth::user()->first_name,
+                'lastname' => Auth::user()->last_name,
+                'mi' => Auth::user()->middle_initial,
+                'position' => Auth::user()->position,
+            ];
+
+            Mail::send('mail.approvedAcc', $data, function ($message) use ($data, $email) {
+                $message->to($email);
+                $message->subject('Approval of Your Application');
+                $message->from(Auth::user()->email, 'Human Resource');
+            });
+
+            return response()->json(["success" => true, "message" => "Successfully approved!"]);
+        } else if ($status == "Rejected by HR") {
+            $email = $lf_employee->email;
+
+            $data = [
+                'reason' => $request->reason,
+                'employee' => $lf_employee,
+                'firstname' => Auth::user()->first_name,
+                'lastname' => Auth::user()->last_name,
+                'mi' => Auth::user()->middle_initial,
+                'position' => Auth::user()->position,
+            ];
+            Mail::send('mail.rejectAcc', $data, function ($message) use ($data, $email) {
+                $message->to($email);
+                $message->subject('Disapproving Your Application');
+                $message->from(Auth::user()->email, 'Human Resource');
+            });
+
+
+            $lf_employee->status = $request->status;
+            $lf_employee->save();
+
+            return response()->json(["success" => true, "message" => "Successfully rejected!"]);
+        }
+    }
     /**
      * Remove the specified resource from storage.
      */
