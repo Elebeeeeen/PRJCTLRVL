@@ -84,7 +84,7 @@ class HRController extends Controller
      */
     public function store(Request $request, string $id)
     {
-        // dd($id);
+ 
         $registered_user = regUser::find($id);
         $save = new User();
         $save->username = $request->username;

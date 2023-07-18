@@ -162,7 +162,7 @@
                             }
                         })
                         $.ajax({
-                            url: '/emailAccounts/' + $('#approve_form').attr("data-id"),
+                            url: '/hrAccountApproved/' + $('#approve_form').attr("data-id"),
                             method: "POST",
                             processData: false,
                             contentType: false,
@@ -202,8 +202,8 @@
                                 } else {
                                     Swal.fire({
                                         icon: 'warning',
-                                        title: 'Hello',
-                                        text: response,
+                                        title: 'You have the same account',
+                                        text: 'dasda',
                                         confirmButtonText: "Ok",
                                     }).then((result) => {
                                         if (result.isConfirmed) {
