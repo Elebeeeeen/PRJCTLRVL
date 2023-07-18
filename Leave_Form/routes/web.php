@@ -131,5 +131,8 @@ Route::get('/viewAcceptAccounts/{id}', [App\Http\Controllers\leaveFormController
 //after viewing sending emails to the applied accounts
 Route::post('/emailAccounts/{id}', [App\Http\Controllers\leaveFormController::class, 'emailHRAcounts']);
 
+//password
+Route::resource('/changepassword', App\Http\Controllers\ChangePassController::class);
+
 
 Auth::routes();
