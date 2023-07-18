@@ -42,7 +42,7 @@
 
     <!-- header -->
     <div class="header">
-        <h3> Application Form </h3>
+        <h3> Application Form</h3>
     </div>
 
     <!-- first row -->
@@ -107,7 +107,7 @@
         <div class="row">
             <div class="form-group col-3">  
                 <label for="requested_by" class="form-label">Password</label>
-                <input type="text" class="form-control" id="password" name="password">
+                <input type="text" class="form-control" id="password" name="password" require>
             </div>
 
         </div>

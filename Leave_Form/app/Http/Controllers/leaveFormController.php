@@ -21,8 +21,9 @@ class leaveFormController extends Controller
     public function tableEmployee()
     {
         $list = new Employees();
-        $leave_form  = $list->leaveType(Employees::where('position', 'employee')->where('status', 'Pending')->where('employee_number', Auth::user()->employee_number)->get());
+        //$leave_form  = $list->leaveType(Employees::where('position', 'employee')->where('status', 'Pending')->get());
 
+        $leave_form  = $list->leaveType(Employees::where('position', 'employee')->where('status', 'Pending')->where('employee_number', Auth::user()->employee_number)->get());
         return view('table.employeeList', compact(['leave_form']));
     }
 
@@ -32,6 +33,14 @@ class leaveFormController extends Controller
         $leave_form  = $list->leaveType(Employees::where('position', 'division chief')->where('status', 'Pending')->where('employee_number', Auth::user()->employee_number)->get());
 
         return view('table.divisionList', compact(['leave_form']));
+    }
+
+    public function tableDivisionEmployee()
+    {
+        $list = new Employees();
+        $leave_form  = $list->leaveType(Employees::where('position', 'employee')->where('status', 'Pending')->get());
+
+        return view('table.employeeList', compact(['leave_form']));
     }
 
     public function tableDirector()
@@ -52,7 +61,7 @@ class leaveFormController extends Controller
 
     public function tableHRAcounts()
     {
-        $application_form = regUser::get();
+        $application_form = regUser::where('status', 'pending')->get();
         return view('table.accounts', compact(['application_form']));
     }
 
@@ -222,35 +231,29 @@ class leaveFormController extends Controller
     {
         // dd($id);
         $registered_user = regUser::find($id);
-        $save = new User();
-        $save->username = $request->username;
-        $sample = User::find('username');
         $status = $request->status;
+
         if ($status == "Approved by HR") {
             $registered_user->status = $status;
 
-            $verify_username = User::where('username', $request->username)->count();
 
-            if ($verify_username >= 1) {
-                return response()->json(["message" => "Same Username"]);
-            } else {
-                User::create([
-                    'employee_number' => $registered_user->employee_number,
-                    'status' => "Approve",
-                    'last_name' => $registered_user->last_name,
-                    'middle_initial' => $registered_user->middle_initial,
-                    'first_name' => $registered_user->first_name,
-                    'email' => $registered_user->email,
-                    'office' => $registered_user->office,
-                    'position' => $registered_user->position,
-                    'salary' => $registered_user->salary,
-                    'username' => $request->username,
-                    'password' => Hash::make($request->password),
-                    'verified' => 'false',
+            User::create([
+                'employee_number' => $registered_user->employee_number,
+                'status' => "Approve",
+                'last_name' => $registered_user->last_name,
+                'middle_initial' => $registered_user->middle_initial,
+                'first_name' => $registered_user->first_name,
+                'email' => $registered_user->email,
+                'office' => $registered_user->office,
+                'position' => $registered_user->position,
+                'salary' => $registered_user->salary,
+                'username' => $request->username,
+                'password' => Hash::make($request->password),
+                'verified' => 'false',
 
-                ]);
-                return response()->json(["success" => true, "id" => $id]);
-            }
+            ]);
+            return response()->json(["success" => true, "id" => $id]);
+
 
 
             $registered_user->save();
@@ -391,8 +394,9 @@ class leaveFormController extends Controller
         $status = $request->status;
 
         if ($status == "Approved by HR") {
-            $registered_user->status = $status;
-
+            $registered_user->status = 'Approved';
+            $registered_user->save();
+            
             User::create([
                 'employee_number' => $registered_user->employee_number,
                 'status' => "Approve",
@@ -436,8 +440,8 @@ class leaveFormController extends Controller
 
             Mail::send('mail.verified', $data, function ($message) use ($email) {
                 $message->to($email);
-                $message->subject('Your Leave Application Has Been Approved by Division Chief.');
-                $message->from(Auth::user()->email, 'Head Officer');
+                $message->subject('Your Leave Application Has Been Approved!.');
+                $message->from(Auth::user()->email, 'DC');
             });
 
             $lf_employee->status = $request->status;
@@ -459,7 +463,7 @@ class leaveFormController extends Controller
             Mail::send('mail.reject', $data, function ($message) use ($data, $email) {
                 $message->to($email);
                 $message->subject('Disapproving Your Leave Application');
-                $message->from(Auth::user()->email, 'Division Chief');
+                $message->from(Auth::user()->email, 'DC');
             });
 
 
@@ -470,6 +474,57 @@ class leaveFormController extends Controller
         }
     }
 
+    public function emailDirector(Request $request, string $id)
+    {
+        $lf_employee = Employees::find($id);
+        $status = $request->status;
+        $email = $lf_employee->email;
+
+        if ($status == "Approved by Director") {
+
+            $data = [
+                'employee' => $lf_employee,
+                'firstname' => Auth::user()->first_name,
+                'lastname' => Auth::user()->last_name,
+                'mi' => Auth::user()->middle_initial,
+                'position' => Auth::user()->position,
+            ];
+
+            Mail::send('mail.verified', $data, function ($message) use ($email) {
+                $message->to($email);
+                $message->subject('Your Leave Application Has Been Approved!.');
+                $message->from(Auth::user()->email, 'Director');
+            });
+
+            $lf_employee->status = $request->status;
+            $lf_employee->save();
+
+            return response()->json(["success" => true, "message" => "Successfully approved!"]);
+        } else if ($status == "Rejected by Director") {
+            $email = $lf_employee->email;
+
+            $data = [
+                'reason' => $request->reason,
+                'employee' => $lf_employee,
+                'firstname' => Auth::user()->first_name,
+                'lastname' => Auth::user()->last_name,
+                'mi' => Auth::user()->middle_initial,
+                'position' => Auth::user()->position,
+            ];
+
+            Mail::send('mail.reject', $data, function ($message) use ($data, $email) {
+                $message->to($email);
+                $message->subject('Disapproving Your Leave Application');
+                $message->from(Auth::user()->email, 'Director');
+            });
+
+
+            $lf_employee->status = $request->status;
+            $lf_employee->save();
+
+            return response()->json(["success" => true, "message" => "Successfully rejected!"]);
+        }
+    }
 
     //Seeing the progress or status of the applied leave form by the Employees
     //Adding a email
@@ -491,7 +546,7 @@ class leaveFormController extends Controller
             Mail::send('mail.verified', $data, function ($message) use ($email) {
                 $message->to($email);
                 $message->subject('Your Leave Application Has Been Verified by the HR.');
-                $message->from(Auth::user()->email, 'Head Officer');
+                $message->from(Auth::user()->email, 'Human Resource');
             });
 
             $lf_employee->status = $request->status;

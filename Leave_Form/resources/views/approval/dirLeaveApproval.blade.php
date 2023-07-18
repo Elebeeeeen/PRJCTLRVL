@@ -46,7 +46,7 @@
 
     <!-- header -->
     <div class="header">
-        <h3> Leave Form (leave application employee sa view)</h3>
+        <h3> Leave Form </h3>
     </div>
 
 
@@ -105,7 +105,7 @@
     <div class="row">
 
         <div class="form-group col-4">
-            <label for="requested_by" class="form-label">No. Of Working Days</label>
+            <label for="requested_by" class="form-label">No. Of Working Days1</label>
             <input type="text" class="form-control" id="num_working_days" name="num_working_days" value="{{$lf_employee['num_working_days']}}" disabled>
         </div>
 
@@ -138,16 +138,6 @@
         <div class="form-group col-4">
             <label for="requested_by" class="form-label">Date of Filing</label>
             <input type="date" class="form-control" id="date" name="date" value="{{$lf_employee['date']}}" disabled>
-        </div>
-
-        <div class="form-group col-3">
-            <label for="requested_by" class="form-label">No. Of Working Days</label>
-            <input type="text" class="form-control" id="num_working_days" name="num_working_days" value="{{$lf_employee['num_working_days']}}" disabled>
-        </div>
-
-        <div class="form-group col-3">
-            <label for="requested_by" class="form-label">Inclusive Dates</label>
-            <input type="text" class="form-control" id="inclusive_dates" name="inclusive_dates" value="{{$lf_employee['inclusive_dates']}}" disabled>
         </div>
     </div>
     <!--end fourth row -->
@@ -294,10 +284,10 @@
     @role('director')
     <div class="w-100">
         <div class="float-right">
-            <form action="/approvingApplicationDC/{{$id}}" data-id="{{$id}}" id="approve_form" method="POST">
+            <form action="/approvingApplicationDir/{{$id}}" data-id="{{$id}}" id="approve_form" method="POST">
                 @METHOD('PUT')
-                <button type="submit" id="approve" value="Approved by DC" class="btn btn-success">Approve</button>
-                <button type="submit" id="reject" value="Rejected by DC" class="btn btn-danger">Reject</button>
+                <button type="submit" id="approve" value="Approved by Director" class="btn btn-success">Approve</button>
+                <button type="submit" id="reject" value="Rejected by Director" class="btn btn-danger">Reject</button>
             </form>
         </div>
     </div>
@@ -417,7 +407,7 @@
             var status = button.value;
             let formData = new FormData($('#approve_form')[0]);
 
-            if (status == "Approved by DC") {
+            if (status == "Approved by Director") {
                 e.preventDefault();
                 Swal.fire({
                     icon: 'warning',
@@ -444,7 +434,7 @@
                                     }
                                 })
                         $.ajax({
-                            url: '/approvingApplicationDC/' + $('#approve_form').attr("data-id"),
+                            url: '/approvingApplicationDir/' + $('#approve_form').attr("data-id"),
                             method: "POST",
                             processData: false,
                             contentType: false,
@@ -463,7 +453,7 @@
                                         confirmButtonText: "confirm",
                                     }).then((result) => {
                                         if (result.isConfirmed) {
-                                            window.location.href = "/employeeCreatedForm/";
+                                            window.location.href = "/approvalApplicationDir/";
                                         }
                                     })
                                 } else {
@@ -492,7 +482,7 @@
                         })
                     }
                 });
-            } else if (status == "Rejected by DC") {
+            } else if (status == "Rejected by Director") {
                 e.preventDefault();
                 Swal.fire({
                     title: 'Are you sure?',
@@ -535,7 +525,7 @@
                                     }
                                 })
                                 $.ajax({
-                                    url: '/divisionchief/' + $('#approve_form').attr("data-id"),
+                                    url: '/approvingApplicationDir/' + $('#approve_form').attr("data-id"),
                                     method: "POST",
                                     processData: false,
                                     contentType: false,
@@ -553,7 +543,7 @@
                                                 confirmButtonText: "confirm",
                                             }).then((result) => {
                                                 if (result.isConfirmed) {
-                                                    window.location.href = "/divisionchief/";
+                                                    window.location.href = "/approvalApplicationDir/";
                                                 }
                                             })
                                         } else {

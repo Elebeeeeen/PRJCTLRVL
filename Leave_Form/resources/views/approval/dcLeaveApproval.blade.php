@@ -46,7 +46,7 @@
 
     <!-- header -->
     <div class="header">
-        <h3> Leave Form</h3>
+        <h3> Leave Form eto</h3>
     </div>
 
 
@@ -138,16 +138,6 @@
         <div class="form-group col-4">
             <label for="requested_by" class="form-label">Date of Filing</label>
             <input type="date" class="form-control" id="date" name="date" value="{{$lf_employee['date']}}" disabled>
-        </div>
-
-        <div class="form-group col-3">
-            <label for="requested_by" class="form-label">No. Of Working Days</label>
-            <input type="text" class="form-control" id="num_working_days" name="num_working_days" value="{{$lf_employee['num_working_days']}}" disabled>
-        </div>
-
-        <div class="form-group col-3">
-            <label for="requested_by" class="form-label">Inclusive Dates</label>
-            <input type="text" class="form-control" id="inclusive_dates" name="inclusive_dates" value="{{$lf_employee['inclusive_dates']}}" disabled>
         </div>
     </div>
     <!--end fourth row -->
@@ -463,7 +453,7 @@
                                         confirmButtonText: "confirm",
                                     }).then((result) => {
                                         if (result.isConfirmed) {
-                                            window.location.href = "/employeeCreatedForm/";
+                                            window.location.href = "/approvingEmployeesForm/";
                                         }
                                     })
                                 } else {
@@ -535,7 +525,7 @@
                                     }
                                 })
                                 $.ajax({
-                                    url: '/divisionchief/' + $('#approve_form').attr("data-id"),
+                                    url: '/approvingApplicationDC/' + $('#approve_form').attr("data-id"),
                                     method: "POST",
                                     processData: false,
                                     contentType: false,
@@ -553,7 +543,7 @@
                                                 confirmButtonText: "confirm",
                                             }).then((result) => {
                                                 if (result.isConfirmed) {
-                                                    window.location.href = "/divisionchief/";
+                                                    window.location.href = "/approvingEmployeesForm/";
                                                 }
                                             })
                                         } else {

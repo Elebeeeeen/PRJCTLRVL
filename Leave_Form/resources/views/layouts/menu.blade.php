@@ -40,7 +40,7 @@
 </li>
 
 <li class="nav-item">
-    <a href="/employeeCreatedForm" class="nav-link {{ Request::is('employeeCreatedForm') ? 'active' : '' }}">
+    <a href="/approvingEmployeesForm" class="nav-link {{ Request::is('approvingEmployeesForm') ? 'active' : '' }}">
         <i class="nav-icon fas fa-folder-open"></i>
         <p style="font-size:13px">Applied Leave by Employees</p>
     </a>

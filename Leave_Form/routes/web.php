@@ -83,6 +83,9 @@ Route::get('/employeeCreatedForm/{id}', [App\Http\Controllers\leaveFormControlle
 //for division chief, approving the employees leave form
 Route::get('/divisionCreatedForm', [App\Http\Controllers\leaveFormController::class, 'tableDivision']);
 
+//table for approving the employees form by the division chief
+Route::get('/approvingEmployeesForm', [App\Http\Controllers\leaveFormController::class, 'tableDivisionEmployee']);
+
 //for home page of the pending applications
 Route::get('/pendingApplication', [App\Http\Controllers\leaveFormController::class, 'pendingApplication']);
 
@@ -100,6 +103,9 @@ Route::get('/approvalApplicationDir', [App\Http\Controllers\leaveFormController:
 
 //for viewing division application by the director
 Route::get('/viewApplicationDir/{id}', [App\Http\Controllers\leaveFormController::class, 'viewDirector']);
+
+//for email approving the application of the division chief by the director
+Route::put('/approvingApplicationDir/{id}', [App\Http\Controllers\leaveFormController::class, 'emailDirector']);
 
 // //for viewing all the approval form for the employee and division by the hr
 Route::get('/approvalApplicationHR', [App\Http\Controllers\leaveFormController::class, 'tableHR']);

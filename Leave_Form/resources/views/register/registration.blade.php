@@ -14,7 +14,7 @@
 
             <div class="card">
                 <div class="card-body register-card-body">
-                    <p class="login-box-msg">Registration gg Form</p>
+                    <p class="login-box-msg">Registration Form</p>
 
                     <form method="POST" action="/registration" id="register_form" autocomplete="off">
                         @CSRF

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Employees;
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Role;
 use App\Models\regUser;
 use Illuminate\Support\Facades\Validator;
 
@@ -36,6 +37,7 @@ class RegistrationsController extends Controller
 
 
         ];
+
 
         $validator = Validator::make($data, [
                 'employee_number' => ['required', 'integer', 'max99999999', 'unique:users'],
@@ -75,6 +77,7 @@ class RegistrationsController extends Controller
     protected function create(Request $data)
     {
 
+        // $role = Role::where('name', 'employee')->first();
 
         $verified_email = regUser::where('email', $data->email)->count();
         $verify_email = User::where('email', $data->email)->count();
@@ -93,8 +96,8 @@ class RegistrationsController extends Controller
                 'office' => $data->office,
                 'position' => $data->position,
                 'salary' => $data->salary,
-                'status' => 'Pending'
-            ]);
+                'status' => 'Pending',
+            ])/*->roles()->attach($role)*/;
         }
 
         // dd($verified_email);
