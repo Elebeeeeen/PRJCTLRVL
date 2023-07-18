@@ -348,7 +348,7 @@ class leaveFormController extends Controller
 
     {
         $application_form = regUser::find($id);
-        return view('approval.empAccountApproval', compact(['application_form', 'id']));
+        return view('approval.employeeAccountApproval', compact(['application_form', 'id']));
     }
 
     public function viewHead(string $id)
