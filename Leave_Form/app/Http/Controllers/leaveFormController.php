@@ -304,7 +304,7 @@ class leaveFormController extends Controller
         //Getting the object and its property further to see of all arrays
         $lf_employee->type_of_leave = $typeleave->getLeaveType($lf_employee->type_of_leave);
 
-        return view('view.division', compact(['lf_employee']));
+        return view('view.dcLeaveForm', compact(['lf_employee']));
     }
 
     public function viewDirector(string $id)
