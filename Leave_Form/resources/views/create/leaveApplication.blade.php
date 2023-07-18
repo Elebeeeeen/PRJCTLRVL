@@ -125,16 +125,16 @@
                 <span id="requiredStyle"> *</span>
                 <input type="text" class="form-control" placeholder="Ex: (1) One day" id="num_working_days" name="num_working_days">
             </div>
-
+<!-- 
             <div class="form-group col-4">
                 <label for="requested_by" class="form-label">Inclusive Date</label>
                 <span id="requiredStyle"> *</span>
 
                 <input type="type" class="form-control" id="inclusive_date" name="startdate" required>
 
-            </div>
+            </div> -->
 
-            <!-- <div class="form-group col-4">
+            <div class="form-group col-4">
                 <label for="requested_by" class="form-label">Inclusive Date</label>
                 <span id="requiredStyle"> *</span>
                 <span>(start)</span>
@@ -145,7 +145,7 @@
                 <label for="requested_by" class="form-label"></label>
                 <span>(end)</span>
                 <input type="date" class="form-control" id="enddate" name="enddate" required>
-            </div> -->
+            </div>
 
         </div>
 
