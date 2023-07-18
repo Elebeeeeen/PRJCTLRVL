@@ -107,6 +107,9 @@ Route::get('/approvalApplicationHR', [App\Http\Controllers\leaveFormController::
 //for viewing all application by the HR
 Route::get('/viewApplicationHR/{id}', [App\Http\Controllers\leaveFormController::class, 'viewHR']);
 
+//approving account that direct into the users in database
+Route::post('/hrAccountApproved/{id}', [App\Http\Controllers\leaveFormController::class, 'hrAccountApproved']);
+
 //for email approving the application of the employee by the division chief
 Route::put('/verifyingApplicationHR/{id}', [App\Http\Controllers\leaveFormController::class, 'emailHR']);
 
@@ -129,7 +132,10 @@ Route::get('/acceptAccounts', [App\Http\Controllers\leaveFormController::class, 
 Route::get('/viewAcceptAccounts/{id}', [App\Http\Controllers\leaveFormController::class, 'viewHRAccounts']);
 
 //after viewing sending emails to the applied accounts
-Route::post('/emailAccounts/{id}', [App\Http\Controllers\leaveFormController::class, 'emailHRAcounts']);
+Route::post('/emailAccounts/{id}', [App\Http\Controllers\leaveFormController::class, 'emailHRAccounts']);
+
+//password
+Route::resource('/changepassword', App\Http\Controllers\ChangePassController::class);
 
 
 Auth::routes();

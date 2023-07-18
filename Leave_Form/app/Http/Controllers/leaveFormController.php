@@ -381,6 +381,43 @@ class leaveFormController extends Controller
     /**
      * Update the specified resource in storage.
      */
+
+    public function hrAccountApproved(Request $request, string $id)
+    {
+
+        $registered_user = regUser::find($id);
+        $save = new User();
+        $save->username = $request->username;
+        $status = $request->status;
+
+        if ($status == "Approved by HR") {
+            $registered_user->status = $status;
+
+            User::create([
+                'employee_number' => $registered_user->employee_number,
+                'status' => "Approve",
+                'last_name' => $registered_user->last_name,
+                'middle_initial' => $registered_user->middle_initial,
+                'first_name' => $registered_user->first_name,
+                'email' => $registered_user->email,
+                'office' => $registered_user->office,
+                'position' => $registered_user->position,
+                'salary' => $registered_user->salary,
+                'username' => $request->username,
+                'password' => Hash::make($request->password),
+                'verified' => 'false',
+
+            ]);
+            return response()->json(["success" => true, "id" => $id]);
+        } else if ($status == "Rejected by HR") {
+            $registered_user->status = $status;
+            $registered_user->save();
+            // Mail here
+
+            return response()->json(["success" => true, "message" => "Successfully rejected!"]);
+        }
+    }
+
     public function emailDC(Request $request, string $id)
     {
         $lf_employee = Employees::find($id);
@@ -493,7 +530,7 @@ class leaveFormController extends Controller
     }
 
     // Approve
-    public function emailHRAcounts(Request $request, string $id)
+    public function emailHRAccounts(Request $request, string $id)
     {
 
         $lf_employee = regUser::find($id);
