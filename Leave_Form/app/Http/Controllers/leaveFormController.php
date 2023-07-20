@@ -111,11 +111,8 @@ class leaveFormController extends Controller
             'num_working_days.required' => 'Please Indicate Your Number Working Days',
             'type_of_leave.required' => 'Please Indicate Your Type of Leave',
             'date.required' => 'Please Indicate Your Date',
-            'inclusive_dates.required' => 'Please Indicate Your Inclusive Dates',
             'commutation.required' => 'Please Indicate Your Commutation',
             'approver.required' => 'Please Indicate Your Approver',
-
-
         ];
 
         $validator = Validator::make($request->all(), [
@@ -123,7 +120,6 @@ class leaveFormController extends Controller
             'num_working_days' => 'required|numeric|max:10',
             'type_of_leave' => 'required',
             'date' => 'required',
-    
             'commutation' => 'required',
             'approver' => 'required',
 
@@ -132,25 +128,6 @@ class leaveFormController extends Controller
         if ($validator->passes()) {
 
             $status = 'Pending';
-
-
-            $start = $request->startdate;
-            $end = $request->enddate;
-
-            // Create Carbon instances from the user input
-            $startdate = Carbon::createFromFormat('Y-m-d', $start);
-            $enddate = Carbon::createFromFormat('Y-m-d', $end);
-
-            // Generate the date range using Carbon's `between()` method
-            $dateRange = [];
-            for ($date = $startdate; $date->lte($enddate); $date->addDay()) {
-                $dateRange[] = $date->format('Y-m-d');
-            }
-
-            // $dateRange now contains an array of dates within the specified range
-
-
-
 
             if ($request->specification1 != null) {
                 $lf_employee = Employees::create([
@@ -165,8 +142,9 @@ class leaveFormController extends Controller
                     'type_of_leave' => $request->type_of_leave,
                     'date' => $request->date,
                     'num_working_days' => $request->num_working_days,
-                    'start_date' => $startdate,
-                    'end_date' =>  $enddate,
+                    'inclusive_dates' => $request->inclusive_dates,
+                    // 'start_date' => $startdate,
+                    // 'end_date' =>  $enddate,
                     'details' => $request->details,
                     'specification' => $request->specification1,
                     'commutation' => $request->commutation,
@@ -186,8 +164,9 @@ class leaveFormController extends Controller
                     'type_of_leave' => $request->type_of_leave,
                     'date' => $request->date,
                     'num_working_days' => $request->num_working_days,
-                    'start_date' => $startdate,
-                    'end_date' =>  $enddate,
+                    'inclusive_dates' => $request->inclusive_dates,
+                    // 'start_date' => $startdate,
+                    // 'end_date' =>  $enddate,
                     'details' => $request->details,
                     'specification' => $request->specification2,
                     'commutation' => $request->commutation,
@@ -207,8 +186,9 @@ class leaveFormController extends Controller
                     'type_of_leave' => $request->type_of_leave,
                     'date' => $request->date,
                     'num_working_days' => $request->num_working_days,
-                    'start_date' => $startdate,
-                    'end_date' =>  $enddate,
+                    'inclusive_dates' => $request->inclusive_dates,
+                    // 'start_date' => $startdate,
+                    // 'end_date' =>  $enddate,
                     'details' => $request->details,
                     'commutation' => $request->commutation,
                     'approver' => $request->approver,
@@ -223,7 +203,6 @@ class leaveFormController extends Controller
 
     public function storeAccounts(Request $request, string $id)
     {
-        // dd($id);
         $registered_user = regUser::find($id);
         $status = $request->status;
 

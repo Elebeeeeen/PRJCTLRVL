@@ -109,21 +109,16 @@
     <!-- third row -->
     <div class="row">
 
-        <div class="form-group col-4">
-            <label for="requested_by" class="form-label">No. Of Working Days</label>
+        <div class="form-group col-11">
+                <label for="requested_by" class="form-label">Inclusive Date</label>
+                <span id="requiredStyle"> *</span>
+
+                <input type="text" class="form-control date-picker" id="inclusive_dates" name="inclusive_dates" value="{{$lf_employee['inclusive_dates']}}" disabled>
+            </div>
+
+        <div class="form-group col-1">
+            <label for="requested_by" class="form-label">No.</label>
             <input type="text" class="form-control" id="num_working_days" name="num_working_days" value="{{$lf_employee['num_working_days']}}" disabled>
-        </div>
-
-        <div class="form-group col-4">
-            <label for="requested_by" class="form-label">Inclusive Date</label>
-            <span>(start)</span>
-            <input type="text" class="form-control" id="startdate" name="startdate" value="{{$lf_employee['start_date']}}" disabled>
-        </div>
-
-        <div class="form-group col-4" id="align">
-            <label for="requested_by" class="form-label"></label>
-            <span>(end)</span>
-            <input type="text" class="form-control" id="enddate" name="enddate" value="{{$lf_employee['end_date']}}" disabled>
         </div>
 
     </div>

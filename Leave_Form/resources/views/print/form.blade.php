@@ -397,7 +397,7 @@
                     <p class="add-work-days"><span class="fifth-input">({{$Form['num_working_days']}}) Day/s</span></p>
 
                     <p class="leave-type">INCLUSIVE DATES</p>
-                    <p class="add-work-days"><span class="fifth-input-inlcusive">{{$Form['start_date']}} to {{$Form['end_date']}}</span></p>
+                    <p class="add-work-days"><span class="fifth-input-inlcusive">{{$Form['inclusive_dates']}}</span></p>
 
                     <br>
                     <br>
