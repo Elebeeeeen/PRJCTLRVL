@@ -120,21 +120,22 @@
 
         <div class="row">
 
-            <div class="form-group col-4">
-                <label for="requested_by" class="form-label">No. Of Working Days</label>
-                <span id="requiredStyle"> *</span>
-                <input type="text" class="form-control" placeholder="Ex: (1) One day" id="num_working_days" name="num_working_days">
-            </div>
-<!-- 
-            <div class="form-group col-4">
+            <div class="form-group col-11">
                 <label for="requested_by" class="form-label">Inclusive Date</label>
                 <span id="requiredStyle"> *</span>
 
-                <input type="type" class="form-control" id="inclusive_date" name="startdate" required>
+                <input type="text" class="form-control date-picker" id="date-picker" name="date-picker">
 
-            </div> -->
+            </div>
 
-            <div class="form-group col-4">
+            <div class="form-group col-1">
+                <label for="requested_by" class="form-label">No.</label>
+                <span id="requiredStyle"> *</span>
+                <input type="text" class="form-control " placeholder="(0)" id="num_working_days" name="num_working_days">
+            </div>
+
+
+            <!-- <div class="form-group col-4">
                 <label for="requested_by" class="form-label">Inclusive Date</label>
                 <span id="requiredStyle"> *</span>
                 <span>(start)</span>
@@ -145,7 +146,7 @@
                 <label for="requested_by" class="form-label"></label>
                 <span>(end)</span>
                 <input type="date" class="form-control" id="enddate" name="enddate" required>
-            </div>
+            </div> -->
 
         </div>
 
@@ -159,7 +160,7 @@
                 <select class="select2 form-control" name="type_of_leave" id="type_of_leave"></select>
             </div>
 
-            
+
             <div class="form-group col-4">
                 <label for="requested_by" class="form-label">Date of Filing</label>
                 <span id="requiredStyle"> *</span>
@@ -216,7 +217,7 @@
                         <label for="requested_by" class="form-label">Out Patient</label>
                     </div>
 
-                    <div  id="same3">
+                    <div id="same3">
                         <input type="radio" id="radio3" name="details" value="In case Leave Benefits for Women">
                         <label for="requested_by" class="form-label">In case Leave Benefits for Women</label>
 
@@ -329,7 +330,16 @@
 <script>
     $(document).ready(function() {
 
-        // $('#inclusive_date').daterangepicker();
+            flatpickr('#date-picker', {
+                enableTime: false,
+                dateFormat: 'Y-m-d',
+                mode: 'multiple',
+                disable: [
+                    function (date) {
+                        return date.getDay() == 0 || date.getDay() == 6;
+                    }
+                ]
+            });
 
         // Calling new variable to determine array accordingly (type of leave)
         let vacation_form = $($('.leaveOption div')[0]);
@@ -370,7 +380,7 @@
                     vacation_form.css('display', 'block')
                     break;
 
-        
+
                 case '2':
                 case '4':
                 case '5':
