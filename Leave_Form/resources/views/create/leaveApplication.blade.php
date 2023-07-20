@@ -124,7 +124,7 @@
                 <label for="requested_by" class="form-label">Inclusive Date</label>
                 <span id="requiredStyle"> *</span>
 
-                <input type="text" class="form-control date-picker" id="date-picker" name="date-picker">
+                <input type="text" class="form-control date-picker" id="inclusive_date" name="inclusive_date">
 
             </div>
 
@@ -330,7 +330,7 @@
 <script>
     $(document).ready(function() {
 
-            flatpickr('#date-picker', {
+            flatpickr('.date-picker', {
                 enableTime: false,
                 dateFormat: 'Y-m-d',
                 mode: 'multiple',

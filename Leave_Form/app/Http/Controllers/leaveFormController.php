@@ -123,6 +123,7 @@ class leaveFormController extends Controller
             'num_working_days' => 'required|numeric|max:10',
             'type_of_leave' => 'required',
             'date' => 'required',
+    
             'commutation' => 'required',
             'approver' => 'required',
 
@@ -132,14 +133,7 @@ class leaveFormController extends Controller
 
             $status = 'Pending';
 
-            // converting the format of the date (inclusive date)
 
-            // $firstInclusiveDate = $request->startdate;
-            // $startInclusiveDate = Carbon::createFromFormat('Y-m-d', $firstInclusiveDate)->format('F j, Y');
-            // $secondInclusiveDate = $request->enddate;
-            // $endInclusiveDate = Carbon::createFromFormat('Y-m-d', $secondInclusiveDate)->format('F j, Y');
-
-            // Retrieve the user input (start date and end date)
             $start = $request->startdate;
             $end = $request->enddate;
 
