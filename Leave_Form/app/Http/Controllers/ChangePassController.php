@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Validation\Rules\Password;
 use Illuminate\Http\Request;
 
 use Auth,Hash;
@@ -26,13 +27,19 @@ class ChangePassController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
+    //validator for strong password
     {
         $messageerror=[
             'password.regex' => ' Atleast 8 characters long and  must include special character, Number, lowercase letters and At least 1 letter in uppercase'
         ];
         $request->validate([
             'current_password' => 'required',
-            'password' => 'required',
+            'password' => ['required', Password::min(8)
+                ->letters()
+                ->mixedCase()
+                ->numbers()
+                ->symbols()
+                ->uncompromised()],
             'password_confirmation' => 'required',
           ],$messageerror);
   
