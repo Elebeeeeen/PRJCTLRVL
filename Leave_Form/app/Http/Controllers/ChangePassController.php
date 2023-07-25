@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Validation\Rules\Password;
 use Illuminate\Http\Request;
 
 use Auth,Hash;
