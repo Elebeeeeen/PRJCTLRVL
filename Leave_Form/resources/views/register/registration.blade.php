@@ -8,7 +8,7 @@
     <body class="hold-transition register-page">
         <div class="register-box">
             <div class="register-logo">
-                <a href="{{ url('/home') }}"><b>{{ config('app.name') }}</b></a>
+            <img src="https://www.dof.gov.ph/wp-content/uploads/2015/05/DOF-LOGO-circle-300x300.png" class="image" style=" height: 150px;">
             </div>
 
 

@@ -77,7 +77,8 @@ class RegistrationsController extends Controller
     protected function create(Request $data)
     {
 
-        // $role = Role::where('name', 'employee')->first();
+
+        $role = Role::where('name', 'employee')->first();
 
         $verified_email = regUser::where('email', $data->email)->count();
         $verify_email = User::where('email', $data->email)->count();
@@ -97,36 +98,10 @@ class RegistrationsController extends Controller
                 'position' => $data->position,
                 'salary' => $data->salary,
                 'status' => 'Pending',
-            ])/*->roles()->attach($role)*/;
+            ])->roles()->attach($role);
         }
-
-        // dd($verified_email);
 
 
         return response()->json(["success" => true]);
     }
-
-    
-    // try mo to pero di pa to gumagama
-
-
-
-
-    // public function validateTerms (Request $request){
-    //     $rules = [ 
-    //         'terms' => 'accepted',
-    //     ];
-
-    //     $messages =[
-    //         'terms.accepted' => 'you must accept the terms and conditions.'
-    //     ];
-
-    //     $validator = Validator::make($request->all(), $rules, $messages);
-
-    //     if($validator->fails()){
-    //         return redirect()->back()
-    //         ->withErrors($validator)
-    //         ->withInput();
-    //     }
-    // }
 }
