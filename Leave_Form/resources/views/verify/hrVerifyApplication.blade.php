@@ -266,7 +266,7 @@
     <div class="row">
         <div class="form-group col-12">
             <label for="requested_by" class="form-label">Approver</label>
-            <input type="text" class="form-control" id="approver" name="approver" value="{{$lf_employee['approver']}}">
+            <input type="text" class="form-control" id="approver" name="approver" value="{{$lf_employee['approver']}}" disabled>
         </div>
     </div>
     <!-- end of seventh row -->

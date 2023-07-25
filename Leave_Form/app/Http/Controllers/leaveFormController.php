@@ -530,7 +530,7 @@ class leaveFormController extends Controller
         $status = $request->status;
         $email = $lf_employee->email;
 
-        if ($status == "Verified") {
+        if ($status == "Approve") {
             $data = [
                 'employee' => $lf_employee,
                 'firstname' => Auth::user()->first_name,
@@ -572,7 +572,7 @@ class leaveFormController extends Controller
                 'position' => Auth::user()->position,
             ];
 
-            Mail::send('mail.approvedAcc', $data, function ($message) use ($data, $email) {
+            Mail::send('mail.acctapprove', $data, function ($message) use ($email) {
                 $message->to($email);
                 $message->subject('Approval of Your Application');
                 $message->from(Auth::user()->email, 'Human Resource');
@@ -590,7 +590,7 @@ class leaveFormController extends Controller
                 'mi' => Auth::user()->middle_initial,
                 'position' => Auth::user()->position,
             ];
-            Mail::send('mail.rejectAcc', $data, function ($message) use ($data, $email) {
+            Mail::send('mail.acctreject', $data, function ($message) use ($email) {
                 $message->to($email);
                 $message->subject('Disapproving Your Application');
                 $message->from(Auth::user()->email, 'Human Resource');

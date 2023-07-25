@@ -105,7 +105,7 @@
 
     <form action="/AccountHR/{{$id}}" data-id="{{$id}}" id="approve_form" method="POST">
         <div class="row">
-            <div class="form-group col-3">  
+            <div class="form-group col-3">
                 <label for="requested_by" class="form-label">Password</label>
                 <input type="text" class="form-control" id="password" name="password" required>
             </div>
@@ -162,7 +162,7 @@
                             }
                         })
                         $.ajax({
-                            url: '/hrAccountApproved/' + $('#approve_form').attr("data-id"),
+                            url: '/emailAccounts/' + $('#approve_form').attr("data-id"),
                             method: "POST",
                             processData: false,
                             contentType: false,
@@ -293,7 +293,7 @@
                                                 confirmButtonText: "confirm",
                                             }).then((result) => {
                                                 if (result.isConfirmed) {
-                                                    window.location.href = "/viewAcceptAccounts";
+                                                    window.location.href = "/pendingApplication";
                                                 }
                                             })
                                         } else {

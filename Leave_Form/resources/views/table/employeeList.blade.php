@@ -33,6 +33,8 @@
         <thead>
             <tr>
                 <th>Emp. No.</th>
+                <th>First Name</th>
+                <th>M.I</th>
                 <th>Last Name</th>
                 <th>Position</th>
                 <th>Status</th>
@@ -44,6 +46,8 @@
             <tr>
                 @foreach($leave_form as $leavelist)
                 <td>{{$leavelist['employee_number']}}</td>
+                <td>{{$leavelist['first_name']}}</td>
+                <td>{{$leavelist['middle_initial']}}</td>
                 <td>{{$leavelist['last_name']}}</td>
                 <td>{{$leavelist['position']}}</td>
                 <td>{{$leavelist['status']}}</td>

@@ -278,7 +278,7 @@
         <div class="float-right">
             <form action="/verifyingApplicationHead/{{$id}}" data-id="{{$id}}" id="approve_form" method="POST">
                 @METHOD('PUT')
-                <button type="submit" id="approve" value="Verified" class="btn btn-success">Verify</button>
+                <button type="submit" id="approve" value="Approve" class="btn btn-success">Approve</button>
             </form>
         </div>
     </div>
@@ -392,7 +392,7 @@
             var status = button.value;
             let formData = new FormData($('#approve_form')[0]);
 
-            if (status == "Verified") {
+            if (status == "Approve") {
                 e.preventDefault();
                 Swal.fire({
                     icon: 'warning',
