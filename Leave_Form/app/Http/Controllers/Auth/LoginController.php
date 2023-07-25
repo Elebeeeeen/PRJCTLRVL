@@ -47,7 +47,7 @@ class LoginController extends Controller
             $user = Auth::user();
             $laratrust = app(Laratrust::class);
 
-            if ($laratrust->hasRole('employee', $user)) {
+            if ($laratrust->hasRole('Employee', $user)) {
                 return redirect('/employeeCreateForm');
             } elseif ($laratrust->hasRole('division_chief', $user)) {
                 return redirect('/pendingApplication');

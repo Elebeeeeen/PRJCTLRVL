@@ -28,11 +28,6 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::post("/printform/{id}", [App\Http\Controllers\PrintController::class, "printform"])->name("printform");
 Route::post("/printformDC/{id}", [App\Http\Controllers\PrintController::class, "printformDC"])->name("printformDC");
 
-//division chief
-Route::resource('/divisionchief', App\Http\Controllers\DCController::class);
-Route::get('/divisionlist', [App\Http\Controllers\DCController::class, 'index2']);
-Route::get('/divemplist', [App\Http\Controllers\DCController::class, 'index3']);
-Route::get('/viewemplist/{id}', [App\Http\Controllers\DCController::class, 'show3']);
 
 
 //new route

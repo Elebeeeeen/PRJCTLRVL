@@ -46,7 +46,7 @@
 
     <!-- header -->
     <div class="header">
-        <h3> Leave Form eto</h3>
+        <h3> Leave Form</h3>
     </div>
 
 

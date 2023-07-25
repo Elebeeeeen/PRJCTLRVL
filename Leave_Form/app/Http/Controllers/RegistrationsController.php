@@ -77,9 +77,8 @@ class RegistrationsController extends Controller
     protected function create(Request $data)
     {
 
-
-        $role = Role::where('name', 'employee')->first();
-
+        
+ 
         $verified_email = regUser::where('email', $data->email)->count();
         $verify_email = User::where('email', $data->email)->count();
 
@@ -98,7 +97,8 @@ class RegistrationsController extends Controller
                 'position' => $data->position,
                 'salary' => $data->salary,
                 'status' => 'Pending',
-            ])->roles()->attach($role);
+            ]);
+           
         }
 
 

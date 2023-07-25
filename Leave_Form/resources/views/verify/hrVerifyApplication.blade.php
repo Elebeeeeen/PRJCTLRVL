@@ -47,7 +47,7 @@
 
     <!-- header -->
     <div class="header">
-        <h3> Leave Form (hr)</h3>
+        <h3> Leave Form</h3>
     </div>
 
 

@@ -8,6 +8,7 @@ use App\Models\regUser;
 use App\Models\User;
 use Sabberworm\CSS\Property\Import;
 use Carbon\Carbon;
+use App\Models\Role;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
@@ -76,9 +77,6 @@ class leaveFormController extends Controller
     }
 
 
-    //may error samga counts especially sa employee,division,and director
-    //di pa to ayos yung sa home
-    //All created leave forms are counted throught it status in the file (form) in the Human Resource 
     public function pendingApplication()
     {
 
@@ -209,7 +207,6 @@ class leaveFormController extends Controller
         if ($status == "Approved by HR") {
             $registered_user->status = $status;
 
-
             User::create([
                 'employee_number' => $registered_user->employee_number,
                 'status' => "Approve",
@@ -232,14 +229,11 @@ class leaveFormController extends Controller
             $registered_user->save();
 
 
-            // Mail here
-
-            //  return response()->json(["success" => true, "message" => "Successfully approved!"]);
         } else if ($status == "Rejected by HR") {
             $registered_user->status = $status;
             $registered_user->save();
 
-            // Mail here
+
 
             return response()->json(["success" => true, "message" => "Successfully rejected!"]);
         }
@@ -365,6 +359,7 @@ class leaveFormController extends Controller
         $save = new User();
         $save->username = $request->username;
         $status = $request->status;
+        $role = Role::where('display_name', 'Employee')->first();
 
         if ($status == "Approved by HR") {
             $registered_user->status = 'Approved';
@@ -384,7 +379,7 @@ class leaveFormController extends Controller
                 'password' => Hash::make($request->password),
                 'verified' => 'false',
 
-            ]);
+            ])->roles()->attach($role);
             return response()->json(["success" => true, "id" => $id]);
         } else if ($status == "Rejected by HR") {
             $registered_user->status = $status;
