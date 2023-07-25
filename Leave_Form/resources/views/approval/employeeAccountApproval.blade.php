@@ -117,7 +117,7 @@
         <!--button-->
         <div class="w-100">
             <div class="float-right">
-                @METHOD('POST   ')
+                @METHOD('POST')
                 <button type="submit" id="approve" value="Approved by HR" class="btn btn-primary">Approve</button>
                 <button type="submit" id="reject" value="Rejected by HR" class="btn btn-danger">Reject</button>
             </div>

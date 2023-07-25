@@ -2,6 +2,8 @@
 
 <br>
 
+<p>We hope this email finds you well. We are writing to inform you about the status of your account application.
+    After careful review and consideration, We are pleased to inform you that your account application has been <strong style="font-style: italic"> Approved.</strong> Congratulations! Please feel free to log in using your credentials.</p>
 <p>I would like to inform you that your account<strong style="font-style: italic"> Approved.</strong></p>
 
 <br>
