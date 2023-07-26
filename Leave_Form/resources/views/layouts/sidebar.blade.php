@@ -1,7 +1,7 @@
 <style>
     .image {
         margin-left: 20px;
-        width: 50px;
+        width: 40px;
  
     }
 
