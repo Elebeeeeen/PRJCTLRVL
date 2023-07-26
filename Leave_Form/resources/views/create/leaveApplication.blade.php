@@ -3,8 +3,8 @@
 @section('content')
 
 <style>
-    .card{
-        border-collapse: collapse;
+    .card {
+        padding: 5px 0px 0px 0px;
     }
 
     .header {
@@ -333,26 +333,14 @@
             <label for="requested_by" class="form-label">Approver</label>
             <span id="requiredStyle"> *</span>
 
-            <select  class="form-control" name="approver" id="approver">
-                
+            <select class="form-control" name="approver" id="approver">
+
                 <option selected="true" disabled>Select a Approver: </option>
-                
-                <option style="font-weight: bold" disabled>CMIO</option>
-                <option value="Dir: Angie Sarmiento">Dir: Angie Sarmiento</option>
-                <option value="Division chief: Aldrin Varilla">Division chief: Aldrin Varilla</option>
-                <option value="Admin: Rubi Rose Ballecer">Admin: Rubi Rose Ballecer</option>
-                <option value="Employee: Peter Busque ">Employee: Peter Busque </option>
-
-                <option style="font-weight: bold"  disabled>PSD</option>
-                <option value="Dir: Alvin Diaz">Dir: Alvin Diaz</option>
-                <option value="Division Chief: Carmi">Division Chief: Carmi</option>
-                <option value="Employee: Brian De Mesa ">Employee: Brian De Mesa </option>
-
 
             </select>
         </div>
         <!-- end of seventh row -->
-<br>
+        <br>
 
 
         <!--just button-->
@@ -369,7 +357,10 @@
 <script>
     $(document).ready(function() {
 
-        flatpickr('.date-picker', {
+        // inclusive dates and automatic count
+        const datePicker = document.getElementById('inclusive_dates');
+
+        flatpickr(datePicker, {
             enableTime: false,
             dateFormat: 'F j, Y',
             mode: 'multiple',
@@ -377,8 +368,47 @@
                 function(date) {
                     return date.getDay() == 0 || date.getDay() == 6;
                 }
-            ]
+            ],
+            onChange: function(selectedDates, dateStr, instance) {
+                const selectedDateCount = instance.selectedDates.length;
+
+                const countElement = document.getElementById('num_working_days');
+                countElement.value = selectedDateCount;
+            }
         });
+
+        //for approver
+
+        var office = $('#office').val();
+        var selectID = $('#approver')[0];
+
+        switch (office) {
+
+            case 'CMIO':
+                var cmiogroup = $("<optgroup label='CMIO'></optgroup>");
+
+                cmiogroup.append('<option value="CMIO1">CMIO1</option>');
+                cmiogroup.append('<option value="CMIO2">CMIO2</option>');
+                cmiogroup.append('<option value="CMIO3">CMIO3</option>');
+                cmiogroup.append('<option value="CMIO4">CMIO4</option>');
+
+                $(selectID).append(cmiogroup);
+                break;
+
+            case 'PSD':
+                var psdgroup = $("<optgroup label='PSD'></optgroup>");
+
+                psdgroup.append('<option value="PSD1">PSD1</option>');
+                psdgroup.append('<option value="PSD2">PSD2</option>');
+                psdgroup.append('<option value="PSD3">PSD3</option>');
+
+
+                $(selectID).append(psdgroup);
+
+                break;  
+        }
+
+
 
         // Calling new variable to determine array accordingly (type of leave)
         let vacation_form = $($('.leaveOption div')[0]);
@@ -480,7 +510,7 @@
                         if (response.success) {
                             Swal.fire({
                                 title: 'Success!',
-                                text: 'You can now view and print your leave form. Wait to notify in your email to be approved.',
+                                text: 'You can now view and print your leave form. Wait to notify in your email to be approve.',
                                 icon: 'success',
                                 confirmButtonText: 'Okay'
                             }).then((result) => {
