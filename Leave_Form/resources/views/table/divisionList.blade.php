@@ -151,7 +151,8 @@
         "ordering": true,
         "info": true,
         "autoWidth": false,
-        "responsive": true
+        "responsive": true,
+        order: [[0, 'desc']],
     });
 </script>
 

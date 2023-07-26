@@ -106,7 +106,7 @@ class leaveFormController extends Controller
         //Creating a validator 
         $message_error = [
 
-            'num_working_days.required' => 'Please Indicate Your Number Working Days',
+          
             'type_of_leave.required' => 'Please Indicate Your Type of Leave',
             'date.required' => 'Please Indicate Your Date',
             'approver.required' => 'Please Indicate Your Approver',
@@ -114,7 +114,7 @@ class leaveFormController extends Controller
 
         $validator = Validator::make($request->all(), [
 
-            'num_working_days' => 'required|numeric|max:10',
+    
             'type_of_leave' => 'required',
             'date' => 'required',
             'approver' => 'required',

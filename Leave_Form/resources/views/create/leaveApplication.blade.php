@@ -168,7 +168,7 @@
             <div class="form-group col-1">
                 <label for="requested_by" class="form-label">No.</label>
                 <span id="requiredStyle"> *</span>
-                <input type="text" class="form-control " placeholder="(0)" id="num_working_days" name="num_working_days" disabled>
+                <input type="text" class="form-control" placeholder="(0)" id="num_working_days" name="num_working_days" readonly>
             </div>
 
         </div>
