@@ -7,14 +7,14 @@
 
     .titleLeave{
         margin-left: 10px; 
-        font-size: 18px;
+        font-size: 15px;
     }
 </style>
 
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <a href="{{ route('home') }}" class="brand-link">
         <img src="https://www.dof.gov.ph/wp-content/uploads/2015/05/DOF-LOGO-circle-300x300.png" class="image">
-        <span class="titleLeave"> Leave Form </span>
+        <span class="titleLeave"> Leave Filing System </span>
     </a>
 
     <div class="sidebar">
