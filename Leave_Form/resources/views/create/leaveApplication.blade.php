@@ -3,8 +3,8 @@
 @section('content')
 
 <style>
-    .card{
-        border-collapse: collapse;
+    .card {
+        padding: 5px 0px 0px 0px;
     }
 
     .header {
@@ -168,7 +168,7 @@
             <div class="form-group col-1">
                 <label for="requested_by" class="form-label">No.</label>
                 <span id="requiredStyle"> *</span>
-                <input type="text" class="form-control " placeholder="(0)" id="num_working_days" name="num_working_days">
+                <input type="text" class="form-control " placeholder="(0)" id="num_working_days" name="num_working_days" disabled>
             </div>
 
         </div>
@@ -333,26 +333,14 @@
             <label for="requested_by" class="form-label">Approver</label>
             <span id="requiredStyle"> *</span>
 
-            <select  class="form-control" name="approver" id="approver">
-                
-                <option selected="true" disabled>Select a Approver: </option>
-                
-                <option style="font-weight: bold"  disabled>Office 1</option>
-                <option value="Ms. Flor">Ms. Flor</option>
-                <option value="Mr. Ben">Mr. Ben</option>
-                <option value="Mr. Aldrin">Mr. Aldrin</option>
-                <option value="Ms. Rubi">Ms. Rubi</option>
+            <select class="form-control" name="approver" id="approver">
 
-                <option style="font-weight: bold"  disabled>Office 2</option>
-                <option value="Mr. Maki">Ms. Flor</option>
-                <option value="Mr. Edward">Mr. Edward</option>
-                <option value="Mr. Peter">Mr. Peter</option>
-                <option value="Ms. Pebi">Ms. Pebi</option>
+                <option selected="true" disabled>Select a Approver: </option>
 
             </select>
         </div>
         <!-- end of seventh row -->
-<br>
+        <br>
 
 
         <!--just button-->
@@ -369,7 +357,10 @@
 <script>
     $(document).ready(function() {
 
-        flatpickr('.date-picker', {
+        // inclusive dates and automatic count
+        const datePicker = document.getElementById('inclusive_dates');
+
+        flatpickr(datePicker, {
             enableTime: false,
             dateFormat: 'F j, Y',
             mode: 'multiple',
@@ -377,8 +368,47 @@
                 function(date) {
                     return date.getDay() == 0 || date.getDay() == 6;
                 }
-            ]
+            ],
+            onChange: function(selectedDates, dateStr, instance) {
+                const selectedDateCount = instance.selectedDates.length;
+
+                const countElement = document.getElementById('num_working_days');
+                countElement.value = selectedDateCount;
+            }
         });
+
+        //for approver
+
+        var office = $('#office').val();
+        var selectID = $('#approver')[0];
+
+        switch (office) {
+
+            case 'CMIO':
+                var cmiogroup = $("<optgroup label='CMIO'></optgroup>");
+
+                cmiogroup.append('<option value="Director: Angie Sarmiento">Director: Angie Sarmiento</option>');
+                cmiogroup.append('<option value="Division chief: Aldrin Varilla">Division chief: Aldrin Varilla</option>');
+                cmiogroup.append('<option value="Admin: Rubi Rose Ballecer">Admin: Rubi Rose Ballecer</option>');
+                cmiogroup.append('<option value="Employee: Peter Busque">Employee: Peter Busque</option>');
+
+                $(selectID).append(cmiogroup);
+                break;
+
+            case 'PSD':
+                var psdgroup = $("<optgroup label='PSD'></optgroup>");
+
+                psdgroup.append('<option value="Dir: Alvin Diaz">Dir: Alvin Diaz</option>');
+                psdgroup.append('<option value="Division Chief: Carmi">PSD2</option>');
+                psdgroup.append('<option value="Employee: Brian De Mesa">Employee: Brian De Mesa</option>');
+
+
+                $(selectID).append(psdgroup);
+
+                break;  
+        }
+
+
 
         // Calling new variable to determine array accordingly (type of leave)
         let vacation_form = $($('.leaveOption div')[0]);
@@ -480,7 +510,7 @@
                         if (response.success) {
                             Swal.fire({
                                 title: 'Success!',
-                                text: 'You can now view and print your leave form. Wait to notify in your email to be approved.',
+                                text: 'You can now view and print your leave form. Wait to notify in your email to be approve.',
                                 icon: 'success',
                                 confirmButtonText: 'Okay'
                             }).then((result) => {

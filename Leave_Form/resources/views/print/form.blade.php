@@ -446,7 +446,7 @@
 
 
 
-                    <table class="mini-table-align">
+                    <table class="mini-table-align" style="border-collapse:collapse">
                         <tr>
                             <th class="mini-table"> </th>
                             <th class="mini-table">Vacation Leave</th>

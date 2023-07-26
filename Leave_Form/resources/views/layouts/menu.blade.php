@@ -115,7 +115,7 @@
 
 
 <li class="nav-item">
-    <a href="/approvalApplicationHead" class="nav-link {{ Request::is('approvalApplicationHR') ? 'active' : '' }}">
+    <a href="/approvalApplicationHead" class="nav-link {{ Request::is('approvalApplicationHead') ? 'active' : '' }}">
         <i class="nav-icon fas fa-folder-open"></i>
         <p >For Approval</p>
     </a>
