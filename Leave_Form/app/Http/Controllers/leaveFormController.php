@@ -368,7 +368,7 @@ class leaveFormController extends Controller
                 'position' => $registered_user->position,
                 'salary' => $registered_user->salary,
                 'username' => $request->username,
-                'password' => Hash::make($request->password),
+                'password' => Hash::make('password'),
                 'verified' => 'false',
 
             ])->roles()->attach($role);
