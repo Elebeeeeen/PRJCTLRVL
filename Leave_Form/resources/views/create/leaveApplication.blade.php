@@ -337,17 +337,17 @@
                 
                 <option selected="true" disabled>Select a Approver: </option>
                 
-                <option style="font-weight: bold"  disabled>Office 1</option>
-                <option value="Ms. Flor">Ms. Flor</option>
-                <option value="Mr. Ben">Mr. Ben</option>
-                <option value="Mr. Aldrin">Mr. Aldrin</option>
-                <option value="Ms. Rubi">Ms. Rubi</option>
+                <option style="font-weight: bold" disabled>CMIO</option>
+                <option value="Dir: Angie Sarmiento">Dir: Angie Sarmiento</option>
+                <option value="Division chief: Aldrin Varilla">Division chief: Aldrin Varilla</option>
+                <option value="Admin: Rubi Rose Ballecer">Admin: Rubi Rose Ballecer</option>
+                <option value="Employee: Peter Busque ">Employee: Peter Busque </option>
 
-                <option style="font-weight: bold"  disabled>Office 2</option>
-                <option value="Mr. Maki">Ms. Flor</option>
-                <option value="Mr. Edward">Mr. Ben</option>
-                <option value="Mr. Peter">Mr. Peter</option>
-                <option value="Ms. Pebi">Ms. Pebi</option>
+                <option style="font-weight: bold"  disabled>PSD</option>
+                <option value="Dir: Alvin Diaz">Dir: Alvin Diaz</option>
+                <option value="Division Chief: Carmi">Division Chief: Carmi</option>
+                <option value="Employee: Brian De Mesa ">Employee: Brian De Mesa </option>
+
 
             </select>
         </div>
