@@ -22,7 +22,7 @@ class leaveFormController extends Controller
     public function tableEmployee()
     {
         $list = new Employees();
-        //$leave_form  = $list->leaveType(Employees::where('position', 'employee')->where('status', 'Pending')->get());
+
 
         $leave_form  = $list->leaveType(Employees::where('position', 'employee')->where('status', 'Pending')->where('employee_number', Auth::user()->employee_number)->get());
         return view('table.employeeList', compact(['leave_form']));

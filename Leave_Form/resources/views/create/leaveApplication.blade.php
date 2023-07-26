@@ -387,10 +387,10 @@
             case 'CMIO':
                 var cmiogroup = $("<optgroup label='CMIO'></optgroup>");
 
-                cmiogroup.append('<option value="CMIO1">CMIO1</option>');
-                cmiogroup.append('<option value="CMIO2">CMIO2</option>');
-                cmiogroup.append('<option value="CMIO3">CMIO3</option>');
-                cmiogroup.append('<option value="CMIO4">CMIO4</option>');
+                cmiogroup.append('<option value="Director: Angie Sarmiento">Director: Angie Sarmiento</option>');
+                cmiogroup.append('<option value="Division chief: Aldrin Varilla">Division chief: Aldrin Varilla</option>');
+                cmiogroup.append('<option value="Admin: Rubi Rose Ballecer">Admin: Rubi Rose Ballecer</option>');
+                cmiogroup.append('<option value="Employee: Peter Busque">Employee: Peter Busque</option>');
 
                 $(selectID).append(cmiogroup);
                 break;
@@ -398,9 +398,9 @@
             case 'PSD':
                 var psdgroup = $("<optgroup label='PSD'></optgroup>");
 
-                psdgroup.append('<option value="PSD1">PSD1</option>');
-                psdgroup.append('<option value="PSD2">PSD2</option>');
-                psdgroup.append('<option value="PSD3">PSD3</option>');
+                psdgroup.append('<option value="Dir: Alvin Diaz">Dir: Alvin Diaz</option>');
+                psdgroup.append('<option value="Division Chief: Carmi">PSD2</option>');
+                psdgroup.append('<option value="Employee: Brian De Mesa">Employee: Brian De Mesa</option>');
 
 
                 $(selectID).append(psdgroup);

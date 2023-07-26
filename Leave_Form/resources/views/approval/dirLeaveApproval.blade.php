@@ -244,7 +244,6 @@
         <div class="border">
             <div class="form-group col-12">
                 <label for="requested_by" class="form-label">Commutation</label>
-                <span id="requiredStyle"> *</span>
 
                 <div class="forCheckbox">
                     <div class="form-group col-3" id="same1">
