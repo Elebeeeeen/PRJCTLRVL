@@ -328,6 +328,31 @@
 
         <!-- start of seventh row -->
 
+        <div class="row">
+
+            <label for="requested_by" class="form-label">Approver</label>
+            <span id="requiredStyle"> *</span>
+
+            <select  class="form-control" name="approver" id="approver">
+                
+                <option selected="true" disabled>Select a Approver: </option>
+                
+                <option style="font-weight: bold"  disabled>Office 1</option>
+                <option value="Ms. Flor">Ms. Flor</option>
+                <option value="Mr. Ben">Mr. Ben</option>
+                <option value="Mr. Aldrin">Mr. Aldrin</option>
+                <option value="Ms. Rubi">Ms. Rubi</option>
+
+                <option style="font-weight: bold"  disabled>Office 2</option>
+                <option value="Mr. Maki">Ms. Flor</option>
+                <option value="Mr. Edward">Mr. Ben</option>
+                <option value="Mr. Peter">Mr. Peter</option>
+                <option value="Ms. Pebi">Ms. Pebi</option>
+
+            </select>
+        </div>
+        <!-- end of seventh row -->
+<br>
 
 
         <!--just button-->
