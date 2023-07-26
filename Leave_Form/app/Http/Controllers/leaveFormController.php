@@ -109,7 +109,6 @@ class leaveFormController extends Controller
             'num_working_days.required' => 'Please Indicate Your Number Working Days',
             'type_of_leave.required' => 'Please Indicate Your Type of Leave',
             'date.required' => 'Please Indicate Your Date',
-            'commutation.required' => 'Please Indicate Your Commutation',
             'approver.required' => 'Please Indicate Your Approver',
         ];
 
@@ -118,7 +117,6 @@ class leaveFormController extends Controller
             'num_working_days' => 'required|numeric|max:10',
             'type_of_leave' => 'required',
             'date' => 'required',
-            'commutation' => 'required',
             'approver' => 'required',
 
         ], $message_error);
@@ -141,8 +139,6 @@ class leaveFormController extends Controller
                     'date' => $request->date,
                     'num_working_days' => $request->num_working_days,
                     'inclusive_dates' => $request->inclusive_dates,
-                    // 'start_date' => $startdate,
-                    // 'end_date' =>  $enddate,
                     'details' => $request->details,
                     'specification' => $request->specification1,
                     'commutation' => $request->commutation,
@@ -163,8 +159,6 @@ class leaveFormController extends Controller
                     'date' => $request->date,
                     'num_working_days' => $request->num_working_days,
                     'inclusive_dates' => $request->inclusive_dates,
-                    // 'start_date' => $startdate,
-                    // 'end_date' =>  $enddate,
                     'details' => $request->details,
                     'specification' => $request->specification2,
                     'commutation' => $request->commutation,
@@ -185,8 +179,6 @@ class leaveFormController extends Controller
                     'date' => $request->date,
                     'num_working_days' => $request->num_working_days,
                     'inclusive_dates' => $request->inclusive_dates,
-                    // 'start_date' => $startdate,
-                    // 'end_date' =>  $enddate,
                     'details' => $request->details,
                     'commutation' => $request->commutation,
                     'approver' => $request->approver,
@@ -610,9 +602,7 @@ class leaveFormController extends Controller
     {
         //
     }
-
-
-
+    
 
     // additional function to read the arrays to the employee model
     //Creating new function to call the leavelist funtion in the model

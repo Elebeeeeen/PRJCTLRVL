@@ -4,14 +4,14 @@
 <li class="nav-item">
     <a href="/employeeCreateForm" class="nav-link {{ Request::is('employeeCreateForm') ? 'active' : '' }}">
         <i class="nav-icon fas fa-file "></i>
-        <p style="font-size:13px">Leave Form</p>
+        <p >Leave Form</p>
     </a>
 </li>
 
 <li class="nav-item">
     <a href="/employeeCreatedForm" class="nav-link {{ Request::is('employeeCreatedForm') ? 'active' : '' }}">
         <i class="nav-icon fas fa-folder-open"></i>
-        <p style="font-size:13px">List of Leave Applications</p>
+        <p >List of Leave Applications</p>
     </a>
 </li>
 @endrole
@@ -21,28 +21,28 @@
 <li class="nav-item">
     <a href="/pendingApplication" class="nav-link {{ Request::is('pendingApplication') ? 'active' : '' }}">
         <i class="nav-icon fas fa-home"></i>
-        <p style="font-size:13px">Home</p>
+        <p >Home</p>
     </a>
 </li>
 
 <li class="nav-item">
     <a href="/employeeCreateForm" class="nav-link {{ Request::is('employeeCreateForm') ? 'active' : '' }}">
         <i class="nav-icon fas fa-file "></i>
-        <p style="font-size:13px">Leave Form</p>
+        <p >Leave Form</p>
     </a>
 </li>
 
 <li class="nav-item">
     <a href="/divisionCreatedForm" class="nav-link {{ Request::is('divisionCreatedForm') ? 'active' : '' }}">
         <i class="nav-icon fas fa-folder-open"></i>
-        <p style="font-size:13px">List of Leave Applications</p>
+        <p >Filed Leaves</p>
     </a>
 </li>
 
 <li class="nav-item">
     <a href="/approvingEmployeesForm" class="nav-link {{ Request::is('approvingEmployeesForm') ? 'active' : '' }}">
         <i class="nav-icon fas fa-folder-open"></i>
-        <p style="font-size:13px">Applied Leave by Employees</p>
+        <p >For Approval</p>
     </a>
 </li>
 
@@ -55,7 +55,7 @@
 <li class="nav-item">
     <a href="/pendingApplication" class="nav-link {{ Request::is('pendingApplication') ? 'active' : '' }}">
         <i class="nav-icon fas fa-home"></i>
-        <p style="font-size:13px">Home</p>
+        <p >Home</p>
     </a>
 </li>
 
@@ -63,7 +63,7 @@
 <li class="nav-item">
     <a href="/approvalApplicationDir" class="nav-link {{ Request::is('approvalApplicationDir') ? 'active' : '' }}">
         <i class="nav-icon fas fa-folder-open"></i>
-        <p style="font-size:13px">Applied Leave by Division Chief</p>
+        <p >For Approval</p>
     </a>
 </li>
 
@@ -79,7 +79,7 @@
 <li class="nav-item">
     <a href="/pendingApplication" class="nav-link {{ Request::is('pendingApplication') ? 'active' : '' }}">
         <i class="nav-icon fas fa-home"></i>
-        <p style="font-size:13px">Home</p>
+        <p >Home</p>
     </a>
 </li>
 
@@ -87,14 +87,14 @@
 <li class="nav-item">
     <a href="/approvalApplicationHR" class="nav-link {{ Request::is('approvalApplicationHR') ? 'active' : '' }}">
         <i class="nav-icon fas fa-folder-open"></i>
-        <p style="font-size:13px">Approved Leave Application</p>
+        <p >For Approval</p>
     </a>
 </li>
 
 <li class="nav-item">
     <a href="/acceptAccounts" class="nav-link {{ Request::is('acceptAccounts') ? 'active' : '' }}">
         <i class="nav-icon fas fa-folder-open"></i>
-        <p style="font-size:13px">Pending Accounts</p>
+        <p >Pending Accounts</p>
     </a>
 </li>
 
@@ -117,7 +117,7 @@
 <li class="nav-item">
     <a href="/approvalApplicationHead" class="nav-link {{ Request::is('approvalApplicationHR') ? 'active' : '' }}">
         <i class="nav-icon fas fa-folder-open"></i>
-        <p style="font-size:13px">Approved Leave Application</p>
+        <p >For Approval</p>
     </a>
 </li>
 

@@ -3,6 +3,10 @@
 @section('content')
 
 <style>
+    .card{
+        border-collapse: collapse;
+    }
+
     .header {
         background-color: #00B0F0;
         color: white;
@@ -34,6 +38,40 @@
 
     #align {
         padding-top: 8px;
+    }
+
+
+
+    /* for the dropdown */
+    select {
+        padding: 10px;
+        font-size: 16px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        background-color: #f7f7f7;
+        width: 200px;
+    }
+
+    /* Style for the options */
+    option {
+        padding: 5px;
+        font-size: 16px;
+        background-color: #fff;
+        color: #333;
+    }
+
+    /* Style for the dropdown arrow */
+    select::-ms-expand {
+        display: none;
+    }
+
+    select::after {
+        content: '\25BC';
+        position: absolute;
+        top: 12px;
+        right: 10px;
+        font-size: 18px;
+        color: #666;
     }
 </style>
 
@@ -266,7 +304,6 @@
             <div class="border">
                 <div class="form-group col-12">
                     <label for="requested_by" class="form-label">Commutation</label>
-                    <span id="requiredStyle"> *</span>
 
                     <div class="forCheckbox">
                         <div class="form-group col-3" id="same1">
@@ -290,14 +327,6 @@
         <br>
 
         <!-- start of seventh row -->
-        <div class="row">
-            <div class="form-group col-12">
-                <label for="requested_by" class="form-label">Approver</label>
-                <span id="requiredStyle"> *</span>
-                <input type="text" class="form-control" placeholder="Ex: Approver" id="approver" name="approver">
-            </div>
-        </div>
-        <!-- end of seventh row -->
 
 
 
@@ -315,16 +344,16 @@
 <script>
     $(document).ready(function() {
 
-            flatpickr('.date-picker', {
-                enableTime: false,
-                dateFormat: 'Y-m-d',
-                mode: 'multiple',
-                disable: [
-                    function (date) {
-                        return date.getDay() == 0 || date.getDay() == 6;
-                    }
-                ]
-            });
+        flatpickr('.date-picker', {
+            enableTime: false,
+            dateFormat: 'F j, Y',
+            mode: 'multiple',
+            disable: [
+                function(date) {
+                    return date.getDay() == 0 || date.getDay() == 6;
+                }
+            ]
+        });
 
         // Calling new variable to determine array accordingly (type of leave)
         let vacation_form = $($('.leaveOption div')[0]);
