@@ -180,22 +180,25 @@
                                         confirmButtonText: "confirm",
                                     }).then((result) => {
                                         if (result.isConfirmed) {
-                                            window.location.href = "/acceptAccounts";
-                                            if (result.isConfirmed) {
-                                                formData.append('status', status);
-                                                $.ajax({
-                                                    url: '/acceptAccounts/' + response.id,
 
-                                                    method: "POST",
-                                                    processData: false,
-                                                    contentType: false,
-                                                    cache: false,
-                                                    data: formData,
-                                                    headers: {
-                                                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                                                    },
-                                                });
-                                            }
+                                            formData.append('status', status);
+                                            $.ajax({
+                                                url: '/hrAccountApproved/' + $('#approve_form').attr("data-id"),
+
+                                                method: "POST",
+                                                processData: false,
+                                                contentType: false,
+                                                cache: false,
+                                                data: formData,
+                                                headers: {
+                                                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                                                },
+
+                                                success: function(response) {
+                                                    window.location.href = "/pendingApplication";
+                                                }
+                                            });
+
                                         }
                                     })
                                     // alert(response.id);
