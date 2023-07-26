@@ -301,10 +301,12 @@
         //radio button for commutation
         if ("{{$lf_employee['commutation']}}" == $('#radio11').val()) {
             $("#radio11").prop("checked", true);
-        } else {
+        } else if ("{{$lf_employee['commutation']}}" == $('#radio12').val()) {
             $("#radio12").prop("checked", true);
+        }else {
+            
         }
-
+        
         // Calling new variable to determine array accordingly (type of leave)
         let vacation_form = $($('.leaveOption div')[0]);
         let sick_form = $($('.leaveOption div')[3]);
