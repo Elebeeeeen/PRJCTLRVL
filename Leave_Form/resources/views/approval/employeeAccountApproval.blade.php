@@ -105,10 +105,10 @@
 
     <form action="/AccountHR/{{$id}}" data-id="{{$id}}" id="approve_form" method="POST">
         <div class="row">
-            <div class="form-group col-3">
+            <!-- <div class="form-group col-3">
                 <label for="requested_by" class="form-label">Password</label>
-                <input type="text" class="form-control" id="password" name="password" required>
-            </div>
+                <input type="text" class="form-control" id="password" name="password">
+            </div> -->
 
         </div>
 
